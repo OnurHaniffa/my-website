@@ -59,14 +59,28 @@
 					Available for Projects
 				</Badge>
 
-				<!-- TASK 1: New headline -->
-				<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-					I build websites that turn visitors into <span class="text-primary">customers</span>.
-				</h1>
+				<!-- Headline with animated underline -->
+				<div class="relative">
+					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">customers</span>
+							<!-- Animated curly underline -->
+							<svg class="absolute -bottom-2 left-0 w-full h-4 curly-line" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+								<path
+									d="M0 10 Q 25 0, 50 10 T 100 10 T 150 10 T 200 10"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									class="text-primary"
+									fill="none"
+								/>
+							</svg>
+						</span>
+					</h1>
+				</div>
 
-				<!-- TASK 2: New subheadline - Option B selected (punchy, premium) -->
+				<!-- Description -->
 				<p class="text-xl text-muted-foreground max-w-lg leading-relaxed">
-					Clean code. Thoughtful design. Measurable growth.
+					From first click to final conversion—I design and develop websites that don't just look good, they deliver real business results.
 				</p>
 
 				<!-- Quick Stats -->
@@ -650,5 +664,25 @@
 	@keyframes glow-pulse {
 		0%, 100% { opacity: 0.6; }
 		50% { opacity: 1; }
+	}
+
+	/* Animated curly underline */
+	.curly-line path {
+		stroke-dasharray: 400;
+		stroke-dashoffset: 400;
+		animation: draw-curly 1.5s ease-out 0.5s forwards;
+	}
+
+	@keyframes draw-curly {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.curly-line path {
+			animation: none;
+			stroke-dashoffset: 0;
+		}
 	}
 </style>
