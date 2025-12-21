@@ -18,7 +18,7 @@
 	<!-- Ambient background with optimized glow -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
-		<!-- Glowing orbs - using opacity instead of blur for performance -->
+		<!-- Glowing orbs - animate only when motion is allowed -->
 		<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] glow-orb"></div>
 		<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] glow-orb-delayed"></div>
 		<div class="absolute top-1/2 left-1/3 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] glow-orb-slow"></div>
@@ -59,12 +59,14 @@
 					Available for Projects
 				</Badge>
 
-				<h1 class="text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-					Websites that <span class="text-primary">convert</span>
+				<!-- TASK 1: New headline -->
+				<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+					I build websites that turn visitors into <span class="text-primary">customers</span>.
 				</h1>
 
+				<!-- TASK 2: New subheadline - Option B selected (punchy, premium) -->
 				<p class="text-xl text-muted-foreground max-w-lg leading-relaxed">
-					Strategic design that drives results. I build modern websites focused on turning your visitors into customers.
+					Clean code. Thoughtful design. Measurable growth.
 				</p>
 
 				<!-- Quick Stats -->
@@ -96,79 +98,130 @@
 				</div>
 			</div>
 
-			<!-- Right Content - Browser Mockup -->
+			<!-- TASK 3: Redesigned Browser Mockup - Analytics Dashboard Style -->
 			<div class="relative">
 				<!-- Glow behind mockup -->
-				<div class="absolute inset-0 bg-primary/20 rounded-3xl blur-[60px] scale-90 -z-10"></div>
+				<div class="absolute inset-0 bg-primary/15 rounded-3xl blur-[60px] scale-90 -z-10"></div>
 
-				<!-- Browser mockup -->
-				<div class="relative bg-card rounded-2xl shadow-2xl border overflow-hidden">
+				<!-- Browser mockup with dashboard -->
+				<div class="relative bg-card rounded-2xl shadow-2xl border-2 border-border/50 overflow-hidden">
 					<!-- Browser header -->
-					<div class="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+					<div class="flex items-center gap-2 px-4 py-3 bg-muted/80 border-b">
 						<div class="flex gap-1.5">
-							<div class="w-3 h-3 rounded-full bg-red-400"></div>
-							<div class="w-3 h-3 rounded-full bg-yellow-400"></div>
-							<div class="w-3 h-3 rounded-full bg-green-400"></div>
+							<div class="w-3 h-3 rounded-full bg-rose-400"></div>
+							<div class="w-3 h-3 rounded-full bg-amber-400"></div>
+							<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
 						</div>
 						<div class="flex-1 mx-4">
-							<div class="bg-background rounded-lg px-4 py-1.5 text-sm text-muted-foreground flex items-center gap-2">
+							<div class="bg-background/80 rounded-lg px-4 py-1.5 text-sm text-muted-foreground flex items-center gap-2 border">
 								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-								yourwebsite.com
+								dashboard.yoursite.com
 							</div>
 						</div>
 					</div>
-					<!-- Website preview -->
-					<div class="aspect-[4/3] bg-gradient-to-br from-primary/10 via-background to-accent/10 p-6 relative overflow-hidden">
-						<!-- Simulated website content -->
-						<div class="space-y-4">
-							<div class="flex items-center gap-4">
-								<div class="w-8 h-8 rounded-lg bg-primary/20"></div>
-								<div class="flex gap-6">
-									<div class="w-12 h-2 rounded bg-muted-foreground/20"></div>
-									<div class="w-12 h-2 rounded bg-muted-foreground/20"></div>
-									<div class="w-12 h-2 rounded bg-muted-foreground/20"></div>
+
+					<!-- Dashboard content -->
+					<div class="aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 p-5 relative overflow-hidden">
+						<!-- Dashboard header -->
+						<div class="flex items-center justify-between mb-4">
+							<div class="flex items-center gap-3">
+								<div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+								</div>
+								<div>
+									<div class="h-2.5 w-20 rounded bg-foreground/15"></div>
+									<div class="h-2 w-14 rounded bg-muted-foreground/10 mt-1"></div>
 								</div>
 							</div>
-							<div class="pt-8 space-y-3">
-								<div class="w-3/4 h-6 rounded bg-foreground/10"></div>
-								<div class="w-1/2 h-6 rounded bg-primary/30"></div>
-								<div class="w-2/3 h-3 rounded bg-muted-foreground/15 mt-4"></div>
-								<div class="w-1/2 h-3 rounded bg-muted-foreground/15"></div>
-							</div>
-							<div class="flex gap-3 pt-4">
-								<div class="w-24 h-8 rounded-full bg-primary/40"></div>
-								<div class="w-24 h-8 rounded-full border border-muted-foreground/20"></div>
+							<div class="flex gap-2">
+								<div class="w-16 h-6 rounded bg-muted-foreground/10"></div>
+								<div class="w-6 h-6 rounded bg-muted-foreground/10"></div>
 							</div>
 						</div>
-						<!-- Decorative elements -->
-						<div class="absolute bottom-4 right-4 w-32 h-24 rounded-lg bg-card/50 backdrop-blur border shadow-lg"></div>
+
+						<!-- Stats row -->
+						<div class="grid grid-cols-3 gap-3 mb-4">
+							<div class="bg-white dark:bg-slate-800 rounded-xl p-3 shadow-sm border border-border/30">
+								<div class="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Visitors</div>
+								<div class="text-lg font-bold text-foreground">12,847</div>
+								<div class="flex items-center gap-1 mt-1">
+									<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><path d="m18 15-6-6-6 6"/></svg>
+									<span class="text-[9px] text-emerald-500 font-medium">+24%</span>
+								</div>
+							</div>
+							<div class="bg-white dark:bg-slate-800 rounded-xl p-3 shadow-sm border border-border/30">
+								<div class="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Conversions</div>
+								<div class="text-lg font-bold text-foreground">847</div>
+								<div class="flex items-center gap-1 mt-1">
+									<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><path d="m18 15-6-6-6 6"/></svg>
+									<span class="text-[9px] text-emerald-500 font-medium">+18%</span>
+								</div>
+							</div>
+							<div class="bg-white dark:bg-slate-800 rounded-xl p-3 shadow-sm border border-border/30">
+								<div class="text-[10px] text-muted-foreground uppercase tracking-wide mb-1">Revenue</div>
+								<div class="text-lg font-bold text-foreground">$24.5k</div>
+								<div class="flex items-center gap-1 mt-1">
+									<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-emerald-500"><path d="m18 15-6-6-6 6"/></svg>
+									<span class="text-[9px] text-emerald-500 font-medium">+32%</span>
+								</div>
+							</div>
+						</div>
+
+						<!-- Chart area -->
+						<div class="bg-white dark:bg-slate-800 rounded-xl p-4 shadow-sm border border-border/30 h-[45%]">
+							<div class="flex items-center justify-between mb-3">
+								<div class="h-2.5 w-24 rounded bg-foreground/10"></div>
+								<div class="flex gap-2">
+									<div class="w-12 h-5 rounded-full bg-primary/20 flex items-center justify-center">
+										<span class="text-[8px] text-primary font-medium">7 days</span>
+									</div>
+									<div class="w-12 h-5 rounded-full bg-muted-foreground/10"></div>
+								</div>
+							</div>
+							<!-- Simplified chart visualization -->
+							<div class="flex items-end justify-between h-[calc(100%-32px)] gap-1 pt-2">
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 45%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 60%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 40%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 75%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 55%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary/40 to-primary/20 rounded-t" style="height: 85%"></div>
+								<div class="flex-1 bg-gradient-to-t from-primary to-primary/60 rounded-t" style="height: 95%"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 
-				<!-- Floating black phone mockup -->
+				<!-- Floating phone mockup -->
 				<div class="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 phone-float">
 					<div class="bg-zinc-900 rounded-[2rem] shadow-2xl p-1.5 w-24 lg:w-32 relative">
-						<!-- Phone frame highlight -->
 						<div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-zinc-700/50 via-transparent to-zinc-800/50 pointer-events-none"></div>
-						<!-- Phone notch -->
 						<div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-zinc-800 rounded-full z-10"></div>
-						<!-- Phone screen -->
-						<div class="bg-gradient-to-br from-primary/30 via-background to-accent/30 rounded-[1.5rem] aspect-[9/16] p-2 pt-4 relative overflow-hidden">
-							<!-- Screen glow -->
-							<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent"></div>
-							<!-- Mini content -->
-							<div class="space-y-2 relative z-10">
-								<div class="w-full h-1.5 rounded bg-foreground/15"></div>
-								<div class="w-3/4 h-1.5 rounded bg-primary/40"></div>
-								<div class="w-1/2 h-1 rounded bg-muted-foreground/25 mt-3"></div>
-								<div class="w-2/3 h-1 rounded bg-muted-foreground/25"></div>
-								<div class="flex gap-1 mt-3">
-									<div class="w-8 h-3 rounded-full bg-primary/50"></div>
-									<div class="w-8 h-3 rounded-full border border-muted-foreground/30"></div>
+						<div class="bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-[1.5rem] aspect-[9/16] p-2 pt-4 relative overflow-hidden">
+							<!-- Mobile dashboard preview -->
+							<div class="space-y-2">
+								<div class="flex items-center gap-1.5">
+									<div class="w-4 h-4 rounded bg-gradient-to-br from-emerald-500 to-teal-600"></div>
+									<div class="w-10 h-1.5 rounded bg-foreground/15"></div>
+								</div>
+								<div class="bg-white dark:bg-slate-800 rounded-lg p-1.5 shadow-sm">
+									<div class="text-[6px] text-muted-foreground mb-0.5">Visitors</div>
+									<div class="text-[8px] font-bold">12,847</div>
+								</div>
+								<div class="bg-white dark:bg-slate-800 rounded-lg p-1.5 shadow-sm">
+									<div class="text-[6px] text-muted-foreground mb-0.5">Conversions</div>
+									<div class="text-[8px] font-bold">847</div>
+								</div>
+								<!-- Mini chart -->
+								<div class="flex items-end gap-0.5 h-6 mt-2">
+									<div class="flex-1 bg-primary/40 rounded-t" style="height: 40%"></div>
+									<div class="flex-1 bg-primary/40 rounded-t" style="height: 60%"></div>
+									<div class="flex-1 bg-primary/40 rounded-t" style="height: 45%"></div>
+									<div class="flex-1 bg-primary/40 rounded-t" style="height: 80%"></div>
+									<div class="flex-1 bg-primary rounded-t" style="height: 95%"></div>
 								</div>
 							</div>
 						</div>
-						<!-- Phone button -->
 						<div class="absolute -right-0.5 top-20 w-0.5 h-8 bg-zinc-700 rounded-l"></div>
 						<div class="absolute -left-0.5 top-16 w-0.5 h-5 bg-zinc-700 rounded-r"></div>
 						<div class="absolute -left-0.5 top-24 w-0.5 h-5 bg-zinc-700 rounded-r"></div>
@@ -504,17 +557,31 @@
 			</InView>
 		</div>
 
+		<!-- TASK 6: Fixed hover - changed from red/primary to subtle neutral hover -->
 		<InView animation="fade-up" delay={400} class="mt-12 text-center">
-			<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50">
+			<Button href="/about" variant="outline" class="learn-more-btn group px-8 py-6 rounded-full text-base border-2 transition-all duration-150">
 				Learn More About Me
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</Button>
 		</InView>
 	</Container>
 </Section>
 
 <style>
-	/* Optimized animations using GPU-accelerated transforms only */
+	/* TASK 4: All animations respect prefers-reduced-motion */
+	@media (prefers-reduced-motion: reduce) {
+		.particle,
+		.particle-delayed,
+		.particle-slow,
+		.particle-rotate,
+		.particle-rotate-delayed,
+		.phone-float,
+		.glow-orb,
+		.glow-orb-delayed,
+		.glow-orb-slow {
+			animation: none !important;
+		}
+	}
 
 	/* Floating particles - simple Y translate */
 	.particle {
@@ -588,5 +655,20 @@
 	@keyframes glow-pulse {
 		0%, 100% { opacity: 0.6; }
 		50% { opacity: 1; }
+	}
+
+	/* TASK 6: Learn More button - subtle neutral hover instead of red */
+	.learn-more-btn {
+		border-color: hsl(var(--border));
+	}
+
+	.learn-more-btn:hover {
+		border-color: hsl(var(--foreground) / 0.3);
+		background-color: hsl(var(--foreground) / 0.05);
+	}
+
+	.learn-more-btn:focus-visible {
+		outline: 2px solid hsl(var(--foreground) / 0.5);
+		outline-offset: 2px;
 	}
 </style>
