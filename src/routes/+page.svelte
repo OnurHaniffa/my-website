@@ -557,9 +557,8 @@
 			</InView>
 		</div>
 
-		<!-- TASK 6: Fixed hover - changed from red/primary to subtle neutral hover -->
 		<InView animation="fade-up" delay={400} class="mt-12 text-center">
-			<Button href="/about" variant="outline" class="learn-more-btn group px-8 py-6 rounded-full text-base border-2 transition-all duration-150">
+			<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 transition-all duration-150 hover:!bg-foreground/5 hover:!border-foreground/20 hover:!text-foreground">
 				Learn More About Me
 				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</Button>
@@ -655,20 +654,5 @@
 	@keyframes glow-pulse {
 		0%, 100% { opacity: 0.6; }
 		50% { opacity: 1; }
-	}
-
-	/* TASK 6: Learn More button - subtle neutral hover instead of red */
-	.learn-more-btn {
-		border-color: hsl(var(--border));
-	}
-
-	.learn-more-btn:hover {
-		border-color: hsl(var(--foreground) / 0.3);
-		background-color: hsl(var(--foreground) / 0.05);
-	}
-
-	.learn-more-btn:focus-visible {
-		outline: 2px solid hsl(var(--foreground) / 0.5);
-		outline-offset: 2px;
 	}
 </style>
