@@ -121,14 +121,20 @@
 					</div>
 
 					<!-- Creative collage content -->
-					<div class="aspect-[4/3] bg-[#f5f3ef] dark:bg-stone-900 p-6 relative overflow-hidden">
+					<div class="aspect-[4/3] bg-[#f5f3ef] dark:bg-stone-900 p-5 relative overflow-hidden">
+						<!-- Top nav hint -->
+						<div class="flex justify-center gap-4 mb-3">
+							<span class="text-[8px] text-stone-500 font-medium">Work</span>
+							<span class="text-[8px] text-stone-400">Studio</span>
+						</div>
+
 						<!-- Headline -->
-						<p class="text-[10px] sm:text-xs text-stone-800 dark:text-stone-200 text-center max-w-[85%] mx-auto leading-relaxed mb-4">
+						<p class="text-[9px] sm:text-[11px] text-stone-800 dark:text-stone-200 text-center max-w-[90%] mx-auto leading-relaxed mb-2">
 							A creative studio <em class="font-serif">crafting digital experiences</em> at the intersection of <em class="font-serif">design, strategy, and storytelling.</em>
 						</p>
 
 						<!-- Scattered photos collage -->
-						<div class="relative h-[70%] mt-2">
+						<div class="relative h-[55%]">
 							<!-- Photo 1 - Top left, tilted -->
 							<div class="absolute top-0 left-[5%] w-[35%] aspect-[4/3] rounded-lg overflow-hidden shadow-xl transform -rotate-6 hover:rotate-0 transition-transform duration-300">
 								<img
@@ -175,9 +181,17 @@
 							</div>
 						</div>
 
+						<!-- Description block - bottom left -->
+						<div class="absolute bottom-8 left-4 max-w-[35%]">
+							<p class="text-[7px] font-semibold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-1">Featured Work</p>
+							<p class="text-[6px] text-stone-500 dark:text-stone-400 leading-relaxed">
+								Strategic websites and digital products built for brands ready to grow. Every pixel crafted with purpose.
+							</p>
+						</div>
+
 						<!-- Bottom CTA -->
-						<div class="absolute bottom-4 left-1/2 -translate-x-1/2">
-							<span class="text-[9px] text-stone-600 dark:text-stone-400 font-medium tracking-wide underline underline-offset-2">Explore Projects →</span>
+						<div class="absolute bottom-3 left-1/2 -translate-x-1/2">
+							<span class="text-[8px] text-stone-600 dark:text-stone-400 font-medium tracking-wide underline underline-offset-2">Explore Projects →</span>
 						</div>
 					</div>
 				</div>
