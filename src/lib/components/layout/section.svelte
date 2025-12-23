@@ -6,7 +6,7 @@
 		/** Padding size */
 		padding?: 'default' | 'sm' | 'lg' | 'none';
 		/** Background variant */
-		background?: 'default' | 'muted' | 'card';
+		background?: 'default' | 'muted' | 'card' | 'none';
 		/** HTML element to render */
 		as?: 'section' | 'div' | 'article';
 	};
@@ -31,7 +31,8 @@
 	const backgroundClasses = {
 		default: 'bg-background',
 		muted: 'bg-muted',
-		card: 'bg-card'
+		card: 'bg-card',
+		none: ''
 	};
 </script>
 

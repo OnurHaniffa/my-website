@@ -55,7 +55,7 @@
 	<Container>
 		<div class="flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
 			<!-- Logo -->
-			<a href="/" class="group flex items-center gap-3">
+			<a href="/" data-sveltekit-reload class="group flex items-center gap-3">
 				<!-- Logo mark -->
 				<div class="relative w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/25">
 					<span class="text-primary-foreground font-black text-xl italic">O</span>

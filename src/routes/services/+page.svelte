@@ -1,340 +1,619 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
-	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '$lib/components/ui/card';
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
+	import { ProcessChainRings } from '$lib/components/sections';
+	import { onMount, tick } from 'svelte';
+	import { browser } from '$app/environment';
+	import { animate } from 'motion';
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
+	const motionAnimate = animate as any;
+
+	let mounted = $state(false);
 	let openFaq = $state<number | null>(null);
+	let activeService = $state(0);
+	let prevService = $state(0);
+	let prefersReducedMotion = $state(false);
+	let bgRef: HTMLElement | null = $state(null);
+	let panelRefs: HTMLElement[] = $state([]);
+
+	// Smooth service switch with Motion One
+	async function switchService(newIndex: number) {
+		if (newIndex === activeService || prefersReducedMotion) {
+			activeService = newIndex;
+			return;
+		}
+
+		prevService = activeService;
+		const oldPanel = panelRefs[activeService];
+
+		// Fade out current panel
+		if (oldPanel) {
+			await motionAnimate(oldPanel, { opacity: 0 }, { duration: 0.15, easing: 'ease-out' }).finished;
+		}
+
+		activeService = newIndex;
+		await tick();
+
+		// Fade in new panel
+		const newPanel = panelRefs[newIndex];
+		if (newPanel) {
+			newPanel.style.opacity = '0';
+			motionAnimate(newPanel, { opacity: 1 }, { duration: 0.2, easing: 'ease-out' });
+		}
+	}
 
 	function toggleFaq(index: number) {
 		openFaq = openFaq === index ? null : index;
 	}
 
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+			event.preventDefault();
+			switchService(activeService === 0 ? 2 : activeService - 1);
+		} else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+			event.preventDefault();
+			switchService(activeService === 2 ? 0 : activeService + 1);
+		}
+	}
+
 	const services = [
 		{
-			title: 'Website Design & Development',
-			description: 'A complete solution from strategy to launch. Beautiful design meets solid engineering.',
-			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>`,
-			features: [
-				'Discovery call to understand your goals',
-				'Custom design tailored to your brand',
-				'Mobile-first, responsive development',
-				'SEO optimization built-in',
-				'Performance-focused architecture',
-				'Launch support & handover'
-			],
-			highlight: true
+			id: 0,
+			title: 'Design & Development',
+			shortTitle: 'D&D',
+			description: 'Custom websites built to convert visitors into customers. Strategy-first, performance-obsessed.',
+			icon: `<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>`,
+			color: '#e11d48',
+			lightColor: '#fecdd3',
+			bento: {
+				process: ['Discovery Call', 'Design & Iterate', 'Build & Test'],
+				deliverables: ['Custom Design', 'Responsive Code', 'SEO Foundation'],
+				timeline: '2-6 weeks'
+			}
 		},
 		{
+			id: 1,
 			title: 'Website Redesign',
-			description: 'Transform your outdated site into a modern, high-performing digital presence.',
-			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>`,
-			features: [
-				'Audit of your current site',
-				'UX improvements & modernization',
-				'Content migration assistance',
-				'Updated tech stack',
-				'Improved performance & SEO',
-				'Training on new features'
-			],
-			highlight: false
+			shortTitle: 'Redesign',
+			description: 'Transform your underperforming site into a conversion machine. Keep what works, fix what doesn\'t.',
+			icon: `<path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/>`,
+			color: '#2563eb',
+			lightColor: '#bfdbfe',
+			bento: {
+				process: ['Site Audit', 'Strategy Plan', 'Redesign & Build'],
+				deliverables: ['Performance Boost', 'Modern Stack', 'Fresh Design'],
+				timeline: '2-6 weeks'
+			}
 		},
 		{
-			title: 'Ongoing Maintenance',
-			description: 'Keep your site secure, updated, and running smoothly. Peace of mind included.',
-			icon: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>`,
-			features: [
-				'Regular security updates',
-				'Performance monitoring',
-				'Content updates (as needed)',
-				'Monthly reports',
-				'Priority support',
-				'Bug fixes included'
-			],
-			highlight: false
+			id: 2,
+			title: 'Ongoing Support',
+			shortTitle: 'Support',
+			description: 'Your site stays fast, secure, and up-to-date. I handle the tech so you can focus on your business.',
+			icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>`,
+			color: '#059669',
+			lightColor: '#a7f3d0',
+			bento: {
+				process: ['Monitor 24/7', 'Update Monthly', 'Fix Priority'],
+				deliverables: ['Security Patches', 'Performance Tuning', 'Content Updates'],
+				timeline: 'Monthly retainer'
+			}
 		}
 	];
 
 	const faqs = [
-		{
-			question: 'How much does a website cost?',
-			answer: 'Every project is unique, so pricing depends on scope and complexity. Most projects range from €3,000 to €10,000+. I provide detailed quotes after our initial conversation, so you know exactly what you\'re paying before we start.'
-		},
-		{
-			question: 'How long does a project take?',
-			answer: 'A typical website takes 4-8 weeks from start to finish. This includes discovery, design, development, and revisions. More complex projects or those requiring extensive content may take longer. I\'ll give you a realistic timeline during our initial call.'
-		},
-		{
-			question: 'Do I own my website?',
-			answer: 'Absolutely. You own 100% of your website, including all code, design assets, and content. I don\'t lock you into proprietary systems. Your site is yours to keep, modify, or move as you see fit.'
-		},
-		{
-			question: 'Can you work with my existing brand?',
-			answer: 'Yes! I can work with your existing brand guidelines, or help you refine and expand them for the web. If you don\'t have established branding yet, I can create a cohesive visual identity as part of the design process.'
-		},
-		{
-			question: 'What technologies do you use?',
-			answer: 'I use modern, industry-standard technologies like SvelteKit, React, and Tailwind CSS. My focus is on choosing the right tool for each project—prioritizing performance, maintainability, and your specific needs.'
-		},
-		{
-			question: 'Do you offer payment plans?',
-			answer: 'Yes. I typically structure payments in milestones: a deposit to begin, a mid-project payment, and final payment upon launch. This keeps the project moving smoothly while spreading out the investment.'
-		}
+		{ question: 'How much does a website cost?', answer: 'Every project is different. After our discovery call, I\'ll provide a fixed quote based on your specific needs—no hourly surprises or hidden fees.' },
+		{ question: 'Do I need to provide content and images?', answer: 'I can work with what you have or help source professional copy and imagery. We\'ll figure out what works best during our initial call.' },
+		{ question: 'What do you need from me to get started?', answer: 'Just a conversation. We\'ll hop on a call to discuss your goals, and I\'ll guide you through what\'s needed—whether that\'s content, branding assets, or just your ideas.' },
+		{ question: 'What if I need changes after launch?', answer: 'I offer ongoing support packages, or you can reach out for one-off updates. Either way, I\'m here when you need me.' }
 	];
+
+	// Gauge arc calculations for semi-circle (180 degrees, 3 segments of 60 degrees each)
+	const gaugeConfig = {
+		cx: 200,
+		cy: 200,
+		innerRadius: 80,
+		outerRadius: 160,
+		startAngle: 180, // Left side (9 o'clock)
+		segmentAngle: 60 // Each segment is 60 degrees
+	};
+
+	function polarToCartesian(cx: number, cy: number, radius: number, angleInDegrees: number) {
+		const angleInRadians = (angleInDegrees * Math.PI) / 180;
+		return {
+			x: cx + radius * Math.cos(angleInRadians),
+			y: cy + radius * Math.sin(angleInRadians)
+		};
+	}
+
+	function describeArc(cx: number, cy: number, innerR: number, outerR: number, startAngle: number, endAngle: number) {
+		const start_outer = polarToCartesian(cx, cy, outerR, endAngle);
+		const end_outer = polarToCartesian(cx, cy, outerR, startAngle);
+		const start_inner = polarToCartesian(cx, cy, innerR, endAngle);
+		const end_inner = polarToCartesian(cx, cy, innerR, startAngle);
+		const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+
+		return [
+			'M', start_outer.x, start_outer.y,
+			'A', outerR, outerR, 0, largeArcFlag, 0, end_outer.x, end_outer.y,
+			'L', end_inner.x, end_inner.y,
+			'A', innerR, innerR, 0, largeArcFlag, 1, start_inner.x, start_inner.y,
+			'Z'
+		].join(' ');
+	}
+
+	// Create arc path for curved text (follows the outer edge of segment)
+	function describeTextArc(cx: number, cy: number, radius: number, startAngle: number, endAngle: number) {
+		const start = polarToCartesian(cx, cy, radius, startAngle);
+		const end = polarToCartesian(cx, cy, radius, endAngle);
+		const largeArcFlag = endAngle - startAngle <= 180 ? 0 : 1;
+
+		return [
+			'M', start.x, start.y,
+			'A', radius, radius, 0, largeArcFlag, 1, end.x, end.y
+		].join(' ');
+	}
+
+	// Generate arc paths for each segment
+	const segments = $derived(services.map((service, i) => {
+		const startAngle = gaugeConfig.startAngle + i * gaugeConfig.segmentAngle;
+		const endAngle = startAngle + gaugeConfig.segmentAngle;
+		const midAngle = startAngle + gaugeConfig.segmentAngle / 2;
+		const labelRadius = (gaugeConfig.innerRadius + gaugeConfig.outerRadius) / 2;
+		const labelPos = polarToCartesian(gaugeConfig.cx, gaugeConfig.cy, labelRadius, midAngle);
+		// Text arc just outside the gauge
+		const textArcRadius = gaugeConfig.outerRadius + 12;
+		const textArcPath = describeTextArc(gaugeConfig.cx, gaugeConfig.cy, textArcRadius, startAngle, endAngle);
+
+		return {
+			...service,
+			path: describeArc(gaugeConfig.cx, gaugeConfig.cy, gaugeConfig.innerRadius, gaugeConfig.outerRadius, startAngle, endAngle),
+			labelX: labelPos.x,
+			labelY: labelPos.y,
+			midAngle,
+			textArcPath,
+			startAngle,
+			endAngle
+		};
+	}));
+
+	onMount(() => {
+		mounted = true;
+		if (browser) {
+			prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		}
+	});
 </script>
 
 <svelte:head>
 	<title>Services | Haniffa Design Studio</title>
-	<meta
-		name="description"
-		content="Professional web design and development services for growing businesses. From complete builds to redesigns and ongoing support."
-	/>
+	<meta name="description" content="Professional web design and development services. From complete builds to redesigns and ongoing support." />
 </svelte:head>
 
-<!-- Hero Section -->
-<Section padding="lg" class="relative overflow-hidden">
-	<!-- Background decoration -->
-	<div class="absolute inset-0 -z-10">
+<style>
+	/* Gauge segment styling */
+	.gauge-segment {
+		cursor: pointer;
+		transition: transform 150ms ease-out, filter 150ms ease-out;
+		transform-origin: 200px 200px;
+		outline: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+	.gauge-segment:hover {
+		filter: brightness(1.1);
+	}
+	.gauge-segment:focus {
+		outline: none;
+	}
+	.gauge-segment:focus-visible path {
+		stroke: white;
+		stroke-width: 3;
+	}
+	.gauge-segment.active {
+		filter: brightness(1.05) drop-shadow(0 0 20px var(--segment-color));
+	}
+	.gauge-segment.active path {
+		transform: scale(1.03);
+		transform-origin: 200px 200px;
+	}
+
+	/* Remove focus ring from SVG container */
+	:global(svg[role="tablist"]) {
+		outline: none;
+		-webkit-tap-highlight-color: transparent;
+	}
+	:global(svg[role="tablist"]:focus) {
+		outline: none;
+	}
+
+	/* Reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.gauge-segment,
+		.gauge-segment path,
+		.bento-card,
+		.spin-ring,
+		.spin-ring-reverse {
+			transition: none !important;
+			animation: none !important;
+		}
+	}
+
+	/* Bento card hover */
+	.bento-card {
+		transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+	}
+	.bento-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.15);
+	}
+
+	/* Rotating ring - lightweight */
+	@keyframes spin-slow {
+		from { transform: translate(-50%, -50%) rotate(0deg); }
+		to { transform: translate(-50%, -50%) rotate(360deg); }
+	}
+	.spin-ring {
+		animation: spin-slow 90s linear infinite;
+	}
+	.spin-ring-reverse {
+		animation: spin-slow 70s linear infinite reverse;
+	}
+
+	/* Reduced motion */
+	@media (prefers-reduced-motion: reduce) {
+		.spin-ring,
+		.spin-ring-reverse {
+			animation: none !important;
+		}
+		.bento-card {
+			transition: none !important;
+		}
+	}
+
+</style>
+
+<!-- Hero -->
+<Section padding="none" class="relative pt-24 pb-8 lg:pt-32 lg:pb-12">
+	<Container>
 		<div
-			class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl"
-		></div>
-		<div
-			class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-3xl"
-		></div>
+			class="transition-all duration-700 ease-out"
+			class:opacity-0={!mounted}
+			class:translate-y-8={!mounted}
+		>
+			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 select-none block -mb-4 sm:-mb-8">SERVICES</span>
+			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10">
+				Websites that <span class="text-primary">work</span>
+			</h1>
+		</div>
+	</Container>
+</Section>
+
+<!-- Speedometer Services Section -->
+<Section padding="lg" class="relative overflow-visible">
+	<!-- Simple background gradient - NO blur filters for performance -->
+	<div
+		class="absolute inset-0 transition-colors duration-300 ease-out"
+		style="background: radial-gradient(ellipse 120% 80% at 30% 50%, {services[activeService].lightColor}25 0%, {services[activeService].color}08 40%, transparent 70%);"
+	></div>
+
+	<!-- Decorative rings - overflow visible, static colors -->
+	<div class="absolute inset-0 pointer-events-none overflow-visible">
+		<div class="spin-ring absolute top-1/2 left-1/2 w-[900px] h-[900px] rounded-full border-2 border-dashed border-primary/[0.04]"></div>
+		<div class="spin-ring-reverse absolute top-1/2 left-1/2 w-[700px] h-[700px] rounded-full border border-primary/[0.03]"></div>
+		<div class="spin-ring absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full border border-dotted border-primary/[0.04]" style="animation-duration: 60s;"></div>
 	</div>
 
-	<Container>
-		<InView animation="fade-up" class="max-w-2xl">
-			<Badge variant="outline" class="mb-6 border-primary/30 text-primary">Services</Badge>
-			<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-				Services designed for <span class="text-primary">growing businesses</span>
-			</h1>
-			<p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-				I partner with small and medium businesses to create websites that look professional,
-				work beautifully, and drive results. Here's how I can help.
-			</p>
-		</InView>
-	</Container>
-</Section>
+	<!-- Simple edge fades - no blur -->
+	<div class="absolute top-0 left-0 right-0 h-20 pointer-events-none bg-gradient-to-b from-background to-transparent"></div>
+	<div class="absolute bottom-0 left-0 right-0 h-20 pointer-events-none bg-gradient-to-t from-background to-transparent"></div>
 
-<!-- Services Section -->
-<Section padding="lg">
-	<Container>
-		<div class="space-y-10">
-			{#each services as service, index}
-				<InView animation="fade-up" delay={index * 100}>
-					<Card
-						class="relative overflow-hidden border-border/50 {service.highlight
-							? 'border-primary/30 shadow-lg shadow-primary/5'
-							: ''} hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+	<Container class="relative z-10">
+		<div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
+
+			<!-- Speedometer Gauge -->
+			<div class="relative flex items-center justify-center w-full lg:w-[50%]">
+				<InView animation="scale">
+					<svg
+						class="w-[340px] h-[280px] sm:w-[440px] sm:h-[360px] lg:w-[520px] lg:h-[420px]"
+						viewBox="0 0 400 340"
+						role="tablist"
+						tabindex="0"
+						aria-label="Service categories"
+						onkeydown={handleKeydown}
 					>
-						{#if service.highlight}
-							<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-primary/80 to-accent"></div>
-						{/if}
+						<defs>
+							<!-- Gradients for each segment -->
+							{#each services as service, i}
+								<linearGradient id="grad-{i}" x1="0%" y1="0%" x2="100%" y2="100%">
+									<stop offset="0%" stop-color={service.lightColor} />
+									<stop offset="100%" stop-color={service.color} />
+								</linearGradient>
+								<filter id="glow-{i}" x="-50%" y="-50%" width="200%" height="200%">
+									<feGaussianBlur stdDeviation="8" result="blur" />
+									<feFlood flood-color={service.color} flood-opacity="0.5" />
+									<feComposite in2="blur" operator="in" />
+									<feMerge>
+										<feMergeNode />
+										<feMergeNode in="SourceGraphic" />
+									</feMerge>
+								</filter>
+							{/each}
+						</defs>
 
-						<div class="grid md:grid-cols-3 gap-10 p-10">
-							<!-- Service Info -->
-							<div class="md:col-span-2">
-								<div class="flex items-start gap-4 mb-6">
-									<div
-										class="w-14 h-14 rounded-xl {service.highlight
-											? 'bg-primary/10'
-											: 'bg-muted'} flex items-center justify-center flex-shrink-0"
-									>
-										<span class="{service.highlight ? 'text-primary' : 'text-muted-foreground'}">
-											{@html service.icon}
-										</span>
-									</div>
-									<div>
-										<div class="flex items-center gap-3">
-											<h2 class="text-2xl font-bold">{service.title}</h2>
-											{#if service.highlight}
-												<Badge variant="default" class="text-xs">Most Popular</Badge>
-											{/if}
-										</div>
-										<p class="mt-2 text-muted-foreground">{service.description}</p>
-									</div>
-								</div>
+						<!-- Outer decorative arc -->
+						<path
+							d={describeArc(200, 200, 165, 170, 180, 360)}
+							fill="none"
+							stroke="currentColor"
+							stroke-width="1"
+							class="text-border/40"
+							stroke-dasharray="4 4"
+						/>
 
-								<!-- Features Grid -->
-								<div class="grid sm:grid-cols-2 gap-3">
-									{#each service.features as feature}
-										<div class="flex items-start gap-2">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="18"
-												height="18"
-												viewBox="0 0 24 24"
-												fill="none"
-												stroke="currentColor"
-												stroke-width="2"
-												stroke-linecap="round"
-												stroke-linejoin="round"
-												class="{service.highlight ? 'text-primary' : 'text-accent'} mt-0.5 flex-shrink-0"
-												><path d="M20 6 9 17l-5-5" /></svg
-											>
-											<span class="text-sm text-muted-foreground">{feature}</span>
-										</div>
-									{/each}
-								</div>
-							</div>
+						<!-- Gauge segments -->
+						{#each segments as segment, i}
+							<g
+								class="gauge-segment {activeService === i ? 'active' : ''}"
+								style="--segment-color: {segment.color}"
+								onclick={() => switchService(i)}
+								onkeydown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchService(i); }}}
+								role="tab"
+								tabindex={activeService === i ? 0 : -1}
+								aria-selected={activeService === i}
+								aria-controls="service-panel-{i}"
+								id="service-tab-{i}"
+							>
+								<path
+									d={segment.path}
+									fill="url(#grad-{i})"
+									filter={activeService === i ? `url(#glow-${i})` : 'none'}
+									class="transition-all duration-200"
+								/>
+								<!-- Segment icon -->
+								<g transform="translate({segment.labelX - 12}, {segment.labelY - 12})">
+									<circle cx="12" cy="12" r="16" fill="white" fill-opacity="0.25" />
+									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+										{@html segment.icon}
+									</svg>
+								</g>
+							</g>
+						{/each}
 
-							<!-- CTA Side -->
-							<div class="flex flex-col justify-center items-start md:items-center md:text-center">
-								<p class="text-sm text-muted-foreground mb-4">
-									{#if service.highlight}
-										Starting from <span class="text-2xl font-bold text-foreground block">€4,000</span>
-									{:else}
-										<span class="text-2xl font-bold text-foreground block">Custom Quote</span>
-									{/if}
-								</p>
-								<Button
-									href="/contact"
-									variant={service.highlight ? 'default' : 'outline'}
-									class="w-full md:w-auto group"
+						<!-- Center hub -->
+						<circle cx="200" cy="200" r="75" fill="currentColor" class="text-background" />
+						<circle cx="200" cy="200" r="75" fill="none" stroke="currentColor" stroke-width="2" class="text-border" />
+						<circle cx="200" cy="200" r="65" fill="none" stroke="currentColor" stroke-width="1" class="text-border/30" stroke-dasharray="4 4" />
+
+						<!-- Hub content -->
+						<g transform="translate(200, 185)">
+							<text text-anchor="middle" class="text-[11px] font-bold uppercase tracking-[0.2em] fill-current text-muted-foreground">Services</text>
+						</g>
+						<g transform="translate(200, 210)">
+							<text text-anchor="middle" class="text-[28px] font-black fill-current text-foreground">3</text>
+						</g>
+
+						<!-- Curved segment labels -->
+						{#each segments as segment, i}
+							<defs>
+								<path id="textArc-{i}" d={segment.textArcPath} fill="none" />
+							</defs>
+							<text
+								class="transition-opacity duration-200 {activeService === i ? 'opacity-100' : 'opacity-60'}"
+								style="fill: {segment.color}"
+							>
+								<textPath
+									href="#textArc-{i}"
+									startOffset="50%"
+									text-anchor="middle"
+									class="text-[13px] font-bold uppercase tracking-[0.12em]"
 								>
-									Get a Quote
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="16"
-										height="16"
-										viewBox="0 0 24 24"
-										fill="none"
-										stroke="currentColor"
-										stroke-width="2"
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										class="ml-1 transition-transform duration-300 group-hover:translate-x-1"
-										><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
-									>
-								</Button>
-							</div>
-						</div>
-					</Card>
+									{segment.shortTitle}
+								</textPath>
+							</text>
+						{/each}
+					</svg>
 				</InView>
-			{/each}
-		</div>
-	</Container>
-</Section>
+			</div>
 
-<!-- Process Section -->
-<Section padding="lg" background="muted">
-	<Container>
-		<InView animation="fade-up" class="text-center max-w-2xl mx-auto mb-12">
-			<Badge variant="outline" class="mb-4 border-primary/20 text-primary">Process</Badge>
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">How we'll work together</h2>
-			<p class="mt-4 text-muted-foreground">
-				A straightforward process designed to get you from idea to launch smoothly.
-			</p>
-		</InView>
-
-		<div class="grid gap-8 md:grid-cols-4">
-			{#each [
-				{ step: '01', title: 'Discovery', description: 'We talk about your goals, audience, and vision. I ask questions, you share your story.' },
-				{ step: '02', title: 'Design', description: 'I create mockups and iterate based on your feedback until the design feels right.' },
-				{ step: '03', title: 'Development', description: 'I build your site with clean code, optimized performance, and attention to detail.' },
-				{ step: '04', title: 'Launch', description: 'We go live! I handle deployment and make sure everything runs smoothly.' }
-			] as process, index}
-				<InView animation="fade-up" delay={index * 100}>
-					<div class="relative p-6 rounded-2xl bg-background border border-border/50 h-full">
-						<span
-							class="text-5xl font-bold text-primary/10 absolute top-4 right-4"
-						>
-							{process.step}
-						</span>
-						<h3 class="text-lg font-semibold mb-2">{process.title}</h3>
-						<p class="text-sm text-muted-foreground">{process.description}</p>
-					</div>
-				</InView>
-			{/each}
-		</div>
-	</Container>
-</Section>
-
-<!-- FAQ Section -->
-<Section padding="lg">
-	<Container size="content">
-		<InView animation="fade-up" class="text-center mb-10">
-			<Badge variant="outline" class="mb-4 border-accent/30 text-accent">FAQ</Badge>
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Common questions</h2>
-		</InView>
-
-		<div class="space-y-5">
-			{#each faqs as faq, index}
-				<InView animation="fade-up" delay={index * 50}>
+			<!-- Bento Content Panel -->
+			<div class="w-full lg:w-[50%]">
+				{#each services as service, i}
 					<div
-						class="border border-border/50 rounded-xl overflow-hidden transition-all duration-300 {openFaq === index ? 'bg-muted/50 shadow-lg' : 'bg-background hover:bg-muted/30'}"
+						bind:this={panelRefs[i]}
+						id="service-panel-{i}"
+						role="tabpanel"
+						aria-labelledby="service-tab-{i}"
+						class="{activeService === i ? 'opacity-100' : 'opacity-0 absolute pointer-events-none'}"
+						hidden={activeService !== i}
 					>
+						{#if activeService === i}
+							<InView animation="fade-up">
+								<!-- Header -->
+								<div class="mb-8">
+									<div
+										class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-4"
+										style="background: {service.color}15; color: {service.color}"
+									>
+										<span class="w-2 h-2 rounded-full" style="background: {service.color}"></span>
+										0{service.id + 1}
+									</div>
+									<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">{service.title}</h2>
+									<p class="text-muted-foreground text-lg leading-relaxed max-w-lg">{service.description}</p>
+								</div>
+
+								<!-- Bento Grid -->
+								<div class="grid grid-cols-2 gap-3 sm:gap-4">
+									<!-- Process Card -->
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 min-h-[140px] overflow-hidden">
+										<!-- Decorative corner glow -->
+										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
+
+										<div class="flex items-center gap-2 mb-4 relative">
+											<div class="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110" style="background: {service.color}15">
+												<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={service.color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+													<path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+												</svg>
+											</div>
+											<span class="text-sm font-semibold text-foreground">Process</span>
+										</div>
+										<div class="space-y-2 relative">
+											{#each service.bento.process as step, idx}
+												<div class="flex items-center gap-3">
+													<span class="w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center flex-shrink-0" style="background: {service.color}15; color: {service.color}">{idx + 1}</span>
+													<span class="text-sm text-muted-foreground">{step}</span>
+												</div>
+											{/each}
+										</div>
+									</div>
+
+									<!-- Deliverables Card -->
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 min-h-[140px] overflow-hidden">
+										<!-- Decorative corner glow -->
+										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
+
+										<div class="flex items-center gap-2 mb-4 relative">
+											<div class="w-8 h-8 rounded-lg flex items-center justify-center transition-transform group-hover:scale-110" style="background: {service.color}15">
+												<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={service.color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+													<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+												</svg>
+											</div>
+											<span class="text-sm font-semibold text-foreground">Deliverables</span>
+										</div>
+										<div class="flex flex-wrap gap-2 relative">
+											{#each service.bento.deliverables as item}
+												<span class="px-3 py-1.5 rounded-full text-xs font-medium transition-transform hover:scale-105" style="background: {service.color}10; color: {service.color}">{item}</span>
+											{/each}
+										</div>
+									</div>
+
+									<!-- Timeline Card - Full width, centered -->
+									<div class="bento-card group relative col-span-2 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 overflow-hidden">
+										<!-- Decorative shimmer -->
+										<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(90deg, transparent 0%, {service.color}05 50%, transparent 100%);"></div>
+
+										<div class="flex items-center justify-between relative">
+											<div class="flex items-center gap-3">
+												<div class="w-10 h-10 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110" style="background: {service.color}15">
+													<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={service.color} stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+														<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+													</svg>
+												</div>
+												<div>
+													<span class="text-sm font-semibold text-foreground block">Timeline</span>
+													<span class="text-xs text-muted-foreground">Estimated duration</span>
+												</div>
+											</div>
+											<p class="text-2xl sm:text-3xl font-bold" style="color: {service.color}">{service.bento.timeline}</p>
+										</div>
+									</div>
+								</div>
+							</InView>
+						{/if}
+					</div>
+				{/each}
+			</div>
+		</div>
+	</Container>
+</Section>
+
+<!-- Process - Chain Ring Diagrams -->
+<ProcessChainRings />
+
+<!-- Testimonial -->
+<Section padding="none" class="py-8 md:py-12 relative overflow-hidden">
+	<!-- Background visuals -->
+	<div class="absolute inset-0 pointer-events-none">
+		<!-- Gradient orbs -->
+		<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+		<div class="absolute -bottom-32 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+
+		<!-- Decorative rings -->
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-primary/[0.04]"></div>
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-dashed border-primary/[0.06]"></div>
+
+		<!-- Floating dots -->
+		<div class="absolute top-8 right-[15%] w-2 h-2 bg-primary/20 rounded-full"></div>
+		<div class="absolute top-16 right-[25%] w-1.5 h-1.5 bg-primary/15 rounded-full"></div>
+		<div class="absolute bottom-12 left-[20%] w-2.5 h-2.5 bg-primary/15 rounded-full"></div>
+		<div class="absolute bottom-8 left-[30%] w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
+
+		<!-- Subtle grid pattern -->
+		<div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 40px 40px;"></div>
+	</div>
+
+	<Container size="content" class="relative z-10">
+		<InView animation="fade-up">
+			<div class="relative">
+				<!-- Large quote mark background -->
+				<div class="absolute -top-2 left-4 md:left-8 text-[120px] md:text-[180px] leading-none font-serif text-primary/[0.08] select-none pointer-events-none">"</div>
+
+				<div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-10 px-6 md:px-12 py-8">
+					<!-- Author - left side on desktop -->
+					<div class="flex md:flex-col items-center gap-3 md:gap-2 flex-shrink-0">
+						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg ring-4 ring-primary/10">J</div>
+						<div class="text-left md:text-center">
+							<p class="font-semibold text-foreground">Joe</p>
+							<p class="text-xs text-muted-foreground">Fan Artist</p>
+						</div>
+					</div>
+
+					<!-- Divider -->
+					<div class="hidden md:block w-px h-20 bg-gradient-to-b from-transparent via-primary/30 to-transparent"></div>
+
+					<!-- Quote -->
+					<blockquote class="flex-1">
+						<p class="text-lg md:text-xl text-foreground leading-relaxed">
+							"Onur did an excellent job on my website. He was great to communicate with and <span class="font-semibold text-primary">delivered on every point</span> needed for my website."
+						</p>
+					</blockquote>
+				</div>
+
+				<!-- Subtle bottom accent -->
+				<div class="h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+			</div>
+		</InView>
+	</Container>
+</Section>
+
+<!-- FAQ -->
+<Section padding="lg" class="pb-24">
+	<Container>
+		<InView animation="fade-up" class="text-center mb-10">
+			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">FAQ</h2>
+		</InView>
+
+		<div class="grid md:grid-cols-2 gap-x-4 gap-y-28">
+			{#each faqs as faq, i}
+				<InView animation="fade-up" delay={i * 50}>
+					<div class="faq-item relative">
 						<button
-							onclick={() => toggleFaq(index)}
-							class="w-full px-6 py-5 text-left flex items-center justify-between gap-4"
+							onclick={() => toggleFaq(i)}
+							class="w-full rounded-xl border bg-card px-5 py-4 text-left flex items-center justify-between gap-4 transition-all duration-200 {openFaq === i ? 'border-primary/30 shadow-md' : 'border-border hover:border-primary/20'}"
 						>
-							<span class="font-medium">{faq.question}</span>
+							<span class="font-medium text-sm sm:text-base">{faq.question}</span>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
+								width="18"
+								height="18"
 								viewBox="0 0 24 24"
 								fill="none"
 								stroke="currentColor"
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								class="text-muted-foreground flex-shrink-0 transition-transform duration-300 {openFaq === index ? 'rotate-180' : ''}"
-								><path d="m6 9 6 6 6-6" /></svg
-							>
+								class="text-muted-foreground flex-shrink-0 transition-transform duration-200 {openFaq === i ? 'rotate-180' : ''}"
+							><path d="m6 9 6 6 6-6"/></svg>
 						</button>
+						<!-- Answer tooltip - absolute positioned -->
 						<div
-							class="overflow-hidden transition-all duration-300 {openFaq === index ? 'max-h-96' : 'max-h-0'}"
+							class="absolute left-0 right-0 top-full mt-2 z-20 rounded-xl border border-primary/20 bg-card p-4 shadow-lg transition-all duration-200 {openFaq === i ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}"
 						>
-							<div class="px-6 pb-5 text-muted-foreground leading-relaxed">
-								{faq.answer}
-							</div>
+							<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
 						</div>
 					</div>
 				</InView>
 			{/each}
 		</div>
-	</Container>
-</Section>
-
-<!-- CTA Section -->
-<Section padding="lg" background="muted">
-	<Container size="content">
-		<InView animation="fade-up" class="text-center">
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-				Ready to get started?
-			</h2>
-			<p class="mt-4 text-lg text-muted-foreground">
-				Let's talk about your project. I'll give you an honest assessment and clear next steps.
-			</p>
-			<div class="mt-8 flex flex-wrap justify-center gap-4">
-				<Button size="lg" href="/contact" class="group">
-					Schedule a Call
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="20"
-						height="20"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="ml-1 transition-transform duration-300 group-hover:translate-x-1"
-						><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
-					>
-				</Button>
-				<Button
-					size="lg"
-					variant="outline"
-					href="/work"
-					class="group hover:border-primary/50 transition-colors duration-300"
-				>
-					See My Work
-				</Button>
-			</div>
-		</InView>
 	</Container>
 </Section>

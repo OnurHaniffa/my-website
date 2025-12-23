@@ -22,8 +22,9 @@
 	}: Props = $props();
 
 	let element: HTMLSpanElement;
-	// Start with the final value for SSR
+	// Start with the final value for SSR to avoid flash-of-zero
 	let displayValue = $state(value);
+	let targetValue = $derived(value);
 	let hasAnimated = $state(false);
 	let mounted = $state(false);
 
@@ -37,18 +38,19 @@
 
 		const startTime = performance.now();
 		const startValue = 0;
+		const endValue = targetValue;
 
 		function update(currentTime: number) {
 			const elapsed = currentTime - startTime;
 			const progress = Math.min(elapsed / duration, 1);
 			const easedProgress = easeOutCubic(progress);
 
-			displayValue = Math.round(startValue + (value - startValue) * easedProgress);
+			displayValue = Math.round(startValue + (endValue - startValue) * easedProgress);
 
 			if (progress < 1) {
 				requestAnimationFrame(update);
 			} else {
-				displayValue = value;
+				displayValue = endValue;
 			}
 		}
 

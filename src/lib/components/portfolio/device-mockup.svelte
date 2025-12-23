@@ -40,12 +40,13 @@
 		return () => observer.disconnect();
 	});
 
-	const gradientClass =
+	const gradientClass = $derived(
 		variant === 'primary'
 			? 'from-primary/20 via-primary/10 to-primary/5'
-			: 'from-accent/20 via-accent/10 to-accent/5';
+			: 'from-accent/20 via-accent/10 to-accent/5'
+	);
 
-	const accentColor = variant === 'primary' ? 'primary' : 'accent';
+	const accentColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 </script>
 
 <div bind:this={containerEl} class="relative group {className}" {...restProps}>

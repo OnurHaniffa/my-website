@@ -18,7 +18,7 @@
 		children,
 		threshold = 0.1,
 		delay = 0,
-		duration = 600,
+		duration = 500,
 		once = true,
 		animation = 'fade-up',
 		class: className = '',
@@ -32,19 +32,19 @@
 
 	const animationStyles = {
 		'fade-up': {
-			initial: 'opacity: 0; transform: translateY(30px);',
+			initial: 'opacity: 0; transform: translateY(24px);',
 			visible: 'opacity: 1; transform: translateY(0);'
 		},
 		'fade-down': {
-			initial: 'opacity: 0; transform: translateY(-30px);',
+			initial: 'opacity: 0; transform: translateY(-24px);',
 			visible: 'opacity: 1; transform: translateY(0);'
 		},
 		'fade-left': {
-			initial: 'opacity: 0; transform: translateX(-30px);',
+			initial: 'opacity: 0; transform: translateX(-24px);',
 			visible: 'opacity: 1; transform: translateX(0);'
 		},
 		'fade-right': {
-			initial: 'opacity: 0; transform: translateX(30px);',
+			initial: 'opacity: 0; transform: translateX(24px);',
 			visible: 'opacity: 1; transform: translateX(0);'
 		},
 		fade: {
@@ -52,7 +52,7 @@
 			visible: 'opacity: 1;'
 		},
 		scale: {
-			initial: 'opacity: 0; transform: scale(0.9);',
+			initial: 'opacity: 0; transform: scale(0.92);',
 			visible: 'opacity: 1; transform: scale(1);'
 		},
 		none: {
@@ -105,7 +105,7 @@
 <div
 	bind:this={element}
 	class={className}
-	style="{currentStyle()} transition: all {duration}ms cubic-bezier(0.16, 1, 0.3, 1); transition-delay: {delay}ms;"
+	style="{currentStyle()} transition: opacity {duration}ms ease-out, transform {duration}ms ease-out; transition-delay: {delay}ms;"
 	{...restProps}
 >
 	{@render children()}

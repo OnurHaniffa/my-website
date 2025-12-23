@@ -1,328 +1,619 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
-	import { InView, Counter } from '$lib/components/ui/animations';
 
-	const approaches = [
+	let heroSection: HTMLDivElement;
+	let philosophySection: HTMLDivElement;
+	let toolsSection: HTMLDivElement;
+	let factsSection: HTMLDivElement;
+
+	const philosophy = [
 		{
-			title: 'Strategy First',
-			description: 'Every design decision is grounded in your business goals. I ask the right questions before I start designing.'
+			number: '01',
+			title: 'Design with intent',
+			description: 'Every element has a purpose. If it doesn\'t help your visitor take action, it doesn\'t belong.',
+			gradient: 'from-primary/20 via-primary/5 to-transparent',
+			accent: 'bg-primary',
+			iconBg: 'bg-primary/10',
+			icon: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'
 		},
 		{
-			title: 'Clear Communication',
-			description: 'No jargon, no disappearing acts. You will always know where your project stands and what comes next.'
+			number: '02',
+			title: 'Speed is a feature',
+			description: 'If a site feels slow, people leave. I build for real-world performance.',
+			gradient: 'from-accent/20 via-accent/5 to-transparent',
+			accent: 'bg-accent',
+			iconBg: 'bg-accent/10',
+			icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z'
 		},
 		{
-			title: 'Quality Over Speed',
-			description: 'I take the time to get things right. You will receive work that is thoughtful, polished, and built to last.'
-		},
-		{
-			title: 'Your Success is My Success',
-			description: 'I am invested in your results, not just delivering files. Your website should actively help your business grow.'
-		},
-		{
-			title: 'Modern Tech, Proven Methods',
-			description: 'I use cutting-edge tools but stick to established design principles. Your site will be both innovative and reliable.'
-		},
-		{
-			title: 'Long-Term Partnership',
-			description: 'I am not just here for one project. I am available for ongoing support and future improvements as your business evolves.'
+			number: '03',
+			title: 'Own what you build',
+			description: 'Your site, your code—you own everything. I handle hosting and updates so you don\'t have to worry about the technical side.',
+			gradient: 'from-emerald-500/20 via-emerald-500/5 to-transparent',
+			accent: 'bg-emerald-500',
+			iconBg: 'bg-emerald-500/10',
+			icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'
 		}
 	];
 
-	const approachIcons = [
-		'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16zm0-14a6 6 0 0 0-6 6h2a4 4 0 0 1 8 0h2a6 6 0 0 0-6-6z',
-		'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
-		'M12 3l-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z',
-		'M6 9H4.5a2.5 2.5 0 0 1 0-5H6M18 9h1.5a2.5 2.5 0 0 0 0-5H18M4 22h16M10 14.7V17a1 1 0 0 1-1 1.2C8 18.8 7 20.2 7 22M14 14.7V17a1 1 0 0 0 1 1.2c1 .5 2 2 2 3.8M18 2H6v7a6 6 0 0 0 12 0V2z',
-		'M16 18l6-6-6-6M8 6l-6 6 6 6',
-		'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'
+	const toolGroups = [
+		{
+			label: 'BUILD',
+			tools: [
+				{ name: 'SvelteKit', badge: 'Primary', icon: 'svelte' },
+				{ name: 'Svelte 5', icon: 'svelte' },
+				{ name: 'TypeScript', icon: 'typescript' }
+			]
+		},
+		{
+			label: 'STYLE',
+			tools: [
+				{ name: 'Tailwind CSS', icon: 'tailwind' },
+				{ name: 'shadcn/ui', icon: 'shadcn' },
+				{ name: 'Figma', icon: 'figma' }
+			]
+		},
+		{
+			label: 'SHIP',
+			tools: [
+				{ name: 'Vercel', icon: 'vercel' },
+				{ name: 'Git', icon: 'git' }
+			]
+		}
 	];
+
+	// SVG paths for tool icons (consistent stroke style)
+	const toolIcons: Record<string, string> = {
+		svelte: 'M18.12 2.29C15.66.17 11.86.53 9.81 2.93L5.43 8.16a7.36 7.36 0 0 0-1.56 5.68 6.1 6.1 0 0 0 .71 2.17 6.63 6.63 0 0 0-1 2.44 6.88 6.88 0 0 0 1.17 5.25c2.46 2.12 6.26 1.76 8.31-.64l4.38-5.23a7.36 7.36 0 0 0 1.56-5.68 6.1 6.1 0 0 0-.71-2.17 6.63 6.63 0 0 0 1-2.44 6.88 6.88 0 0 0-1.17-5.25z',
+		typescript: 'M3 3h18v18H3V3zm10.5 9.5v6m0-6h3m-6 0h3m-4.5 0v6',
+		tailwind: 'M12 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.31.74 1.91 1.35.98 1 2.11 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35C15.61 7.15 14.48 6 12 6zm-5 6c-2.67 0-4.33 1.33-5 4 1-1.33 2.17-1.83 3.5-1.5.76.19 1.3.74 1.91 1.35.98 1 2.11 2.15 4.59 2.15 2.67 0 4.33-1.33 5-4-1 1.33-2.17 1.83-3.5 1.5-.76-.19-1.3-.74-1.91-1.35-.98-1-2.11-2.15-4.59-2.15z',
+		shadcn: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
+		figma: 'M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5zM12 2h3.5a3.5 3.5 0 1 1 0 7H12V2zm0 7h3.5a3.5 3.5 0 1 1 0 7H12v-7zm-7 7a3.5 3.5 0 0 1 3.5-3.5H12v3.5a3.5 3.5 0 1 1-7 0zM5 12a3.5 3.5 0 0 1 3.5-3.5H12v7H8.5A3.5 3.5 0 0 1 5 12z',
+		vercel: 'M12 2L2 19.5h20L12 2z',
+		git: 'M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4'
+	};
+
+	const quickFacts = [
+		{ icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
+		{ icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
+		{ icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
+		{ icon: 'M17 8h1a4 4 0 1 1 0 8h-1 M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M6 2v4 M10 2v4 M14 2v4', label: 'Fueled by', value: 'Flat whites', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
+		{ icon: 'M9 18V5l12-2v13 M9 9l12-2 M6 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', label: 'Work to', value: 'Lo-fi beats', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
+		{ icon: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z', label: 'Always', value: 'Learning', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' }
+	];
+
+	onMount(() => {
+		// Check for reduced motion preference
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		if (prefersReducedMotion) {
+			return () => {};
+		}
+
+		// Hero animations with null safety
+		const heroItems = heroSection?.querySelectorAll('.hero-item');
+		if (heroItems && heroItems.length > 0) {
+			gsap.set(heroItems, { opacity: 0, y: 40 });
+			gsap.to(heroItems, {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				stagger: 0.12,
+				ease: 'power3.out',
+				delay: 0.1
+			});
+		}
+
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const target = entry.target as HTMLElement;
+
+					if (target === philosophySection) {
+						const cards = philosophySection.querySelectorAll('.philosophy-card');
+						if (cards.length > 0) {
+							gsap.fromTo(cards,
+								{ opacity: 0, y: 40, rotateX: -10 },
+								{ opacity: 1, y: 0, rotateX: 0, duration: 0.7, stagger: 0.15, ease: 'power3.out' }
+							);
+						}
+					}
+
+					if (target === toolsSection) {
+						const items = toolsSection.querySelectorAll('.tool-item');
+						if (items.length > 0) {
+							gsap.fromTo(items,
+								{ opacity: 0, scale: 0.8 },
+								{ opacity: 1, scale: 1, duration: 0.5, stagger: 0.06, ease: 'back.out(1.7)' }
+							);
+						}
+					}
+
+					if (target === factsSection) {
+						const cards = factsSection.querySelectorAll('.fact-card');
+						if (cards.length > 0) {
+							gsap.fromTo(cards,
+								{ opacity: 0, y: 30, scale: 0.95 },
+								{ opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.08, ease: 'power2.out' }
+							);
+						}
+					}
+
+					observer.unobserve(target);
+				}
+			});
+		}, { threshold: 0.15 });
+
+		[philosophySection, toolsSection, factsSection].forEach(section => {
+			if (section) {
+				gsap.set(section.querySelectorAll('.philosophy-card, .tool-item, .fact-card'), { opacity: 0 });
+				observer.observe(section);
+			}
+		});
+
+		return () => observer.disconnect();
+	});
 </script>
 
 <svelte:head>
 	<title>About | Haniffa Design Studio</title>
-	<meta
-		name="description"
-		content="Learn about Onur Haniffa, a web designer helping businesses succeed online with modern, strategic design."
-	/>
+	<meta name="description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, available worldwide." />
 </svelte:head>
 
-<!-- Hero Section -->
-<Section padding="lg" class="relative overflow-hidden">
-	<!-- Background decoration -->
+<!-- Hero -->
+<Section padding="none" class="relative overflow-hidden">
+	<!-- Background with ambient blobs (static blur, no animation on blur) -->
 	<div class="absolute inset-0 -z-10">
-		<div
-			class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl translate-x-1/3 -translate-y-1/3"
-		></div>
-		<div
-			class="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2"
-		></div>
+		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30"></div>
+		<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4"></div>
+		<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
 	</div>
 
-	<Container>
-		<div class="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
-			<!-- Content -->
-			<InView animation="fade-up">
-				<Badge variant="outline" class="mb-6 border-primary/30 text-primary">About Me</Badge>
-				<h1 class="text-4xl font-bold tracking-tight sm:text-5xl">
-					I'm Onur—I help businesses <span class="text-primary">succeed online</span>
+	<!-- Decorative SVG shapes -->
+	<svg class="hidden lg:block absolute top-24 left-[15%] w-16 h-16 text-primary/15" viewBox="0 0 100 100" fill="none">
+		<path d="M20 50 Q 35 20, 50 50 T 80 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+	</svg>
+	<svg class="hidden lg:block absolute bottom-32 right-[20%] w-12 h-12 text-accent/15" viewBox="0 0 100 100" fill="none">
+		<circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="3" stroke-dasharray="10 5"/>
+	</svg>
+
+	<Container class="relative pt-32 pb-20 lg:pt-40 lg:pb-28">
+		<div bind:this={heroSection} class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+			<!-- Text content -->
+			<div class="lg:col-span-3 space-y-6">
+				<h1 class="hero-item text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+					Hey, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Onur</span>
+					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block animate-wave origin-bottom-right text-amber-500">
+						<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v0 M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v6 M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8 M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
+					</svg>
 				</h1>
-				<p class="mt-6 text-lg text-muted-foreground leading-relaxed">
-					I'm a web designer and developer based in Europe, specializing in creating
-					modern, strategic websites that turn visitors into customers. I believe great
-					design should be accessible to businesses of all sizes.
-				</p>
-				<p class="mt-4 text-muted-foreground leading-relaxed">
-					When I'm not designing, you'll find me exploring new technologies, learning about
-					business strategy, or enjoying a good coffee. I bring the same curiosity and
-					attention to detail to every project I take on.
+
+				<p class="hero-item text-xl text-muted-foreground leading-relaxed max-w-xl">
+					I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.
 				</p>
 
-				<div class="mt-8 flex flex-wrap gap-4">
-					<Button href="/contact" class="group">
-						Let's Work Together
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="16"
-							height="16"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="ml-1 transition-transform duration-300 group-hover:translate-x-1"
-							><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
-						>
+				<p class="hero-item text-muted-foreground leading-relaxed max-w-xl">
+					I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering (AI/ML) means I'm particular about performance, clarity, and clean implementation.
+				</p>
+
+				<div class="hero-item flex flex-wrap gap-4 pt-2">
+					<Button size="lg" href="/contact" class="rounded-full px-8 shadow-lg shadow-primary/25 group">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 group-hover:scale-110 transition-transform">
+							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+						</svg>
+						Get in touch
 					</Button>
-					<Button variant="outline" href="/work" class="hover:border-primary/50">
-						See My Work
+					<Button size="lg" variant="outline" href="/work" class="rounded-full px-8 group">
+						View my work
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 				</div>
-			</InView>
+			</div>
 
-			<!-- Photo -->
-			<InView animation="fade-left" delay={100}>
-				<div class="relative">
+			<!-- Photo with visual treatment -->
+			<div class="hero-item lg:col-span-2">
+				<div class="relative group">
+					<!-- Animated swaying decorative ring -->
+					<div class="absolute -inset-4 rounded-[2rem] border-2 border-dashed border-primary/20 animate-sway"></div>
+					<!-- Second ring with offset animation -->
+					<div class="absolute -inset-6 rounded-[2.5rem] border border-dashed border-accent/10 animate-sway-reverse"></div>
+
 					<!-- Main photo container -->
-					<div
-						class="aspect-[4/5] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/20 via-primary/10 to-accent/10 border border-border/50"
-					>
+					<div class="relative aspect-[3/4] rounded-3xl overflow-hidden border-2 border-border/50 shadow-xl bg-gradient-to-br from-primary/10 via-muted to-accent/10 transform-gpu group-hover:scale-[1.02] transition-transform duration-200">
 						<div class="w-full h-full flex items-center justify-center">
 							<div class="text-center">
-								<div
-									class="w-24 h-24 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 mx-auto mb-4 flex items-center justify-center"
-								>
-									<span class="text-3xl font-bold text-primary/60">OH</span>
+								<div class="w-28 h-28 rounded-full bg-gradient-to-br from-primary to-accent mx-auto mb-4 flex items-center justify-center shadow-lg transform-gpu group-hover:scale-110 transition-transform duration-200">
+									<span class="text-4xl font-bold text-white">OH</span>
 								</div>
-								<span class="text-muted-foreground text-sm">Profile Photo</span>
+								<p class="text-sm text-muted-foreground font-medium">Photo coming soon</p>
 							</div>
 						</div>
 					</div>
 
-					<!-- Decorative elements -->
-					<div
-						class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 rounded-2xl -z-10"
-					></div>
-					<div
-						class="absolute -bottom-4 -left-4 w-32 h-32 bg-accent/10 rounded-2xl -z-10"
-					></div>
+					<!-- Floating badge -->
+					<div class="absolute -top-3 -right-3 px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-accent text-white shadow-lg transform-gpu hover:scale-105 transition-transform duration-150">
+						<span class="text-sm font-bold">SvelteKit Dev</span>
+					</div>
 				</div>
-			</InView>
-		</div>
-	</Container>
-</Section>
-
-<!-- Stats Section -->
-<Section padding="lg" background="muted">
-	<Container>
-		<div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-			{#each [
-				{ value: 5, suffix: '+', label: 'Years Experience' },
-				{ value: 20, suffix: '+', label: 'Projects Delivered' },
-				{ value: 100, suffix: '%', label: 'Client Ownership' },
-				{ value: 24, suffix: 'h', label: 'Response Time' }
-			] as stat, index}
-				<InView animation="fade-up" delay={index * 100}>
-					<div class="text-center p-6 rounded-2xl bg-background border border-border/50">
-						<p class="text-4xl font-bold text-primary">
-							<Counter value={stat.value} suffix={stat.suffix} delay={index * 150} />
-						</p>
-						<p class="text-sm text-muted-foreground mt-2">{stat.label}</p>
-					</div>
-				</InView>
-			{/each}
-		</div>
-	</Container>
-</Section>
-
-<!-- My Approach Section -->
-<Section padding="lg">
-	<Container>
-		<InView animation="fade-up" class="text-center max-w-2xl mx-auto mb-10">
-			<Badge variant="outline" class="mb-4 border-accent/30 text-accent">My Approach</Badge>
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">How I work</h2>
-			<p class="mt-4 text-muted-foreground">
-				I believe in straightforward collaboration and delivering real value. Here's what you
-				can expect when we work together.
-			</p>
-		</InView>
-
-		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-			{#each approaches as approach, index}
-				<InView animation="fade-up" delay={index * 100}>
-					<div
-						class="p-6 rounded-2xl bg-muted/50 border border-border/50 h-full transition-all duration-300 hover:bg-muted hover:shadow-lg hover:-translate-y-1 group"
-					>
-						<div
-							class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="text-primary"
-							>
-								<path d={approachIcons[index]} />
-							</svg>
-						</div>
-						<h3 class="font-semibold mb-2">{approach.title}</h3>
-						<p class="text-sm text-muted-foreground">{approach.description}</p>
-					</div>
-				</InView>
-			{/each}
-		</div>
-	</Container>
-</Section>
-
-<!-- Skills & Tools Section -->
-<Section padding="lg" background="muted">
-	<Container>
-		<div class="grid gap-12 lg:grid-cols-2">
-			<!-- Design Skills -->
-			<InView animation="fade-up">
-				<h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-					<div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="text-primary"
-							><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path
-								d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"
-							/></svg
-						>
-					</div>
-					Design
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{#each ['UI/UX Design', 'Figma', 'Visual Design', 'Wireframing', 'Prototyping', 'Design Systems', 'Responsive Design', 'Accessibility'] as skill}
-						<span
-							class="px-4 py-2 rounded-full bg-background border border-border/50 text-sm hover:border-primary/30 hover:bg-primary/5 transition-colors duration-300"
-						>
-							{skill}
-						</span>
-					{/each}
-				</div>
-			</InView>
-
-			<!-- Development Skills -->
-			<InView animation="fade-up" delay={100}>
-				<h3 class="text-xl font-bold mb-6 flex items-center gap-3">
-					<div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="20"
-							height="20"
-							viewBox="0 0 24 24"
-							fill="none"
-							stroke="currentColor"
-							stroke-width="2"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							class="text-accent"
-							><polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" /></svg
-						>
-					</div>
-					Development
-				</h3>
-				<div class="flex flex-wrap gap-2">
-					{#each ['SvelteKit', 'React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'HTML/CSS', 'JavaScript', 'Git'] as skill}
-						<span
-							class="px-4 py-2 rounded-full bg-background border border-border/50 text-sm hover:border-accent/30 hover:bg-accent/5 transition-colors duration-300"
-						>
-							{skill}
-						</span>
-					{/each}
-				</div>
-			</InView>
-		</div>
-	</Container>
-</Section>
-
-<!-- CTA Section -->
-<Section padding="lg">
-	<Container size="content">
-		<InView animation="fade-up" class="text-center">
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Let's create something great</h2>
-			<p class="mt-4 text-lg text-muted-foreground">
-				Ready to start a project? I'd love to hear about your goals and see how I can help.
-			</p>
-			<div class="mt-8 flex flex-wrap justify-center gap-4">
-				<Button size="lg" href="/contact" class="group">
-					Get in Touch
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="20"
-						height="20"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="ml-1 transition-transform duration-300 group-hover:translate-x-1"
-						><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg
-					>
-				</Button>
-				<Button
-					size="lg"
-					variant="outline"
-					href="mailto:hello@ohaniffa.com"
-					class="hover:border-primary/50"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="18"
-						height="18"
-						viewBox="0 0 24 24"
-						fill="none"
-						stroke="currentColor"
-						stroke-width="2"
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						class="mr-2"
-						><rect width="20" height="16" x="2" y="4" rx="2" /><path
-							d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
-						/></svg
-					>
-					hello@ohaniffa.com
-				</Button>
 			</div>
-		</InView>
+		</div>
 	</Container>
 </Section>
+
+<!-- Design Philosophy -->
+<Section padding="lg" background="none" class="relative overflow-hidden">
+	<!-- Background with ambient blobs -->
+	<div class="absolute inset-0 -z-10">
+		<div class="absolute inset-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900"></div>
+		<div class="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/8 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-accent/6 rounded-full blur-3xl"></div>
+	</div>
+
+	<!-- Decorative SVG shapes -->
+	<svg class="hidden lg:block absolute top-20 right-[10%] w-16 h-16 text-primary/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+	</svg>
+
+	<Container>
+		<div bind:this={philosophySection}>
+			<div class="max-w-2xl mb-16">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M3 3l18 18 M3 17V3h14"/>
+					</svg>
+					How I approach projects
+				</div>
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
+					Design philosophy
+				</h2>
+				<p class="mt-4 text-lg text-muted-foreground">The principles behind everything I build.</p>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-6">
+				{#each philosophy as item, index}
+					<div class="philosophy-card group relative">
+						<!-- Card with hover effects -->
+						<div class="relative h-full p-8 rounded-3xl bg-background border border-border/50 overflow-hidden transform-gpu hover:-translate-y-1 transition-transform duration-150 hover:border-primary/30">
+							<!-- Gradient background on hover -->
+							<div class="absolute inset-0 bg-gradient-to-br {item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+
+							<!-- Accent bar -->
+							<div class="absolute top-0 left-8 right-8 h-1 {item.accent} rounded-b-full transform-gpu origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></div>
+
+							<!-- Icon -->
+							<div class="relative w-14 h-14 rounded-2xl {item.iconBg} flex items-center justify-center mb-6 transform-gpu group-hover:scale-110 transition-transform duration-150">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
+									<path d={item.icon} />
+								</svg>
+							</div>
+
+							<!-- Number -->
+							<span class="absolute top-6 right-6 text-7xl font-black text-muted-foreground/10 group-hover:text-primary/10 transition-colors duration-150">{item.number}</span>
+
+							<div class="relative">
+								<h3 class="text-xl font-bold mb-3">{item.title}</h3>
+								<p class="text-muted-foreground leading-relaxed">{item.description}</p>
+							</div>
+						</div>
+					</div>
+				{/each}
+			</div>
+		</div>
+	</Container>
+</Section>
+
+<!-- Tools -->
+<Section padding="lg" class="relative overflow-hidden">
+	<!-- Background with ambient blobs -->
+	<div class="absolute inset-0 -z-10">
+		<div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
+		<!-- Large ambient blobs -->
+		<div class="absolute top-0 left-1/4 w-[450px] h-[450px] bg-primary/10 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl"></div>
+		<!-- Additional smaller blobs for depth -->
+		<div class="absolute top-1/2 left-0 w-[250px] h-[250px] bg-accent/6 rounded-full blur-3xl -translate-y-1/2"></div>
+		<div class="absolute top-1/3 right-0 w-[200px] h-[200px] bg-primary/5 rounded-full blur-3xl"></div>
+	</div>
+
+	<!-- Decorative SVG shapes -->
+	<svg class="hidden lg:block absolute top-16 left-[10%] w-14 h-14 text-primary/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+	</svg>
+	<svg class="hidden lg:block absolute bottom-20 right-[8%] w-10 h-10 text-accent/10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+	</svg>
+
+	<Container>
+		<div bind:this={toolsSection}>
+			<!-- Two column layout -->
+			<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+				<!-- Left: Content -->
+				<div>
+					<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+						</svg>
+						My stack
+					</div>
+					<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+						Tools & tech
+						<span class="block h-1 w-16 bg-gradient-to-r from-primary to-accent rounded-full mt-4"></span>
+					</h2>
+					<p class="text-lg text-muted-foreground max-w-md">
+						The right tools make all the difference. I've built my stack around speed, reliability, and clean code—so your site loads fast and stays easy to maintain.
+					</p>
+				</div>
+
+				<!-- Right: Tools visual (app window) -->
+				<div class="relative">
+					<!-- Decorative accent shapes -->
+					<div class="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-primary to-accent rounded-2xl -z-10 rotate-12 opacity-80"></div>
+					<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-accent/50 to-primary/50 rounded-2xl -z-10 -rotate-6 opacity-60"></div>
+
+					<!-- Main card -->
+					<div class="relative rounded-3xl bg-slate-900 p-6 sm:p-8 shadow-xl overflow-hidden">
+						<!-- Subtle ambient glow inside card -->
+						<div class="absolute inset-0 -z-0 opacity-20 pointer-events-none">
+							<div class="absolute top-0 left-0 w-[150px] h-[150px] bg-primary/30 rounded-full blur-2xl"></div>
+							<div class="absolute bottom-0 right-0 w-[120px] h-[120px] bg-accent/25 rounded-full blur-2xl"></div>
+						</div>
+
+						<!-- Window chrome -->
+						<div class="relative z-10 flex items-center gap-2 mb-6">
+							<div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+							<div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+							<div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+							<span class="ml-3 text-xs text-white/30 font-mono">stack.config</span>
+						</div>
+
+						<!-- Grouped tools -->
+						<div class="relative z-10 space-y-6">
+							{#each toolGroups as group}
+								<div class="tool-item">
+									<!-- Group header -->
+									<div class="flex items-center gap-2 mb-3">
+										<span class="text-[10px] font-semibold tracking-[0.2em] text-white/40 uppercase">{group.label}</span>
+										<div class="flex-1 h-px bg-white/10"></div>
+									</div>
+									<!-- Tools in group with hover -->
+									<div class="space-y-2">
+										{#each group.tools as tool}
+											<div class="group/tool flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/10 transition-colors duration-100 cursor-default">
+												<!-- Icon -->
+												<div class="w-9 h-9 rounded-lg bg-white/10 group-hover/tool:bg-white/15 flex items-center justify-center shrink-0 transition-colors duration-100">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/70 group-hover/tool:text-white transition-colors duration-100">
+														<path d={toolIcons[tool.icon]} />
+													</svg>
+												</div>
+												<!-- Name -->
+												<span class="text-sm text-white/80 font-medium group-hover/tool:text-white transition-colors duration-100">{tool.name}</span>
+												<!-- Badge -->
+												{#if tool.badge}
+													<span class="ml-auto px-2 py-0.5 rounded-full bg-primary/20 text-primary text-[10px] font-semibold uppercase tracking-wide">{tool.badge}</span>
+												{/if}
+											</div>
+										{/each}
+									</div>
+								</div>
+							{/each}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</Container>
+</Section>
+
+<!-- Quick Facts -->
+<Section padding="lg" class="relative overflow-hidden">
+	<!-- Background with ambient blobs -->
+	<div class="absolute inset-0 -z-10">
+		<div class="absolute inset-0 bg-slate-50 dark:bg-slate-900"></div>
+		<div class="absolute top-1/3 -left-20 w-[300px] h-[300px] bg-primary/8 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-1/3 -right-20 w-[250px] h-[250px] bg-accent/6 rounded-full blur-3xl"></div>
+	</div>
+
+	<!-- Decorative SVG shapes -->
+	<svg class="hidden lg:block absolute top-16 left-[8%] w-12 h-12 text-primary/12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+	</svg>
+	<svg class="hidden lg:block absolute bottom-20 right-[10%] w-10 h-10 text-accent/12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<rect x="3" y="3" width="18" height="18" rx="2" ry="2" transform="rotate(15 12 12)"/>
+	</svg>
+
+	<Container>
+		<div bind:this={factsSection}>
+			<div class="text-center mb-14">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10"/><path d="M12 16v-4 M12 8h.01"/>
+					</svg>
+					Get to know me
+				</div>
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Quick facts</h2>
+				<p class="mt-4 text-lg text-muted-foreground">A few things about me beyond the code.</p>
+			</div>
+
+			<div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+				{#each quickFacts as fact, i}
+					<div class="fact-card group">
+						<div class="relative h-full p-6 rounded-2xl bg-white dark:bg-slate-800 border border-border/30 hover:border-primary/30 text-center transform-gpu hover:-translate-y-1 transition-all duration-150 cursor-default overflow-hidden">
+							<!-- Subtle gradient on hover -->
+							<div class="absolute inset-0 {fact.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+
+							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative mx-auto mb-3 {fact.color} transform-gpu group-hover:scale-110 transition-transform duration-150">
+								<path d={fact.icon} />
+							</svg>
+							<p class="relative text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">{fact.label}</p>
+							<p class="relative font-bold text-lg">{fact.value}</p>
+						</div>
+					</div>
+				{/each}
+			</div>
+
+			<!-- Extra personality -->
+			<div class="mt-12 text-center">
+				<p class="inline-flex items-center gap-3 text-sm text-muted-foreground bg-background px-5 py-3 rounded-full border border-border/50 shadow-sm">
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+						<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3 M12 17h.01"/>
+					</svg>
+					<span>Want to know more? <a href="/contact" class="text-primary font-medium hover:underline">Just ask!</a></span>
+				</p>
+			</div>
+		</div>
+	</Container>
+</Section>
+
+<!-- CTA -->
+<Section padding="lg" class="relative overflow-hidden">
+	<!-- Background with ambient blobs -->
+	<div class="absolute inset-0 -z-10">
+		<div class="absolute inset-0 bg-slate-900"></div>
+		<div class="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/15 rounded-full blur-3xl"></div>
+		<div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-accent/12 rounded-full blur-3xl"></div>
+	</div>
+
+	<!-- Decorative SVG shapes -->
+	<svg class="hidden lg:block absolute top-12 right-[15%] w-14 h-14 text-white/5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+	</svg>
+	<svg class="hidden lg:block absolute bottom-16 left-[12%] w-10 h-10 text-white/5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+		<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+	</svg>
+
+	<Container>
+		<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+			<!-- Left: Content -->
+			<div>
+				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
+					Have a project in mind?
+				</h2>
+				<p class="text-lg text-white/70 mb-8 max-w-md">
+					I'm always open to discussing new projects and opportunities. Let's chat about how I can help bring your ideas to life.
+				</p>
+
+				<div class="flex flex-wrap gap-4">
+					<Button size="lg" href="/contact" class="rounded-full px-8 bg-white text-slate-900 hover:bg-white/90 shadow-lg shadow-white/10 group">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transform-gpu group-hover:scale-110 transition-transform duration-150">
+							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+						</svg>
+						Get in touch
+					</Button>
+					<Button size="lg" variant="outline" href="mailto:hello@ohaniffa.com" class="rounded-full px-8 border-white/20 text-white hover:bg-white/10 group">
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transform-gpu group-hover:scale-110 transition-transform duration-150">
+							<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+						</svg>
+						hello@ohaniffa.com
+					</Button>
+				</div>
+			</div>
+
+			<!-- Right: Visual card -->
+			<div class="relative">
+				<!-- Decorative accent shapes behind card -->
+				<div class="absolute -top-3 -right-3 w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl -z-10 rotate-12 opacity-70"></div>
+				<div class="absolute -bottom-3 -left-3 w-12 h-12 bg-gradient-to-br from-accent/60 to-primary/60 rounded-xl -z-10 -rotate-6 opacity-50"></div>
+
+				<div class="relative rounded-3xl bg-slate-800 border border-white/10 p-8 overflow-hidden">
+					<!-- Subtle internal glow -->
+					<div class="absolute inset-0 -z-0 opacity-15 pointer-events-none">
+						<div class="absolute top-0 right-0 w-[100px] h-[100px] bg-primary/40 rounded-full blur-2xl"></div>
+						<div class="absolute bottom-0 left-0 w-[80px] h-[80px] bg-accent/30 rounded-full blur-2xl"></div>
+					</div>
+
+					<!-- Quick info -->
+					<div class="relative z-10 space-y-6">
+						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
+							<div class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400">
+									<polyline points="20 6 9 17 4 12"/>
+								</svg>
+							</div>
+							<div>
+								<p class="text-white font-medium">Available now</p>
+								<p class="text-sm text-white/50">Taking on new projects</p>
+							</div>
+						</div>
+
+						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
+							<div class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+									<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+								</svg>
+							</div>
+							<div>
+								<p class="text-white font-medium">Quick response</p>
+								<p class="text-sm text-white/50">Usually within 24 hours</p>
+							</div>
+						</div>
+
+						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
+							<div class="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
+									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+								</svg>
+							</div>
+							<div>
+								<p class="text-white font-medium">Based in Europe</p>
+								<p class="text-sm text-white/50">Available worldwide</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</Container>
+</Section>
+
+<style>
+	/* Hand wave animation */
+	@keyframes wave {
+		0%, 100% { transform: rotate(0deg); }
+		25% { transform: rotate(20deg); }
+		75% { transform: rotate(-10deg); }
+	}
+
+	.animate-wave {
+		animation: wave 1.5s ease-in-out 2;
+	}
+
+	/* Sway animation for photo frame - GPU accelerated */
+	@keyframes sway {
+		0%, 100% {
+			transform: translateX(0) rotate(0deg);
+		}
+		50% {
+			transform: translateX(8px) rotate(1deg);
+		}
+	}
+
+	@keyframes sway-reverse {
+		0%, 100% {
+			transform: translateX(0) rotate(0deg);
+		}
+		50% {
+			transform: translateX(-6px) rotate(-0.5deg);
+		}
+	}
+
+	.animate-sway {
+		animation: sway 4s ease-in-out infinite;
+		will-change: transform;
+	}
+
+	.animate-sway-reverse {
+		animation: sway-reverse 5s ease-in-out infinite;
+		will-change: transform;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.animate-wave,
+		.animate-sway,
+		.animate-sway-reverse {
+			animation: none;
+		}
+	}
+</style>

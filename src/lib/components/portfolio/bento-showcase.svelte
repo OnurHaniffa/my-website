@@ -26,7 +26,7 @@
 
 	let isHovered = $state(false);
 
-	const accentColor = variant === 'primary' ? 'primary' : 'accent';
+	const accentColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 </script>
 
 <div

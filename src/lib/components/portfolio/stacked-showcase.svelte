@@ -22,13 +22,16 @@
 	let activeIndex = $state(0);
 	let isHovered = $state(false);
 
-	const accentColor = variant === 'primary' ? 'primary' : 'accent';
+	const accentColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 
 	// Ensure we have at least 3 placeholder slots
-	const displayImages = [...images];
-	while (displayImages.length < 3) {
-		displayImages.push('');
-	}
+	const displayImages = $derived.by(() => {
+		const result = [...images];
+		while (result.length < 3) {
+			result.push('');
+		}
+		return result;
+	});
 
 	function setActive(index: number) {
 		activeIndex = index;

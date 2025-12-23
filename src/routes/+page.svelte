@@ -1,11 +1,135 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
 	import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '$lib/components/ui/card';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
-	import { InView, Counter } from '$lib/components/ui/animations';
+	import { Counter } from '$lib/components/ui/animations';
 	import { projects } from '$lib/data/projects';
 
+	let heroContent: HTMLDivElement;
+	let heroMockup: HTMLDivElement;
+	let curlyLine: SVGSVGElement;
+	let servicesSection: HTMLDivElement;
+	let serviceCards: HTMLDivElement;
+	let projectsSection: HTMLDivElement;
+	let whyMeSection: HTMLDivElement;
+
+	onMount(() => {
+		// Check for reduced motion preference
+		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+		// Skip animations if reduced motion is preferred or elements don't exist
+		if (prefersReducedMotion || !heroContent || !heroMockup || !curlyLine) {
+			return () => {};
+		}
+
+		// Set initial states
+		gsap.set([heroContent, heroMockup], { opacity: 0, y: 30 });
+		gsap.set(curlyLine, { opacity: 0 });
+
+		// Hero timeline - staggered entrance
+		const heroTl = gsap.timeline({ delay: 0.1 });
+
+		const curlyPath = curlyLine.querySelector('path');
+
+		heroTl
+			.to(heroContent, {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				ease: 'power2.out'
+			})
+			.to(heroMockup, {
+				opacity: 1,
+				y: 0,
+				duration: 0.8,
+				ease: 'power2.out'
+			}, '-=0.5')
+			.to(curlyLine, {
+				opacity: 1,
+				duration: 0.3
+			}, '-=0.3');
+
+		if (curlyPath) {
+			heroTl.fromTo(curlyPath,
+				{ strokeDashoffset: 300 },
+				{ strokeDashoffset: 0, duration: 4, ease: 'power2.out' },
+				'-=0.2'
+			);
+		}
+
+		// Scroll-triggered animations using IntersectionObserver (lighter than ScrollTrigger)
+		const observerOptions = { threshold: 0.15, rootMargin: '0px' };
+
+		const animateOnScroll = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					const target = entry.target as HTMLElement;
+
+					if (target === servicesSection) {
+						gsap.fromTo(servicesSection.querySelector('.section-header'),
+							{ opacity: 0, y: 40 },
+							{ opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+						);
+						gsap.fromTo(serviceCards?.children || [],
+							{ opacity: 0, y: 50 },
+							{ opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
+						);
+					}
+
+					if (target === projectsSection) {
+						gsap.fromTo(projectsSection.querySelector('.section-header'),
+							{ opacity: 0, y: 40 },
+							{ opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+						);
+						gsap.fromTo(projectsSection.querySelectorAll('.project-card'),
+							{ opacity: 0, y: 50 },
+							{ opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: 'power2.out', delay: 0.2 }
+						);
+					}
+
+					if (target === whyMeSection) {
+						gsap.fromTo(whyMeSection.querySelector('.section-header'),
+							{ opacity: 0, y: 40 },
+							{ opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }
+						);
+						gsap.fromTo(whyMeSection.querySelectorAll('.why-card'),
+							{ opacity: 0, y: 50 },
+							{ opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
+						);
+					}
+
+					observer.unobserve(target);
+				}
+			});
+		};
+
+		const scrollObserver = new IntersectionObserver(animateOnScroll, observerOptions);
+
+		// Set initial states for scroll sections
+		if (servicesSection) {
+			gsap.set(servicesSection.querySelector('.section-header'), { opacity: 0 });
+			gsap.set(serviceCards?.children || [], { opacity: 0 });
+			scrollObserver.observe(servicesSection);
+		}
+		if (projectsSection) {
+			gsap.set(projectsSection.querySelector('.section-header'), { opacity: 0 });
+			gsap.set(projectsSection.querySelectorAll('.project-card'), { opacity: 0 });
+			scrollObserver.observe(projectsSection);
+		}
+		if (whyMeSection) {
+			gsap.set(whyMeSection.querySelector('.section-header'), { opacity: 0 });
+			gsap.set(whyMeSection.querySelectorAll('.why-card'), { opacity: 0 });
+			scrollObserver.observe(whyMeSection);
+		}
+
+		return () => {
+			scrollObserver.disconnect();
+			heroTl.kill();
+		};
+	});
 </script>
 
 <svelte:head>
@@ -15,45 +139,27 @@
 
 <!-- Hero Section -->
 <Section padding="none" class="relative overflow-hidden">
-	<!-- Ambient background with optimized glow -->
+	<!-- BIG BOLD GLOW - prominent ambient effect -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
-		<!-- Glowing orbs - animate only when motion is allowed -->
-		<div class="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[100px] glow-orb"></div>
-		<div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px] glow-orb-delayed"></div>
-		<div class="absolute top-1/2 left-1/3 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px] glow-orb-slow"></div>
+		<!-- MAIN GLOW - Big red presence in corner -->
+		<div class="absolute -top-[200px] -right-[200px] w-[1000px] h-[1000px] hero-glow-main"></div>
+		<!-- Secondary blue glow - bottom left -->
+		<div class="absolute -bottom-[300px] -left-[300px] w-[900px] h-[900px] hero-glow-blue"></div>
+		<!-- Center ambient fill -->
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] hero-glow-center"></div>
 	</div>
 
-	<!-- Floating particles and shapes -->
-	<div class="absolute inset-0 -z-5 overflow-hidden pointer-events-none">
-		<!-- Circles -->
-		<div class="particle absolute top-[15%] left-[8%] w-3 h-3 bg-primary/50 rounded-full"></div>
-		<div class="particle-delayed absolute top-[25%] right-[12%] w-4 h-4 bg-accent/40 rounded-full"></div>
-		<div class="particle-slow absolute bottom-[20%] left-[15%] w-2 h-2 bg-primary/40 rounded-full"></div>
-		<div class="particle absolute top-[40%] right-[8%] w-3 h-3 bg-primary/30 rounded-full"></div>
-		<div class="particle-delayed absolute bottom-[35%] right-[20%] w-2.5 h-2.5 bg-accent/50 rounded-full"></div>
-		<div class="particle-slow absolute top-[60%] left-[5%] w-2 h-2 bg-accent/30 rounded-full"></div>
-
-		<!-- Hollow circles -->
-		<div class="particle absolute top-[30%] right-[25%] w-6 h-6 border-2 border-primary/20 rounded-full"></div>
-		<div class="particle-delayed absolute bottom-[25%] left-[25%] w-8 h-8 border-2 border-accent/15 rounded-full"></div>
-		<div class="particle-slow absolute top-[70%] right-[30%] w-5 h-5 border border-primary/25 rounded-full"></div>
-
-		<!-- Squares -->
-		<div class="particle-rotate absolute top-[20%] left-[35%] w-4 h-4 border border-accent/20 rotate-45"></div>
-		<div class="particle-rotate-delayed absolute bottom-[30%] right-[35%] w-6 h-6 border-2 border-primary/15 rotate-12"></div>
-		<div class="particle-rotate absolute top-[50%] left-[45%] w-3 h-3 bg-primary/10 rotate-45"></div>
-
-		<!-- Dots cluster -->
-		<div class="particle absolute top-[45%] left-[12%] w-1.5 h-1.5 bg-primary/60 rounded-full"></div>
-		<div class="particle-delayed absolute top-[47%] left-[14%] w-1 h-1 bg-accent/50 rounded-full"></div>
-		<div class="particle-slow absolute top-[44%] left-[16%] w-1.5 h-1.5 bg-primary/40 rounded-full"></div>
-	</div>
+	<!-- Decorative circles - hidden on mobile -->
+	<div class="hidden lg:block absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary/10 pointer-events-none"></div>
+	<div class="hidden lg:block absolute top-40 right-[15%] w-48 h-48 rounded-full border border-accent/10 pointer-events-none"></div>
+	<div class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
+	<div class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
 
 	<Container class="relative pt-32 pb-20 lg:pt-40 lg:pb-32">
 		<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 			<!-- Left Content -->
-			<div class="space-y-8">
+			<div bind:this={heroContent} class="space-y-8">
 				<Badge variant="outline" class="border-primary/30 text-primary bg-primary/5 px-4 py-1.5">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
 					Available for Projects
@@ -63,15 +169,16 @@
 				<div class="relative">
 					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
 						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">customers</span>
-							<!-- Animated curly underline -->
-							<svg class="absolute -bottom-2 left-0 w-full h-4 curly-line" viewBox="0 0 200 20" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+							<!-- Curly underline -->
+							<svg bind:this={curlyLine} class="absolute -bottom-6 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 								<path
-									d="M0 10 Q 25 0, 50 10 T 100 10 T 150 10 T 200 10"
+									d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12"
 									stroke="currentColor"
-									stroke-width="2.5"
+									stroke-width="4"
 									stroke-linecap="round"
 									class="text-primary"
 									fill="none"
+									style="stroke-dasharray: 300; stroke-dashoffset: 300;"
 								/>
 							</svg>
 						</span>
@@ -102,21 +209,18 @@
 				</div>
 
 				<div class="flex flex-wrap gap-4">
-					<Button size="lg" href="/work" class="group text-base px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all duration-300">
+					<Button size="lg" href="/work" class="group text-base px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
 						View My Work
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<Button size="lg" variant="outline" href="/contact" class="text-base px-8 py-6 rounded-full border-2 hover:bg-primary/5 hover:border-primary/50 transition-all duration-300">
+					<Button size="lg" variant="outline" href="/contact" class="text-base px-8 py-6 rounded-full border-2 hover:bg-primary/5 hover:border-primary/50 transition-colors duration-300">
 						Let's Talk
 					</Button>
 				</div>
 			</div>
 
-			<!-- Creative Collage Style Browser Mockup -->
-			<div class="relative">
-				<!-- Glow behind mockup -->
-				<div class="absolute inset-0 bg-primary/10 rounded-3xl blur-[60px] scale-90 -z-10"></div>
-
+			<!-- Generic Website Demo Mockup -->
+			<div bind:this={heroMockup} class="relative">
 				<!-- Browser mockup -->
 				<div class="relative bg-card rounded-2xl shadow-2xl border-2 border-border/50 overflow-hidden">
 					<!-- Browser header -->
@@ -129,106 +233,91 @@
 						<div class="flex-1 mx-4">
 							<div class="bg-background/80 rounded-lg px-4 py-1.5 text-sm text-muted-foreground flex items-center gap-2 border">
 								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-								creativestudio.com
+								yourwebsite.com
 							</div>
 						</div>
 					</div>
 
-					<!-- Creative collage content -->
-					<div class="aspect-[4/3] bg-[#f5f3ef] dark:bg-stone-900 p-5 relative overflow-hidden">
-						<!-- Top nav hint -->
-						<div class="flex justify-center gap-4 mb-3">
-							<span class="text-[8px] text-stone-500 font-medium">Work</span>
-							<span class="text-[8px] text-stone-400">Studio</span>
-						</div>
+					<!-- Hero image website demo -->
+					<div class="aspect-[4/3] relative overflow-hidden">
+						<img
+							src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=450&fit=crop&q=75"
+							alt="Professional team"
+							fetchpriority="high"
+							class="absolute inset-0 w-full h-full object-cover"
+						/>
+						<div class="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/70 to-stone-900/50"></div>
 
-						<!-- Headline -->
-						<p class="text-[9px] sm:text-[11px] text-stone-800 dark:text-stone-200 text-center max-w-[90%] mx-auto leading-relaxed mb-2">
-							A creative studio <em class="font-serif">crafting digital experiences</em> at the intersection of <em class="font-serif">design, strategy, and storytelling.</em>
-						</p>
-
-						<!-- Scattered photos collage -->
-						<div class="relative h-[55%]">
-							<!-- Photo 1 - Top left, tilted -->
-							<div class="absolute top-0 left-[5%] w-[35%] aspect-[4/3] rounded-lg overflow-hidden shadow-xl transform -rotate-6 hover:rotate-0 transition-transform duration-300">
-								<img
-									src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=300&h=225&fit=crop"
-									alt="Team collaboration"
-									class="w-full h-full object-cover"
-								/>
+						<div class="relative h-full p-6 flex flex-col">
+							<div class="flex items-center justify-between mb-auto">
+								<div class="flex items-center gap-2">
+									<div class="w-6 h-6 rounded bg-white/20"></div>
+									<span class="text-[10px] text-white/90 font-semibold">YourBrand</span>
+								</div>
+								<div class="flex gap-4">
+									<span class="text-[8px] text-white/60">Home</span>
+									<span class="text-[8px] text-white/60">Services</span>
+									<span class="text-[8px] text-white/60">About</span>
+									<span class="text-[8px] text-white/90 font-medium">Contact</span>
+								</div>
 							</div>
 
-							<!-- Photo 2 - Center, larger -->
-							<div class="absolute top-[10%] left-[30%] w-[40%] aspect-[4/3] rounded-lg overflow-hidden shadow-2xl transform rotate-3 z-10 hover:rotate-0 transition-transform duration-300">
-								<img
-									src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=225&fit=crop"
-									alt="Analytics dashboard"
-									class="w-full h-full object-cover"
-								/>
+							<div class="flex-1 flex flex-col justify-center max-w-[70%]">
+								<p class="text-[8px] text-amber-400 font-medium uppercase tracking-wider mb-2">Your Tagline Here</p>
+								<h2 class="text-white text-lg sm:text-xl font-bold leading-tight mb-3">
+									Your headline goes here
+								</h2>
+								<p class="text-[9px] text-white/70 leading-relaxed mb-4">
+									This is where your compelling description would go. A few lines about what makes your business special.
+								</p>
+								<div class="flex gap-2">
+									<div class="px-3 py-1.5 bg-amber-500 rounded text-[8px] text-stone-900 font-semibold">Get Started</div>
+									<div class="px-3 py-1.5 border border-white/30 rounded text-[8px] text-white/90">Learn More</div>
+								</div>
 							</div>
 
-							<!-- Photo 3 - Right side -->
-							<div class="absolute top-[5%] right-[2%] w-[30%] aspect-square rounded-lg overflow-hidden shadow-xl transform rotate-6 hover:rotate-0 transition-transform duration-300">
-								<img
-									src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=200&h=200&fit=crop"
-									alt="Developer working"
-									class="w-full h-full object-cover"
-								/>
+							<div class="flex gap-6 pt-4 border-t border-white/10 mt-auto">
+								<div>
+									<p class="text-white text-sm font-bold">100+</p>
+									<p class="text-[7px] text-white/50">Happy Clients</p>
+								</div>
+								<div>
+									<p class="text-white text-sm font-bold">5 Stars</p>
+									<p class="text-[7px] text-white/50">Average Rating</p>
+								</div>
+								<div>
+									<p class="text-white text-sm font-bold">24/7</p>
+									<p class="text-[7px] text-white/50">Support</p>
+								</div>
 							</div>
-
-							<!-- Photo 4 - Bottom left -->
-							<div class="absolute bottom-[5%] left-[8%] w-[28%] aspect-[3/4] rounded-lg overflow-hidden shadow-xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-								<img
-									src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=180&h=240&fit=crop"
-									alt="Creative meeting"
-									class="w-full h-full object-cover"
-								/>
-							</div>
-
-							<!-- Photo 5 - Bottom right -->
-							<div class="absolute bottom-[0%] right-[5%] w-[35%] aspect-video rounded-lg overflow-hidden shadow-xl transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-								<img
-									src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=280&h=160&fit=crop"
-									alt="Modern workspace"
-									class="w-full h-full object-cover"
-								/>
-							</div>
-						</div>
-
-						<!-- Description block - bottom left -->
-						<div class="absolute bottom-8 left-4 max-w-[35%]">
-							<p class="text-[7px] font-semibold text-stone-700 dark:text-stone-300 uppercase tracking-wider mb-1">Featured Work</p>
-							<p class="text-[6px] text-stone-500 dark:text-stone-400 leading-relaxed">
-								Strategic websites and digital products built for brands ready to grow. Every pixel crafted with purpose.
-							</p>
-						</div>
-
-						<!-- Bottom CTA -->
-						<div class="absolute bottom-3 left-1/2 -translate-x-1/2">
-							<span class="text-[8px] text-stone-600 dark:text-stone-400 font-medium tracking-wide underline underline-offset-2">Explore Projects →</span>
 						</div>
 					</div>
 				</div>
 
-				<!-- Floating phone mockup with matching style -->
-				<div class="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 phone-float">
+				<!-- Phone mockup -->
+				<div class="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8">
 					<div class="bg-zinc-900 rounded-[2rem] shadow-2xl p-1.5 w-24 lg:w-32 relative">
 						<div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-zinc-700/50 via-transparent to-zinc-800/50 pointer-events-none"></div>
 						<div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-zinc-800 rounded-full z-10"></div>
-						<div class="bg-[#f5f3ef] dark:bg-stone-900 rounded-[1.5rem] aspect-[9/16] p-2 pt-4 relative overflow-hidden">
-							<!-- Mobile collage preview -->
-							<div class="text-[5px] text-center text-stone-700 dark:text-stone-300 mb-2 leading-tight px-1">
-								A creative studio <em>crafting digital experiences</em>
-							</div>
-							<div class="relative h-[75%]">
-								<div class="absolute top-0 left-1 w-[45%] aspect-square rounded overflow-hidden shadow transform -rotate-6">
-									<img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=80&h=80&fit=crop" alt="" class="w-full h-full object-cover" />
+						<div class="rounded-[1.5rem] aspect-[9/16] relative overflow-hidden">
+							<img
+								src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=150&h=260&fit=crop&q=70"
+								alt=""
+								loading="lazy"
+								class="absolute inset-0 w-full h-full object-cover"
+							/>
+							<div class="absolute inset-0 bg-gradient-to-b from-stone-900/90 via-stone-900/70 to-stone-900/90"></div>
+							<div class="relative h-full p-3 flex flex-col">
+								<div class="flex items-center gap-1 mb-3">
+									<div class="w-3 h-3 rounded bg-white/20"></div>
+									<span class="text-[6px] text-white/90 font-semibold">YourBrand</span>
 								</div>
-								<div class="absolute top-[15%] right-1 w-[50%] aspect-[4/3] rounded overflow-hidden shadow-lg transform rotate-3 z-10">
-									<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=80&h=60&fit=crop" alt="" class="w-full h-full object-cover" />
-								</div>
-								<div class="absolute bottom-2 left-[20%] w-[55%] aspect-video rounded overflow-hidden shadow transform -rotate-2">
-									<img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=80&h=45&fit=crop" alt="" class="w-full h-full object-cover" />
+								<div class="flex-1 flex flex-col justify-center">
+									<p class="text-[5px] text-amber-400 font-medium uppercase mb-1">Tagline</p>
+									<p class="text-[8px] text-white font-bold leading-tight mb-2">Your headline goes here</p>
+									<div class="w-12 h-4 bg-amber-500 rounded flex items-center justify-center">
+										<span class="text-[5px] text-stone-900 font-semibold">Get Started</span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -243,21 +332,10 @@
 </Section>
 
 <!-- Services Section -->
-<Section padding="lg" background="muted" class="relative overflow-hidden">
-	<!-- Ambient glow -->
-	<div class="absolute top-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px]"></div>
-	<div class="absolute bottom-0 left-0 w-[300px] h-[300px] bg-accent/5 rounded-full blur-[60px]"></div>
-
-	<!-- Floating particles -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="particle absolute top-[10%] right-[10%] w-2 h-2 bg-primary/30 rounded-full"></div>
-		<div class="particle-delayed absolute bottom-[20%] left-[8%] w-3 h-3 bg-accent/25 rounded-full"></div>
-		<div class="particle-slow absolute top-[50%] right-[5%] w-2 h-2 border border-primary/20 rounded-full"></div>
-	</div>
-
-	<Container class="relative">
-		<InView animation="fade-up">
-			<div class="text-center max-w-2xl mx-auto mb-16">
+<Section padding="lg" background="muted">
+	<Container>
+		<div bind:this={servicesSection}>
+			<div class="text-center max-w-2xl mx-auto mb-16 section-header">
 				<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Services</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					What I <span class="text-primary">do</span>
@@ -266,13 +344,11 @@
 					End-to-end web solutions tailored to help your business succeed online.
 				</p>
 			</div>
-		</InView>
 
-		<div class="grid gap-8 md:grid-cols-3">
-			<InView animation="fade-up">
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
+			<div bind:this={serviceCards} class="grid gap-8 md:grid-cols-3">
+				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-primary/20">
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
 						</div>
 						<CardTitle class="text-xl">Website Design</CardTitle>
@@ -297,12 +373,10 @@
 						</ul>
 					</CardContent>
 				</Card>
-			</InView>
 
-			<InView animation="fade-up" delay={100}>
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
+				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-accent/20">
+						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
 						</div>
 						<CardTitle class="text-xl">Development</CardTitle>
@@ -327,12 +401,10 @@
 						</ul>
 					</CardContent>
 				</Card>
-			</InView>
 
-			<InView animation="fade-up" delay={200}>
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl">
+				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-4 transition-colors group-hover:bg-green-500/20">
+						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
 						<CardTitle class="text-xl">Ongoing Support</CardTitle>
@@ -357,36 +429,23 @@
 						</ul>
 					</CardContent>
 				</Card>
-			</InView>
-		</div>
+			</div>
 
-		<InView animation="fade-up" delay={300} class="mt-12 text-center">
-			<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50">
-				Explore All Services
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-			</Button>
-		</InView>
+			<div class="mt-12 text-center">
+				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50">
+					Explore All Services
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</Button>
+			</div>
+		</div>
 	</Container>
 </Section>
 
 <!-- Featured Work Section -->
-<Section padding="lg" class="relative overflow-hidden">
-	<!-- Ambient glow -->
-	<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[100px]"></div>
-	<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[80px]"></div>
-
-	<!-- Floating particles -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="particle absolute top-[15%] left-[12%] w-3 h-3 bg-primary/35 rounded-full"></div>
-		<div class="particle-delayed absolute top-[35%] right-[18%] w-4 h-4 bg-accent/25 rounded-full"></div>
-		<div class="particle-slow absolute bottom-[25%] right-[12%] w-2 h-2 bg-primary/30 rounded-full"></div>
-		<div class="particle absolute top-[25%] left-[8%] w-8 h-8 border-2 border-accent/15 rotate-45"></div>
-		<div class="particle-delayed absolute bottom-[20%] right-[8%] w-6 h-6 border-2 border-primary/15 rounded-full"></div>
-	</div>
-
-	<Container class="relative">
-		<InView animation="fade-up">
-			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16">
+<Section padding="lg" class="relative">
+	<Container>
+		<div bind:this={projectsSection}>
+			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 section-header">
 				<div>
 					<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Portfolio</Badge>
 					<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
@@ -401,51 +460,45 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
-		</InView>
 
-		<!-- Project Grid -->
-		<div class="grid gap-8 md:grid-cols-2">
-			{#each projects as project, index}
-				<InView animation="fade-up" delay={index * 100}>
-					<a href="/work/{project.slug}" class="group block">
-						<Card class="overflow-hidden border-2 transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 rounded-2xl
+			<div class="grid gap-8 md:grid-cols-2">
+				{#each projects as project, index}
+					<a href="/work" class="group block project-card">
+						<Card class="overflow-hidden border-2 hover:shadow-2xl hover:-translate-y-2 rounded-2xl transition-all duration-300
 							{index === 0
 								? 'border-slate-800/20 hover:border-amber-500/40 bg-gradient-to-b from-slate-900/5 to-transparent dark:from-slate-800/20'
 								: 'border-orange-200/30 hover:border-orange-400/50 bg-gradient-to-b from-orange-50/50 to-transparent dark:from-orange-950/20'}">
-							<!-- Project Screenshot -->
 							<div class="relative aspect-[16/10] overflow-hidden {index === 0 ? 'bg-slate-900' : 'bg-orange-50'}">
 								<img
-									src={index === 0 ? '/images/projects/joe-screenshot.png' : '/images/projects/dentist-screenshot.png'}
+									src={index === 0 ? '/images/projects/joe-screenshot-light.png' : '/images/projects/dentist-screenshot.jpg'}
+									loading="lazy"
 									alt={project.title}
-									class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+									class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
 								/>
 
-								<!-- Badge -->
 								<div class="absolute top-4 left-4 z-10">
 									{#if project.isClientWork}
-										<Badge class="{index === 0 ? 'bg-amber-500/90' : 'bg-green-500/90'} text-white shadow-lg backdrop-blur-sm">
+										<Badge class="{index === 0 ? 'bg-amber-500/90' : 'bg-green-500/90'} text-white shadow-lg">
 											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-1"><path d="M20 6 9 17l-5-5"/></svg>
 											Client Work
 										</Badge>
 									{:else}
-										<Badge class="{index === 0 ? 'bg-slate-800/90 text-amber-400' : 'bg-white/90 text-orange-600'} backdrop-blur-sm shadow-lg">
+										<Badge class="{index === 0 ? 'bg-slate-800/90 text-amber-400' : 'bg-white/90 text-orange-600'} shadow-lg">
 											Demo Project
 										</Badge>
 									{/if}
 								</div>
 
-								<!-- Live site indicator -->
 								{#if project.liveUrl}
 									<div class="absolute top-4 right-4 z-10">
-										<div class="flex items-center gap-2 px-3 py-1.5 backdrop-blur-sm rounded-full text-sm shadow-lg
+										<div class="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm shadow-lg
 											{index === 0 ? 'bg-slate-800/90 text-white' : 'bg-white/90 text-gray-700'}">
-											<span class="w-2 h-2 {index === 0 ? 'bg-amber-400' : 'bg-green-500'} rounded-full animate-pulse"></span>
+											<span class="w-2 h-2 {index === 0 ? 'bg-amber-400' : 'bg-green-500'} rounded-full"></span>
 											Live
 										</div>
 									</div>
 								{/if}
 
-								<!-- Hover overlay -->
 								<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6
 									{index === 0 ? 'bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent' : 'bg-gradient-to-t from-orange-900/80 via-transparent to-transparent'}">
 									<span class="px-4 py-2 rounded-full text-sm font-medium shadow-lg
@@ -455,7 +508,6 @@
 								</div>
 							</div>
 
-							<!-- Project Info -->
 							<CardContent class="p-6">
 								<div class="flex items-start justify-between gap-4">
 									<div class="space-y-2">
@@ -463,7 +515,7 @@
 											<Badge variant="outline" class="text-xs {index === 0 ? 'border-amber-500/50 text-amber-600 dark:text-amber-400' : 'border-orange-400/50 text-orange-600 dark:text-orange-400'}">{project.industry}</Badge>
 											<span class="text-xs text-muted-foreground">{project.year}</span>
 										</div>
-										<h3 class="text-xl font-bold transition-colors {index === 0 ? 'group-hover:text-amber-500' : 'group-hover:text-orange-500'}">{project.title}</h3>
+										<h3 class="text-xl font-bold {index === 0 ? 'group-hover:text-amber-500' : 'group-hover:text-orange-500'} transition-colors">{project.title}</h3>
 										<p class="text-muted-foreground line-clamp-2">{project.tagline}</p>
 									</div>
 									<div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
@@ -476,29 +528,17 @@
 							</CardContent>
 						</Card>
 					</a>
-				</InView>
-			{/each}
+				{/each}
+			</div>
 		</div>
 	</Container>
 </Section>
 
 <!-- Why Choose Me Section -->
-<Section padding="lg" background="muted" class="relative overflow-hidden">
-	<!-- Ambient glow -->
-	<div class="absolute top-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[80px]"></div>
-	<div class="absolute bottom-0 right-0 w-[350px] h-[350px] bg-accent/5 rounded-full blur-[70px]"></div>
-
-	<!-- Floating particles -->
-	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="particle absolute top-[20%] right-[15%] w-2.5 h-2.5 bg-primary/30 rounded-full"></div>
-		<div class="particle-delayed absolute bottom-[15%] left-[10%] w-3 h-3 bg-accent/25 rounded-full"></div>
-		<div class="particle-slow absolute top-[40%] left-[5%] w-5 h-5 border border-primary/20 rounded-full"></div>
-		<div class="particle absolute bottom-[30%] right-[8%] w-4 h-4 border border-accent/15 rotate-45"></div>
-	</div>
-
-	<Container class="relative">
-		<InView animation="fade-up">
-			<div class="text-center max-w-2xl mx-auto mb-16">
+<Section padding="lg" background="muted">
+	<Container>
+		<div bind:this={whyMeSection}>
+			<div class="text-center max-w-2xl mx-auto mb-16 section-header">
 				<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Why Me</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					Why work <span class="text-primary">with me</span>
@@ -507,13 +547,11 @@
 					No agencies, no hand-offs—just direct communication and dedicated attention.
 				</p>
 			</div>
-		</InView>
 
-		<div class="grid gap-6 sm:grid-cols-2">
-			<InView animation="fade-up">
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-primary/30 hover:shadow-xl rounded-2xl">
+			<div class="grid gap-6 sm:grid-cols-2">
+				<Card class="why-card group h-full border-2 hover:border-primary/30 hover:shadow-xl rounded-2xl transition-all duration-300">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/20">
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Clear Communication</h3>
@@ -522,12 +560,10 @@
 						</p>
 					</CardContent>
 				</Card>
-			</InView>
 
-			<InView animation="fade-up" delay={100}>
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-accent/30 hover:shadow-xl rounded-2xl">
+				<Card class="why-card group h-full border-2 hover:border-accent/30 hover:shadow-xl rounded-2xl transition-all duration-300">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-accent/20">
+						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Results-Focused</h3>
@@ -536,12 +572,10 @@
 						</p>
 					</CardContent>
 				</Card>
-			</InView>
 
-			<InView animation="fade-up" delay={200}>
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-primary/30 hover:shadow-xl rounded-2xl">
+				<Card class="why-card group h-full border-2 hover:border-primary/30 hover:shadow-xl rounded-2xl transition-all duration-300">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-primary/20">
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Fast Delivery</h3>
@@ -550,12 +584,10 @@
 						</p>
 					</CardContent>
 				</Card>
-			</InView>
 
-			<InView animation="fade-up" delay={300}>
-				<Card class="group h-full border-2 transition-all duration-300 hover:border-green-500/30 hover:shadow-xl rounded-2xl">
+				<Card class="why-card group h-full border-2 hover:border-green-500/30 hover:shadow-xl rounded-2xl transition-all duration-300">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-6 transition-colors group-hover:bg-green-500/20">
+						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Full Ownership</h3>
@@ -564,125 +596,52 @@
 						</p>
 					</CardContent>
 				</Card>
-			</InView>
-		</div>
+			</div>
 
-		<InView animation="fade-up" delay={400} class="mt-12 text-center">
-			<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 transition-all duration-150 hover:!bg-foreground/5 hover:!border-foreground/20 hover:!text-foreground">
-				Learn More About Me
-				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-			</Button>
-		</InView>
+			<div class="mt-12 text-center">
+				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 transition-colors duration-150">
+					Learn More About Me
+					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+				</Button>
+			</div>
+		</div>
 	</Container>
 </Section>
 
 <style>
-	/* TASK 4: All animations respect prefers-reduced-motion */
+	/* BIG BOLD GLOW EFFECTS - prominent presence */
+	.hero-glow-main {
+		background: radial-gradient(ellipse,
+			hsl(0 85% 55% / 0.5) 0%,
+			hsl(0 80% 50% / 0.35) 25%,
+			hsl(0 75% 45% / 0.15) 50%,
+			transparent 75%
+		);
+	}
+
+	.hero-glow-blue {
+		background: radial-gradient(ellipse,
+			hsl(220 90% 60% / 0.4) 0%,
+			hsl(220 85% 55% / 0.25) 30%,
+			hsl(220 80% 50% / 0.1) 55%,
+			transparent 75%
+		);
+	}
+
+	.hero-glow-center {
+		background: radial-gradient(ellipse,
+			hsl(var(--primary) / 0.12) 0%,
+			hsl(var(--primary) / 0.05) 40%,
+			transparent 70%
+		);
+	}
+
+	/* Respect reduced motion */
 	@media (prefers-reduced-motion: reduce) {
-		.particle,
-		.particle-delayed,
-		.particle-slow,
-		.particle-rotate,
-		.particle-rotate-delayed,
-		.phone-float,
-		.glow-orb,
-		.glow-orb-delayed,
-		.glow-orb-slow {
-			animation: none !important;
-		}
-	}
-
-	/* Floating particles - simple Y translate */
-	.particle {
-		will-change: transform;
-		animation: float 6s ease-in-out infinite;
-	}
-
-	.particle-delayed {
-		will-change: transform;
-		animation: float 6s ease-in-out infinite;
-		animation-delay: 2s;
-	}
-
-	.particle-slow {
-		will-change: transform;
-		animation: float 8s ease-in-out infinite;
-		animation-delay: 1s;
-	}
-
-	/* Rotating particles */
-	.particle-rotate {
-		will-change: transform;
-		animation: float-rotate 10s ease-in-out infinite;
-	}
-
-	.particle-rotate-delayed {
-		will-change: transform;
-		animation: float-rotate 12s ease-in-out infinite;
-		animation-delay: 3s;
-	}
-
-	/* Phone float animation */
-	.phone-float {
-		will-change: transform;
-		animation: phone-bob 4s ease-in-out infinite;
-	}
-
-	/* Glow orb animations - subtle opacity pulse */
-	.glow-orb {
-		will-change: opacity;
-		animation: glow-pulse 8s ease-in-out infinite;
-	}
-
-	.glow-orb-delayed {
-		will-change: opacity;
-		animation: glow-pulse 8s ease-in-out infinite;
-		animation-delay: 2s;
-	}
-
-	.glow-orb-slow {
-		will-change: opacity;
-		animation: glow-pulse 10s ease-in-out infinite;
-		animation-delay: 4s;
-	}
-
-	@keyframes float {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-15px); }
-	}
-
-	@keyframes float-rotate {
-		0%, 100% { transform: translateY(0) rotate(0deg); }
-		50% { transform: translateY(-10px) rotate(180deg); }
-	}
-
-	@keyframes phone-bob {
-		0%, 100% { transform: translateY(0); }
-		50% { transform: translateY(-12px); }
-	}
-
-	@keyframes glow-pulse {
-		0%, 100% { opacity: 0.6; }
-		50% { opacity: 1; }
-	}
-
-	/* Animated curly underline */
-	.curly-line path {
-		stroke-dasharray: 400;
-		stroke-dashoffset: 400;
-		animation: draw-curly 1.5s ease-out 0.5s forwards;
-	}
-
-	@keyframes draw-curly {
-		to {
-			stroke-dashoffset: 0;
-		}
-	}
-
-	@media (prefers-reduced-motion: reduce) {
-		.curly-line path {
-			animation: none;
-			stroke-dashoffset: 0;
+		:global(*) {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
 		}
 	}
 </style>

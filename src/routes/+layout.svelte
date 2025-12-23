@@ -2,8 +2,14 @@
 	import '../app.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import { Header, Footer } from '$lib/components/layout';
+	import { afterNavigate } from '$app/navigation';
 
 	let { children } = $props();
+
+	// Scroll to top on navigation/reload
+	afterNavigate(() => {
+		window.scrollTo({ top: 0, behavior: 'instant' });
+	});
 </script>
 
 <svelte:head>

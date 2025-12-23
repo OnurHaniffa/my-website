@@ -38,12 +38,12 @@ export interface Project {
 
 export const projects: Project[] = [
 	{
-		slug: 'designs-by-joe',
+		slug: 'joe',
 		title: 'Designs by Joe',
 		tagline: 'Fan art for the fans',
 		description: 'Portfolio website for a fan artist and illustrator specializing in pin designs, trading cards, logos, and stickers inspired by popular fandoms.',
 		thumbnail: '/images/projects/designsbyjoe-thumb.jpg',
-		screenshotDesktop: '/images/projects/joe-screenshot.png',
+		screenshotDesktop: '/images/projects/joe-screenshot-light.png',
 		screenshotMobile: '/images/projects/designsbyjoe-mobile.png',
 		industry: 'Fan Art & Illustration',
 		services: ['Web Design', 'Development', 'Branding'],
@@ -60,7 +60,7 @@ export const projects: Project[] = [
 		],
 		testimonial: {
 			quote:
-				'The website perfectly captures my style and has helped me land bigger clients. The whole process was smooth and collaborative.',
+				'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.',
 			author: 'Joe',
 			role: 'Fan Artist & Illustrator'
 		},
@@ -75,12 +75,12 @@ export const projects: Project[] = [
 		enableLiveDemo: false
 	},
 	{
-		slug: 'dental-clinic-template',
+		slug: 'pearl-dental',
 		title: 'Pearl Dental',
 		tagline: 'Modern dental care, designed for you',
 		description: 'A warm, trustworthy website for a dental practice featuring same-week appointments, service showcases, and easy booking flows.',
 		thumbnail: '/images/projects/dental-thumb.jpg',
-		screenshotDesktop: '/images/projects/dentist-screenshot.png',
+		screenshotDesktop: '/images/projects/dentist-screenshot.jpg',
 		screenshotMobile: '/images/projects/dental-mobile.png',
 		industry: 'Healthcare',
 		services: ['UI/UX Design', 'Frontend Development', 'Template Design'],
@@ -100,7 +100,7 @@ export const projects: Project[] = [
 			'/images/projects/dental-services.jpg',
 			'/images/projects/dental-booking.jpg'
 		],
-		liveUrl: 'https://pearl-dental.vercel.app',
+		liveUrl: 'https://dentist-template-h0hor3804-onurhaniffas-projects.vercel.app',
 		isClientWork: false,
 		showcaseType: 'live-demo',
 		enableLiveDemo: true

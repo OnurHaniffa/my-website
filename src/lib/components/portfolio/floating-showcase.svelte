@@ -32,7 +32,7 @@
 		mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 15;
 	}
 
-	const accentColor = variant === 'primary' ? 'primary' : 'accent';
+	const accentColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 </script>
 
 <div

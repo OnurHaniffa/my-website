@@ -24,10 +24,10 @@
 	let isLoading = $state(true);
 	let isExpanded = $state(false);
 	let viewMode = $state<'desktop' | 'tablet' | 'mobile'>('desktop');
-	let iframeRef: HTMLIFrameElement;
+	let iframeRef = $state<HTMLIFrameElement | null>(null);
 	let hasError = $state(false);
 
-	const accentColor = variant === 'primary' ? 'primary' : 'accent';
+	const accentColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 
 	// Viewport sizes for different devices
 	const viewportSizes = {

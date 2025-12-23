@@ -52,12 +52,13 @@
 		mouseY = ((e.clientY - rect.top) / rect.height - 0.5) * 20;
 	}
 
-	const gradientClass =
+	const gradientClass = $derived(
 		variant === 'primary'
 			? 'from-primary/30 via-primary/10 to-accent/20'
-			: 'from-accent/30 via-accent/10 to-primary/20';
+			: 'from-accent/30 via-accent/10 to-primary/20'
+	);
 
-	const glowColor = variant === 'primary' ? 'primary' : 'accent';
+	const glowColor = $derived(variant === 'primary' ? 'primary' : 'accent');
 </script>
 
 <div
