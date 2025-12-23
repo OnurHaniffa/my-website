@@ -144,8 +144,8 @@
 					</ul>
 					<p class="text-muted-foreground leading-relaxed mt-4">
 						To exercise any of these rights, please contact me at
-						<a href="mailto:hello@ohaniffa.com" class="text-primary hover:underline"
-							>hello@ohaniffa.com</a
+						<a href="mailto:contact@onurhaniffa.com" class="text-primary hover:underline"
+							>contact@onurhaniffa.com</a
 						>.
 					</p>
 				</section>
@@ -206,8 +206,8 @@
 						please contact me at:
 					</p>
 					<p class="mt-4">
-						<a href="mailto:hello@ohaniffa.com" class="text-primary hover:underline font-medium">
-							hello@ohaniffa.com
+						<a href="mailto:contact@onurhaniffa.com" class="text-primary hover:underline font-medium">
+							contact@onurhaniffa.com
 						</a>
 					</p>
 				</section>

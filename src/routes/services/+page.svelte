@@ -281,7 +281,7 @@
 			class:opacity-0={!mounted}
 			class:translate-y-8={!mounted}
 		>
-			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 select-none block -mb-4 sm:-mb-8">SERVICES</span>
+			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">SERVICES</span>
 			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10">
 				Websites that <span class="text-primary">work</span>
 			</h1>

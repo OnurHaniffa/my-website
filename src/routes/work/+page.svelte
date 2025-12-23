@@ -196,7 +196,7 @@
 					class:opacity-100={mounted}
 					class:translate-y-0={mounted}
 				>
-					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 select-none -mb-8 sm:-mb-12 lg:-mb-16">WORK</span>
+					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none -mb-8 sm:-mb-12 lg:-mb-16">WORK</span>
 					<h1 class="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl relative z-10">
 						<span class="sm:hidden">Work</span> that <span class="text-primary">speaks</span> for itself
 					</h1>
@@ -218,26 +218,26 @@
 			</div>
 		</div>
 
-		<!-- Project Toggle Slider - left aligned -->
+		<!-- Project Toggle Slider - centered -->
 		<div
-			class="mt-12 flex justify-start transition-all duration-700 ease-out"
+			class="mt-12 flex justify-center transition-all duration-700 ease-out"
 			class:opacity-0={!mounted}
 			class:translate-y-6={!mounted}
 			class:opacity-100={mounted}
 			class:translate-y-0={mounted}
 			style="transition-delay: 200ms;"
 		>
-			<div class="filter-toggle relative flex items-center bg-muted rounded-full p-1.5">
+			<div class="filter-toggle relative flex items-center bg-muted/80 dark:bg-muted/50 backdrop-blur-sm rounded-full p-1.5 border border-border/50 shadow-sm">
 				<div
-					class="filter-slider absolute top-1.5 bottom-1.5 rounded-full shadow-lg"
+					class="filter-slider absolute top-1.5 bottom-1.5 rounded-full shadow-lg transition-all duration-300"
 					class:slide-left={activeFilter === 'concept'}
 					class:slide-right={activeFilter === 'client'}
-					style="background-color: {activeFilter === 'concept' ? '#4a7c59' : '#3b82f6'}; box-shadow: 0 10px 15px -3px {activeFilter === 'concept' ? 'rgba(74, 124, 89, 0.3)' : 'rgba(59, 130, 246, 0.3)'};"
+					style="background-color: {activeFilter === 'concept' ? '#4a7c59' : '#3b82f6'}; box-shadow: 0 10px 15px -3px {activeFilter === 'concept' ? 'rgba(74, 124, 89, 0.35)' : 'rgba(59, 130, 246, 0.35)'};"
 				></div>
 
 				<button
 					onclick={() => activeFilter = 'concept'}
-					class="relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-150 {activeFilter === 'concept'
+					class="relative z-10 px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 {activeFilter === 'concept'
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
@@ -245,7 +245,7 @@
 				</button>
 				<button
 					onclick={() => activeFilter = 'client'}
-					class="relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-150 {activeFilter === 'client'
+					class="relative z-10 px-8 py-3 rounded-full text-sm font-semibold tracking-wide transition-all duration-200 {activeFilter === 'client'
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
@@ -262,7 +262,7 @@
 {#if activeFilter === 'concept'}
 <div class="animate-fade-in">
 <section bind:this={dentalSectionRef} class="relative py-20 lg:py-32 overflow-hidden">
-	<div class="absolute inset-0 bg-gradient-to-br from-[#f8f5f0] via-[#f5f0e8] to-[#e8f0e8]"></div>
+	<div class="absolute inset-0 bg-gradient-to-br from-[#f8f5f0] via-[#f5f0e8] to-[#e8f0e8] dark:from-[#1a1a1a] dark:via-[#1f1f1f] dark:to-[#1a1a1a]"></div>
 	<div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background to-transparent"></div>
 	<div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
 
@@ -270,7 +270,7 @@
 		<!-- Project Number & Title Header -->
 		<div class="flex items-end justify-between mb-12 lg:mb-16">
 			<div>
-				<span class="text-[120px] lg:text-[180px] font-bold leading-none text-[#4a7c59]/10 select-none">01</span>
+				<span class="text-[120px] lg:text-[180px] font-bold leading-none text-[#4a7c59]/10 dark:text-[#4a7c59]/20 select-none">01</span>
 			</div>
 			<div class="text-right pb-4">
 				<Badge class="mb-3 bg-[#4a7c59]/10 text-[#4a7c59] border-[#4a7c59]/20">Healthcare</Badge>
@@ -380,27 +380,27 @@
 		<div class="mt-20 lg:mt-28">
 			<div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
 				<!-- The Challenge -->
-				<div class="bg-white p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20">
+				<div class="bg-white dark:bg-white/10 p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20 dark:border-[#4a7c59]/30">
 					<div class="flex items-center gap-3 mb-4">
-						<div class="w-10 h-10 rounded-full bg-[#4a7c59]/10 flex items-center justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						<div class="w-10 h-10 rounded-full bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] dark:text-[#6a9c79]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d]">The Challenge</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">The Challenge</h3>
 					</div>
-					<p class="text-[#5a5a5a] leading-relaxed">
+					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
 						Most dental websites feel cold and clinical, or outdated and unprofessional. Pearl Dental needed a site that builds trust instantly while remaining warm and approachable—making new patients feel confident before they even book.
 					</p>
 				</div>
 
 				<!-- The Solution -->
-				<div class="bg-white p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20">
+				<div class="bg-white dark:bg-white/10 p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20 dark:border-[#c4a574]/30">
 					<div class="flex items-center gap-3 mb-4">
-						<div class="w-10 h-10 rounded-full bg-[#c4a574]/20 flex items-center justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c4a574]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+						<div class="w-10 h-10 rounded-full bg-[#c4a574]/20 dark:bg-[#c4a574]/30 flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c4a574] dark:text-[#d4b584]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d]">The Solution</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">The Solution</h3>
 					</div>
-					<p class="text-[#5a5a5a] leading-relaxed">
+					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
 						I designed a clean, modern website with trust-building elements like reviews, years of expertise, and clear service presentation. The warm color palette and friendly imagery balance professionalism with approachability.
 					</p>
 				</div>
@@ -410,7 +410,7 @@
 		<!-- Pull Quote - ORIGINAL STYLING -->
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
-				<p class="text-2xl lg:text-3xl font-light text-[#2d2d2d] leading-relaxed italic">
+				<p class="text-2xl lg:text-3xl font-light text-[#2d2d2d] dark:text-gray-200 leading-relaxed italic">
 					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: make patients feel <span class="font-semibold text-[#4a7c59] not-italic">welcome</span> before they even walk through the door.<span class="text-[#c4a574] font-serif text-4xl">'</span>
 				</p>
 				<!-- Decorative line -->
@@ -733,7 +733,7 @@
 <Section padding="lg" class="relative overflow-hidden">
 	<Container size="content">
 		<InView animation="fade-up" class="text-center">
-			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 select-none">03</span>
+			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">03</span>
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl -mt-8">
 				Have a project in mind?
 			</h2>

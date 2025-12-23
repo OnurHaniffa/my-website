@@ -143,31 +143,34 @@
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
 		<!-- MAIN GLOW - Big red presence in corner -->
-		<div class="absolute -top-[200px] -right-[200px] w-[1000px] h-[1000px] hero-glow-main"></div>
+		<div class="absolute -top-[100px] -right-[100px] w-[400px] h-[400px] sm:w-[600px] sm:h-[600px] lg:-top-[200px] lg:-right-[200px] lg:w-[1000px] lg:h-[1000px] hero-glow-main"></div>
 		<!-- Secondary blue glow - bottom left -->
-		<div class="absolute -bottom-[300px] -left-[300px] w-[900px] h-[900px] hero-glow-blue"></div>
+		<div class="absolute -bottom-[150px] -left-[150px] w-[350px] h-[350px] sm:w-[500px] sm:h-[500px] lg:-bottom-[300px] lg:-left-[300px] lg:w-[900px] lg:h-[900px] hero-glow-blue"></div>
 		<!-- Center ambient fill -->
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[800px] hero-glow-center"></div>
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[400px] sm:w-[800px] sm:h-[600px] lg:w-[1200px] lg:h-[800px] hero-glow-center"></div>
+		<!-- Subtle grain texture -->
+		<div class="absolute inset-0 opacity-[0.015] dark:opacity-[0.025] pointer-events-none mix-blend-overlay"
+			style="background-image: url('data:image/svg+xml,%3Csvg viewBox=&apos;0 0 400 400&apos; xmlns=&apos;http://www.w3.org/2000/svg&apos;%3E%3Cfilter id=&apos;noise&apos;%3E%3CfeTurbulence type=&apos;fractalNoise&apos; baseFrequency=&apos;0.9&apos; numOctaves=&apos;4&apos; /%3E%3C/filter%3E%3Crect width=&apos;100%25&apos; height=&apos;100%25&apos; filter=&apos;url(%23noise)&apos; /%3E%3C/svg%3E');"></div>
 	</div>
 
 	<!-- Decorative circles - hidden on mobile -->
-	<div class="hidden lg:block absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary/10 pointer-events-none"></div>
-	<div class="hidden lg:block absolute top-40 right-[15%] w-48 h-48 rounded-full border border-accent/10 pointer-events-none"></div>
-	<div class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
-	<div class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
+	<div aria-hidden="true" class="hidden lg:block absolute top-20 right-[10%] w-72 h-72 rounded-full border border-primary/10 pointer-events-none"></div>
+	<div aria-hidden="true" class="hidden lg:block absolute top-40 right-[15%] w-48 h-48 rounded-full border border-accent/10 pointer-events-none"></div>
+	<div aria-hidden="true" class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
+	<div aria-hidden="true" class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
 
-	<Container class="relative pt-32 pb-20 lg:pt-40 lg:pb-32">
+	<Container class="relative pt-36 pb-24 lg:pt-44 lg:pb-36">
 		<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 			<!-- Left Content -->
-			<div bind:this={heroContent} class="space-y-8">
-				<Badge variant="outline" class="border-primary/30 text-primary bg-primary/5 px-4 py-1.5">
+			<div bind:this={heroContent} class="space-y-6 sm:space-y-8 lg:space-y-10">
+				<Badge variant="outline" class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
 					Available for Projects
 				</Badge>
 
 				<!-- Headline with animated underline -->
 				<div class="relative">
-					<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
 						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">customers</span>
 							<!-- Curly underline -->
 							<svg bind:this={curlyLine} class="absolute -bottom-6 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -186,34 +189,34 @@
 				</div>
 
 				<!-- Description -->
-				<p class="text-xl text-muted-foreground max-w-lg leading-relaxed">
+				<p class="text-lg text-muted-foreground/90 max-w-md leading-relaxed">
 					From first click to final conversion—I design and develop websites that don't just look good, they deliver real business results.
 				</p>
 
 				<!-- Quick Stats -->
-				<div class="flex flex-wrap gap-6 py-4">
+				<div class="flex flex-wrap gap-6 sm:gap-8 py-4">
 					<div class="text-center">
 						<p class="text-3xl font-bold text-primary">≤<Counter value={24} duration={2500} suffix="h" /></p>
 						<p class="text-sm text-muted-foreground">Response time</p>
 					</div>
-					<div class="w-px bg-border"></div>
+					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
 						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />–<Counter value={3} duration={2200} delay={300} /> wks</p>
 						<p class="text-sm text-muted-foreground">Avg. project</p>
 					</div>
-					<div class="w-px bg-border"></div>
+					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold text-green-600">SEO</p>
+						<p class="text-3xl font-bold text-green-600 dark:text-green-400">SEO</p>
 						<p class="text-sm text-muted-foreground">Optimized</p>
 					</div>
 				</div>
 
 				<div class="flex flex-wrap gap-4">
-					<Button size="lg" href="/work" class="group text-base px-8 py-6 rounded-full shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow duration-300">
+					<Button size="lg" href="/work" class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
 						View My Work
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<Button size="lg" variant="outline" href="/contact" class="text-base px-8 py-6 rounded-full border-2 hover:bg-primary/5 hover:border-primary/50 transition-colors duration-300">
+					<Button size="lg" variant="ghost" href="/contact" class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
 						Let's Talk
 					</Button>
 				</div>
@@ -295,7 +298,7 @@
 				</div>
 
 				<!-- Phone mockup -->
-				<div class="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8">
+				<div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 lg:-bottom-8 lg:-right-8">
 					<div class="bg-zinc-900 rounded-[2rem] shadow-2xl p-1.5 w-24 lg:w-32 relative">
 						<div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-zinc-700/50 via-transparent to-zinc-800/50 pointer-events-none"></div>
 						<div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-zinc-800 rounded-full z-10"></div>
@@ -331,12 +334,15 @@
 	</Container>
 </Section>
 
+<!-- Subtle section separator -->
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
 <!-- Services Section -->
 <Section padding="lg" background="muted">
 	<Container>
 		<div bind:this={servicesSection}>
-			<div class="text-center max-w-2xl mx-auto mb-16 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Services</Badge>
+			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Services</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					What I <span class="text-primary">do</span>
 				</h2>
@@ -346,10 +352,10 @@
 			</div>
 
 			<div bind:this={serviceCards} class="grid gap-8 md:grid-cols-3">
-				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
+				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-primary/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-primary/40">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-white transition-colors duration-300"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
 						</div>
 						<CardTitle class="text-xl">Website Design</CardTitle>
 						<CardDescription class="text-base">
@@ -374,10 +380,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
+				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-accent/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-accent/40">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-white transition-colors duration-300"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
 						</div>
 						<CardTitle class="text-xl">Development</CardTitle>
 						<CardDescription class="text-base">
@@ -402,10 +408,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="group h-full border-2 hover:border-primary/30 hover:shadow-xl hover:-translate-y-1 rounded-2xl transition-all duration-300">
+				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-green-500/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-green-500/40">
 					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
 						<CardTitle class="text-xl">Ongoing Support</CardTitle>
 						<CardDescription class="text-base">
@@ -415,15 +421,15 @@
 					<CardContent>
 						<ul class="space-y-2 text-sm text-muted-foreground">
 							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600"><path d="M20 6 9 17l-5-5"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
 								Regular updates
 							</li>
 							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600"><path d="M20 6 9 17l-5-5"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
 								Security monitoring
 							</li>
 							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600"><path d="M20 6 9 17l-5-5"/></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
 								Priority support
 							</li>
 						</ul>
@@ -432,7 +438,7 @@
 			</div>
 
 			<div class="mt-12 text-center">
-				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50">
+				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
 					Explore All Services
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -441,13 +447,16 @@
 	</Container>
 </Section>
 
+<!-- Subtle section separator -->
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
 <!-- Featured Work Section -->
 <Section padding="lg" class="relative">
 	<Container>
 		<div bind:this={projectsSection}>
-			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 section-header">
+			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 pt-10 lg:pt-14 section-header">
 				<div>
-					<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Portfolio</Badge>
+					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Portfolio</Badge>
 					<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 						Recent <span class="text-primary">Projects</span>
 					</h2>
@@ -455,7 +464,7 @@
 						Real projects, real results. See what I can do for you.
 					</p>
 				</div>
-				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50">
+				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
 					View All Work
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -463,17 +472,17 @@
 
 			<div class="grid gap-8 md:grid-cols-2">
 				{#each projects as project, index}
-					<a href="/work" class="group block project-card">
-						<Card class="overflow-hidden border-2 hover:shadow-2xl hover:-translate-y-2 rounded-2xl transition-all duration-300
+					<a href="/work" class="group block project-card focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:rounded-2xl">
+						<Card class="overflow-hidden border border-border/30 shadow-lg hover:shadow-2xl hover:-translate-y-1 rounded-2xl transition-all duration-500
 							{index === 0
-								? 'border-slate-800/20 hover:border-amber-500/40 bg-gradient-to-b from-slate-900/5 to-transparent dark:from-slate-800/20'
-								: 'border-orange-200/30 hover:border-orange-400/50 bg-gradient-to-b from-orange-50/50 to-transparent dark:from-orange-950/20'}">
+								? 'hover:border-amber-500/40 bg-gradient-to-b from-slate-900/5 to-transparent dark:from-slate-800/20'
+								: 'hover:border-orange-400/50 bg-gradient-to-b from-orange-50/50 to-transparent dark:from-orange-950/20'}">
 							<div class="relative aspect-[16/10] overflow-hidden {index === 0 ? 'bg-slate-900' : 'bg-orange-50'}">
 								<img
 									src={index === 0 ? '/images/projects/joe-screenshot-light.png' : '/images/projects/dentist-screenshot.jpg'}
 									loading="lazy"
 									alt={project.title}
-									class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+									class="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.02]"
 								/>
 
 								<div class="absolute top-4 left-4 z-10">
@@ -518,7 +527,7 @@
 										<h3 class="text-xl font-bold {index === 0 ? 'group-hover:text-amber-500' : 'group-hover:text-orange-500'} transition-colors">{project.title}</h3>
 										<p class="text-muted-foreground line-clamp-2">{project.tagline}</p>
 									</div>
-									<div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300
+									<div class="flex-shrink-0 w-11 h-11 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-all duration-300
 										{index === 0
 											? 'bg-amber-500/10 group-hover:bg-amber-500 group-hover:text-slate-900'
 											: 'bg-orange-500/10 group-hover:bg-orange-500 group-hover:text-white'}">
@@ -534,12 +543,15 @@
 	</Container>
 </Section>
 
+<!-- Subtle section separator -->
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
 <!-- Why Choose Me Section -->
 <Section padding="lg" background="muted">
 	<Container>
 		<div bind:this={whyMeSection}>
-			<div class="text-center max-w-2xl mx-auto mb-16 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/30 text-primary bg-primary/5">Why Me</Badge>
+			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Why Me</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					Why work <span class="text-primary">with me</span>
 				</h2>
@@ -549,10 +561,10 @@
 			</div>
 
 			<div class="grid gap-6 sm:grid-cols-2">
-				<Card class="why-card group h-full border-2 hover:border-primary/30 hover:shadow-xl rounded-2xl transition-all duration-300">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Clear Communication</h3>
 						<p class="text-muted-foreground">
@@ -561,10 +573,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-2 hover:border-accent/30 hover:shadow-xl rounded-2xl transition-all duration-300">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-inherit"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Results-Focused</h3>
 						<p class="text-muted-foreground">
@@ -573,10 +585,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-2 hover:border-primary/30 hover:shadow-xl rounded-2xl transition-all duration-300">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Fast Delivery</h3>
 						<p class="text-muted-foreground">
@@ -585,10 +597,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-2 hover:border-green-500/30 hover:shadow-xl rounded-2xl transition-all duration-300">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 flex items-center justify-center mb-6 group-hover:bg-green-500/20 transition-colors">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+						<div class="w-14 h-14 rounded-2xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-inherit"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Full Ownership</h3>
 						<p class="text-muted-foreground">
@@ -599,7 +611,7 @@
 			</div>
 
 			<div class="mt-12 text-center">
-				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 transition-colors duration-150">
+				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-150">
 					Learn More About Me
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>

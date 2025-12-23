@@ -5,14 +5,14 @@
 	const currentYear = new Date().getFullYear();
 </script>
 
-<!-- Curved top edge -->
+<!-- Curved top edge - wave separates page from dark footer -->
 <div class="bg-background">
 	<svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" preserveAspectRatio="none">
-		<path d="M0 60V30C360 60 720 0 1080 30C1260 45 1380 60 1440 60V60H0Z" class="fill-foreground"/>
+		<path d="M0 60V30C360 60 720 0 1080 30C1260 45 1380 60 1440 60V60H0Z" style="fill: oklch(0.15 0.01 260);"/>
 	</svg>
 </div>
 
-<footer class="relative bg-foreground overflow-hidden -mt-1">
+<footer class="relative overflow-hidden -mt-1" style="background: oklch(0.15 0.01 260);">
 	<!-- Ambient background elements -->
 	<div class="absolute inset-0 pointer-events-none overflow-hidden">
 		<!-- Large decorative text -->

@@ -223,7 +223,7 @@
 						<!-- Card -->
 						<div class="mobile-card-inner">
 							<div class="flex items-center gap-3 mb-3">
-								<div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: {step.lightColor}">
+								<div class="mobile-step-icon w-10 h-10 rounded-lg flex items-center justify-center" style="--light-color: {step.lightColor}; --color: {step.color}">
 									<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={step.color} stroke-width="2">
 										{@html step.icon}
 									</svg>
@@ -267,6 +267,10 @@
 		transition: transform 0.15s ease-out, border-color 0.15s ease-out;
 		will-change: transform;
 		overflow: hidden;
+	}
+
+	:global(.dark) .card-inner {
+		background: linear-gradient(135deg, hsl(var(--card)) 0%, hsl(var(--card)) 80%, color-mix(in oklch, var(--color) 15%, transparent) 150%);
 	}
 
 	.process-card:hover .card-inner {
@@ -333,6 +337,11 @@
 		transition: transform 0.15s ease-out;
 		will-change: transform;
 	}
+
+	:global(.dark) .step-icon {
+		background: color-mix(in oklch, var(--color) 25%, transparent);
+	}
+
 	.process-card:hover .step-icon {
 		transform: scale(1.08) translateZ(0);
 	}
@@ -369,6 +378,11 @@
 		border-radius: 1rem;
 		box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
 	}
+
+	:global(.dark) .tablet-card {
+		background: linear-gradient(135deg, hsl(var(--card)) 0%, color-mix(in oklch, var(--color) 10%, transparent) 200%);
+	}
+
 	.tablet-icon {
 		position: relative;
 		width: 48px;
@@ -380,6 +394,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
+	}
+
+	:global(.dark) .tablet-icon {
+		background: color-mix(in oklch, var(--color) 25%, transparent);
 	}
 	.tablet-num {
 		position: absolute;
@@ -404,6 +422,18 @@
 		border: 1px solid hsl(var(--border));
 		border-radius: 0.875rem;
 		box-shadow: 0 2px 12px -4px rgba(0, 0, 0, 0.06);
+	}
+
+	:global(.dark) .mobile-card-inner {
+		background: linear-gradient(135deg, hsl(var(--card)) 0%, color-mix(in oklch, var(--color) 10%, transparent) 250%);
+	}
+
+	.mobile-step-icon {
+		background: var(--light-color);
+	}
+
+	:global(.dark) .mobile-step-icon {
+		background: color-mix(in oklch, var(--color) 25%, transparent);
 	}
 
 	/* Reduced motion */

@@ -6,9 +6,12 @@
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
 	import { onMount } from 'svelte';
+	import { gsap } from 'gsap';
 
 	let mounted = $state(false);
 	let formState = $state<'idle' | 'submitting' | 'success' | 'error'>('idle');
+	let curlyLine: SVGSVGElement;
+	let prefersReducedMotion = $state(false);
 
 	// Form fields
 	let name = $state('');
@@ -17,7 +20,20 @@
 	let message = $state('');
 
 	onMount(() => {
+		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 		mounted = true;
+
+		// Animate the curly underline
+		if (!prefersReducedMotion && curlyLine) {
+			const curlyPath = curlyLine.querySelector('path');
+			if (curlyPath) {
+				gsap.fromTo(
+					curlyPath,
+					{ strokeDashoffset: 300 },
+					{ strokeDashoffset: 0, duration: 4.5, ease: 'power2.out', delay: 0.5 }
+				);
+			}
+		}
 	});
 
 	async function handleSubmit(e: Event) {
@@ -83,7 +99,20 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					Start a <span class="text-primary">conversation</span>
+					Start a <span class="relative inline-block"><span class="text-primary">conversation</span>
+						<!-- Curly underline -->
+						<svg bind:this={curlyLine} class="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-4" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+							<path
+								d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12"
+								stroke="currentColor"
+								stroke-width="4"
+								stroke-linecap="round"
+								class="text-primary"
+								fill="none"
+								style="stroke-dasharray: 300; stroke-dashoffset: 300;"
+							/>
+						</svg>
+					</span>
 				</h1>
 
 				<p
@@ -107,9 +136,9 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 300ms;"
 				>
-					<div class="flex items-start gap-4 group">
+					<div class="flex items-start gap-4 group cursor-pointer">
 						<div
-							class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110"
+							class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary/40 group-hover:shadow-lg group-hover:shadow-primary/10"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -121,26 +150,26 @@
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								class="text-primary"
+								class="text-primary transition-transform duration-300 group-hover:scale-110"
 								><rect width="20" height="16" x="2" y="4" rx="2" /><path
 									d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
 								/></svg
 							>
 						</div>
-						<div>
+						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Email</p>
 							<a
-								href="mailto:hello@ohaniffa.com"
+								href="mailto:contact@onurhaniffa.com"
 								class="text-muted-foreground hover:text-primary transition-colors"
 							>
-								hello@ohaniffa.com
+								contact@onurhaniffa.com
 							</a>
 						</div>
 					</div>
 
 					<div class="flex items-start gap-4 group">
 						<div
-							class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-accent/20 group-hover:scale-110"
+							class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-accent/20 group-hover:scale-110 group-hover:-rotate-3 group-hover:border-accent/40 group-hover:shadow-lg group-hover:shadow-accent/10"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -152,11 +181,11 @@
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								class="text-accent"
+								class="text-accent transition-transform duration-300 group-hover:scale-110"
 								><circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" /></svg
 							>
 						</div>
-						<div>
+						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Response Time</p>
 							<p class="text-muted-foreground">Within 24 hours</p>
 						</div>
@@ -164,7 +193,7 @@
 
 					<div class="flex items-start gap-4 group">
 						<div
-							class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110"
+							class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-3 group-hover:border-primary/40 group-hover:shadow-lg group-hover:shadow-primary/10"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -176,77 +205,20 @@
 								stroke-width="2"
 								stroke-linecap="round"
 								stroke-linejoin="round"
-								class="text-primary"
+								class="text-primary transition-transform duration-300 group-hover:scale-110"
 								><circle cx="12" cy="12" r="10" /><path
 									d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"
 								/><path d="M2 12h20" /></svg
 							>
 						</div>
-						<div>
+						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Availability</p>
 							<p class="text-muted-foreground">European time zones (CET/CEST)</p>
 						</div>
 					</div>
 				</div>
 
-				<!-- Social Links -->
-				<div
-					class="mt-12 pt-10 border-t border-border/50 transition-all duration-700 ease-out"
-					class:opacity-0={!mounted}
-					class:translate-y-6={!mounted}
-					class:opacity-100={mounted}
-					class:translate-y-0={mounted}
-					style="transition-delay: 400ms;"
-				>
-					<p class="text-sm font-medium mb-4">Find me on</p>
-					<div class="flex gap-4">
-						<a
-							href="https://linkedin.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110"
-							aria-label="LinkedIn"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								><path
-									d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-								/><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" /></svg
-							>
-						</a>
-						<a
-							href="https://twitter.com"
-							target="_blank"
-							rel="noopener noreferrer"
-							class="w-10 h-10 rounded-xl bg-muted flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110"
-							aria-label="Twitter"
-						>
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								width="18"
-								height="18"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								><path
-									d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"
-								/></svg
-							>
-						</a>
-					</div>
 				</div>
-			</div>
 
 			<!-- Right: Form -->
 			<div
@@ -260,7 +232,7 @@
 				style="transition-delay: 200ms;"
 			>
 				<div
-					class="p-10 rounded-2xl bg-card border border-border/50 shadow-xl shadow-primary/5"
+					class="p-6 sm:p-8 lg:p-10 rounded-2xl bg-card border border-border/50 shadow-xl shadow-primary/5"
 				>
 					{#if formState === 'success'}
 						<div class="text-center py-8">
@@ -299,7 +271,8 @@
 									placeholder="John Doe"
 									bind:value={name}
 									required
-									class="h-12"
+									autocomplete="name"
+									class="h-12 bg-background/50 border-border/60 transition-all duration-200 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:bg-background"
 								/>
 							</div>
 
@@ -311,7 +284,8 @@
 									placeholder="john@company.com"
 									bind:value={email}
 									required
-									class="h-12"
+									autocomplete="email"
+									class="h-12 bg-background/50 border-border/60 transition-all duration-200 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:bg-background"
 								/>
 							</div>
 
@@ -324,7 +298,8 @@
 									type="text"
 									placeholder="Acme Inc."
 									bind:value={company}
-									class="h-12"
+									autocomplete="organization"
+									class="h-12 bg-background/50 border-border/60 transition-all duration-200 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:bg-background"
 								/>
 							</div>
 
@@ -336,7 +311,7 @@
 									bind:value={message}
 									required
 									rows={5}
-									class="resize-none"
+									class="resize-none bg-background/50 border-border/60 transition-all duration-200 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:bg-background"
 								/>
 							</div>
 
@@ -346,7 +321,7 @@
 							<Button
 								type="submit"
 								size="lg"
-								class="w-full h-12 group"
+								class="w-full h-12 group transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:scale-[1.02]"
 								disabled={formState === 'submitting'}
 							>
 								{#if formState === 'submitting'}
@@ -423,7 +398,7 @@
 				}
 			] as faq}
 				<InView animation="fade-up">
-					<div class="p-6 rounded-xl bg-background border border-border/50">
+					<div class="p-6 rounded-xl bg-background border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
 						<h3 class="font-semibold mb-2">{faq.q}</h3>
 						<p class="text-sm text-muted-foreground">{faq.a}</p>
 					</div>
