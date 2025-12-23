@@ -81,8 +81,8 @@
 		{ icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
 		{ icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
 		{ icon: 'M17 8h1a4 4 0 1 1 0 8h-1 M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M6 2v4 M10 2v4 M14 2v4', label: 'Fueled by', value: 'Flat whites', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
-		{ icon: 'M9 18V5l12-2v13 M9 9l12-2 M6 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6z M18 19a3 3 0 1 0 0-6 3 3 0 0 0 0 6z', label: 'Work to', value: 'Lo-fi beats', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
-		{ icon: 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20 M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15z', label: 'Always', value: 'Learning', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' }
+		{ icon: 'M6 11h4M6 15h4M14 11h4M14 15h4M3 5h18v14H3z M8 5V3M16 5V3', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
+		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 2 2 3 6 3s6-1 6-3v-5', label: 'Studying', value: 'Comp & Biomed Eng', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' }
 	];
 
 	onMount(() => {
@@ -409,161 +409,59 @@
 
 <!-- Quick Facts -->
 <Section padding="lg" class="relative overflow-hidden">
-	<!-- Background with ambient blobs -->
+	<!-- Background -->
 	<div class="absolute inset-0 -z-10">
-		<div class="absolute inset-0 bg-slate-50 dark:bg-slate-900"></div>
-		<div class="absolute top-1/3 -left-20 w-[300px] h-[300px] bg-primary/8 rounded-full blur-3xl"></div>
-		<div class="absolute bottom-1/3 -right-20 w-[250px] h-[250px] bg-accent/6 rounded-full blur-3xl"></div>
+		<div class="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
 	</div>
-
-	<!-- Decorative SVG shapes -->
-	<svg class="hidden lg:block absolute top-16 left-[8%] w-12 h-12 text-primary/12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-		<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-	</svg>
-	<svg class="hidden lg:block absolute bottom-20 right-[10%] w-10 h-10 text-accent/12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-		<rect x="3" y="3" width="18" height="18" rx="2" ry="2" transform="rotate(15 12 12)"/>
-	</svg>
 
 	<Container>
 		<div bind:this={factsSection}>
-			<div class="text-center mb-14">
-				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<circle cx="12" cy="12" r="10"/><path d="M12 16v-4 M12 8h.01"/>
-					</svg>
-					Get to know me
-				</div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Quick facts</h2>
-				<p class="mt-4 text-lg text-muted-foreground">A few things about me beyond the code.</p>
+			<div class="text-center mb-12">
+				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+					The essentials
+				</span>
+				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Quick facts</h2>
 			</div>
 
-			<div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+			<!-- Premium grid layout -->
+			<div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
 				{#each quickFacts as fact, i}
-					<div class="fact-card group">
-						<div class="relative h-full p-6 rounded-2xl bg-white dark:bg-slate-800 border border-border/30 hover:border-primary/30 text-center transform-gpu hover:-translate-y-1 transition-all duration-150 cursor-default overflow-hidden">
-							<!-- Subtle gradient on hover -->
-							<div class="absolute inset-0 {fact.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
+					<div class="group relative">
+						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transform-gpu hover:-translate-y-1 transition-all duration-200 overflow-hidden">
+							<!-- Gradient accent on hover -->
+							<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative mx-auto mb-3 {fact.color} transform-gpu group-hover:scale-110 transition-transform duration-150">
-								<path d={fact.icon} />
-							</svg>
-							<p class="relative text-xs text-muted-foreground uppercase tracking-wider mb-1 font-medium">{fact.label}</p>
-							<p class="relative font-bold text-lg">{fact.value}</p>
+							<!-- Icon with ring -->
+							<div class="relative w-12 h-12 mx-auto mb-4 rounded-xl {fact.bg} flex items-center justify-center ring-1 ring-border/50 group-hover:ring-primary/30 transition-all">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="{fact.color} transform-gpu group-hover:scale-110 transition-transform duration-200">
+									<path d={fact.icon} />
+								</svg>
+							</div>
+
+							<!-- Text -->
+							<p class="relative text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest mb-1 font-medium">{fact.label}</p>
+							<p class="relative font-bold text-base sm:text-lg">{fact.value}</p>
 						</div>
 					</div>
 				{/each}
-			</div>
-
-			<!-- Extra personality -->
-			<div class="mt-12 text-center">
-				<p class="inline-flex items-center gap-3 text-sm text-muted-foreground bg-background px-5 py-3 rounded-full border border-border/50 shadow-sm">
-					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
-						<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3 M12 17h.01"/>
-					</svg>
-					<span>Want to know more? <a href="/contact" class="text-primary font-medium hover:underline">Just ask!</a></span>
-				</p>
 			</div>
 		</div>
 	</Container>
 </Section>
 
-<!-- CTA -->
-<Section padding="lg" class="relative overflow-hidden">
-	<!-- Background with ambient blobs -->
-	<div class="absolute inset-0 -z-10">
-		<div class="absolute inset-0 bg-slate-900"></div>
-		<div class="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/15 rounded-full blur-3xl"></div>
-		<div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-accent/12 rounded-full blur-3xl"></div>
-	</div>
-
-	<!-- Decorative SVG shapes -->
-	<svg class="hidden lg:block absolute top-12 right-[15%] w-14 h-14 text-white/5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-		<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-	</svg>
-	<svg class="hidden lg:block absolute bottom-16 left-[12%] w-10 h-10 text-white/5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-		<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-	</svg>
-
+<!-- Small availability note -->
+<Section padding="md" class="pb-8">
 	<Container>
-		<div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-			<!-- Left: Content -->
-			<div>
-				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-6">
-					Have a project in mind?
-				</h2>
-				<p class="text-lg text-white/70 mb-8 max-w-md">
-					I'm always open to discussing new projects and opportunities. Let's chat about how I can help bring your ideas to life.
-				</p>
-
-				<div class="flex flex-wrap gap-4">
-					<Button size="lg" href="/contact" class="rounded-full px-8 bg-white text-slate-900 hover:bg-white/90 shadow-lg shadow-white/10 group">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transform-gpu group-hover:scale-110 transition-transform duration-150">
-							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-						</svg>
-						Get in touch
-					</Button>
-					<Button size="lg" variant="outline" href="mailto:hello@ohaniffa.com" class="rounded-full px-8 border-white/20 text-white hover:bg-white/10 group">
-						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 transform-gpu group-hover:scale-110 transition-transform duration-150">
-							<rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-						</svg>
-						hello@ohaniffa.com
-					</Button>
-				</div>
+		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
+			<div class="flex items-center gap-3">
+				<span class="relative flex h-3 w-3">
+					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+					<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+				</span>
+				<span class="text-sm text-muted-foreground">Currently available for new projects</span>
 			</div>
-
-			<!-- Right: Visual card -->
-			<div class="relative">
-				<!-- Decorative accent shapes behind card -->
-				<div class="absolute -top-3 -right-3 w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-2xl -z-10 rotate-12 opacity-70"></div>
-				<div class="absolute -bottom-3 -left-3 w-12 h-12 bg-gradient-to-br from-accent/60 to-primary/60 rounded-xl -z-10 -rotate-6 opacity-50"></div>
-
-				<div class="relative rounded-3xl bg-slate-800 border border-white/10 p-8 overflow-hidden">
-					<!-- Subtle internal glow -->
-					<div class="absolute inset-0 -z-0 opacity-15 pointer-events-none">
-						<div class="absolute top-0 right-0 w-[100px] h-[100px] bg-primary/40 rounded-full blur-2xl"></div>
-						<div class="absolute bottom-0 left-0 w-[80px] h-[80px] bg-accent/30 rounded-full blur-2xl"></div>
-					</div>
-
-					<!-- Quick info -->
-					<div class="relative z-10 space-y-6">
-						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
-							<div class="w-12 h-12 rounded-2xl bg-green-500/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-400">
-									<polyline points="20 6 9 17 4 12"/>
-								</svg>
-							</div>
-							<div>
-								<p class="text-white font-medium">Available now</p>
-								<p class="text-sm text-white/50">Taking on new projects</p>
-							</div>
-						</div>
-
-						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
-							<div class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
-									<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-								</svg>
-							</div>
-							<div>
-								<p class="text-white font-medium">Quick response</p>
-								<p class="text-sm text-white/50">Usually within 24 hours</p>
-							</div>
-						</div>
-
-						<div class="group/item flex items-center gap-4 p-2 -mx-2 rounded-xl hover:bg-white/5 transition-colors duration-100">
-							<div class="w-12 h-12 rounded-2xl bg-accent/20 flex items-center justify-center transform-gpu group-hover/item:scale-110 transition-transform duration-150">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent">
-									<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-								</svg>
-							</div>
-							<div>
-								<p class="text-white font-medium">Based in Europe</p>
-								<p class="text-sm text-white/50">Available worldwide</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+			<span class="hidden sm:block text-muted-foreground/30">|</span>
+			<span class="text-sm text-muted-foreground">Based in Europe, working worldwide</span>
 		</div>
 	</Container>
 </Section>
