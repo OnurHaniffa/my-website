@@ -10,7 +10,6 @@
 	} from '$lib/components/ui/sheet';
 	import { Container } from '$lib/components/layout';
 	import { browser } from '$app/environment';
-	import logo from '$lib/assets/logo.png';
 
 	const navItems = [
 		{ href: '/', label: 'Home' },
@@ -84,12 +83,16 @@
 	<Container>
 		<div class="flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
 			<!-- Logo -->
-			<a href="/" data-sveltekit-reload class="group flex items-center">
-				<img
-					src={logo}
-					alt="Onur Haniffa"
-					class="h-10 sm:h-12 w-auto transition-all duration-300 group-hover:scale-105 dark:invert"
-				/>
+			<a href="/" data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80">
+				<!-- Decorative line -->
+				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
+				<!-- Logo text -->
+				<div class="flex flex-col items-center">
+					<span class="text-lg sm:text-xl font-black tracking-[0.15em] uppercase">Onur Haniffa</span>
+					<span class="text-[8px] sm:text-[9px] text-muted-foreground tracking-[0.3em] uppercase">Est. 2025</span>
+				</div>
+				<!-- Decorative line -->
+				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 			</a>
 
 			<!-- Desktop Navigation -->
@@ -228,11 +231,14 @@
 					<div class="relative h-full flex flex-col p-6 pt-8">
 						<!-- Header -->
 						<div class="flex items-center justify-between mb-12">
-							<img
-								src={logo}
-								alt="Onur Haniffa"
-								class="h-14 w-auto dark:invert"
-							/>
+							<div class="flex items-center gap-3">
+								<div class="w-6 h-[2px] bg-foreground/80"></div>
+								<div class="flex flex-col items-center">
+									<span class="text-xl font-black tracking-[0.15em] uppercase">Onur Haniffa</span>
+									<span class="text-[9px] text-muted-foreground tracking-[0.3em] uppercase">Est. 2025</span>
+								</div>
+								<div class="w-6 h-[2px] bg-foreground/80"></div>
+							</div>
 						</div>
 
 						<!-- Navigation -->
