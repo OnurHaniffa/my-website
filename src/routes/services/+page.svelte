@@ -277,17 +277,12 @@
 		}
 	}
 
-	/* FAQ accordion - using grid for smooth animation */
+	/* FAQ accordion - simple show/hide, no janky animations */
 	.faq-answer {
-		display: grid;
-		grid-template-rows: 0fr;
-		transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out;
+		display: none;
 	}
 	.faq-answer.open {
-		grid-template-rows: 1fr;
-	}
-	.faq-answer-inner {
-		overflow: hidden;
+		display: block;
 	}
 
 </style>
@@ -633,13 +628,9 @@
 								class="text-muted-foreground flex-shrink-0 transition-transform duration-200 {openFaq === i ? 'rotate-180' : ''}"
 							><path d="m6 9 6 6 6-6"/></svg>
 						</button>
-						<!-- Answer - grid-based smooth animation -->
-						<div class="faq-answer {openFaq === i ? 'open' : ''}">
-							<div class="faq-answer-inner">
-								<div class="px-5 pb-4 pt-0">
-									<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
-								</div>
-							</div>
+						<!-- Answer -->
+						<div class="faq-answer px-5 pb-4 {openFaq === i ? 'open' : ''}">
+							<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
 						</div>
 					</div>
 				</InView>
