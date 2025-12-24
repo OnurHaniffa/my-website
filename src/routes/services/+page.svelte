@@ -277,11 +277,17 @@
 		}
 	}
 
-	/* FAQ accordion */
+	/* FAQ accordion - using grid for smooth animation */
 	.faq-answer {
-		transition: max-height 300ms ease-out, opacity 250ms ease-out;
-		will-change: max-height;
-		transform: translateZ(0); /* GPU acceleration */
+		display: grid;
+		grid-template-rows: 0fr;
+		transition: grid-template-rows 250ms ease-out, opacity 200ms ease-out;
+	}
+	.faq-answer.open {
+		grid-template-rows: 1fr;
+	}
+	.faq-answer-inner {
+		overflow: hidden;
 	}
 
 </style>
@@ -627,10 +633,12 @@
 								class="text-muted-foreground flex-shrink-0 transition-transform duration-200 {openFaq === i ? 'rotate-180' : ''}"
 							><path d="m6 9 6 6 6-6"/></svg>
 						</button>
-						<!-- Answer - inline with height transition -->
-						<div class="faq-answer overflow-hidden {openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}">
-							<div class="px-5 pb-4 pt-0">
-								<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+						<!-- Answer - grid-based smooth animation -->
+						<div class="faq-answer {openFaq === i ? 'open' : ''}">
+							<div class="faq-answer-inner">
+								<div class="px-5 pb-4 pt-0">
+									<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+								</div>
 							</div>
 						</div>
 					</div>
