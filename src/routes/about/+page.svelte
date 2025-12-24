@@ -77,12 +77,12 @@
 	};
 
 	const quickFacts = [
-		{ icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
-		{ icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
-		{ icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
-		{ icon: 'M17 8h1a4 4 0 1 1 0 8h-1 M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M6 2v4 M10 2v4 M14 2v4', label: 'Fueled by', value: 'Flat whites', bg: 'bg-gradient-to-br from-amber-600/10 to-amber-600/5', color: 'text-amber-600', border: 'border-t-amber-600' },
-		{ icon: 'M6 11h4M6 15h4M14 11h4M14 15h4M3 5h18v14H3z M8 5V3M16 5V3', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
-		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 2 2 3 6 3s6-1 6-3v-5', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
+		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M12 2v2 M12 18v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
+		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
+		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
+		{ icon: 'M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2ZM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z', label: 'Interested in', value: 'AI & ML', bg: 'bg-gradient-to-br from-cyan-500/10 to-cyan-500/5', color: 'text-cyan-500', border: 'border-t-cyan-500' },
+		{ icon: 'M6 11V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5 M12 11V4 M20 11v4a2 2 0 0 1-2 2h-1.5 M4 11v4a2 2 0 0 0 2 2h1.5 M9 22l3-3 3 3 M12 22v-6 M9 17h6', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
+		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
 	onMount(() => {
@@ -417,9 +417,10 @@
 
 	<!-- Decorative floating icons -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="absolute top-16 right-[20%] text-2xl animate-bounce" style="animation-duration: 3s;">☕</div>
+		<div class="absolute top-16 right-[20%] text-2xl animate-bounce" style="animation-duration: 3s;">🤖</div>
 		<div class="absolute bottom-24 left-[15%] text-2xl animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">🎮</div>
-		<div class="absolute top-1/3 right-[10%] text-xl animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">⚡</div>
+		<div class="absolute top-1/3 right-[10%] text-xl animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">🧠</div>
+		<div class="absolute bottom-1/3 left-[8%] text-xl animate-bounce" style="animation-duration: 3.2s; animation-delay: 0.8s;">💻</div>
 	</div>
 
 	<Container class="relative z-10">
