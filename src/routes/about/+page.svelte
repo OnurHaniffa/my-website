@@ -77,12 +77,12 @@
 	};
 
 	const quickFacts = [
-		{ icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
-		{ icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
-		{ icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
-		{ icon: 'M17 8h1a4 4 0 1 1 0 8h-1 M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M6 2v4 M10 2v4 M14 2v4', label: 'Fueled by', value: 'Flat whites', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' },
-		{ icon: 'M6 11h4M6 15h4M14 11h4M14 15h4M3 5h18v14H3z M8 5V3M16 5V3', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-primary/10 to-primary/5', color: 'text-primary' },
-		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 2 2 3 6 3s6-1 6-3v-5', label: 'Studying', value: 'Comp & Biomed Eng', bg: 'bg-gradient-to-br from-accent/10 to-accent/5', color: 'text-accent' }
+		{ icon: 'M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z M12 7a3 3 0 1 0 0 6 3 3 0 0 0 0-6z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
+		{ icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
+		{ icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
+		{ icon: 'M17 8h1a4 4 0 1 1 0 8h-1 M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z M6 2v4 M10 2v4 M14 2v4', label: 'Fueled by', value: 'Flat whites', bg: 'bg-gradient-to-br from-amber-600/10 to-amber-600/5', color: 'text-amber-600', border: 'border-t-amber-600' },
+		{ icon: 'M6 11h4M6 15h4M14 11h4M14 15h4M3 5h18v14H3z M8 5V3M16 5V3', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
+		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5z M6 12v5c0 2 2 3 6 3s6-1 6-3v-5', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
 	onMount(() => {
@@ -406,41 +406,64 @@
 
 <!-- Quick Facts -->
 <Section padding="lg" class="relative overflow-hidden">
-	<!-- Background -->
+	<!-- Background with personality -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
+		<!-- Floating decorative elements -->
+		<div class="absolute top-20 left-[10%] w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
+		<div class="absolute bottom-20 right-[15%] w-40 h-40 bg-purple-500/5 rounded-full blur-2xl"></div>
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/3 rounded-full blur-3xl"></div>
 	</div>
 
-	<Container>
+	<!-- Decorative floating icons -->
+	<div class="absolute inset-0 overflow-hidden pointer-events-none">
+		<div class="absolute top-16 right-[20%] text-2xl animate-bounce" style="animation-duration: 3s;">☕</div>
+		<div class="absolute bottom-24 left-[15%] text-2xl animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">🎮</div>
+		<div class="absolute top-1/3 right-[10%] text-xl animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">⚡</div>
+	</div>
+
+	<Container class="relative z-10">
 		<div bind:this={factsSection}>
 			<div class="text-center mb-12">
-				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-					The essentials
+				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-sm font-medium mb-4">
+					<span class="text-base">✨</span> The essentials
 				</span>
 				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Quick facts</h2>
+				<p class="mt-3 text-muted-foreground">A few things that make me, me.</p>
 			</div>
 
 			<!-- Premium grid layout - single column on mobile for better tap targets -->
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-4xl mx-auto">
 				{#each quickFacts as fact, i}
 					<div class="group relative">
-						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 border-t-2 {i % 2 === 0 ? 'border-t-primary' : 'border-t-accent'} hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transform-gpu hover:-translate-y-1 transition-all duration-200 overflow-hidden text-center">
-							<!-- Gradient accent on hover -->
-							<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 border-t-2 {fact.border} hover:border-border hover:shadow-xl hover:shadow-black/5 transform-gpu hover:-translate-y-2 transition-all duration-300 overflow-hidden text-center">
+							<!-- Colored gradient glow on hover -->
+							<div class="absolute inset-0 {fact.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+							<!-- Decorative corner accent -->
+							<div class="absolute top-0 right-0 w-16 h-16 {fact.bg} rounded-bl-[3rem] opacity-50"></div>
 
 							<!-- Icon with ring and rotation on hover -->
-							<div class="relative w-12 h-12 mx-auto mb-4 rounded-xl {fact.bg} flex items-center justify-center ring-1 ring-border/50 group-hover:ring-primary/30 transition-all">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="{fact.color} transform-gpu group-hover:scale-110 group-hover:rotate-6 transition-transform duration-200">
+							<div class="relative w-14 h-14 mx-auto mb-4 rounded-2xl {fact.bg} flex items-center justify-center ring-1 ring-border/50 group-hover:ring-2 transition-all duration-300" style="--tw-ring-color: var(--tw-border-opacity);">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="{fact.color} transform-gpu group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
 									<path d={fact.icon} />
 								</svg>
 							</div>
 
 							<!-- Text with improved contrast -->
-							<p class="relative text-[10px] sm:text-xs text-muted-foreground/90 uppercase tracking-widest mb-1 font-semibold">{fact.label}</p>
-							<p class="relative font-bold text-base sm:text-lg">{fact.value}</p>
+							<p class="relative text-[10px] sm:text-xs text-muted-foreground/80 uppercase tracking-widest mb-1.5 font-semibold">{fact.label}</p>
+							<p class="relative font-bold text-base sm:text-lg {fact.color}">{fact.value}</p>
 						</div>
 					</div>
 				{/each}
+			</div>
+
+			<!-- Fun tagline -->
+			<div class="mt-10 text-center">
+				<p class="inline-flex items-center gap-2 text-sm text-muted-foreground">
+					<span class="text-lg">🚀</span>
+					Always shipping, always learning
+				</p>
 			</div>
 		</div>
 	</Container>
