@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/logo.png';
 	import { Header, Footer } from '$lib/components/layout';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
