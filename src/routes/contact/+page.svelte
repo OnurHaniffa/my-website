@@ -40,18 +40,28 @@
 		e.preventDefault();
 		formState = 'submitting';
 
-		// Simulate form submission - replace with actual form handler
-		// e.g., Formspree, Resend, or your own API
-		await new Promise((resolve) => setTimeout(resolve, 1500));
+		try {
+			const response = await fetch('/api/contact', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ name, email, company, message })
+			});
 
-		// For demo purposes, always succeed
-		formState = 'success';
+			if (!response.ok) {
+				throw new Error('Failed to send message');
+			}
 
-		// Reset form after success
-		name = '';
-		email = '';
-		company = '';
-		message = '';
+			formState = 'success';
+
+			// Reset form after success
+			name = '';
+			email = '';
+			company = '';
+			message = '';
+		} catch (err) {
+			console.error('Form submission error:', err);
+			formState = 'error';
+		}
 	}
 </script>
 
@@ -252,6 +262,33 @@
 							</p>
 							<Button variant="outline" onclick={() => (formState = 'idle')}>
 								Send Another Message
+							</Button>
+						</div>
+					{:else if formState === 'error'}
+						<div class="text-center py-8">
+							<div
+								class="w-16 h-16 rounded-full bg-red-500/10 flex items-center justify-center mx-auto mb-6"
+							>
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									width="32"
+									height="32"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="text-red-500"
+									><circle cx="12" cy="12" r="10" /><line x1="15" x2="9" y1="9" y2="15" /><line x1="9" x2="15" y1="9" y2="15" /></svg
+								>
+							</div>
+							<h3 class="text-2xl font-bold mb-2">Something went wrong</h3>
+							<p class="text-muted-foreground mb-6">
+								Please try again or email me directly at contact@onurhaniffa.com
+							</p>
+							<Button variant="outline" onclick={() => (formState = 'idle')}>
+								Try Again
 							</Button>
 						</div>
 					{:else}

@@ -33,6 +33,7 @@
 	},
 	"dependencies": {
 		"gsap": "^3.14.2",
-		"motion": "^12.23.26"
+		"motion": "^12.23.26",
+		"resend": "^6.6.0"
 	}
 }
