@@ -5,6 +5,7 @@
 	import { InView } from '$lib/components/ui/animations';
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 	import { projects } from '$lib/data/projects';
 
 	let mounted = $state(false);
@@ -17,7 +18,12 @@
 	const IFRAME_TIMEOUT = 15000;
 
 	type FilterType = 'concept' | 'client';
-	let activeFilter = $state<FilterType>('concept');
+
+	// Read initial filter from URL query param
+	const initialFilter = $page.url.searchParams.get('filter');
+	let activeFilter = $state<FilterType>(
+		initialFilter === 'client' ? 'client' : 'concept'
+	);
 
 	// Get project data
 	const pearlDental = projects.find(p => p.slug === 'pearl-dental');

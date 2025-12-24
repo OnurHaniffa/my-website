@@ -472,7 +472,7 @@
 
 			<div class="grid gap-8 md:grid-cols-2">
 				{#each projects as project, index}
-					<a href="/work" class="group block project-card focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:rounded-2xl">
+					<a href="/work?filter={index === 0 ? 'client' : 'concept'}" class="group block project-card focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:rounded-2xl">
 						<Card class="overflow-hidden border border-border/30 shadow-lg hover:shadow-2xl hover:-translate-y-1 rounded-2xl transition-all duration-500
 							{index === 0
 								? 'hover:border-amber-500/40 bg-gradient-to-b from-slate-900/5 to-transparent dark:from-slate-800/20'
