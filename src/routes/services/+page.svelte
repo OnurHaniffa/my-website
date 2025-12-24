@@ -646,23 +646,5 @@
 			{/each}
 		</div>
 
-		<!-- CTA -->
-		<div class="mt-16 text-center">
-			<InView animation="fade-up">
-				<h3 class="text-2xl sm:text-3xl font-bold mb-4">Ready to elevate your web presence?</h3>
-				<p class="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-					Let's talk about your project. No pressure, no sales pitch—just an honest conversation about what you need.
-				</p>
-				<a
-					href="/contact"
-					class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
-				>
-					Book a Free Discovery Call
-					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-						<path d="M5 12h14m-7-7 7 7-7 7"/>
-					</svg>
-				</a>
-			</InView>
-		</div>
 	</Container>
 </Section>
