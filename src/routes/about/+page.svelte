@@ -180,23 +180,23 @@
 		<circle cx="50" cy="50" r="30" stroke="currentColor" stroke-width="3" stroke-dasharray="10 5"/>
 	</svg>
 
-	<Container class="relative pt-32 pb-20 lg:pt-40 lg:pb-28">
+	<Container class="relative pt-32 pb-16 lg:pt-40 lg:pb-20">
 		<div bind:this={heroSection} class="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
 			<!-- Text content -->
 			<div class="lg:col-span-3 space-y-6">
-				<h1 class="hero-item text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+				<h1 class="hero-item text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.02em] leading-[1.1]">
 					Hey, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Onur</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block animate-wave origin-bottom-right text-amber-500">
 						<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v0 M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v6 M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8 M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
 					</svg>
 				</h1>
 
-				<p class="hero-item text-xl text-muted-foreground leading-relaxed max-w-xl">
+				<p class="hero-item text-lg text-muted-foreground leading-relaxed max-w-xl">
 					I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.
 				</p>
 
-				<p class="hero-item text-muted-foreground leading-relaxed max-w-xl">
-					I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering (AI/ML) means I'm particular about performance, clarity, and clean implementation.
+				<p class="hero-item text-base text-muted-foreground/90 leading-relaxed max-w-xl">
+					I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering means I'm particular about performance, clarity, and clean implementation.
 				</p>
 
 				<div class="hero-item flex flex-wrap gap-4 pt-2">
@@ -244,7 +244,7 @@
 </Section>
 
 <!-- Design Philosophy -->
-<Section padding="lg" background="none" class="relative overflow-hidden">
+<Section padding="none" background="none" class="relative overflow-hidden pt-20 lg:pt-24 pb-16 lg:pb-20">
 	<!-- Background with ambient blobs -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900"></div>
@@ -276,7 +276,7 @@
 				{#each philosophy as item, index}
 					<div class="philosophy-card group relative">
 						<!-- Card with colored left border accent -->
-						<div class="relative h-full p-8 rounded-3xl bg-background border border-border/50 border-l-[3px] {item.accent === 'bg-primary' ? 'border-l-primary' : item.accent === 'bg-accent' ? 'border-l-accent' : 'border-l-emerald-500'} overflow-hidden transform-gpu hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 transition-all duration-200 hover:border-primary/30">
+						<div class="relative h-full {index === 0 ? 'p-8 pb-12' : index === 1 ? 'p-8 pb-10' : 'p-8 pb-14'} rounded-3xl bg-background border border-border/50 border-l-[3px] {item.accent === 'bg-primary' ? 'border-l-primary' : item.accent === 'bg-accent' ? 'border-l-accent' : 'border-l-emerald-500'} overflow-hidden transform-gpu hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 {index === 0 ? 'hover:scale-[1.01]' : index === 1 ? 'hover:scale-[1.02]' : 'hover:scale-[1.015]'} transition-all duration-200 hover:border-primary/30">
 							<!-- Gradient background on hover -->
 							<div class="absolute inset-0 bg-gradient-to-br {item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
@@ -287,8 +287,8 @@
 								</svg>
 							</div>
 
-							<!-- Number - positioned bottom right -->
-							<span class="absolute bottom-6 right-6 text-7xl font-black text-muted-foreground/[0.06] group-hover:text-muted-foreground/10 transition-colors duration-200 select-none">{item.number}</span>
+							<!-- Number - alternating position -->
+							<span class="absolute {index === 1 ? 'bottom-6 right-6' : 'top-6 right-6'} text-7xl font-black text-muted-foreground/[0.1] group-hover:text-muted-foreground/[0.15] transition-colors duration-200 select-none">{item.number}</span>
 
 							<div class="relative">
 								<h3 class="text-xl font-bold mb-3">{item.title}</h3>
@@ -303,7 +303,7 @@
 </Section>
 
 <!-- Tools -->
-<Section padding="lg" class="relative overflow-hidden">
+<Section padding="none" class="relative overflow-hidden pt-16 lg:pt-20 pb-16 lg:pb-20">
 	<!-- Background with ambient blobs -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
@@ -351,7 +351,7 @@
 					<div class="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-accent/50 to-primary/50 rounded-2xl -z-10 -rotate-6 opacity-60"></div>
 
 					<!-- Main card -->
-					<div class="relative rounded-3xl bg-slate-900 p-6 sm:p-8 shadow-xl overflow-hidden">
+					<div class="group/card relative rounded-3xl bg-slate-950/95 p-6 sm:p-8 shadow-xl overflow-hidden ring-0 hover:ring-1 hover:ring-primary/20 transition-all duration-300">
 						<!-- Subtle ambient glow inside card -->
 						<div class="absolute inset-0 -z-0 opacity-20 pointer-events-none">
 							<div class="absolute top-0 left-0 w-[150px] h-[150px] bg-primary/30 rounded-full blur-2xl"></div>
@@ -360,9 +360,9 @@
 
 						<!-- Window chrome -->
 						<div class="relative z-10 flex items-center gap-2 mb-6">
-							<div class="w-3 h-3 rounded-full bg-red-500/80"></div>
-							<div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-							<div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+							<div class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
+							<div class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
+							<div class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
 							<span class="ml-3 text-xs text-white/30 font-mono">stack.config</span>
 						</div>
 
@@ -378,10 +378,10 @@
 									<!-- Tools in group with hover -->
 									<div class="space-y-2">
 										{#each group.tools as tool}
-											<div class="group/tool flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/[0.05] hover:border-white/10 transition-colors duration-100 cursor-default">
+											<div class="group/tool flex items-center gap-3 p-2.5 rounded-xl bg-white/[0.03] hover:bg-white/[0.12] border border-white/[0.05] hover:border-white/15 transition-colors duration-100 cursor-default">
 												<!-- Icon -->
 												<div class="w-9 h-9 rounded-lg bg-white/10 group-hover/tool:bg-white/15 flex items-center justify-center shrink-0 transition-colors duration-100">
-													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/70 group-hover/tool:text-white transition-colors duration-100">
+													<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-white/70 group-hover/tool:text-white group-hover/tool:rotate-6 transition-all duration-200 transform-gpu">
 														<path d={toolIcons[tool.icon]} />
 													</svg>
 												</div>
@@ -405,7 +405,7 @@
 </Section>
 
 <!-- Quick Facts -->
-<Section padding="lg" class="relative overflow-hidden">
+<Section padding="none" class="relative overflow-hidden pt-24 lg:pt-32 pb-16 lg:pb-20">
 	<!-- Simple optimized background - no heavy blurs -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
