@@ -241,11 +241,17 @@
 
 	/* Bento card hover */
 	.bento-card {
-		transition: transform 200ms ease-out, box-shadow 200ms ease-out;
+		transition: transform 200ms ease-out, box-shadow 200ms ease-out, border-color 200ms ease-out;
+		will-change: transform;
 	}
 	.bento-card:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.15);
+		box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--service-color, hsl(var(--primary)));
+		border-color: var(--service-color, hsl(var(--primary)));
+	}
+	.bento-card:focus-visible {
+		outline: 2px solid hsl(var(--ring));
+		outline-offset: 2px;
 	}
 
 	/* Rotating ring - lightweight */
@@ -271,6 +277,13 @@
 		}
 	}
 
+	/* FAQ accordion */
+	.faq-answer {
+		transition: max-height 300ms ease-out, opacity 250ms ease-out;
+		will-change: max-height;
+		transform: translateZ(0); /* GPU acceleration */
+	}
+
 </style>
 
 <!-- Hero -->
@@ -282,9 +295,12 @@
 			class:translate-y-8={!mounted}
 		>
 			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">SERVICES</span>
-			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10">
+			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10 mb-4">
 				Websites that <span class="text-primary">work</span>
 			</h1>
+			<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl relative z-10">
+				Custom builds, strategic redesigns, and ongoing support. No templates, no hourly billing—just results.
+			</p>
 		</div>
 	</Container>
 </Section>
@@ -432,20 +448,20 @@
 								<!-- Header -->
 								<div class="mb-8">
 									<div
-										class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium mb-4"
-										style="background: {service.color}15; color: {service.color}"
+										class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-semibold mb-5 shadow-sm"
+										style="background: {service.color}20; color: {service.color}; box-shadow: 0 0 20px -5px {service.color}30;"
 									>
-										<span class="w-2 h-2 rounded-full" style="background: {service.color}"></span>
+										<span class="w-2 h-2 rounded-full animate-pulse" style="background: {service.color}"></span>
 										0{service.id + 1}
 									</div>
-									<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">{service.title}</h2>
+									<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">{service.title}</h2>
 									<p class="text-muted-foreground text-lg leading-relaxed max-w-lg">{service.description}</p>
 								</div>
 
 								<!-- Bento Grid -->
 								<div class="grid grid-cols-2 gap-3 sm:gap-4">
 									<!-- Process Card -->
-									<div class="bento-card group relative col-span-2 sm:col-span-1 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 min-h-[140px] overflow-hidden">
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative corner glow -->
 										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
 
@@ -468,7 +484,7 @@
 									</div>
 
 									<!-- Deliverables Card -->
-									<div class="bento-card group relative col-span-2 sm:col-span-1 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 min-h-[140px] overflow-hidden">
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative corner glow -->
 										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
 
@@ -488,7 +504,7 @@
 									</div>
 
 									<!-- Timeline Card - Full width, centered -->
-									<div class="bento-card group relative col-span-2 p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border hover:border-primary/20 overflow-hidden">
+									<div class="bento-card group relative col-span-2 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative shimmer -->
 										<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(90deg, transparent 0%, {service.color}05 50%, transparent 100%);"></div>
 
@@ -519,6 +535,11 @@
 
 <!-- Process - Chain Ring Diagrams -->
 <ProcessChainRings />
+
+<!-- Section divider -->
+<div class="relative h-px my-12 md:my-16">
+	<div class="absolute inset-0 bg-gradient-to-r from-transparent via-border to-transparent"></div>
+</div>
 
 <!-- Testimonial -->
 <Section padding="none" class="py-8 md:py-12 relative overflow-hidden">
@@ -583,13 +604,14 @@
 			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">FAQ</h2>
 		</InView>
 
-		<div class="grid md:grid-cols-2 gap-x-4 gap-y-28">
+		<div class="grid md:grid-cols-2 gap-4">
 			{#each faqs as faq, i}
 				<InView animation="fade-up" delay={i * 50}>
-					<div class="faq-item relative">
+					<div class="faq-item overflow-hidden rounded-xl border bg-card transition-all duration-200 {openFaq === i ? 'border-primary/30 shadow-md' : 'border-border hover:border-primary/20'}">
 						<button
 							onclick={() => toggleFaq(i)}
-							class="w-full rounded-xl border bg-card px-5 py-4 text-left flex items-center justify-between gap-4 transition-all duration-200 {openFaq === i ? 'border-primary/30 shadow-md' : 'border-border hover:border-primary/20'}"
+							aria-expanded={openFaq === i}
+							class="w-full px-5 py-4 text-left flex items-center justify-between gap-4"
 						>
 							<span class="font-medium text-sm sm:text-base">{faq.question}</span>
 							<svg
@@ -605,15 +627,34 @@
 								class="text-muted-foreground flex-shrink-0 transition-transform duration-200 {openFaq === i ? 'rotate-180' : ''}"
 							><path d="m6 9 6 6 6-6"/></svg>
 						</button>
-						<!-- Answer tooltip - absolute positioned -->
-						<div
-							class="absolute left-0 right-0 top-full mt-2 z-20 rounded-xl border border-primary/20 bg-card p-4 shadow-lg transition-all duration-200 {openFaq === i ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2 pointer-events-none'}"
-						>
-							<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+						<!-- Answer - inline with height transition -->
+						<div class="faq-answer overflow-hidden {openFaq === i ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}">
+							<div class="px-5 pb-4 pt-0">
+								<p class="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
+							</div>
 						</div>
 					</div>
 				</InView>
 			{/each}
+		</div>
+
+		<!-- CTA -->
+		<div class="mt-16 text-center">
+			<InView animation="fade-up">
+				<h3 class="text-2xl sm:text-3xl font-bold mb-4">Ready to elevate your web presence?</h3>
+				<p class="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
+					Let's talk about your project. No pressure, no sales pitch—just an honest conversation about what you need.
+				</p>
+				<a
+					href="/contact"
+					class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl"
+				>
+					Book a Free Discovery Call
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<path d="M5 12h14m-7-7 7 7-7 7"/>
+					</svg>
+				</a>
+			</InView>
 		</div>
 	</Container>
 </Section>

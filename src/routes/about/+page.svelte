@@ -465,7 +465,7 @@
 </Section>
 
 <!-- Small availability note -->
-<Section padding="md" class="pb-8">
+<Section padding="sm" class="pb-8">
 	<Container>
 		<div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-center sm:text-left">
 			<div class="flex items-center gap-3">
