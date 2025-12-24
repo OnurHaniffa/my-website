@@ -337,7 +337,7 @@
 
 				<!-- Demo badge circle -->
 				<div
-					class="w-24 h-24 rounded-full bg-[#f5f0e8] shadow-lg flex flex-col items-center justify-center hover:scale-105 transition-transform"
+					class="w-24 h-24 rounded-full bg-[#f5f0e8] dark:bg-surface-2 shadow-lg flex flex-col items-center justify-center hover:scale-105 transition-transform"
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.06)}px)"
 				>
 					<div class="w-3 h-3 bg-[#4a7c59] rounded-full mb-1"></div>
@@ -369,7 +369,7 @@
 					<span class="text-[10px] text-[#5a5a5a] uppercase tracking-wider">SEO</span>
 					<span class="text-sm text-[#4a7c59] font-medium">Optimized</span>
 				</div>
-				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#f5f0e8] shadow-lg flex flex-col items-center justify-center text-center p-3">
+				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#f5f0e8] dark:bg-surface-2 shadow-lg flex flex-col items-center justify-center text-center p-3">
 					<span class="text-xl font-bold text-[#c4a574]">2025</span>
 					<span class="text-[8px] text-[#5a5a5a] uppercase">Year</span>
 				</div>
@@ -380,7 +380,7 @@
 		<div class="mt-20 lg:mt-28">
 			<div class="grid lg:grid-cols-2 gap-8 lg:gap-16">
 				<!-- The Challenge -->
-				<div class="bg-white dark:bg-white/10 p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20 dark:border-[#4a7c59]/30">
+				<div class="bg-white dark:bg-surface-2 p-8 lg:p-10 rounded-2xl shadow-sm dark:shadow-lg dark:shadow-black/20 border border-[#c4a574]/20 dark:border-border/50">
 					<div class="flex items-center gap-3 mb-4">
 						<div class="w-10 h-10 rounded-full bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] dark:text-[#6a9c79]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
@@ -393,7 +393,7 @@
 				</div>
 
 				<!-- The Solution -->
-				<div class="bg-white dark:bg-white/10 p-8 lg:p-10 rounded-2xl shadow-sm border border-[#c4a574]/20 dark:border-[#c4a574]/30">
+				<div class="bg-white dark:bg-surface-2 p-8 lg:p-10 rounded-2xl shadow-sm dark:shadow-lg dark:shadow-black/20 border border-[#c4a574]/20 dark:border-border/50">
 					<div class="flex items-center gap-3 mb-4">
 						<div class="w-10 h-10 rounded-full bg-[#c4a574]/20 dark:bg-[#c4a574]/30 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c4a574] dark:text-[#d4b584]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
@@ -429,8 +429,8 @@
 				<h3 class="text-2xl lg:text-3xl font-bold text-[#2d2d2d]">Experience it live</h3>
 			</div>
 
-			<div class="relative overflow-hidden shadow-2xl bg-white border border-[#c4a574]/20 mx-4 lg:mx-8">
-				<div class="bg-[#f5f0e8] px-4 py-3 flex items-center gap-3 border-b border-[#4a7c59]/10">
+			<div class="relative overflow-hidden shadow-2xl bg-white dark:bg-surface-1 border border-[#c4a574]/20 dark:border-border/50 mx-4 lg:mx-8">
+				<div class="bg-[#f5f0e8] dark:bg-surface-2 px-4 py-3 flex items-center gap-3 border-b border-[#4a7c59]/10 dark:border-border/40">
 					<div class="flex gap-1.5">
 						<div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
 						<div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
@@ -441,7 +441,7 @@
 					</div>
 				</div>
 
-				<div class="relative bg-[#faf7f2]" style="height: 75vh; min-height: 600px; max-height: 900px;">
+				<div class="relative bg-[#faf7f2] dark:bg-surface-1" style="height: 75vh; min-height: 600px; max-height: 900px;">
 					{#if !loadDentalIframe}
 						<div class="absolute inset-0 flex items-center justify-center">
 							<div class="text-center">
@@ -458,7 +458,7 @@
 							</div>
 						</div>
 					{:else if dentistIframeError}
-						<div class="absolute inset-0 flex items-center justify-center bg-[#faf7f2] z-10">
+						<div class="absolute inset-0 flex items-center justify-center bg-[#faf7f2] dark:bg-surface-1 z-10">
 							<div class="text-center p-6">
 								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-[#c4a574]">
 									<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
@@ -485,7 +485,7 @@
 						</div>
 					{:else}
 						{#if !dentistIframeLoaded}
-							<div class="absolute inset-0 flex items-center justify-center bg-[#faf7f2] z-10">
+							<div class="absolute inset-0 flex items-center justify-center bg-[#faf7f2] dark:bg-surface-1 z-10">
 								<div class="text-center">
 									<div class="w-8 h-8 border-3 border-[#4a7c59]/20 border-t-[#4a7c59] rounded-full animate-spin mx-auto mb-3"></div>
 									<p class="text-sm text-[#5a5a5a]">Loading preview...</p>

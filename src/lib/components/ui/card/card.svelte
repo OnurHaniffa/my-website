@@ -15,6 +15,8 @@
 	data-slot="card"
 	class={cn(
 		"bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
+		"dark:border-border/60 dark:shadow-lg dark:shadow-black/20",
+		"transition-all duration-200",
 		className
 	)}
 	{...restProps}

@@ -54,55 +54,75 @@
   --sidebar-accent-foreground: oklch(1 0 0);
   --sidebar-border: oklch(0.35 0.04 250);      /* lighter navy */
   --sidebar-ring: oklch(0.55 0.24 260);
+
+  /* Light mode surfaces (same as background/card - no elevation needed) */
+  --surface-0: oklch(0.99 0.002 240);
+  --surface-1: oklch(1 0 0);
+  --surface-2: oklch(1 0 0);
+  --surface-3: oklch(1 0 0);
+  --surface-4: oklch(1 0 0);
+  --border-subtle: oklch(0.94 0.01 240);
+  --border-accent: oklch(0.55 0.24 260);
 }
 
 .dark {
   /* Dark mode: Deep Navy + Blue & Red accents */
-  --background: oklch(0.15 0.04 250);            /* deep navy blue */
-  --foreground: oklch(0.97 0.01 240);            /* off-white */
+  /* Base background slightly adjusted for better depth perception */
+  --background: oklch(0.14 0.03 250);            /* deep navy blue - base */
+  --foreground: oklch(0.95 0.01 240);            /* off-white, slightly softer */
 
-  --card: oklch(0.20 0.04 250);                  /* slightly lighter navy */
-  --card-foreground: oklch(0.97 0.01 240);
+  /* Elevation surfaces - Material Design inspired (lighter = higher) */
+  --surface-0: oklch(0.14 0.03 250);             /* base surface = background */
+  --surface-1: oklch(0.17 0.03 250);             /* cards, dialogs (+5% white) */
+  --surface-2: oklch(0.19 0.03 250);             /* raised cards, dropdowns (+7%) */
+  --surface-3: oklch(0.21 0.03 250);             /* modals, popovers (+9%) */
+  --surface-4: oklch(0.23 0.03 250);             /* tooltips, highest (+11%) */
 
-  --popover: oklch(0.20 0.04 250);
-  --popover-foreground: oklch(0.97 0.01 240);
+  --card: oklch(0.17 0.03 250);                  /* uses surface-1 */
+  --card-foreground: oklch(0.95 0.01 240);
 
-  /* Primary: Lighter blue for dark bg */
-  --primary: oklch(0.65 0.20 260);               /* #3B82F6 blue-500 */
+  --popover: oklch(0.21 0.03 250);               /* uses surface-3 */
+  --popover-foreground: oklch(0.95 0.01 240);
+
+  /* Primary: Lighter blue, slightly desaturated for dark bg */
+  --primary: oklch(0.68 0.18 260);               /* lighter, less saturated */
   --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.25 0.03 250);             /* dark slate-blue */
-  --secondary-foreground: oklch(0.97 0.01 240);
+  --secondary: oklch(0.22 0.03 250);             /* dark slate-blue, elevated */
+  --secondary-foreground: oklch(0.95 0.01 240);
 
-  --muted: oklch(0.25 0.03 250);
-  --muted-foreground: oklch(0.70 0.02 240);      /* light slate */
+  --muted: oklch(0.19 0.03 250);                 /* surface-2 for muted areas */
+  --muted-foreground: oklch(0.68 0.02 240);      /* brighter for WCAG AA */
 
-  /* Accent: Brighter red for dark mode */
-  --accent: oklch(0.65 0.22 25);                 /* #ef4444 red-500 */
+  /* Accent: Brighter red, slightly desaturated */
+  --accent: oklch(0.68 0.20 25);                 /* brighter, less saturated */
   --accent-foreground: oklch(1 0 0);
 
-  --destructive: oklch(0.65 0.22 25);
+  --destructive: oklch(0.68 0.20 25);
 
-  --border: oklch(0.30 0.03 250);                /* subtle navy border */
-  --input: oklch(0.30 0.03 250);
-  --ring: oklch(0.65 0.20 260);                  /* blue ring */
+  /* Enhanced borders for dark mode - more visible */
+  --border: oklch(0.32 0.03 250);                /* slightly brighter border */
+  --border-subtle: oklch(0.26 0.02 250);         /* subtle separator */
+  --border-accent: oklch(0.40 0.08 260);         /* primary-tinted border */
+  --input: oklch(0.32 0.03 250);
+  --ring: oklch(0.68 0.18 260);                  /* matches primary */
 
   /* Charts - blue & red for dark mode */
-  --chart-1: oklch(0.65 0.20 260);               /* blue-500 */
-  --chart-2: oklch(0.65 0.22 25);                /* red-500 */
-  --chart-3: oklch(0.75 0.16 260);               /* blue-400 */
-  --chart-4: oklch(0.75 0.18 25);                /* red-400 */
-  --chart-5: oklch(0.55 0.24 260);               /* blue-600 */
+  --chart-1: oklch(0.68 0.18 260);               /* blue-500 */
+  --chart-2: oklch(0.68 0.20 25);                /* red-500 */
+  --chart-3: oklch(0.75 0.14 260);               /* blue-400 */
+  --chart-4: oklch(0.75 0.16 25);                /* red-400 */
+  --chart-5: oklch(0.58 0.20 260);               /* blue-600 */
 
   /* Sidebar */
-  --sidebar: oklch(0.12 0.04 250);               /* darker navy */
-  --sidebar-foreground: oklch(0.97 0.01 240);
-  --sidebar-primary: oklch(0.65 0.20 260);       /* blue */
+  --sidebar: oklch(0.11 0.03 250);               /* darker navy */
+  --sidebar-foreground: oklch(0.95 0.01 240);
+  --sidebar-primary: oklch(0.68 0.18 260);       /* blue */
   --sidebar-primary-foreground: oklch(1 0 0);
-  --sidebar-accent: oklch(0.65 0.22 25);         /* red */
+  --sidebar-accent: oklch(0.68 0.20 25);         /* red */
   --sidebar-accent-foreground: oklch(1 0 0);
-  --sidebar-border: oklch(0.25 0.03 250);
-  --sidebar-ring: oklch(0.65 0.20 260);
+  --sidebar-border: oklch(0.22 0.03 250);
+  --sidebar-ring: oklch(0.68 0.18 260);
 }
 
 @theme inline {
@@ -145,6 +165,17 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
+  /* Elevation surfaces (dark mode) */
+  --color-surface-0: var(--surface-0);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-surface-4: var(--surface-4);
+
+  /* Enhanced borders */
+  --color-border-subtle: var(--border-subtle);
+  --color-border-accent: var(--border-accent);
+
   /* Custom spacing for sections */
   --spacing-section: 6rem;      /* 96px - large section padding */
   --spacing-section-sm: 4rem;   /* 64px - smaller section padding */
@@ -167,6 +198,19 @@
   html {
     scroll-behavior: smooth;
   }
+
+  /* Smooth dark/light mode transition - minimal for performance */
+  body {
+    transition: background-color 250ms ease-out;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    body {
+      transition: none;
+    }
+  }
+
   ::selection {
     @apply bg-primary/20 text-primary;
   }
@@ -276,4 +320,110 @@
 
 .preserve-3d {
   transform-style: preserve-3d;
+}
+
+/* ============================================
+   DARK MODE ENHANCEMENTS
+   ============================================ */
+
+/* Card hover effect - glow + border highlight */
+.dark .card-hover-glow {
+  @apply transition-all duration-200;
+}
+.dark .card-hover-glow:hover {
+  border-color: oklch(0.68 0.18 260 / 0.4);
+  box-shadow:
+    0 0 0 1px oklch(0.68 0.18 260 / 0.15),
+    0 4px 20px -4px oklch(0 0 0 / 0.4),
+    0 0 40px -10px oklch(0.68 0.18 260 / 0.2);
+}
+
+/* Soft primary glow for elevated elements */
+.dark .glow-soft {
+  box-shadow:
+    0 0 60px -15px oklch(0.68 0.18 260 / 0.25);
+}
+
+/* Section separator - gradient line */
+.section-separator {
+  @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent;
+}
+.dark .section-separator {
+  background: linear-gradient(
+    to right,
+    transparent,
+    oklch(0.68 0.18 260 / 0.3),
+    transparent
+  );
+}
+
+/* Section separator - glow variant */
+.section-separator-glow {
+  @apply relative w-full h-px;
+}
+.section-separator-glow::before {
+  content: '';
+  @apply absolute inset-x-0 -top-8 h-16 pointer-events-none;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    oklch(0.68 0.18 260 / 0.05),
+    oklch(0.68 0.18 260 / 0.1),
+    oklch(0.68 0.18 260 / 0.05),
+    transparent
+  );
+}
+.section-separator-glow::after {
+  content: '';
+  @apply absolute inset-x-0 top-0 h-px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    oklch(0.68 0.18 260 / 0.4),
+    transparent
+  );
+}
+
+/* Elevated section background for dark mode */
+.dark .section-elevated {
+  background: oklch(0.17 0.03 250);
+}
+
+/* Subtle vignette effect for hero sections */
+.dark .vignette {
+  box-shadow: inset 0 0 150px 50px oklch(0 0 0 / 0.3);
+}
+
+/* Animation delay utilities */
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+.animation-delay-2500 {
+  animation-delay: 2500ms;
+}
+.animation-delay-3000 {
+  animation-delay: 3000ms;
+}
+
+/* Slow spin animation for decorative elements */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }

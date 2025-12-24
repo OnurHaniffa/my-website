@@ -561,9 +561,9 @@
 			</div>
 
 			<div class="grid gap-6 sm:grid-cols-2">
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-primary/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-primary/20">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Clear Communication</h3>
@@ -573,9 +573,9 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-accent/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-accent/20">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
+						<div class="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-inherit"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Results-Focused</h3>
@@ -585,9 +585,9 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-primary/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-primary/20">
 					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+						<div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
 							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Fast Delivery</h3>
@@ -597,10 +597,10 @@
 					</CardContent>
 				</Card>
 
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-500 ring-1 ring-border/30">
+				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-green-500/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-green-500/20">
 					<CardContent class="p-8">
 						<div class="w-14 h-14 rounded-2xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-inherit"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
 						<h3 class="text-xl font-bold mb-3">Full Ownership</h3>
 						<p class="text-muted-foreground">
@@ -631,6 +631,16 @@
 		);
 	}
 
+	/* Dark mode: slightly more saturated, brighter accent */
+	:global(.dark) .hero-glow-main {
+		background: radial-gradient(ellipse,
+			hsl(0 80% 50% / 0.6) 0%,
+			hsl(0 75% 45% / 0.4) 25%,
+			hsl(0 70% 40% / 0.2) 50%,
+			transparent 75%
+		);
+	}
+
 	.hero-glow-blue {
 		background: radial-gradient(ellipse,
 			hsl(220 90% 60% / 0.4) 0%,
@@ -640,10 +650,29 @@
 		);
 	}
 
+	/* Dark mode: enhanced blue glow */
+	:global(.dark) .hero-glow-blue {
+		background: radial-gradient(ellipse,
+			hsl(220 85% 55% / 0.5) 0%,
+			hsl(220 80% 50% / 0.3) 30%,
+			hsl(220 75% 45% / 0.15) 55%,
+			transparent 75%
+		);
+	}
+
 	.hero-glow-center {
 		background: radial-gradient(ellipse,
 			hsl(var(--primary) / 0.12) 0%,
 			hsl(var(--primary) / 0.05) 40%,
+			transparent 70%
+		);
+	}
+
+	/* Dark mode: more visible center glow */
+	:global(.dark) .hero-glow-center {
+		background: radial-gradient(ellipse,
+			oklch(0.68 0.18 260 / 0.2) 0%,
+			oklch(0.68 0.18 260 / 0.08) 40%,
 			transparent 70%
 		);
 	}

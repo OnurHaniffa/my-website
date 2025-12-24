@@ -6,53 +6,36 @@
 </script>
 
 <!-- Curved top edge - wave separates page from dark footer -->
-<div class="bg-background">
-	<svg viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" preserveAspectRatio="none">
-		<path d="M0 60V30C360 60 720 0 1080 30C1260 45 1380 60 1440 60V60H0Z" style="fill: oklch(0.15 0.01 260);"/>
+<div class="relative">
+	<!-- Gradient glow above wave - creates visual separation especially in dark mode -->
+	<div class="absolute inset-x-0 bottom-0 h-56 pointer-events-none">
+		<!-- Primary color glow - enhanced for dark mode -->
+		<div class="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-primary/[0.06] dark:from-transparent dark:via-primary/[0.10] dark:to-primary/[0.18]"></div>
+		<!-- Horizontal accent line - brighter in dark mode -->
+		<div class="absolute bottom-24 inset-x-0 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent dark:via-primary/50"></div>
+	</div>
+
+	<!-- Wave SVG -->
+	<svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="relative w-full h-auto" preserveAspectRatio="none">
+		<!-- Wave fill - use surface color for better integration -->
+		<path d="M0 80V40C360 70 720 10 1080 40C1260 55 1380 70 1440 80V80H0Z" class="fill-[oklch(0.15_0.01_260)] dark:fill-[oklch(0.11_0.025_250)]"/>
+		<!-- Highlight stroke along wave crest - more prominent in dark mode -->
+		<path d="M0 40C360 70 720 10 1080 40C1260 55 1380 70 1440 80" class="stroke-border/30 dark:stroke-primary/50" stroke-width="1.5" fill="none"/>
 	</svg>
 </div>
 
 <footer class="relative overflow-hidden -mt-1" style="background: oklch(0.15 0.01 260);">
-	<!-- Ambient background elements -->
+	<!-- Ambient background elements - simplified for performance -->
 	<div class="absolute inset-0 pointer-events-none overflow-hidden">
 		<!-- Large decorative text -->
 		<div class="absolute -right-10 top-10 select-none opacity-[0.02]">
 			<span class="text-[20rem] md:text-[28rem] font-black leading-none tracking-tighter text-white">Hi</span>
 		</div>
 
-		<!-- Gradient orbs -->
-		<div class="absolute top-10 left-[5%] w-[400px] h-[400px] bg-primary/[0.08] rounded-full blur-[120px]"></div>
-		<div class="absolute bottom-20 right-[10%] w-[300px] h-[300px] bg-blue-500/[0.06] rounded-full blur-[100px]"></div>
-		<div class="absolute top-[40%] right-[40%] w-[200px] h-[200px] bg-accent/[0.04] rounded-full blur-[80px]"></div>
-
-		<!-- Floating particles - scattered throughout -->
-		<div class="absolute top-[10%] left-[8%] w-1.5 h-1.5 bg-red-500/30 rounded-full animate-float"></div>
-		<div class="absolute top-[15%] right-[12%] w-2 h-2 bg-cyan-400/25 rounded-full animate-float animation-delay-500"></div>
-		<div class="absolute top-[20%] left-[15%] w-2 h-2 bg-primary/20 rounded-full animate-float animation-delay-1000"></div>
-		<div class="absolute top-[25%] right-[25%] w-1 h-1 bg-yellow-400/25 rounded-full animate-float animation-delay-1500"></div>
-		<div class="absolute top-[30%] left-[40%] w-2.5 h-2.5 bg-rose-500/20 rounded-full animate-float animation-delay-2000"></div>
-		<div class="absolute top-[35%] right-[20%] w-3 h-3 bg-blue-400/20 rounded-full animate-float animation-delay-2500"></div>
-		<div class="absolute top-[40%] left-[55%] w-1.5 h-1.5 bg-emerald-400/25 rounded-full animate-float animation-delay-3000"></div>
-		<div class="absolute top-[45%] right-[45%] w-2 h-2 bg-white/15 rounded-full animate-float animation-delay-500"></div>
-		<div class="absolute top-[50%] left-[25%] w-1 h-1 bg-orange-400/25 rounded-full animate-float animation-delay-1000"></div>
-		<div class="absolute top-[55%] right-[30%] w-2 h-2 bg-primary/20 rounded-full animate-float animation-delay-1500"></div>
-		<div class="absolute top-[60%] left-[70%] w-2.5 h-2.5 bg-red-400/20 rounded-full animate-float animation-delay-2000"></div>
-		<div class="absolute top-[65%] right-[60%] w-1.5 h-1.5 bg-violet-400/20 rounded-full animate-float animation-delay-2500"></div>
-		<div class="absolute top-[70%] left-[35%] w-2 h-2 bg-cyan-300/20 rounded-full animate-float animation-delay-3000"></div>
-		<div class="absolute top-[75%] right-[15%] w-1 h-1 bg-pink-400/25 rounded-full animate-float animation-delay-500"></div>
-		<div class="absolute top-[80%] left-[50%] w-3 h-3 bg-amber-400/15 rounded-full animate-float animation-delay-1000"></div>
-		<div class="absolute top-[85%] right-[35%] w-1.5 h-1.5 bg-red-500/20 rounded-full animate-float animation-delay-1500"></div>
-		<div class="absolute bottom-[15%] left-[10%] w-2 h-2 bg-teal-400/20 rounded-full animate-float animation-delay-2000"></div>
-		<div class="absolute bottom-[10%] right-[8%] w-2.5 h-2.5 bg-rose-400/20 rounded-full animate-float animation-delay-2500"></div>
-
-		<!-- Geometric shapes -->
-		<div class="absolute top-[18%] left-[80%] w-6 h-6 border border-red-400/[0.08] rotate-45 animate-spin-slow"></div>
-		<div class="absolute top-[25%] right-[35%] w-8 h-8 border border-cyan-400/[0.06] rotate-45 animate-spin-slow"></div>
-		<div class="absolute top-[45%] left-[12%] w-4 h-4 border border-emerald-400/[0.1] rounded-full animate-pulse"></div>
-		<div class="absolute bottom-[35%] left-[20%] w-5 h-5 border border-violet-400/[0.08] rounded-full animate-pulse"></div>
-		<div class="absolute top-[60%] left-[60%] w-6 h-6 border border-orange-400/[0.06] rounded-lg rotate-12 animate-float animation-delay-2000"></div>
-		<div class="absolute bottom-[20%] right-[25%] w-7 h-7 border border-pink-400/[0.07] rotate-12 animate-spin-slow"></div>
-		<div class="absolute top-[38%] right-[8%] w-5 h-5 border border-yellow-400/[0.08] rounded-lg rotate-45 animate-float animation-delay-1000"></div>
+		<!-- Minimal decorative elements - static for performance -->
+		<div class="absolute top-[20%] right-[15%] w-2 h-2 bg-cyan-400/20 rounded-full"></div>
+		<div class="absolute top-[60%] left-[10%] w-2 h-2 bg-rose-500/15 rounded-full"></div>
+		<div class="absolute bottom-[30%] right-[20%] w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
 	</div>
 
 	<Container class="relative">

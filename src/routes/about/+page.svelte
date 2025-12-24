@@ -82,7 +82,7 @@
 		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
 		{ icon: 'M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z', label: 'Work best', value: 'At night', bg: 'bg-gradient-to-br from-indigo-500/10 to-indigo-500/5', color: 'text-indigo-500', border: 'border-t-indigo-500' },
 		{ icon: 'M12 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 6v7m-5 4h10a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1Z', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
-		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
+		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Major in', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
 	onMount(() => {
@@ -165,11 +165,9 @@
 
 <!-- Hero -->
 <Section padding="none" class="relative overflow-hidden">
-	<!-- Background with ambient blobs (static blur, no animation on blur) -->
+	<!-- Background - simple gradient for performance -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted/30"></div>
-		<div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/4"></div>
-		<div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4"></div>
 	</div>
 
 	<!-- Decorative SVG shapes -->
@@ -245,11 +243,9 @@
 
 <!-- Design Philosophy -->
 <Section padding="none" background="none" class="relative overflow-hidden pt-20 lg:pt-24 pb-16 lg:pb-20">
-	<!-- Background with ambient blobs -->
+	<!-- Background with simple gradient -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-900"></div>
-		<div class="absolute top-0 left-1/4 w-[400px] h-[400px] bg-primary/8 rounded-full blur-3xl"></div>
-		<div class="absolute bottom-0 right-1/4 w-[350px] h-[350px] bg-accent/6 rounded-full blur-3xl"></div>
 	</div>
 
 	<!-- Decorative SVG shapes -->
@@ -276,7 +272,7 @@
 				{#each philosophy as item, index}
 					<div class="philosophy-card group relative">
 						<!-- Card with colored left border accent -->
-						<div class="relative h-full {index === 0 ? 'p-8 pb-12' : index === 1 ? 'p-8 pb-10' : 'p-8 pb-14'} rounded-3xl bg-background border border-border/50 border-l-[3px] {item.accent === 'bg-primary' ? 'border-l-primary' : item.accent === 'bg-accent' ? 'border-l-accent' : 'border-l-emerald-500'} overflow-hidden transform-gpu hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 {index === 0 ? 'hover:scale-[1.01]' : index === 1 ? 'hover:scale-[1.02]' : 'hover:scale-[1.015]'} transition-all duration-200 hover:border-primary/30">
+						<div class="relative h-full {index === 0 ? 'p-8 pb-12' : index === 1 ? 'p-8 pb-10' : 'p-8 pb-14'} rounded-3xl bg-background dark:bg-surface-1 border border-border/50 dark:border-border/60 border-l-[3px] {item.accent === 'bg-primary' ? 'border-l-primary' : item.accent === 'bg-accent' ? 'border-l-accent' : 'border-l-emerald-500'} overflow-hidden transform-gpu hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-primary/20 {index === 0 ? 'hover:scale-[1.01]' : index === 1 ? 'hover:scale-[1.02]' : 'hover:scale-[1.015]'} transition-all duration-200 hover:border-primary/30 dark:hover:border-primary/40">
 							<!-- Gradient background on hover -->
 							<div class="absolute inset-0 bg-gradient-to-br {item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
@@ -304,15 +300,9 @@
 
 <!-- Tools -->
 <Section padding="none" class="relative overflow-hidden pt-16 lg:pt-20 pb-16 lg:pb-20">
-	<!-- Background with ambient blobs -->
+	<!-- Background - simple for performance -->
 	<div class="absolute inset-0 -z-10">
-		<div class="absolute inset-0 bg-white dark:bg-slate-900"></div>
-		<!-- Large ambient blobs -->
-		<div class="absolute top-0 left-1/4 w-[450px] h-[450px] bg-primary/10 rounded-full blur-3xl"></div>
-		<div class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/8 rounded-full blur-3xl"></div>
-		<!-- Additional smaller blobs for depth -->
-		<div class="absolute top-1/2 left-0 w-[250px] h-[250px] bg-accent/6 rounded-full blur-3xl -translate-y-1/2"></div>
-		<div class="absolute top-1/3 right-0 w-[200px] h-[200px] bg-primary/5 rounded-full blur-3xl"></div>
+		<div class="absolute inset-0 bg-white dark:bg-surface-0"></div>
 	</div>
 
 	<!-- Decorative SVG shapes -->
@@ -352,11 +342,6 @@
 
 					<!-- Main card -->
 					<div class="group/card relative rounded-3xl bg-slate-950/95 p-6 sm:p-8 shadow-xl overflow-hidden ring-0 hover:ring-1 hover:ring-primary/20 transition-all duration-300">
-						<!-- Subtle ambient glow inside card -->
-						<div class="absolute inset-0 -z-0 opacity-20 pointer-events-none">
-							<div class="absolute top-0 left-0 w-[150px] h-[150px] bg-primary/30 rounded-full blur-2xl"></div>
-							<div class="absolute bottom-0 right-0 w-[120px] h-[120px] bg-accent/25 rounded-full blur-2xl"></div>
-						</div>
 
 						<!-- Window chrome -->
 						<div class="relative z-10 flex items-center gap-2 mb-6">
@@ -431,7 +416,7 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 max-w-4xl mx-auto">
 				{#each quickFacts as fact, i}
 					<div class="group relative">
-						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 border-t-2 {fact.border} hover:border-border hover:shadow-xl hover:shadow-black/5 transform-gpu hover:-translate-y-2 transition-all duration-300 overflow-hidden text-center">
+						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card dark:bg-surface-1 border border-border/50 dark:border-border/60 border-t-2 {fact.border} hover:border-border hover:shadow-xl hover:shadow-black/5 dark:hover:shadow-[0_0_25px_-5px] dark:hover:shadow-primary/15 transform-gpu hover:-translate-y-2 transition-all duration-300 overflow-hidden text-center">
 							<!-- Colored gradient glow on hover -->
 							<div class="absolute inset-0 {fact.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 

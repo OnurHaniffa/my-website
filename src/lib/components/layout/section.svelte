@@ -6,7 +6,7 @@
 		/** Padding size */
 		padding?: 'default' | 'sm' | 'lg' | 'none';
 		/** Background variant */
-		background?: 'default' | 'muted' | 'card' | 'none';
+		background?: 'default' | 'muted' | 'card' | 'elevated' | 'none';
 		/** HTML element to render */
 		as?: 'section' | 'div' | 'article';
 	};
@@ -32,6 +32,7 @@
 		default: 'bg-background',
 		muted: 'bg-muted',
 		card: 'bg-card',
+		elevated: 'bg-background dark:bg-surface-1',
 		none: ''
 	};
 </script>

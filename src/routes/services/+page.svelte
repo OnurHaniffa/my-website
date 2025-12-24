@@ -249,6 +249,13 @@
 		box-shadow: 0 8px 30px -10px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--service-color, hsl(var(--primary)));
 		border-color: var(--service-color, hsl(var(--primary)));
 	}
+	/* Dark mode: add glow effect on hover */
+	:global(.dark) .bento-card:hover {
+		box-shadow:
+			0 8px 30px -10px rgba(0, 0, 0, 0.4),
+			0 0 0 1px var(--service-color, oklch(0.68 0.18 260)),
+			0 0 25px -5px var(--service-color, oklch(0.68 0.18 260 / 0.3));
+	}
 	.bento-card:focus-visible {
 		outline: 2px solid hsl(var(--ring));
 		outline-offset: 2px;
@@ -462,7 +469,7 @@
 								<!-- Bento Grid -->
 								<div class="grid grid-cols-2 gap-3 sm:gap-4">
 									<!-- Process Card -->
-									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border dark:bg-surface-1/80 dark:border-border/60 min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative corner glow -->
 										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
 
@@ -485,7 +492,7 @@
 									</div>
 
 									<!-- Deliverables Card -->
-									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
+									<div class="bento-card group relative col-span-2 sm:col-span-1 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border dark:bg-surface-1/80 dark:border-border/60 min-h-[140px] overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative corner glow -->
 										<div class="absolute -top-10 -right-10 w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: radial-gradient(circle, {service.color}20 0%, transparent 70%);"></div>
 
@@ -505,7 +512,7 @@
 									</div>
 
 									<!-- Timeline Card - Full width, centered -->
-									<div class="bento-card group relative col-span-2 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border overflow-hidden" style="--service-color: {service.color}">
+									<div class="bento-card group relative col-span-2 p-6 sm:p-5 rounded-2xl bg-background/80 backdrop-blur-sm border border-border dark:bg-surface-1/80 dark:border-border/60 overflow-hidden" style="--service-color: {service.color}">
 										<!-- Decorative shimmer -->
 										<div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style="background: linear-gradient(90deg, transparent 0%, {service.color}05 50%, transparent 100%);"></div>
 
@@ -544,21 +551,11 @@
 
 <!-- Testimonial -->
 <Section padding="none" class="py-8 md:py-12 relative overflow-hidden">
-	<!-- Background visuals -->
+	<!-- Background visuals - simplified for performance -->
 	<div class="absolute inset-0 pointer-events-none">
-		<!-- Gradient orbs -->
-		<div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
-		<div class="absolute -bottom-32 -left-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
-
 		<!-- Decorative rings -->
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-primary/[0.04]"></div>
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full border border-dashed border-primary/[0.06]"></div>
-
-		<!-- Floating dots -->
-		<div class="absolute top-8 right-[15%] w-2 h-2 bg-primary/20 rounded-full"></div>
-		<div class="absolute top-16 right-[25%] w-1.5 h-1.5 bg-primary/15 rounded-full"></div>
-		<div class="absolute bottom-12 left-[20%] w-2.5 h-2.5 bg-primary/15 rounded-full"></div>
-		<div class="absolute bottom-8 left-[30%] w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
 
 		<!-- Subtle grid pattern -->
 		<div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 40px 40px;"></div>

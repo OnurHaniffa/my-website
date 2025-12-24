@@ -65,15 +65,8 @@
 
 <!-- Hero Section -->
 <Section padding="lg" class="relative overflow-hidden">
-	<!-- Background decoration -->
-	<div class="absolute inset-0 -z-10">
-		<div
-			class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-3xl"
-		></div>
-		<div
-			class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/5 rounded-full blur-3xl"
-		></div>
-	</div>
+	<!-- Background decoration - simple gradient for performance -->
+	<div class="absolute inset-0 -z-10 bg-gradient-to-br from-primary/[0.02] via-transparent to-accent/[0.02]"></div>
 
 	<Container>
 		<div class="grid gap-12 lg:grid-cols-2 lg:gap-20">
