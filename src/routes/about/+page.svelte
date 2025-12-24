@@ -77,11 +77,11 @@
 	};
 
 	const quickFacts = [
-		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M12 2v2 M12 18v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
+		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Zm-8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
 		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
 		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
 		{ icon: 'M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z', label: 'Work best', value: 'At night', bg: 'bg-gradient-to-br from-indigo-500/10 to-indigo-500/5', color: 'text-indigo-500', border: 'border-t-indigo-500' },
-		{ icon: 'M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm6 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9.5 1a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Zm-3 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4.5 1.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM8 14H6v2h2v-2Z', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
+		{ icon: 'M12 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 6v7m-5 4h10a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1Z', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
@@ -421,7 +421,7 @@
 		<div bind:this={factsSection}>
 			<div class="text-center mb-12">
 				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-sm font-medium mb-4">
-					<span class="text-base">✨</span> The essentials
+					The essentials
 				</span>
 				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Quick facts</h2>
 				<p class="mt-3 text-muted-foreground">A few things that make me, me.</p>
