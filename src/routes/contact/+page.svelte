@@ -18,6 +18,7 @@
 	let email = $state('');
 	let company = $state('');
 	let message = $state('');
+	let honeypot = $state(''); // Honeypot field for spam prevention
 
 	onMount(() => {
 		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -44,7 +45,7 @@
 			const response = await fetch('/api/contact', {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify({ name, email, company, message })
+				body: JSON.stringify({ name, email, company, message, _gotcha: honeypot })
 			});
 
 			if (!response.ok) {
@@ -346,7 +347,7 @@
 							</div>
 
 							<!-- Honeypot for spam -->
-							<input type="text" name="_gotcha" style="display:none" />
+							<input type="text" name="_gotcha" bind:value={honeypot} style="display:none" autocomplete="off" tabindex="-1" />
 
 							<Button
 								type="submit"

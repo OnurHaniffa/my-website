@@ -53,8 +53,8 @@
 						Start a project
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<a href="mailto:hello@ohaniffa.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
-						hello@ohaniffa.com
+					<a href="mailto:contact@onurhaniffa.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
+						contact@onurhaniffa.com
 					</a>
 				</div>
 			</div>
@@ -79,7 +79,7 @@
 						<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="LinkedIn">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
 						</a>
-						<a href="mailto:hello@ohaniffa.com" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="Email">
+						<a href="mailto:contact@onurhaniffa.com" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="Email">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 						</a>
 					</div>
@@ -104,7 +104,7 @@
 					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">Contact</h4>
 					<div class="flex flex-col gap-3">
 						<a href="/contact" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Get in touch</a>
-						<a href="mailto:hello@ohaniffa.com" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">hello@ohaniffa.com</a>
+						<a href="mailto:contact@onurhaniffa.com" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">contact@onurhaniffa.com</a>
 						<p class="text-sm text-gray-500 mt-2">Based in Europe</p>
 						<p class="text-sm text-gray-500">Replies within 24h</p>
 					</div>
