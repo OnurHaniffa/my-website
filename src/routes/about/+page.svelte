@@ -406,31 +406,15 @@
 
 <!-- Quick Facts -->
 <Section padding="lg" class="relative overflow-hidden">
-	<!-- Background with glows and shapes -->
+	<!-- Simple optimized background - no heavy blurs -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
-
-		<!-- Large ambient glows -->
-		<div class="absolute -top-20 left-[5%] w-72 h-72 bg-blue-500/8 rounded-full blur-[100px]"></div>
-		<div class="absolute top-1/4 right-[10%] w-64 h-64 bg-purple-500/8 rounded-full blur-[80px]"></div>
-		<div class="absolute bottom-10 left-1/3 w-80 h-80 bg-cyan-500/6 rounded-full blur-[120px]"></div>
-		<div class="absolute -bottom-20 right-[20%] w-60 h-60 bg-rose-500/6 rounded-full blur-[90px]"></div>
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/4 rounded-full blur-[150px]"></div>
 	</div>
 
-	<!-- Decorative geometric shapes -->
+	<!-- Lightweight decorative elements - static, no blur -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<!-- Subtle grid pattern -->
-		<div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 40px 40px;"></div>
-
-		<!-- Floating rings -->
 		<div class="absolute top-20 right-[15%] w-32 h-32 rounded-full border border-primary/10"></div>
 		<div class="absolute bottom-32 left-[10%] w-24 h-24 rounded-full border border-accent/10"></div>
-		<div class="absolute top-1/3 left-[20%] w-16 h-16 rounded-full border border-cyan-500/10"></div>
-
-		<!-- Diagonal lines -->
-		<div class="absolute top-0 right-1/4 w-px h-40 bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12"></div>
-		<div class="absolute bottom-0 left-1/3 w-px h-32 bg-gradient-to-b from-transparent via-accent/10 to-transparent -rotate-12"></div>
 	</div>
 
 	<Container class="relative z-10">
