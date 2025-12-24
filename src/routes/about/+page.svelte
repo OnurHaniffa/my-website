@@ -275,27 +275,24 @@
 			<div class="grid md:grid-cols-3 gap-6">
 				{#each philosophy as item, index}
 					<div class="philosophy-card group relative">
-						<!-- Card with hover effects -->
-						<div class="relative h-full p-8 rounded-3xl bg-background border border-border/50 overflow-hidden transform-gpu hover:-translate-y-1 transition-transform duration-150 hover:border-primary/30">
+						<!-- Card with colored left border accent -->
+						<div class="relative h-full p-8 rounded-3xl bg-background border border-border/50 border-l-[3px] {item.accent === 'bg-primary' ? 'border-l-primary' : item.accent === 'bg-accent' ? 'border-l-accent' : 'border-l-emerald-500'} overflow-hidden transform-gpu hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/5 transition-all duration-200 hover:border-primary/30">
 							<!-- Gradient background on hover -->
-							<div class="absolute inset-0 bg-gradient-to-br {item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-150"></div>
-
-							<!-- Accent bar -->
-							<div class="absolute top-0 left-8 right-8 h-1 {item.accent} rounded-b-full transform-gpu origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-150"></div>
+							<div class="absolute inset-0 bg-gradient-to-br {item.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
 							<!-- Icon -->
-							<div class="relative w-14 h-14 rounded-2xl {item.iconBg} flex items-center justify-center mb-6 transform-gpu group-hover:scale-110 transition-transform duration-150">
+							<div class="relative w-14 h-14 rounded-2xl {item.iconBg} flex items-center justify-center mb-6 transform-gpu group-hover:scale-110 transition-transform duration-200">
 								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-foreground">
 									<path d={item.icon} />
 								</svg>
 							</div>
 
-							<!-- Number -->
-							<span class="absolute top-6 right-6 text-7xl font-black text-muted-foreground/10 group-hover:text-primary/10 transition-colors duration-150">{item.number}</span>
+							<!-- Number - positioned bottom right -->
+							<span class="absolute bottom-6 right-6 text-7xl font-black text-muted-foreground/[0.06] group-hover:text-muted-foreground/10 transition-colors duration-200 select-none">{item.number}</span>
 
 							<div class="relative">
 								<h3 class="text-xl font-bold mb-3">{item.title}</h3>
-								<p class="text-muted-foreground leading-relaxed">{item.description}</p>
+								<p class="text-muted-foreground leading-[1.7]">{item.description}</p>
 							</div>
 						</div>
 					</div>
@@ -423,23 +420,23 @@
 				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Quick facts</h2>
 			</div>
 
-			<!-- Premium grid layout -->
-			<div class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
+			<!-- Premium grid layout - single column on mobile for better tap targets -->
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
 				{#each quickFacts as fact, i}
 					<div class="group relative">
-						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transform-gpu hover:-translate-y-1 transition-all duration-200 overflow-hidden">
+						<div class="relative h-full p-5 sm:p-6 rounded-2xl bg-card border border-border/50 border-t-2 {i % 2 === 0 ? 'border-t-primary' : 'border-t-accent'} hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5 transform-gpu hover:-translate-y-1 transition-all duration-200 overflow-hidden text-center">
 							<!-- Gradient accent on hover -->
 							<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
-							<!-- Icon with ring -->
+							<!-- Icon with ring and rotation on hover -->
 							<div class="relative w-12 h-12 mx-auto mb-4 rounded-xl {fact.bg} flex items-center justify-center ring-1 ring-border/50 group-hover:ring-primary/30 transition-all">
-								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="{fact.color} transform-gpu group-hover:scale-110 transition-transform duration-200">
+								<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="{fact.color} transform-gpu group-hover:scale-110 group-hover:rotate-6 transition-transform duration-200">
 									<path d={fact.icon} />
 								</svg>
 							</div>
 
-							<!-- Text -->
-							<p class="relative text-[10px] sm:text-xs text-muted-foreground uppercase tracking-widest mb-1 font-medium">{fact.label}</p>
+							<!-- Text with improved contrast -->
+							<p class="relative text-[10px] sm:text-xs text-muted-foreground/90 uppercase tracking-widest mb-1 font-semibold">{fact.label}</p>
 							<p class="relative font-bold text-base sm:text-lg">{fact.value}</p>
 						</div>
 					</div>
