@@ -99,7 +99,7 @@ export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 		// Send email via Resend
 		const { data, error } = await resend.emails.send({
 			from: 'Haniffa Design Studio <hello@onurhaniffa.com>',
-			to: ['contact@onurhaniffa.com'],
+			to: ['mronursa@gmail.com'],
 			replyTo: email.trim(), // Use original email for reply-to
 			subject: `New inquiry from ${safeName}${safeCompany ? ` (${safeCompany})` : ''}`,
 			html: `
