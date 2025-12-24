@@ -4,6 +4,10 @@
 	import { Header, Footer } from '$lib/components/layout';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
+	import { inject } from '@vercel/analytics';
+
+	// Initialize Vercel Analytics
+	inject();
 
 	let { children } = $props();
 
