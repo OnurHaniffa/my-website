@@ -80,8 +80,8 @@
 		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z M12 2v2 M12 18v2 M4.93 4.93l1.41 1.41 M17.66 17.66l1.41 1.41 M2 12h2 M20 12h2 M4.93 19.07l1.41-1.41 M17.66 6.34l1.41-1.41', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
 		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
 		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
-		{ icon: 'M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2ZM14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z', label: 'Interested in', value: 'AI & ML', bg: 'bg-gradient-to-br from-cyan-500/10 to-cyan-500/5', color: 'text-cyan-500', border: 'border-t-cyan-500' },
-		{ icon: 'M6 11V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v5 M12 11V4 M20 11v4a2 2 0 0 1-2 2h-1.5 M4 11v4a2 2 0 0 0 2 2h1.5 M9 22l3-3 3 3 M12 22v-6 M9 17h6', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
+		{ icon: 'M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm9 0a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM12 17.5a3.5 3.5 0 0 0 3.5-3.5h-7a3.5 3.5 0 0 0 3.5 3.5Z', label: 'Interested in', value: 'AI & ML', bg: 'bg-gradient-to-br from-cyan-500/10 to-cyan-500/5', color: 'text-cyan-500', border: 'border-t-cyan-500' },
+		{ icon: 'M2 6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6Zm6 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm9.5 1a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Zm-3 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Zm4.5 1.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM8 14H6v2h2v-2Z', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Studying', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
@@ -406,21 +406,31 @@
 
 <!-- Quick Facts -->
 <Section padding="lg" class="relative overflow-hidden">
-	<!-- Background with personality -->
+	<!-- Background with glows and shapes -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-b from-muted/30 via-background to-background"></div>
-		<!-- Floating decorative elements -->
-		<div class="absolute top-20 left-[10%] w-32 h-32 bg-blue-500/5 rounded-full blur-2xl"></div>
-		<div class="absolute bottom-20 right-[15%] w-40 h-40 bg-purple-500/5 rounded-full blur-2xl"></div>
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-orange-500/3 rounded-full blur-3xl"></div>
+
+		<!-- Large ambient glows -->
+		<div class="absolute -top-20 left-[5%] w-72 h-72 bg-blue-500/8 rounded-full blur-[100px]"></div>
+		<div class="absolute top-1/4 right-[10%] w-64 h-64 bg-purple-500/8 rounded-full blur-[80px]"></div>
+		<div class="absolute bottom-10 left-1/3 w-80 h-80 bg-cyan-500/6 rounded-full blur-[120px]"></div>
+		<div class="absolute -bottom-20 right-[20%] w-60 h-60 bg-rose-500/6 rounded-full blur-[90px]"></div>
+		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-orange-500/4 rounded-full blur-[150px]"></div>
 	</div>
 
-	<!-- Decorative floating icons -->
+	<!-- Decorative geometric shapes -->
 	<div class="absolute inset-0 overflow-hidden pointer-events-none">
-		<div class="absolute top-16 right-[20%] text-2xl animate-bounce" style="animation-duration: 3s;">🤖</div>
-		<div class="absolute bottom-24 left-[15%] text-2xl animate-bounce" style="animation-duration: 4s; animation-delay: 1s;">🎮</div>
-		<div class="absolute top-1/3 right-[10%] text-xl animate-bounce" style="animation-duration: 3.5s; animation-delay: 0.5s;">🧠</div>
-		<div class="absolute bottom-1/3 left-[8%] text-xl animate-bounce" style="animation-duration: 3.2s; animation-delay: 0.8s;">💻</div>
+		<!-- Subtle grid pattern -->
+		<div class="absolute inset-0 opacity-[0.015]" style="background-image: radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0); background-size: 40px 40px;"></div>
+
+		<!-- Floating rings -->
+		<div class="absolute top-20 right-[15%] w-32 h-32 rounded-full border border-primary/10"></div>
+		<div class="absolute bottom-32 left-[10%] w-24 h-24 rounded-full border border-accent/10"></div>
+		<div class="absolute top-1/3 left-[20%] w-16 h-16 rounded-full border border-cyan-500/10"></div>
+
+		<!-- Diagonal lines -->
+		<div class="absolute top-0 right-1/4 w-px h-40 bg-gradient-to-b from-transparent via-primary/10 to-transparent rotate-12"></div>
+		<div class="absolute bottom-0 left-1/3 w-px h-32 bg-gradient-to-b from-transparent via-accent/10 to-transparent -rotate-12"></div>
 	</div>
 
 	<Container class="relative z-10">
