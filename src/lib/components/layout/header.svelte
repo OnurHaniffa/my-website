@@ -10,6 +10,7 @@
 	} from '$lib/components/ui/sheet';
 	import { Container } from '$lib/components/layout';
 	import { browser } from '$app/environment';
+	import logo from '$lib/assets/logo.png';
 
 	const navItems = [
 		{ href: '/', label: 'Home' },
@@ -83,17 +84,12 @@
 	<Container>
 		<div class="flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
 			<!-- Logo -->
-			<a href="/" data-sveltekit-reload class="group flex items-center gap-2 sm:gap-3">
-				<!-- Logo mark -->
-				<div class="relative w-9 h-9 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center overflow-hidden transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/25">
-					<span class="text-primary-foreground font-black text-lg sm:text-xl italic">O</span>
-					<div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent"></div>
-				</div>
-				<!-- Logo text -->
-				<div class="flex flex-col">
-					<span class="font-black text-lg sm:text-xl tracking-tight leading-none">Onur Haniffa</span>
-					<span class="text-[9px] sm:text-[10px] text-muted-foreground tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium">Web Design</span>
-				</div>
+			<a href="/" data-sveltekit-reload class="group flex items-center">
+				<img
+					src={logo}
+					alt="Onur Haniffa"
+					class="h-10 sm:h-12 w-auto transition-all duration-300 group-hover:scale-105 dark:invert"
+				/>
 			</a>
 
 			<!-- Desktop Navigation -->
@@ -232,15 +228,11 @@
 					<div class="relative h-full flex flex-col p-6 pt-8">
 						<!-- Header -->
 						<div class="flex items-center justify-between mb-12">
-							<div class="flex items-center gap-3">
-								<div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-xl shadow-primary/25 ring-4 ring-primary/10">
-									<span class="text-primary-foreground font-black text-xl italic">O</span>
-								</div>
-								<div class="flex flex-col">
-									<span class="font-black text-xl tracking-tight">Onur Haniffa</span>
-									<span class="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-medium">Web Design</span>
-								</div>
-							</div>
+							<img
+								src={logo}
+								alt="Onur Haniffa"
+								class="h-14 w-auto dark:invert"
+							/>
 						</div>
 
 						<!-- Navigation -->

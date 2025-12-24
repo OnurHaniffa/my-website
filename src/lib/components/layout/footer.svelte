@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { Container } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui/button';
+	import logo from '$lib/assets/logo.png';
 
 	const currentYear = new Date().getFullYear();
 </script>
@@ -63,14 +64,12 @@
 			<div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-6 py-12 border-t border-white/10">
 				<!-- Brand - takes more space -->
 				<div class="col-span-2 md:col-span-5 lg:col-span-4">
-					<a href="/" class="inline-flex items-center gap-3 mb-5 group">
-						<div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center transition-all group-hover:scale-105 group-hover:shadow-lg group-hover:shadow-primary/20">
-							<span class="text-primary-foreground font-black text-xl italic">O</span>
-						</div>
-						<div>
-							<span class="font-black text-xl block leading-none text-white">Onur Haniffa</span>
-							<span class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Web Design</span>
-						</div>
+					<a href="/" class="inline-block mb-5 group">
+						<img
+							src={logo}
+							alt="Onur Haniffa"
+							class="h-12 w-auto invert transition-all group-hover:scale-105"
+						/>
 					</a>
 					<p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
 						Crafting beautiful websites that turn curious visitors into loyal customers.
