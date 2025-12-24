@@ -67,11 +67,10 @@
 </script>
 
 <svelte:head>
-	<title>Contact | Haniffa Design Studio</title>
-	<meta
-		name="description"
-		content="Let's talk about your project. Get in touch for a free consultation about your web design needs."
-	/>
+	<title>Contact | Onur Haniffa</title>
+	<meta name="description" content="Let's talk about your project. Get in touch for a free consultation about your web design and development needs. Quick response guaranteed." />
+	<meta property="og:title" content="Contact | Onur Haniffa" />
+	<meta property="og:description" content="Let's talk about your project. Get in touch for a free consultation about your web design and development needs." />
 </svelte:head>
 
 <!-- Hero Section -->

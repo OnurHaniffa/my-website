@@ -68,8 +68,8 @@
 							<span class="text-primary-foreground font-black text-xl italic">O</span>
 						</div>
 						<div>
-							<span class="font-black text-xl block leading-none text-white">Haniffa</span>
-							<span class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Design Studio</span>
+							<span class="font-black text-xl block leading-none text-white">Onur Haniffa</span>
+							<span class="text-[10px] text-gray-400 tracking-[0.2em] uppercase">Web Design</span>
 						</div>
 					</a>
 					<p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
@@ -114,7 +114,7 @@
 			<!-- Bottom bar -->
 			<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
 				<p class="text-sm text-gray-500">
-					&copy; {currentYear} Haniffa Design Studio. All rights reserved.
+					&copy; {currentYear} Onur Haniffa. All rights reserved.
 				</p>
 				<p class="text-sm text-gray-500">
 					Designed with passion

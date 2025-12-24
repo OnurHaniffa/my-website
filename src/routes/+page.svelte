@@ -133,8 +133,12 @@
 </script>
 
 <svelte:head>
-	<title>Haniffa Design Studio | Websites That Convert</title>
-	<meta name="description" content="I design websites that turn visitors into customers. Modern, professional web design built with strategy and clarity." />
+	<title>Onur Haniffa | Web Designer & Developer</title>
+	<meta name="description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity. Based in Europe." />
+	<meta property="og:title" content="Onur Haniffa | Web Designer & Developer" />
+	<meta property="og:description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity." />
+	<meta name="twitter:title" content="Onur Haniffa | Web Designer & Developer" />
+	<meta name="twitter:description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity." />
 </svelte:head>
 
 <!-- Hero Section -->

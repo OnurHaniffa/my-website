@@ -135,11 +135,10 @@
 </script>
 
 <svelte:head>
-	<title>Work | Haniffa Design Studio</title>
-	<meta
-		name="description"
-		content="Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online."
-	/>
+	<title>Work | Onur Haniffa</title>
+	<meta name="description" content="Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online with modern web design." />
+	<meta property="og:title" content="Work | Onur Haniffa" />
+	<meta property="og:description" content="Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online." />
 </svelte:head>
 
 <style>

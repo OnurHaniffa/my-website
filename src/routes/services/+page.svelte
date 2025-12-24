@@ -187,8 +187,10 @@
 </script>
 
 <svelte:head>
-	<title>Services | Haniffa Design Studio</title>
-	<meta name="description" content="Professional web design and development services. From complete builds to redesigns and ongoing support." />
+	<title>Services | Onur Haniffa</title>
+	<meta name="description" content="Professional web design and development services. From complete website builds to redesigns and ongoing support. Fast, modern, SEO-optimized." />
+	<meta property="og:title" content="Services | Onur Haniffa" />
+	<meta property="og:description" content="Professional web design and development services. From complete website builds to redesigns and ongoing support." />
 </svelte:head>
 
 <style>

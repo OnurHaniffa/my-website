@@ -91,8 +91,8 @@
 				</div>
 				<!-- Logo text -->
 				<div class="flex flex-col">
-					<span class="font-black text-lg sm:text-xl tracking-tight leading-none">Haniffa</span>
-					<span class="text-[9px] sm:text-[10px] text-muted-foreground tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium">Design Studio</span>
+					<span class="font-black text-lg sm:text-xl tracking-tight leading-none">Onur Haniffa</span>
+					<span class="text-[9px] sm:text-[10px] text-muted-foreground tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium">Web Design</span>
 				</div>
 			</a>
 
@@ -237,8 +237,8 @@
 									<span class="text-primary-foreground font-black text-xl italic">O</span>
 								</div>
 								<div class="flex flex-col">
-									<span class="font-black text-xl tracking-tight">Haniffa</span>
-									<span class="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-medium">Design Studio</span>
+									<span class="font-black text-xl tracking-tight">Onur Haniffa</span>
+									<span class="text-[10px] text-muted-foreground tracking-[0.2em] uppercase font-medium">Web Design</span>
 								</div>
 							</div>
 						</div>

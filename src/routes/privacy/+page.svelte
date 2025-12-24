@@ -4,11 +4,9 @@
 </script>
 
 <svelte:head>
-	<title>Privacy Policy | Haniffa Design Studio</title>
-	<meta
-		name="description"
-		content="Privacy Policy for Haniffa Design Studio. Learn how we collect, use, and protect your personal information."
-	/>
+	<title>Privacy Policy | Onur Haniffa</title>
+	<meta name="description" content="Privacy Policy for Onur Haniffa Web Design. Learn how I collect, use, and protect your personal information." />
+	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
 <Section padding="lg">

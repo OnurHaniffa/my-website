@@ -159,8 +159,10 @@
 </script>
 
 <svelte:head>
-	<title>About | Haniffa Design Studio</title>
-	<meta name="description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, available worldwide." />
+	<title>About | Onur Haniffa</title>
+	<meta name="description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide." />
+	<meta property="og:title" content="About | Onur Haniffa" />
+	<meta property="og:description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide." />
 </svelte:head>
 
 <!-- Hero -->
