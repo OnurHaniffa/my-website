@@ -219,6 +219,30 @@
 							<p class="text-muted-foreground">European time zones (CET/CEST)</p>
 						</div>
 					</div>
+
+					<a href="https://www.linkedin.com/in/onurhaniffa/" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 group cursor-pointer">
+						<div
+							class="w-12 h-12 rounded-xl bg-[#0A66C2]/10 border border-[#0A66C2]/20 flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:bg-[#0A66C2]/20 group-hover:scale-110 group-hover:-rotate-3 group-hover:border-[#0A66C2]/40 group-hover:shadow-lg group-hover:shadow-[#0A66C2]/10"
+						>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="text-[#0A66C2] transition-transform duration-300 group-hover:scale-110"
+								><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg
+							>
+						</div>
+						<div class="transition-transform duration-300 group-hover:translate-x-1">
+							<p class="font-medium">LinkedIn</p>
+							<p class="text-muted-foreground group-hover:text-[#0A66C2] transition-colors">Connect with me</p>
+						</div>
+					</a>
 				</div>
 
 				</div>
