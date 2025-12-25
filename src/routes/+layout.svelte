@@ -1,6 +1,5 @@
 <script lang="ts">
 	import '../app.css';
-	import favicon from '$lib/assets/logo.png';
 	import { Header, Footer } from '$lib/components/layout';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -24,8 +23,12 @@
 </script>
 
 <svelte:head>
-	<!-- Favicon -->
-	<link rel="icon" href={favicon} />
+	<!-- Favicon - Google requires min 48x48, larger sizes look better -->
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+	<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
 	<!-- Fonts -->
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
