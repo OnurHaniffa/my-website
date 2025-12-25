@@ -85,6 +85,21 @@
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Major in', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
+	const academicRoles = [
+		{
+			icon: 'M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 0 1-1.591.659H9.061a2.25 2.25 0 0 1-1.591-.659L5 14.5m14 0V17a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2.5',
+			role: 'Researcher',
+			place: 'BukemLab',
+			description: 'Researching quantum dots for next-generation biomedical applications'
+		},
+		{
+			icon: 'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25',
+			role: 'Teaching Assistant',
+			place: 'Acibadem University',
+			description: 'Helping students break down complex engineering concepts'
+		}
+	];
+
 	onMount(() => {
 		// Check for reduced motion preference
 		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -435,6 +450,35 @@
 							<!-- Text with improved contrast -->
 							<p class="relative text-[10px] sm:text-xs text-muted-foreground/80 uppercase tracking-widest mb-1.5 font-semibold">{fact.label}</p>
 							<p class="relative font-bold text-base sm:text-lg {fact.color}">{fact.value}</p>
+						</div>
+					</div>
+				{/each}
+			</div>
+
+			<!-- Academic Roles -->
+			<div class="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-3xl mx-auto mt-8">
+				{#each academicRoles as role}
+					<div class="group relative">
+						<div class="relative h-full p-6 rounded-2xl bg-gradient-to-br from-muted/50 to-muted/30 dark:from-surface-1 dark:to-surface-1/80 border border-border/40 hover:border-border/60 hover:shadow-lg dark:hover:shadow-primary/5 transform-gpu hover:-translate-y-1 transition-all duration-300 overflow-hidden">
+							<!-- Subtle gradient overlay on hover -->
+							<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
+
+							<!-- Content - horizontal layout -->
+							<div class="relative flex items-start gap-4">
+								<!-- Icon container -->
+								<div class="shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-accent/10 dark:from-primary/20 dark:to-accent/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+									<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary">
+										<path d={role.icon} />
+									</svg>
+								</div>
+
+								<!-- Text content -->
+								<div class="flex-1 min-w-0">
+									<p class="text-xs text-muted-foreground/70 uppercase tracking-wider font-medium mb-1">{role.role}</p>
+									<h3 class="font-bold text-lg text-foreground mb-1.5">{role.place}</h3>
+									<p class="text-sm text-muted-foreground leading-relaxed">{role.description}</p>
+								</div>
+							</div>
 						</div>
 					</div>
 				{/each}
