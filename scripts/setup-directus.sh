@@ -32,20 +32,20 @@ echo "Authenticated successfully."
 post_json() {
   local url="$1"
   local body="$2"
-  curl -s -X POST "$url" \
+  printf '%s' "$body" | curl -s -X POST "$url" \
     -H "Authorization: Bearer $TOKEN" \
     -H "Content-Type: application/json" \
-    -d "$body" 2>/dev/null || true
+    -d @- 2>/dev/null || true
 }
 
 # Helper: PATCH JSON to Directus
 patch_json() {
   local url="$1"
   local body="$2"
-  curl -s -X PATCH "$url" \
+  printf '%s' "$body" | curl -s -X PATCH "$url" \
     -H "Authorization: Bearer $TOKEN" \
     -H "Content-Type: application/json" \
-    -d "$body" 2>/dev/null || true
+    -d @- 2>/dev/null || true
 }
 
 # Helper: create a collection
@@ -620,7 +620,7 @@ seed_collection "services_detailed" '[
     "sort": 2,
     "title": "Website Redesign",
     "short_title": "Redesign",
-    "description": "Transform your underperforming site into a conversion machine. Keep what works, fix what doesn't.",
+    "description": "Transform your underperforming site into a conversion machine. Keep what works, fix what doesn'\''t.",
     "icon": "<path d=\"M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8\"/><path d=\"M3 3v5h5\"/><path d=\"M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16\"/><path d=\"M16 16h5v5\"/>",
     "color": "#2563eb",
     "light_color": "#bfdbfe",
@@ -672,7 +672,7 @@ seed_collection "philosophy_cards" '[
     "sort": 1,
     "number": "01",
     "title": "Design with intent",
-    "description": "Every element has a purpose. If it doesn't help your visitor take action, it doesn't belong.",
+    "description": "Every element has a purpose. If it doesn'\''t help your visitor take action, it doesn'\''t belong.",
     "gradient": "from-primary/20 via-primary/5 to-transparent",
     "accent": "bg-primary",
     "icon_bg": "bg-primary/10",
@@ -692,7 +692,7 @@ seed_collection "philosophy_cards" '[
     "sort": 3,
     "number": "03",
     "title": "Own what you build",
-    "description": "Your site, your code - you own everything. I handle hosting and updates so you don't have to worry about the technical side.",
+    "description": "Your site, your code - you own everything. I handle hosting and updates so you don'\''t have to worry about the technical side.",
     "gradient": "from-emerald-500/20 via-emerald-500/5 to-transparent",
     "accent": "bg-emerald-500",
     "icon_bg": "bg-emerald-500/10",
