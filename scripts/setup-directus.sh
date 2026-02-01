@@ -1072,6 +1072,51 @@ else
   echo "  WARNING: Could not create dashboard (may need Directus Pro/Cloud)"
 fi
 
+# ============================================
+# Organize Collections into Folders
+# ============================================
+
+echo ""
+echo "=== Organizing collections into folders ==="
+
+# Create folder collections (virtual grouping containers)
+for folder in global_settings page_settings content; do
+  echo "  Creating folder: $folder"
+  printf '%s' '{"collection":"'"$folder"'","schema":null,"meta":{"icon":"folder","color":"#6644FF"}}' | curl -s -X POST "$DIRECTUS_URL/collections" \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/json" \
+    -d @- > /dev/null 2>&1 || true
+done
+
+# Move singletons into "Global Settings" folder
+for col in site_settings header_settings footer_settings; do
+  echo "  Moving $col -> Global Settings"
+  printf '%s' '{"meta":{"group":"global_settings"}}' | curl -s -X PATCH "$DIRECTUS_URL/collections/$col" \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/json" \
+    -d @- > /dev/null 2>&1 || true
+done
+
+# Move page settings into "Page Settings" folder
+for col in services_page_settings about_page_settings contact_page_settings work_page_settings privacy_page_settings; do
+  echo "  Moving $col -> Page Settings"
+  printf '%s' '{"meta":{"group":"page_settings"}}' | curl -s -X PATCH "$DIRECTUS_URL/collections/$col" \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/json" \
+    -d @- > /dev/null 2>&1 || true
+done
+
+# Move regular collections into "Content" folder
+for col in projects services why_me_points services_detailed services_faqs philosophy_cards tool_groups quick_facts academic_roles contact_faqs; do
+  echo "  Moving $col -> Content"
+  printf '%s' '{"meta":{"group":"content"}}' | curl -s -X PATCH "$DIRECTUS_URL/collections/$col" \
+    -H "Authorization: Bearer $TOKEN" \
+    -H "Content-Type: application/json" \
+    -d @- > /dev/null 2>&1 || true
+done
+
+echo "  Collections organized."
+
 echo ""
 echo "=== Setup Complete ==="
 echo ""
