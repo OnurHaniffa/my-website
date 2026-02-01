@@ -105,7 +105,7 @@
 		}
 	];
 
-	const services = data.servicesDetailed
+	const services = data.servicesDetailed?.length
 		? data.servicesDetailed.map((s, i) => ({
 				id: i,
 				title: s.title,
@@ -129,7 +129,7 @@
 		{ question: 'What if I need changes after launch?', answer: 'I offer ongoing support packages, or you can reach out for one-off updates. Either way, I\'m here when you need me.' }
 	];
 
-	const faqs = data.faqs ?? fallbackFaqs;
+	const faqs = data.faqs?.length ? data.faqs : fallbackFaqs;
 
 	// Gauge arc calculations for semi-circle (180 degrees, 3 segments of 60 degrees each)
 	const gaugeConfig = {

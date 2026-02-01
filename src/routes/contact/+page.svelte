@@ -439,7 +439,7 @@
 		</InView>
 
 		<div class="space-y-5">
-			{#each data.faqs ?? [
+			{#each (data.faqs?.length ? data.faqs : [
 				{
 					question: 'What information should I include in my message?',
 					answer: 'Share your project goals, timeline, and any specific requirements. The more context you provide, the better I can understand how to help.'
@@ -452,7 +452,7 @@
 					question: 'Do you offer free consultations?',
 					answer: "Yes! Our initial conversation is always free. It's an opportunity for both of us to see if we're a good fit for working together."
 				}
-			] as faq}
+			]) as faq}
 				<InView animation="fade-up">
 					<div class="p-6 rounded-xl bg-background border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
 						<h3 class="font-semibold mb-2">{faq.question}</h3>

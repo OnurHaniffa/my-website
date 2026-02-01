@@ -42,7 +42,7 @@
 		}
 	];
 
-	const philosophy = data.philosophyCards
+	const philosophy = data.philosophyCards?.length
 		? data.philosophyCards.map(c => ({
 				number: c.number,
 				title: c.title,
@@ -80,7 +80,7 @@
 		}
 	];
 
-	const toolGroups = data.toolGroups
+	const toolGroups = data.toolGroups?.length
 		? data.toolGroups.map(g => ({
 				label: g.label,
 				tools: g.tools
@@ -107,7 +107,7 @@
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Major in', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
-	const quickFacts = data.quickFacts ?? fallbackQuickFacts;
+	const quickFacts = data.quickFacts?.length ? data.quickFacts : fallbackQuickFacts;
 
 	const fallbackAcademicRoles = [
 		{
@@ -124,7 +124,7 @@
 		}
 	];
 
-	const academicRoles = data.academicRoles ?? fallbackAcademicRoles;
+	const academicRoles = data.academicRoles?.length ? data.academicRoles : fallbackAcademicRoles;
 
 	onMount(() => {
 		// Check for reduced motion preference

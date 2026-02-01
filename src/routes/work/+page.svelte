@@ -10,7 +10,7 @@
 
 	let { data } = $props();
 	const ps = data.pageSettings;
-	const projects = data.projects ?? fallbackProjectsData;
+	const projects = data.projects?.length ? data.projects : fallbackProjectsData;
 
 	let mounted = $state(false);
 	let dentistIframeLoaded = $state(false);
