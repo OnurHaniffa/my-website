@@ -6,7 +6,14 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
 	import { Counter } from '$lib/components/ui/animations';
-	import { projects } from '$lib/data/projects';
+
+	let { data } = $props();
+
+	// Use CMS data with fallbacks
+	const projects = data.projects;
+	const services = data.services;
+	const whyMePoints = data.whyMePoints;
+	const settings = data.siteSettings;
 
 	let heroContent: HTMLDivElement;
 	let heroMockup: HTMLDivElement;
@@ -133,12 +140,12 @@
 </script>
 
 <svelte:head>
-	<title>Onur Haniffa | Web Designer & Developer</title>
-	<meta name="description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity. Based in Europe." />
-	<meta property="og:title" content="Onur Haniffa | Web Designer & Developer" />
-	<meta property="og:description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity." />
-	<meta name="twitter:title" content="Onur Haniffa | Web Designer & Developer" />
-	<meta name="twitter:description" content="I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity." />
+	<title>{settings?.site_title ?? 'Onur Haniffa | Web Designer & Developer'}</title>
+	<meta name="description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity. Based in Europe."} />
+	<meta property="og:title" content={settings?.site_title ?? "Onur Haniffa | Web Designer & Developer"} />
+	<meta property="og:description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity."} />
+	<meta name="twitter:title" content={settings?.site_title ?? "Onur Haniffa | Web Designer & Developer"} />
+	<meta name="twitter:description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity."} />
 </svelte:head>
 
 <!-- Hero Section -->
@@ -169,13 +176,13 @@
 			<div bind:this={heroContent} class="space-y-6 sm:space-y-8 lg:space-y-10">
 				<Badge variant="outline" class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-					Available for Projects
+					{settings?.hero_badge_text ?? 'Available for Projects'}
 				</Badge>
 
 				<!-- Headline with animated underline -->
 				<div class="relative">
 					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">customers</span>
+						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">{settings?.hero_highlight_word ?? 'customers'}</span>
 							<!-- Curly underline -->
 							<svg bind:this={curlyLine} class="absolute -bottom-6 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 								<path
@@ -194,7 +201,7 @@
 
 				<!-- Description -->
 				<p class="text-lg text-muted-foreground/90 max-w-md leading-relaxed">
-					From first click to final conversion—I design and develop websites that don't just look good, they deliver real business results.
+					{settings?.hero_description ?? "From first click to final conversion—I design and develop websites that don't just look good, they deliver real business results."}
 				</p>
 
 				<!-- Quick Stats -->
@@ -348,10 +355,10 @@
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
 				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Services</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-					What I <span class="text-primary">do</span>
+					{settings?.services_section_title ?? 'What I do'}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
-					End-to-end web solutions tailored to help your business succeed online.
+					{settings?.services_section_subtitle ?? 'End-to-end web solutions tailored to help your business succeed online.'}
 				</p>
 			</div>
 
@@ -462,10 +469,10 @@
 				<div>
 					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Portfolio</Badge>
 					<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-						Recent <span class="text-primary">Projects</span>
+						{settings?.portfolio_section_title ?? 'Recent Projects'}
 					</h2>
 					<p class="mt-4 text-lg text-muted-foreground">
-						Real projects, real results. See what I can do for you.
+						{settings?.portfolio_section_subtitle ?? 'Real projects, real results. See what I can do for you.'}
 					</p>
 				</div>
 				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
@@ -547,6 +554,13 @@
 	</Container>
 </Section>
 
+<!-- CMS Source Indicator (proof of concept) -->
+{#if data.isFromCms}
+<div class="bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400 text-center py-2 text-sm font-medium">
+	Content loaded from Directus CMS (localhost:8055)
+</div>
+{/if}
+
 <!-- Subtle section separator -->
 <div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
 
@@ -557,10 +571,10 @@
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
 				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Why Me</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-					Why work <span class="text-primary">with me</span>
+					{settings?.why_me_section_title ?? 'Why work with me'}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
-					No agencies, no hand-offs—just direct communication and dedicated attention.
+					{settings?.why_me_section_subtitle ?? 'No agencies, no hand-offs—just direct communication and dedicated attention.'}
 				</p>
 			</div>
 

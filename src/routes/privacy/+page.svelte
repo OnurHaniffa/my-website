@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
+
+	let { data } = $props();
+	const ps = data.pageSettings;
 </script>
 
 <svelte:head>
@@ -12,10 +15,15 @@
 <Section padding="lg">
 	<Container size="content">
 		<InView animation="fade-up">
-			<h1 class="text-4xl font-bold tracking-tight mb-4">Privacy Policy</h1>
-			<p class="text-muted-foreground mb-8">Last updated: December 2024</p>
+			<h1 class="text-4xl font-bold tracking-tight mb-4">{ps?.title ?? 'Privacy Policy'}</h1>
+			<p class="text-muted-foreground mb-8">Last updated: {ps?.last_updated ?? 'December 2024'}</p>
 		</InView>
 
+		{#if ps?.content}
+		<div class="prose prose-gray dark:prose-invert max-w-none">
+			{@html ps.content}
+		</div>
+		{:else}
 		<div class="prose prose-gray dark:prose-invert max-w-none">
 			<InView animation="fade-up" delay={100}>
 				<section class="mb-12">
@@ -211,5 +219,6 @@
 				</section>
 			</InView>
 		</div>
+		{/if}
 	</Container>
 </Section>

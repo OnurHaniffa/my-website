@@ -8,7 +8,7 @@
 	// Initialize Vercel Analytics
 	inject();
 
-	let { children } = $props();
+	let { children, data } = $props();
 
 	// Site-wide SEO defaults
 	const siteUrl = 'https://onurhaniffa.com';
@@ -60,9 +60,9 @@
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">
-	<Header />
+	<Header settings={data.headerSettings} />
 	<main class="flex-1">
 		{@render children()}
 	</main>
-	<Footer />
+	<Footer settings={data.footerSettings} />
 </div>

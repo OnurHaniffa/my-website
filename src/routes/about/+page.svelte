@@ -4,12 +4,15 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Container, Section } from '$lib/components/layout';
 
+	let { data } = $props();
+	const ps = data.pageSettings;
+
 	let heroSection: HTMLDivElement;
 	let philosophySection: HTMLDivElement;
 	let toolsSection: HTMLDivElement;
 	let factsSection: HTMLDivElement;
 
-	const philosophy = [
+	const fallbackPhilosophy = [
 		{
 			number: '01',
 			title: 'Design with intent',
@@ -39,7 +42,19 @@
 		}
 	];
 
-	const toolGroups = [
+	const philosophy = data.philosophyCards
+		? data.philosophyCards.map(c => ({
+				number: c.number,
+				title: c.title,
+				description: c.description,
+				gradient: c.gradient,
+				accent: c.accent,
+				iconBg: c.icon_bg,
+				icon: c.icon
+			}))
+		: fallbackPhilosophy;
+
+	const fallbackToolGroups = [
 		{
 			label: 'BUILD',
 			tools: [
@@ -65,6 +80,13 @@
 		}
 	];
 
+	const toolGroups = data.toolGroups
+		? data.toolGroups.map(g => ({
+				label: g.label,
+				tools: g.tools
+			}))
+		: fallbackToolGroups;
+
 	// SVG paths for tool icons (consistent stroke style)
 	const toolIcons: Record<string, string> = {
 		svelte: 'M18.12 2.29C15.66.17 11.86.53 9.81 2.93L5.43 8.16a7.36 7.36 0 0 0-1.56 5.68 6.1 6.1 0 0 0 .71 2.17 6.63 6.63 0 0 0-1 2.44 6.88 6.88 0 0 0 1.17 5.25c2.46 2.12 6.26 1.76 8.31-.64l4.38-5.23a7.36 7.36 0 0 0 1.56-5.68 6.1 6.1 0 0 0-.71-2.17 6.63 6.63 0 0 0 1-2.44 6.88 6.88 0 0 0-1.17-5.25z',
@@ -76,7 +98,7 @@
 		git: 'M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4'
 	};
 
-	const quickFacts = [
+	const fallbackQuickFacts = [
 		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Zm-8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
 		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
 		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
@@ -85,7 +107,9 @@
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Major in', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	];
 
-	const academicRoles = [
+	const quickFacts = data.quickFacts ?? fallbackQuickFacts;
+
+	const fallbackAcademicRoles = [
 		{
 			icon: 'M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 0 1-1.591.659H9.061a2.25 2.25 0 0 1-1.591-.659L5 14.5m14 0V17a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2.5',
 			role: 'Researcher',
@@ -99,6 +123,8 @@
 			description: 'Helping students break down complex engineering concepts'
 		}
 	];
+
+	const academicRoles = data.academicRoles ?? fallbackAcademicRoles;
 
 	onMount(() => {
 		// Check for reduced motion preference
@@ -200,18 +226,18 @@
 			<!-- Text content -->
 			<div class="lg:col-span-3 space-y-6">
 				<h1 class="hero-item text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.02em] leading-[1.1]">
-					Hey, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Onur</span>
+					{ps?.hero_heading ?? "Hey, I'm"} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{ps?.hero_name ?? 'Onur'}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block animate-wave origin-bottom-right text-amber-500">
 						<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v0 M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v6 M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8 M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
 					</svg>
 				</h1>
 
 				<p class="hero-item text-lg text-muted-foreground leading-relaxed max-w-xl">
-					I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.
+					{@html ps?.hero_description_1 ?? 'I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.'}
 				</p>
 
 				<p class="hero-item text-base text-muted-foreground/90 leading-relaxed max-w-xl">
-					I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering means I'm particular about performance, clarity, and clean implementation.
+					{ps?.hero_description_2 ?? "I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering means I'm particular about performance, clarity, and clean implementation."}
 				</p>
 
 				<div class="hero-item flex flex-wrap gap-4 pt-2">
@@ -277,12 +303,12 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M3 3l18 18 M3 17V3h14"/>
 					</svg>
-					How I approach projects
+					{ps?.philosophy_badge ?? 'How I approach projects'}
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-					Design philosophy
+					{ps?.philosophy_heading ?? 'Design philosophy'}
 				</h2>
-				<p class="mt-4 text-lg text-muted-foreground">The principles behind everything I build.</p>
+				<p class="mt-4 text-lg text-muted-foreground">{ps?.philosophy_subheading ?? 'The principles behind everything I build.'}</p>
 			</div>
 
 			<div class="grid md:grid-cols-3 gap-6">
@@ -340,14 +366,14 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
 						</svg>
-						My stack
+						{ps?.tools_badge ?? 'My stack'}
 					</div>
 					<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-						Tools & tech
+						{ps?.tools_heading ?? 'Tools & tech'}
 						<span class="block h-1 w-16 bg-gradient-to-r from-primary to-accent rounded-full mt-4"></span>
 					</h2>
 					<p class="text-lg text-muted-foreground max-w-md">
-						The right tools make all the difference. I've built my stack around speed, reliability, and clean code—so your site loads fast and stays easy to maintain.
+						{ps?.tools_description ?? "The right tools make all the difference. I've built my stack around speed, reliability, and clean code—so your site loads fast and stays easy to maintain."}
 					</p>
 				</div>
 
@@ -423,10 +449,10 @@
 		<div bind:this={factsSection}>
 			<div class="text-center mb-12">
 				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-sm font-medium mb-4">
-					The essentials
+					{ps?.facts_badge ?? 'The essentials'}
 				</span>
-				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">Quick facts</h2>
-				<p class="mt-3 text-muted-foreground">A few things that make me, me.</p>
+				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">{ps?.facts_heading ?? 'Quick facts'}</h2>
+				<p class="mt-3 text-muted-foreground">{ps?.facts_subheading ?? 'A few things that make me, me.'}</p>
 			</div>
 
 			<!-- Premium grid layout - single column on mobile for better tap targets -->
@@ -504,10 +530,10 @@
 					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 					<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
 				</span>
-				<span class="text-sm text-muted-foreground">Currently available for new projects</span>
+				<span class="text-sm text-muted-foreground">{ps?.availability_text ?? 'Currently available for new projects'}</span>
 			</div>
 			<span class="hidden sm:block text-muted-foreground/30">|</span>
-			<span class="text-sm text-muted-foreground">Based in Europe, working worldwide</span>
+			<span class="text-sm text-muted-foreground">{ps?.availability_location ?? 'Based in Europe, working worldwide'}</span>
 		</div>
 	</Container>
 </Section>

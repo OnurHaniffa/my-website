@@ -8,6 +8,9 @@
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
 
+	let { data } = $props();
+	const ps = data.pageSettings;
+
 	let mounted = $state(false);
 	let formState = $state<'idle' | 'submitting' | 'success' | 'error'>('idle');
 	let curlyLine: SVGSVGElement;
@@ -90,7 +93,7 @@
 					class:translate-y-0={mounted}
 				>
 					<Badge variant="outline" class="mb-6 border-primary/30 text-primary">
-						Let's Talk
+						{ps?.hero_badge ?? "Let's Talk"}
 					</Badge>
 				</div>
 
@@ -102,7 +105,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					Start a <span class="relative inline-block"><span class="text-primary">conversation</span>
+					{ps?.hero_heading ?? 'Start a'} <span class="relative inline-block"><span class="text-primary">{ps?.hero_highlight ?? 'conversation'}</span>
 						<!-- Curly underline -->
 						<svg bind:this={curlyLine} class="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-4" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 							<path
@@ -126,8 +129,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 200ms;"
 				>
-					Tell me about your project and goals. I'll get back to you within 24 hours with
-					thoughts on how we can work together.
+					{ps?.hero_description ?? "Tell me about your project and goals. I'll get back to you within 24 hours with thoughts on how we can work together."}
 				</p>
 
 				<!-- Contact Info -->
@@ -162,10 +164,10 @@
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Email</p>
 							<a
-								href="mailto:contact@onurhaniffa.com"
+								href="mailto:{ps?.email ?? 'contact@onurhaniffa.com'}"
 								class="text-muted-foreground hover:text-primary transition-colors"
 							>
-								contact@onurhaniffa.com
+								{ps?.email ?? 'contact@onurhaniffa.com'}
 							</a>
 						</div>
 					</div>
@@ -190,7 +192,7 @@
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Response Time</p>
-							<p class="text-muted-foreground">Within 24 hours</p>
+							<p class="text-muted-foreground">{ps?.response_time ?? 'Within 24 hours'}</p>
 						</div>
 					</div>
 
@@ -216,7 +218,7 @@
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
 							<p class="font-medium">Availability</p>
-							<p class="text-muted-foreground">European time zones (CET/CEST)</p>
+							<p class="text-muted-foreground">{ps?.availability ?? 'European time zones (CET/CEST)'}</p>
 						</div>
 					</div>
 
@@ -433,28 +435,28 @@
 <Section padding="lg" background="muted">
 	<Container size="content">
 		<InView animation="fade-up" class="text-center mb-10">
-			<h2 class="text-2xl font-bold tracking-tight">Common Questions</h2>
+			<h2 class="text-2xl font-bold tracking-tight">{ps?.faq_heading ?? 'Common Questions'}</h2>
 		</InView>
 
 		<div class="space-y-5">
-			{#each [
+			{#each data.faqs ?? [
 				{
-					q: 'What information should I include in my message?',
-					a: 'Share your project goals, timeline, and any specific requirements. The more context you provide, the better I can understand how to help.'
+					question: 'What information should I include in my message?',
+					answer: 'Share your project goals, timeline, and any specific requirements. The more context you provide, the better I can understand how to help.'
 				},
 				{
-					q: 'How quickly will you respond?',
-					a: "I typically respond within 24 hours during business days. For urgent inquiries, mention it in your message and I'll prioritize accordingly."
+					question: 'How quickly will you respond?',
+					answer: "I typically respond within 24 hours during business days. For urgent inquiries, mention it in your message and I'll prioritize accordingly."
 				},
 				{
-					q: 'Do you offer free consultations?',
-					a: "Yes! Our initial conversation is always free. It's an opportunity for both of us to see if we're a good fit for working together."
+					question: 'Do you offer free consultations?',
+					answer: "Yes! Our initial conversation is always free. It's an opportunity for both of us to see if we're a good fit for working together."
 				}
 			] as faq}
 				<InView animation="fade-up">
 					<div class="p-6 rounded-xl bg-background border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
-						<h3 class="font-semibold mb-2">{faq.q}</h3>
-						<p class="text-sm text-muted-foreground">{faq.a}</p>
+						<h3 class="font-semibold mb-2">{faq.question}</h3>
+						<p class="text-sm text-muted-foreground">{faq.answer}</p>
 					</div>
 				</InView>
 			{/each}

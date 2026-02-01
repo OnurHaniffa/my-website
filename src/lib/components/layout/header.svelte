@@ -10,6 +10,9 @@
 	} from '$lib/components/ui/sheet';
 	import { Container } from '$lib/components/layout';
 	import { browser } from '$app/environment';
+	import type { DirectusHeaderSettings } from '$lib/data/directus';
+
+	let { settings = null }: { settings?: DirectusHeaderSettings | null } = $props();
 
 	const navItems = [
 		{ href: '/', label: 'Home' },
@@ -88,8 +91,8 @@
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 				<!-- Logo text -->
 				<div class="flex flex-col items-center">
-					<span class="text-lg sm:text-xl font-black tracking-[0.15em] uppercase">Onur Haniffa</span>
-					<span class="text-[8px] sm:text-[9px] text-muted-foreground tracking-[0.3em] uppercase">Est. 2025</span>
+					<span class="text-lg sm:text-xl font-black tracking-[0.15em] uppercase">{settings?.logo_text ?? 'Onur Haniffa'}</span>
+					<span class="text-[8px] sm:text-[9px] text-muted-foreground tracking-[0.3em] uppercase">{settings?.logo_subtitle ?? 'Est. 2025'}</span>
 				</div>
 				<!-- Decorative line -->
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
@@ -169,8 +172,8 @@
 					</span>
 				</button>
 
-				<Button href="/contact" class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
-					<span class="relative z-10">Let's Talk</span>
+				<Button href={settings?.cta_href ?? '/contact'} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+					<span class="relative z-10">{settings?.cta_text ?? "Let's Talk"}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 
@@ -234,8 +237,8 @@
 							<div class="flex items-center gap-3">
 								<div class="w-6 h-[2px] bg-foreground/80"></div>
 								<div class="flex flex-col items-center">
-									<span class="text-xl font-black tracking-[0.15em] uppercase">Onur Haniffa</span>
-									<span class="text-[9px] text-muted-foreground tracking-[0.3em] uppercase">Est. 2025</span>
+									<span class="text-xl font-black tracking-[0.15em] uppercase">{settings?.logo_text ?? 'Onur Haniffa'}</span>
+									<span class="text-[9px] text-muted-foreground tracking-[0.3em] uppercase">{settings?.logo_subtitle ?? 'Est. 2025'}</span>
 								</div>
 								<div class="w-6 h-[2px] bg-foreground/80"></div>
 							</div>

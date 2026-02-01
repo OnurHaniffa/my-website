@@ -9,6 +9,9 @@
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const motionAnimate = animate as any;
 
+	let { data } = $props();
+	const ps = data.pageSettings;
+
 	let mounted = $state(false);
 	let openFaq = $state<number | null>(null);
 	let activeService = $state(0);
@@ -57,7 +60,7 @@
 		}
 	}
 
-	const services = [
+	const fallbackServices = [
 		{
 			id: 0,
 			title: 'Design & Development',
@@ -102,12 +105,31 @@
 		}
 	];
 
-	const faqs = [
+	const services = data.servicesDetailed
+		? data.servicesDetailed.map((s, i) => ({
+				id: i,
+				title: s.title,
+				shortTitle: s.short_title,
+				description: s.description,
+				icon: s.icon,
+				color: s.color,
+				lightColor: s.light_color,
+				bento: {
+					process: s.process,
+					deliverables: s.deliverables,
+					timeline: s.timeline
+				}
+			}))
+		: fallbackServices;
+
+	const fallbackFaqs = [
 		{ question: 'How much does a website cost?', answer: 'Every project is different. After our discovery call, I\'ll provide a fixed quote based on your specific needs—no hourly surprises or hidden fees.' },
 		{ question: 'Do I need to provide content and images?', answer: 'I can work with what you have or help source professional copy and imagery. We\'ll figure out what works best during our initial call.' },
 		{ question: 'What do you need from me to get started?', answer: 'Just a conversation. We\'ll hop on a call to discuss your goals, and I\'ll guide you through what\'s needed—whether that\'s content, branding assets, or just your ideas.' },
 		{ question: 'What if I need changes after launch?', answer: 'I offer ongoing support packages, or you can reach out for one-off updates. Either way, I\'m here when you need me.' }
 	];
+
+	const faqs = data.faqs ?? fallbackFaqs;
 
 	// Gauge arc calculations for semi-circle (180 degrees, 3 segments of 60 degrees each)
 	const gaugeConfig = {
@@ -306,10 +328,10 @@
 		>
 			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">SERVICES</span>
 			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10 mb-4">
-				Websites that <span class="text-primary">work</span>
+				{ps?.hero_heading ?? 'Websites that'} <span class="text-primary">{ps?.hero_highlight ?? 'work'}</span>
 			</h1>
 			<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl relative z-10">
-				Custom builds, strategic redesigns, and ongoing support. No templates, no hourly billing—just results.
+				{ps?.hero_description ?? 'Custom builds, strategic redesigns, and ongoing support. No templates, no hourly billing—just results.'}
 			</p>
 		</div>
 	</Container>
@@ -572,10 +594,10 @@
 				<div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-10 px-6 md:px-12 py-8">
 					<!-- Author - left side on desktop -->
 					<div class="flex md:flex-col items-center gap-3 md:gap-2 flex-shrink-0">
-						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg ring-4 ring-primary/10">J</div>
+						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg ring-4 ring-primary/10">{ps?.testimonial_initial ?? 'J'}</div>
 						<div class="text-left md:text-center">
-							<p class="font-semibold text-foreground">Joe</p>
-							<p class="text-xs text-muted-foreground">Fan Artist</p>
+							<p class="font-semibold text-foreground">{ps?.testimonial_author ?? 'Joe'}</p>
+							<p class="text-xs text-muted-foreground">{ps?.testimonial_role ?? 'Fan Artist'}</p>
 						</div>
 					</div>
 
@@ -585,7 +607,7 @@
 					<!-- Quote -->
 					<blockquote class="flex-1">
 						<p class="text-lg md:text-xl text-foreground leading-relaxed">
-							"Onur did an excellent job on my website. He was great to communicate with and <span class="font-semibold text-primary">delivered on every point</span> needed for my website."
+							"{ps?.testimonial_quote ?? 'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.'}"
 						</p>
 					</blockquote>
 				</div>
@@ -601,7 +623,7 @@
 <Section padding="lg" class="pb-24">
 	<Container>
 		<InView animation="fade-up" class="text-center mb-10">
-			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">FAQ</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">{ps?.faq_heading ?? 'FAQ'}</h2>
 		</InView>
 
 		<div class="grid md:grid-cols-2 gap-4">

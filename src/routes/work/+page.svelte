@@ -6,7 +6,11 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { projects } from '$lib/data/projects';
+	import { projects as fallbackProjectsData } from '$lib/data/projects';
+
+	let { data } = $props();
+	const ps = data.pageSettings;
+	const projects = data.projects ?? fallbackProjectsData;
 
 	let mounted = $state(false);
 	let dentistIframeLoaded = $state(false);
@@ -203,7 +207,7 @@
 				>
 					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none -mb-8 sm:-mb-12 lg:-mb-16">WORK</span>
 					<h1 class="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl relative z-10">
-						<span class="sm:hidden">Work</span> that <span class="text-primary">speaks</span> for itself
+						<span class="sm:hidden">Work</span> {ps?.hero_heading ?? 'that'} <span class="text-primary">{ps?.hero_highlight ?? 'speaks'}</span> {ps?.hero_heading ? '' : 'for itself'}
 					</h1>
 				</div>
 			</div>
@@ -218,7 +222,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					A mix of client work and passion projects, each built with the same care and attention to detail.
+					{ps?.hero_description ?? 'A mix of client work and passion projects, each built with the same care and attention to detail.'}
 				</p>
 			</div>
 		</div>
@@ -738,12 +742,12 @@
 <Section padding="lg" class="relative overflow-hidden">
 	<Container size="content">
 		<InView animation="fade-up" class="text-center">
-			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">03</span>
+			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">{ps?.cta_number ?? '03'}</span>
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl -mt-8">
-				Have a project in mind?
+				{ps?.cta_heading ?? 'Have a project in mind?'}
 			</h2>
 			<p class="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-				I'd love to hear about it and explore how we can bring your vision to life together.
+				{ps?.cta_description ?? "I'd love to hear about it and explore how we can bring your vision to life together."}
 			</p>
 			<div class="mt-10 flex items-center justify-center gap-3">
 				<div class="w-16 h-[2px] bg-primary/30"></div>

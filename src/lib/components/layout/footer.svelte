@@ -1,6 +1,9 @@
 <script lang="ts">
 	import { Container } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui/button';
+	import type { DirectusFooterSettings } from '$lib/data/directus';
+
+	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
 
 	const currentYear = new Date().getFullYear();
 </script>
@@ -43,18 +46,18 @@
 			<!-- Main CTA Section -->
 			<div class="text-center mb-16 md:mb-20">
 				<h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-white">
-					Ready to <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">stand out</span> online?
+					{settings?.cta_heading ?? 'Ready to'} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">{settings?.cta_highlight ?? 'stand out'}</span> {settings?.cta_heading ? '' : 'online?'}
 				</h2>
 				<p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
-					Let's talk about your project. No pressure, no sales pitch—just a friendly conversation to see if we're a good fit.
+					{settings?.cta_description ?? "Let's talk about your project. No pressure, no sales pitch—just a friendly conversation to see if we're a good fit."}
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
 					<Button href="/contact" variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
 						Start a project
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<a href="mailto:contact@onurhaniffa.com" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
-						contact@onurhaniffa.com
+					<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
+						{settings?.email ?? 'contact@onurhaniffa.com'}
 					</a>
 				</div>
 			</div>
@@ -72,7 +75,7 @@
 						<div class="w-6 h-[2px] bg-white/80"></div>
 					</a>
 					<p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
-						Crafting beautiful websites that turn curious visitors into loyal customers.
+						{settings?.tagline ?? 'Crafting beautiful websites that turn curious visitors into loyal customers.'}
 					</p>
 					<div class="flex items-center gap-4">
 						<a href="https://www.linkedin.com/in/onurhaniffa/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="LinkedIn">
@@ -103,9 +106,9 @@
 					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">Contact</h4>
 					<div class="flex flex-col gap-3">
 						<a href="/contact" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Get in touch</a>
-						<a href="mailto:contact@onurhaniffa.com" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">contact@onurhaniffa.com</a>
-						<p class="text-sm text-gray-500 mt-2">Based in Europe</p>
-						<p class="text-sm text-gray-500">Replies within 24h</p>
+						<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{settings?.email ?? 'contact@onurhaniffa.com'}</a>
+						<p class="text-sm text-gray-500 mt-2">{settings?.location ?? 'Based in Europe'}</p>
+						<p class="text-sm text-gray-500">{settings?.response_time ?? 'Replies within 24h'}</p>
 					</div>
 				</div>
 			</div>
