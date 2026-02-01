@@ -5,6 +5,7 @@
 	import { onMount, tick } from 'svelte';
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
+	import { sanitizeSvgContent } from '$lib/utils/sanitize';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const motionAnimate = animate as any;
@@ -422,7 +423,7 @@
 								<g transform="translate({segment.labelX - 12}, {segment.labelY - 12})">
 									<circle cx="12" cy="12" r="16" fill="white" fill-opacity="0.25" />
 									<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-										{@html segment.icon}
+										{@html sanitizeSvgContent(segment.icon)}
 									</svg>
 								</g>
 							</g>

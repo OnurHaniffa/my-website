@@ -300,14 +300,19 @@ export function toFrontendProject(dp: DirectusProject): Project {
 
 async function fetchFromDirectus<T>(endpoint: string): Promise<T | null> {
 	try {
+		const controller = new AbortController();
+		const timeoutId = setTimeout(() => controller.abort(), 3000);
 		const res = await fetch(`${DIRECTUS_URL}${endpoint}`, {
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json' },
+			signal: controller.signal
 		});
+		clearTimeout(timeoutId);
 		if (!res.ok) return null;
 		const json: DirectusResponse<T> = await res.json();
 		return json.data;
-	} catch {
-		console.warn(`[Directus] Failed to fetch ${endpoint}, using fallback data`);
+	} catch (err) {
+		const reason = err instanceof Error ? err.message : 'unknown error';
+		console.warn(`[Directus] Failed to fetch ${endpoint}: ${reason}, using fallback data`);
 		return null;
 	}
 }

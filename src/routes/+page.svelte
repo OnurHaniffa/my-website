@@ -6,6 +6,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
 	import { Counter } from '$lib/components/ui/animations';
+	import { sanitizeSvgContent } from '$lib/utils/sanitize';
 
 	let { data } = $props();
 
@@ -42,11 +43,12 @@
 
 	const services = data.services?.length ? data.services : fallbackServices;
 
-	const serviceColorStyles = [
-		{ shadow: 'hover:shadow-primary/25', ring: 'hover:ring-primary/40', iconBg: 'bg-primary/10', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-white', check: 'text-primary' },
-		{ shadow: 'hover:shadow-accent/25', ring: 'hover:ring-accent/40', iconBg: 'bg-accent/10', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-white', check: 'text-accent' },
-		{ shadow: 'hover:shadow-green-500/25', ring: 'hover:ring-green-500/40', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white', check: 'text-green-600 dark:text-green-400' }
-	];
+	const serviceColorMap: Record<string, { shadow: string; ring: string; iconBg: string; iconHover: string; iconText: string; check: string }> = {
+		primary: { shadow: 'hover:shadow-primary/25', ring: 'hover:ring-primary/40', iconBg: 'bg-primary/10', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-white', check: 'text-primary' },
+		accent: { shadow: 'hover:shadow-accent/25', ring: 'hover:ring-accent/40', iconBg: 'bg-accent/10', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-white', check: 'text-accent' },
+		green: { shadow: 'hover:shadow-green-500/25', ring: 'hover:ring-green-500/40', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white', check: 'text-green-600 dark:text-green-400' }
+	};
+	const defaultServiceColor = serviceColorMap.primary;
 
 	const fallbackWhyMePoints = [
 		{
@@ -81,12 +83,12 @@
 
 	const whyMePoints = data.whyMePoints?.length ? data.whyMePoints : fallbackWhyMePoints;
 
-	const whyMeColorStyles = [
-		{ ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
-		{ ring: 'dark:hover:ring-accent/30 dark:hover:shadow-accent/20', iconBg: 'bg-accent/10 dark:bg-accent/20', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-inherit' },
-		{ ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
-		{ ring: 'dark:hover:ring-green-500/30 dark:hover:shadow-green-500/20', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white' }
-	];
+	const whyMeColorMap: Record<string, { ring: string; iconBg: string; iconHover: string; iconText: string }> = {
+		primary: { ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
+		accent: { ring: 'dark:hover:ring-accent/30 dark:hover:shadow-accent/20', iconBg: 'bg-accent/10 dark:bg-accent/20', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-inherit' },
+		green: { ring: 'dark:hover:ring-green-500/30 dark:hover:shadow-green-500/20', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white' }
+	};
+	const defaultWhyMeColor = whyMeColorMap.primary;
 
 	let heroContent: HTMLDivElement;
 	let heroMockup: HTMLDivElement;
@@ -437,11 +439,11 @@
 
 			<div bind:this={serviceCards} class="grid gap-8 md:grid-cols-3">
 				{#each services as service, index}
-					{@const colors = serviceColorStyles[index % serviceColorStyles.length]}
+					{@const colors = serviceColorMap[service.color_class] ?? defaultServiceColor}
 					<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] {colors.shadow} hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 {colors.ring}">
 						<CardHeader>
 							<div class="w-14 h-14 rounded-2xl {colors.iconBg} flex items-center justify-center mb-4 {colors.iconHover} transition-all duration-300">
-								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText} transition-colors duration-300">{@html service.icon}</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText} transition-colors duration-300">{@html sanitizeSvgContent(service.icon)}</svg>
 							</div>
 							<CardTitle class="text-xl">{service.title}</CardTitle>
 							<CardDescription class="text-base">{service.description}</CardDescription>
@@ -592,11 +594,11 @@
 
 			<div class="grid gap-6 sm:grid-cols-2">
 				{#each whyMePoints as point, index}
-					{@const colors = whyMeColorStyles[index % whyMeColorStyles.length]}
+					{@const colors = whyMeColorMap[point.color_class] ?? defaultWhyMeColor}
 					<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 {colors.ring} dark:hover:shadow-[0_0_30px_-5px]">
 						<CardContent class="p-8">
 							<div class="w-14 h-14 rounded-2xl {colors.iconBg} flex items-center justify-center mb-6 {colors.iconHover} transition-all duration-300">
-								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText}">{@html point.icon}</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText}">{@html sanitizeSvgContent(point.icon)}</svg>
 							</div>
 							<h3 class="text-xl font-bold mb-3">{point.title}</h3>
 							<p class="text-muted-foreground">{point.description}</p>
