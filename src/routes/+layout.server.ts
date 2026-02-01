@@ -1,14 +1,16 @@
 import type { LayoutServerLoad } from './$types';
-import { getHeaderSettings, getFooterSettings } from '$lib/data/directus';
+import { getHeaderSettings, getFooterSettings, getSiteSettings } from '$lib/data/directus';
 
 export const load: LayoutServerLoad = async () => {
-	const [headerSettings, footerSettings] = await Promise.all([
+	const [headerSettings, footerSettings, siteSettings] = await Promise.all([
 		getHeaderSettings(),
-		getFooterSettings()
+		getFooterSettings(),
+		getSiteSettings()
 	]);
 
 	return {
 		headerSettings,
-		footerSettings
+		footerSettings,
+		siteSettings
 	};
 };

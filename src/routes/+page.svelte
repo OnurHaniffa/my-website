@@ -11,9 +11,82 @@
 
 	// Use CMS data with fallbacks
 	const projects = data.projects;
-	const services = data.services;
-	const whyMePoints = data.whyMePoints;
 	const settings = data.siteSettings;
+
+	const fallbackServices = [
+		{
+			id: 1, sort: 1,
+			title: 'Website Design',
+			description: 'Strategic design that converts visitors into customers. Clean, modern, and built entirely around your goals.',
+			icon: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>',
+			features: ['User research & strategy', 'Custom UI/UX design', 'Mobile-first approach'],
+			color_class: 'primary'
+		},
+		{
+			id: 2, sort: 2,
+			title: 'Development',
+			description: 'Fast, accessible websites that search engines love. Built with modern technology that scales.',
+			icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>',
+			features: ['Lightning-fast loading', 'SEO best practices', 'Accessible to everyone'],
+			color_class: 'accent'
+		},
+		{
+			id: 3, sort: 3,
+			title: 'Ongoing Support',
+			description: 'Peace of mind after launch. Regular updates, security monitoring, and priority support.',
+			icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>',
+			features: ['Regular updates', 'Security monitoring', 'Priority support'],
+			color_class: 'green'
+		}
+	];
+
+	const services = data.services?.length ? data.services : fallbackServices;
+
+	const serviceColorStyles = [
+		{ shadow: 'hover:shadow-primary/25', ring: 'hover:ring-primary/40', iconBg: 'bg-primary/10', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-white', check: 'text-primary' },
+		{ shadow: 'hover:shadow-accent/25', ring: 'hover:ring-accent/40', iconBg: 'bg-accent/10', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-white', check: 'text-accent' },
+		{ shadow: 'hover:shadow-green-500/25', ring: 'hover:ring-green-500/40', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white', check: 'text-green-600 dark:text-green-400' }
+	];
+
+	const fallbackWhyMePoints = [
+		{
+			id: 1, sort: 1,
+			title: 'Clear Communication',
+			description: "No jargon, no fluff. I keep you in the loop with straightforward updates so you always know where your project stands.",
+			icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+			color_class: 'primary'
+		},
+		{
+			id: 2, sort: 2,
+			title: 'Results-Focused',
+			description: 'Every design decision is made with your goals in mind. I care about how your website performs, not just how it looks.',
+			icon: '<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/>',
+			color_class: 'accent'
+		},
+		{
+			id: 3, sort: 3,
+			title: 'Fast Delivery',
+			description: 'Most projects launch within 2-3 weeks. You get a quality website without the endless wait times.',
+			icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
+			color_class: 'primary'
+		},
+		{
+			id: 4, sort: 4,
+			title: 'Full Ownership',
+			description: "Your website, your code, your content. No lock-ins or hidden fees\u2014you own everything when we're done.",
+			icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>',
+			color_class: 'green'
+		}
+	];
+
+	const whyMePoints = data.whyMePoints?.length ? data.whyMePoints : fallbackWhyMePoints;
+
+	const whyMeColorStyles = [
+		{ ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
+		{ ring: 'dark:hover:ring-accent/30 dark:hover:shadow-accent/20', iconBg: 'bg-accent/10 dark:bg-accent/20', iconHover: 'group-hover:bg-accent group-hover:text-accent-foreground', iconText: 'text-accent group-hover:text-inherit' },
+		{ ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
+		{ ring: 'dark:hover:ring-green-500/30 dark:hover:shadow-green-500/20', iconBg: 'bg-green-500/10 dark:bg-green-500/20', iconHover: 'group-hover:bg-green-500 group-hover:text-white', iconText: 'text-green-600 dark:text-green-400 group-hover:text-white' }
+	];
 
 	let heroContent: HTMLDivElement;
 	let heroMockup: HTMLDivElement;
@@ -201,34 +274,34 @@
 
 				<!-- Description -->
 				<p class="text-lg text-muted-foreground/90 max-w-md leading-relaxed">
-					{settings?.hero_description ?? "From first click to final conversion—I design and develop websites that don't just look good, they deliver real business results."}
+					{settings?.hero_description ?? "From first click to final conversion\u2014I design and develop websites that don't just look good, they deliver real business results."}
 				</p>
 
 				<!-- Quick Stats -->
 				<div class="flex flex-wrap gap-6 sm:gap-8 py-4">
 					<div class="text-center">
-						<p class="text-3xl font-bold text-primary">≤<Counter value={24} duration={2500} suffix="h" /></p>
-						<p class="text-sm text-muted-foreground">Response time</p>
+						<p class="text-3xl font-bold text-primary">&le;<Counter value={24} duration={2500} suffix="h" /></p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_1_label ?? 'Response time'}</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />–<Counter value={3} duration={2200} delay={300} /> wks</p>
-						<p class="text-sm text-muted-foreground">Avg. project</p>
+						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />\u2013<Counter value={3} duration={2200} delay={300} /> wks</p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_2_label ?? 'Avg. project'}</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold text-green-600 dark:text-green-400">SEO</p>
-						<p class="text-sm text-muted-foreground">Optimized</p>
+						<p class="text-3xl font-bold text-green-600 dark:text-green-400">{settings?.stat_3_value ?? 'SEO'}</p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_3_label ?? 'Optimized'}</p>
 					</div>
 				</div>
 
 				<div class="flex flex-wrap gap-4">
 					<Button size="lg" href="/work" class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
-						View My Work
+						{settings?.view_work_button ?? 'View My Work'}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 					<Button size="lg" variant="ghost" href="/contact" class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
-						Let's Talk
+						{settings?.lets_talk_button ?? "Let's Talk"}
 					</Button>
 				</div>
 			</div>
@@ -353,7 +426,7 @@
 	<Container>
 		<div bind:this={servicesSection}>
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Services</Badge>
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.services_badge ?? 'Services'}</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					{settings?.services_section_title ?? 'What I do'}
 				</h2>
@@ -363,94 +436,33 @@
 			</div>
 
 			<div bind:this={serviceCards} class="grid gap-8 md:grid-cols-3">
-				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-primary/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-primary/40">
-					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-white transition-colors duration-300"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
-						</div>
-						<CardTitle class="text-xl">Website Design</CardTitle>
-						<CardDescription class="text-base">
-							Strategic design that converts visitors into customers. Clean, modern, and built entirely around your goals.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<ul class="space-y-2 text-sm text-muted-foreground">
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
-								User research & strategy
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
-								Custom UI/UX design
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-primary"><path d="M20 6 9 17l-5-5"/></svg>
-								Mobile-first approach
-							</li>
-						</ul>
-					</CardContent>
-				</Card>
-
-				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-accent/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-accent/40">
-					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-white transition-colors duration-300"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-						</div>
-						<CardTitle class="text-xl">Development</CardTitle>
-						<CardDescription class="text-base">
-							Fast, accessible websites that search engines love. Built with modern technology that scales.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<ul class="space-y-2 text-sm text-muted-foreground">
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent"><path d="M20 6 9 17l-5-5"/></svg>
-								Lightning-fast loading
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent"><path d="M20 6 9 17l-5-5"/></svg>
-								SEO best practices
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-accent"><path d="M20 6 9 17l-5-5"/></svg>
-								Accessible to everyone
-							</li>
-						</ul>
-					</CardContent>
-				</Card>
-
-				<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] hover:shadow-green-500/25 hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 hover:ring-green-500/40">
-					<CardHeader>
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center mb-4 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-						</div>
-						<CardTitle class="text-xl">Ongoing Support</CardTitle>
-						<CardDescription class="text-base">
-							Peace of mind after launch. Regular updates, security monitoring, and priority support.
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<ul class="space-y-2 text-sm text-muted-foreground">
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
-								Regular updates
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
-								Security monitoring
-							</li>
-							<li class="flex items-center gap-2">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-green-600 dark:text-green-400"><path d="M20 6 9 17l-5-5"/></svg>
-								Priority support
-							</li>
-						</ul>
-					</CardContent>
-				</Card>
+				{#each services as service, index}
+					{@const colors = serviceColorStyles[index % serviceColorStyles.length]}
+					<Card class="group h-full border-0 bg-card hover:shadow-[0_25px_60px_-20px] {colors.shadow} hover:-translate-y-2 rounded-2xl transition-all duration-500 ring-1 ring-border/50 {colors.ring}">
+						<CardHeader>
+							<div class="w-14 h-14 rounded-2xl {colors.iconBg} flex items-center justify-center mb-4 {colors.iconHover} transition-all duration-300">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText} transition-colors duration-300">{@html service.icon}</svg>
+							</div>
+							<CardTitle class="text-xl">{service.title}</CardTitle>
+							<CardDescription class="text-base">{service.description}</CardDescription>
+						</CardHeader>
+						<CardContent>
+							<ul class="space-y-2 text-sm text-muted-foreground">
+								{#each (service.features ?? []) as feature}
+									<li class="flex items-center gap-2">
+										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="{colors.check}"><path d="M20 6 9 17l-5-5"/></svg>
+										{feature}
+									</li>
+								{/each}
+							</ul>
+						</CardContent>
+					</Card>
+				{/each}
 			</div>
 
 			<div class="mt-12 text-center">
 				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
-					Explore All Services
+					{settings?.explore_services_button ?? 'Explore All Services'}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
@@ -467,7 +479,7 @@
 		<div bind:this={projectsSection}>
 			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 pt-10 lg:pt-14 section-header">
 				<div>
-					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Portfolio</Badge>
+					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.portfolio_badge ?? 'Portfolio'}</Badge>
 					<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 						{settings?.portfolio_section_title ?? 'Recent Projects'}
 					</h2>
@@ -476,7 +488,7 @@
 					</p>
 				</div>
 				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
-					View All Work
+					{settings?.view_all_work_button ?? 'View All Work'}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
@@ -557,7 +569,7 @@
 <!-- CMS Source Indicator (proof of concept) -->
 {#if data.isFromCms}
 <div class="bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400 text-center py-2 text-sm font-medium">
-	Content loaded from Directus CMS (localhost:8055)
+	Content loaded from Directus CMS
 </div>
 {/if}
 
@@ -569,68 +581,33 @@
 	<Container>
 		<div bind:this={whyMeSection}>
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Why Me</Badge>
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.why_me_badge ?? 'Why Me'}</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
 					{settings?.why_me_section_title ?? 'Why work with me'}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
-					{settings?.why_me_section_subtitle ?? 'No agencies, no hand-offs—just direct communication and dedicated attention.'}
+					{settings?.why_me_section_subtitle ?? 'No agencies, no hand-offs\u2014just direct communication and dedicated attention.'}
 				</p>
 			</div>
 
 			<div class="grid gap-6 sm:grid-cols-2">
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-primary/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-primary/20">
-					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3">Clear Communication</h3>
-						<p class="text-muted-foreground">
-							No jargon, no fluff. I keep you in the loop with straightforward updates so you always know where your project stands.
-						</p>
-					</CardContent>
-				</Card>
-
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-accent/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-accent/20">
-					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-accent/10 dark:bg-accent/20 flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent group-hover:text-inherit"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3">Results-Focused</h3>
-						<p class="text-muted-foreground">
-							Every design decision is made with your goals in mind. I care about how your website performs, not just how it looks.
-						</p>
-					</CardContent>
-				</Card>
-
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-primary/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-primary/20">
-					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-inherit"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3">Fast Delivery</h3>
-						<p class="text-muted-foreground">
-							Most projects launch within 2-3 weeks. You get a quality website without the endless wait times.
-						</p>
-					</CardContent>
-				</Card>
-
-				<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 dark:hover:ring-green-500/30 dark:hover:shadow-[0_0_30px_-5px] dark:hover:shadow-green-500/20">
-					<CardContent class="p-8">
-						<div class="w-14 h-14 rounded-2xl bg-green-500/10 dark:bg-green-500/20 flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-							<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-green-600 dark:text-green-400 group-hover:text-white transition-colors duration-300"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-						</div>
-						<h3 class="text-xl font-bold mb-3">Full Ownership</h3>
-						<p class="text-muted-foreground">
-							Your website, your code, your content. No lock-ins or hidden fees—you own everything when we're done.
-						</p>
-					</CardContent>
-				</Card>
+				{#each whyMePoints as point, index}
+					{@const colors = whyMeColorStyles[index % whyMeColorStyles.length]}
+					<Card class="why-card group h-full border-0 bg-card/50 backdrop-blur-sm hover:bg-card/80 hover:shadow-xl rounded-2xl transition-all duration-300 ring-1 ring-border/30 dark:bg-surface-1/50 dark:ring-border/40 {colors.ring} dark:hover:shadow-[0_0_30px_-5px]">
+						<CardContent class="p-8">
+							<div class="w-14 h-14 rounded-2xl {colors.iconBg} flex items-center justify-center mb-6 {colors.iconHover} transition-all duration-300">
+								<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="{colors.iconText}">{@html point.icon}</svg>
+							</div>
+							<h3 class="text-xl font-bold mb-3">{point.title}</h3>
+							<p class="text-muted-foreground">{point.description}</p>
+						</CardContent>
+					</Card>
+				{/each}
 			</div>
 
 			<div class="mt-12 text-center">
 				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-150">
-					Learn More About Me
+					{settings?.learn_more_button ?? 'Learn More About Me'}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>

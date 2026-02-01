@@ -139,10 +139,10 @@
 </script>
 
 <svelte:head>
-	<title>Work | Onur Haniffa</title>
-	<meta name="description" content="Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online with modern web design." />
-	<meta property="og:title" content="Work | Onur Haniffa" />
-	<meta property="og:description" content="Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online." />
+	<title>{ps?.meta_title ?? 'Work | Onur Haniffa'}</title>
+	<meta name="description" content={ps?.meta_description ?? "Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online with modern web design."} />
+	<meta property="og:title" content={ps?.meta_title ?? "Work | Onur Haniffa"} />
+	<meta property="og:description" content={ps?.meta_description ?? "Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online."} />
 </svelte:head>
 
 <style>
@@ -250,7 +250,7 @@
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
-					Concept Build
+					{ps?.filter_concept_label ?? 'Concept Build'}
 				</button>
 				<button
 					onclick={() => activeFilter = 'client'}
@@ -258,7 +258,7 @@
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
-					Live Project
+					{ps?.filter_client_label ?? 'Live Project'}
 				</button>
 			</div>
 		</div>
@@ -394,10 +394,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] dark:text-[#6a9c79]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">The Challenge</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.challenge_heading ?? 'The Challenge'}</h3>
 					</div>
 					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
-						Most dental websites feel cold and clinical, or outdated and unprofessional. Pearl Dental needed a site that builds trust instantly while remaining warm and approachable—making new patients feel confident before they even book.
+						{pearlDental?.challenge ?? 'Most dental websites feel cold and clinical, or outdated and unprofessional. Pearl Dental needed a site that builds trust instantly while remaining warm and approachable—making new patients feel confident before they even book.'}
 					</p>
 				</div>
 
@@ -407,10 +407,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#c4a574]/20 dark:bg-[#c4a574]/30 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c4a574] dark:text-[#d4b584]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">The Solution</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.solution_heading ?? 'The Solution'}</h3>
 					</div>
 					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
-						I designed a clean, modern website with trust-building elements like reviews, years of expertise, and clear service presentation. The warm color palette and friendly imagery balance professionalism with approachability.
+						{pearlDental?.solution ?? 'I designed a clean, modern website with trust-building elements like reviews, years of expertise, and clear service presentation. The warm color palette and friendly imagery balance professionalism with approachability.'}
 					</p>
 				</div>
 			</div>
@@ -420,7 +420,7 @@
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
 				<p class="text-2xl lg:text-3xl font-light text-[#2d2d2d] dark:text-gray-200 leading-relaxed italic">
-					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: make patients feel <span class="font-semibold text-[#4a7c59] not-italic">welcome</span> before they even walk through the door.<span class="text-[#c4a574] font-serif text-4xl">'</span>
+					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: {ps?.pearl_pull_quote ?? 'make patients feel welcome before they even walk through the door.'}<span class="text-[#c4a574] font-serif text-4xl">'</span>
 				</p>
 				<!-- Decorative line -->
 				<div class="mt-8 flex items-center justify-center gap-3">
@@ -434,8 +434,8 @@
 		<!-- Interactive Preview Section -->
 		<InView animation="fade-up" class="mt-16 lg:mt-24 -mx-4 lg:-mx-16 xl:-mx-24">
 			<div class="text-center mb-10 px-4 lg:px-16 xl:px-24">
-				<p class="text-sm font-medium text-[#4a7c59] tracking-widest uppercase mb-2">Interactive Preview</p>
-				<h3 class="text-2xl lg:text-3xl font-bold text-[#2d2d2d]">Experience it live</h3>
+				<p class="text-sm font-medium text-[#4a7c59] tracking-widest uppercase mb-2">{ps?.preview_label ?? 'Interactive Preview'}</p>
+				<h3 class="text-2xl lg:text-3xl font-bold text-[#2d2d2d]">{ps?.preview_heading ?? 'Experience it live'}</h3>
 			</div>
 
 			<div class="relative overflow-hidden shadow-2xl bg-white dark:bg-surface-1 border border-[#c4a574]/20 dark:border-border/50 mx-4 lg:mx-8">
@@ -460,7 +460,7 @@
 										onclick={startDentalIframeLoad}
 										class="px-6 py-3 bg-[#4a7c59] text-white font-medium hover:bg-[#3d6a4a] transition-colors shadow-lg"
 									>
-										Load Interactive Demo
+										{ps?.load_demo_text ?? 'Load Interactive Demo'}
 									</button>
 									<p class="mt-3 text-sm text-[#5a5a5a]">Click to load the live site</p>
 								</div>
@@ -606,10 +606,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#3b82f6]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#3b82f6]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">The Challenge</h3>
+						<h3 class="text-lg font-bold text-white">{ps?.challenge_heading ?? 'The Challenge'}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
-						Joe needed a bold, eye-catching portfolio to showcase 200+ artworks and attract commission clients from various fandoms. The site needed to feel premium while staying true to the creative, fan-driven nature of the work.
+						{designsByJoe?.challenge ?? 'Joe needed a bold, eye-catching portfolio to showcase 200+ artworks and attract commission clients from various fandoms. The site needed to feel premium while staying true to the creative, fan-driven nature of the work.'}
 					</p>
 				</div>
 
@@ -619,10 +619,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#c9a227]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c9a227]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">The Solution</h3>
+						<h3 class="text-lg font-bold text-white">{ps?.solution_heading ?? 'The Solution'}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
-						I designed a dark, immersive portfolio with smooth animations that puts the artwork front and center. The layout features a striking hero section and intuitive navigation between portfolio pieces and commission information.
+						{designsByJoe?.solution ?? 'I designed a dark, immersive portfolio with smooth animations that puts the artwork front and center. The layout features a striking hero section and intuitive navigation between portfolio pieces and commission information.'}
 					</p>
 				</div>
 			</div>
@@ -632,14 +632,14 @@
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
 				<p class="text-2xl lg:text-3xl font-light text-white leading-relaxed italic">
-					<span class="text-[#c9a227] font-serif text-4xl">"</span>Onur did an excellent job on my website. He was great to communicate with and <span class="font-semibold text-[#3b82f6] not-italic">delivered on every point</span> needed for my website.<span class="text-[#c9a227] font-serif text-4xl">"</span>
+					<span class="text-[#c9a227] font-serif text-4xl">"</span>{designsByJoe?.testimonial?.quote ?? 'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.'}<span class="text-[#c9a227] font-serif text-4xl">"</span>
 				</p>
 				<!-- Author -->
 				<div class="mt-8 flex items-center justify-center gap-4">
-					<div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a227] to-[#a68a1f] flex items-center justify-center text-white font-bold text-lg">J</div>
+					<div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a227] to-[#a68a1f] flex items-center justify-center text-white font-bold text-lg">{(designsByJoe?.testimonial?.author ?? 'Joe').charAt(0)}</div>
 					<div class="text-left">
-						<p class="text-[#c9a227] font-semibold">Joe</p>
-						<p class="text-sm text-slate-400">Fan Artist & Illustrator</p>
+						<p class="text-[#c9a227] font-semibold">{designsByJoe?.testimonial?.author ?? 'Joe'}</p>
+						<p class="text-sm text-slate-400">{designsByJoe?.testimonial?.role ?? 'Fan Artist & Illustrator'}</p>
 					</div>
 				</div>
 				<!-- Decorative line -->
@@ -654,8 +654,8 @@
 		<!-- Interactive Preview Section -->
 		<InView animation="fade-up" class="mt-20 lg:mt-28 -mx-4 lg:-mx-16 xl:-mx-24">
 			<div class="text-center mb-10 px-4 lg:px-16 xl:px-24">
-				<p class="text-sm font-medium text-[#3b82f6] tracking-widest uppercase mb-2">Interactive Preview</p>
-				<h3 class="text-2xl lg:text-3xl font-bold text-white">Experience it live</h3>
+				<p class="text-sm font-medium text-[#3b82f6] tracking-widest uppercase mb-2">{ps?.preview_label ?? 'Interactive Preview'}</p>
+				<h3 class="text-2xl lg:text-3xl font-bold text-white">{ps?.preview_heading ?? 'Experience it live'}</h3>
 			</div>
 
 			<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800 border border-white/10 mx-4 lg:mx-8">
@@ -680,7 +680,7 @@
 										onclick={startJoeIframeLoad}
 										class="px-6 py-3 bg-[#3b82f6] text-white rounded-xl font-medium hover:bg-[#2563eb] transition-colors shadow-lg"
 									>
-										Load Interactive Demo
+										{ps?.load_demo_text ?? 'Load Interactive Demo'}
 									</button>
 									<p class="mt-3 text-sm text-slate-300">Click to load the live site</p>
 								</div>

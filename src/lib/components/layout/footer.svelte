@@ -53,7 +53,7 @@
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
 					<Button href="/contact" variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
-						Start a project
+						{settings?.cta_button_text ?? 'Start a project'}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 					<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
@@ -69,8 +69,8 @@
 					<a href="/" class="inline-flex items-center gap-3 mb-5 group transition-all group-hover:opacity-80">
 						<div class="w-6 h-[2px] bg-white/80"></div>
 						<div class="flex flex-col items-center">
-							<span class="text-xl font-black tracking-[0.15em] uppercase text-white">Onur Haniffa</span>
-							<span class="text-[9px] text-gray-400 tracking-[0.3em] uppercase">Est. 2025</span>
+							<span class="text-xl font-black tracking-[0.15em] uppercase text-white">{settings?.brand_name ?? 'Onur Haniffa'}</span>
+							<span class="text-[9px] text-gray-400 tracking-[0.3em] uppercase">{settings?.brand_subtitle ?? 'Est. 2025'}</span>
 						</div>
 						<div class="w-6 h-[2px] bg-white/80"></div>
 					</a>
@@ -78,10 +78,10 @@
 						{settings?.tagline ?? 'Crafting beautiful websites that turn curious visitors into loyal customers.'}
 					</p>
 					<div class="flex items-center gap-4">
-						<a href="https://www.linkedin.com/in/onurhaniffa/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="LinkedIn">
+						<a href={settings?.linkedin_url ?? 'https://www.linkedin.com/in/onurhaniffa/'} target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="LinkedIn">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
 						</a>
-						<a href="mailto:contact@onurhaniffa.com" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="Email">
+						<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-400 hover:text-white transition-all" aria-label="Email">
 							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 						</a>
 					</div>
@@ -92,7 +92,7 @@
 
 				<!-- Pages -->
 				<div class="col-span-1 md:col-span-2">
-					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">Explore</h4>
+					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.pages_heading ?? 'Explore'}</h4>
 					<nav class="flex flex-col gap-3">
 						<a href="/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Home</a>
 						<a href="/work" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Work</a>
@@ -103,7 +103,7 @@
 
 				<!-- Contact -->
 				<div class="col-span-1 md:col-span-3 lg:col-span-2">
-					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">Contact</h4>
+					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.contact_heading ?? 'Contact'}</h4>
 					<div class="flex flex-col gap-3">
 						<a href="/contact" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Get in touch</a>
 						<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{settings?.email ?? 'contact@onurhaniffa.com'}</a>
@@ -116,10 +116,10 @@
 			<!-- Bottom bar -->
 			<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
 				<p class="text-sm text-gray-500">
-					&copy; {currentYear} Onur Haniffa. All rights reserved.
+					&copy; {currentYear} {settings?.brand_name ?? 'Onur Haniffa'}. All rights reserved.
 				</p>
 				<p class="text-sm text-gray-500">
-					Designed with passion
+					{settings?.bottom_tagline ?? 'Designed with passion'}
 				</p>
 			</div>
 		</div>

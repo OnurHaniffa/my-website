@@ -3,7 +3,9 @@
  * Falls back to hardcoded data if Directus is unavailable.
  */
 
-const DIRECTUS_URL = import.meta.env.VITE_DIRECTUS_URL || 'http://localhost:8055';
+import { env } from '$env/dynamic/private';
+
+const DIRECTUS_URL = env.DIRECTUS_URL || 'http://localhost:8055';
 
 interface DirectusResponse<T> {
 	data: T;
@@ -77,6 +79,18 @@ export interface DirectusSiteSettings {
 	portfolio_section_subtitle: string;
 	why_me_section_title: string;
 	why_me_section_subtitle: string;
+	site_url: string;
+	theme_color: string;
+	og_image: string;
+	linkedin_url: string;
+	services_badge: string;
+	portfolio_badge: string;
+	why_me_badge: string;
+	view_work_button: string;
+	lets_talk_button: string;
+	explore_services_button: string;
+	view_all_work_button: string;
+	learn_more_button: string;
 }
 
 // ─── Page Settings Singletons ────────────────────────────────────────────────
@@ -91,6 +105,8 @@ export interface DirectusServicesPageSettings {
 	testimonial_role: string;
 	testimonial_initial: string;
 	faq_heading: string;
+	meta_title: string;
+	meta_description: string;
 }
 
 export interface DirectusAboutPageSettings {
@@ -110,6 +126,8 @@ export interface DirectusAboutPageSettings {
 	facts_subheading: string;
 	availability_text: string;
 	availability_location: string;
+	meta_title: string;
+	meta_description: string;
 }
 
 export interface DirectusContactPageSettings {
@@ -122,6 +140,8 @@ export interface DirectusContactPageSettings {
 	response_time: string;
 	availability: string;
 	faq_heading: string;
+	meta_title: string;
+	meta_description: string;
 }
 
 export interface DirectusWorkPageSettings {
@@ -132,6 +152,16 @@ export interface DirectusWorkPageSettings {
 	cta_number: string;
 	cta_heading: string;
 	cta_description: string;
+	meta_title: string;
+	meta_description: string;
+	filter_concept_label: string;
+	filter_client_label: string;
+	challenge_heading: string;
+	solution_heading: string;
+	preview_label: string;
+	preview_heading: string;
+	load_demo_text: string;
+	pearl_pull_quote: string;
 }
 
 export interface DirectusPrivacyPageSettings {
@@ -139,6 +169,8 @@ export interface DirectusPrivacyPageSettings {
 	title: string;
 	last_updated: string;
 	content: string; // Rich text / HTML
+	meta_title: string;
+	meta_description: string;
 }
 
 export interface DirectusHeaderSettings {
@@ -147,6 +179,7 @@ export interface DirectusHeaderSettings {
 	logo_subtitle: string;
 	cta_text: string;
 	cta_href: string;
+	nav_items: { href: string; label: string }[];
 }
 
 export interface DirectusFooterSettings {
@@ -158,6 +191,13 @@ export interface DirectusFooterSettings {
 	email: string;
 	location: string;
 	response_time: string;
+	linkedin_url: string;
+	brand_name: string;
+	brand_subtitle: string;
+	bottom_tagline: string;
+	cta_button_text: string;
+	pages_heading: string;
+	contact_heading: string;
 }
 
 // ─── Regular Collections ─────────────────────────────────────────────────────

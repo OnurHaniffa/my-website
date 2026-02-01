@@ -200,10 +200,10 @@
 </script>
 
 <svelte:head>
-	<title>About | Onur Haniffa</title>
-	<meta name="description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide." />
-	<meta property="og:title" content="About | Onur Haniffa" />
-	<meta property="og:description" content="I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide." />
+	<title>{ps?.meta_title ?? 'About | Onur Haniffa'}</title>
+	<meta name="description" content={ps?.meta_description ?? "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide."} />
+	<meta property="og:title" content={ps?.meta_title ?? "About | Onur Haniffa"} />
+	<meta property="og:description" content={ps?.meta_description ?? "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide."} />
 </svelte:head>
 
 <!-- Hero -->

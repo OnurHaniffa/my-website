@@ -14,12 +14,13 @@
 
 	let { settings = null }: { settings?: DirectusHeaderSettings | null } = $props();
 
-	const navItems = [
+	const defaultNavItems = [
 		{ href: '/', label: 'Home' },
 		{ href: '/work', label: 'Work' },
 		{ href: '/services', label: 'Services' },
 		{ href: '/about', label: 'About' }
 	];
+	const navItems = settings?.nav_items?.length ? settings.nav_items : defaultNavItems;
 
 	let mobileMenuOpen = $state(false);
 	let scrolled = $state(false);
@@ -334,8 +335,8 @@
 							</div>
 
 							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">Ready to start?</p>
-							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href="/contact" onclick={() => (mobileMenuOpen = false)}>
-								Let's Talk
+							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href={settings?.cta_href ?? '/contact'} onclick={() => (mobileMenuOpen = false)}>
+								{settings?.cta_text ?? "Let's Talk"}
 								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 							</Button>
 							<a href="mailto:contact@onurhaniffa.com" class="flex items-center justify-center gap-2 mt-4 px-4 py-3 text-[13px] text-muted-foreground hover:text-primary bg-muted/30 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:bg-muted/50">

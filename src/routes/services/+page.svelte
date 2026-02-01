@@ -209,10 +209,10 @@
 </script>
 
 <svelte:head>
-	<title>Services | Onur Haniffa</title>
-	<meta name="description" content="Professional web design and development services. From complete website builds to redesigns and ongoing support. Fast, modern, SEO-optimized." />
-	<meta property="og:title" content="Services | Onur Haniffa" />
-	<meta property="og:description" content="Professional web design and development services. From complete website builds to redesigns and ongoing support." />
+	<title>{ps?.meta_title ?? 'Services | Onur Haniffa'}</title>
+	<meta name="description" content={ps?.meta_description ?? "Professional web design and development services. From complete website builds to redesigns and ongoing support. Fast, modern, SEO-optimized."} />
+	<meta property="og:title" content={ps?.meta_title ?? "Services | Onur Haniffa"} />
+	<meta property="og:description" content={ps?.meta_description ?? "Professional web design and development services. From complete website builds to redesigns and ongoing support."} />
 </svelte:head>
 
 <style>

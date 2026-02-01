@@ -10,11 +10,14 @@
 
 	let { children, data } = $props();
 
-	// Site-wide SEO defaults
-	const siteUrl = 'https://onurhaniffa.com';
-	const siteName = 'Onur Haniffa';
-	const defaultDescription = 'Professional web designer and developer creating fast, modern websites that convert visitors into customers. Based in Europe, available worldwide.';
-	const defaultImage = `${siteUrl}/og-image.png`;
+	// Site-wide SEO defaults from CMS
+	const ss = data.siteSettings;
+	const siteUrl = ss?.site_url ?? 'https://onurhaniffa.com';
+	const siteName = ss?.site_title?.split('|')[0]?.trim() ?? 'Onur Haniffa';
+	const defaultDescription = ss?.site_description ?? 'Professional web designer and developer creating fast, modern websites that convert visitors into customers. Based in Europe, available worldwide.';
+	const ogImage = ss?.og_image ?? '/og-image.png';
+	const defaultImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+	const themeColor = ss?.theme_color ?? '#3b82f6';
 
 	// Scroll to top on navigation/reload
 	afterNavigate(() => {
@@ -54,9 +57,9 @@
 	<meta name="twitter:image" content={defaultImage} />
 
 	<!-- Additional SEO -->
-	<meta name="author" content="Onur Haniffa" />
+	<meta name="author" content={siteName} />
 	<meta name="robots" content="index, follow" />
-	<meta name="theme-color" content="#3b82f6" />
+	<meta name="theme-color" content={themeColor} />
 </svelte:head>
 
 <div class="min-h-screen flex flex-col">

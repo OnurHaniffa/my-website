@@ -7,8 +7,8 @@
 </script>
 
 <svelte:head>
-	<title>Privacy Policy | Onur Haniffa</title>
-	<meta name="description" content="Privacy Policy for Onur Haniffa Web Design. Learn how I collect, use, and protect your personal information." />
+	<title>{ps?.meta_title ?? 'Privacy Policy | Onur Haniffa'}</title>
+	<meta name="description" content={ps?.meta_description ?? "Privacy Policy for Onur Haniffa Web Design. Learn how I collect, use, and protect your personal information."} />
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
