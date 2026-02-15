@@ -287,7 +287,7 @@
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />\u2013<Counter value={3} duration={2200} delay={300} /> wks</p>
+						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />&ndash;<Counter value={3} duration={2200} delay={300} /> wks</p>
 						<p class="text-sm text-muted-foreground">{settings?.stat_2_label ?? 'Avg. project'}</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
