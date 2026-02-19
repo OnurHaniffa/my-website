@@ -7,6 +7,7 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { projects as fallbackProjectsData } from '$lib/data/projects';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 	const ps = data.pageSettings;
@@ -139,10 +140,10 @@
 </script>
 
 <svelte:head>
-	<title>{ps?.meta_title ?? 'Work | Onur Haniffa'}</title>
-	<meta name="description" content={ps?.meta_description ?? "Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online with modern web design."} />
-	<meta property="og:title" content={ps?.meta_title ?? "Work | Onur Haniffa"} />
-	<meta property="og:description" content={ps?.meta_description ?? "Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online."} />
+	<title>{ps?.meta_title ?? t('work.meta_title')}</title>
+	<meta name="description" content={ps?.meta_description ?? t('work.meta_description')} />
+	<meta property="og:title" content={ps?.meta_title ?? t('work.meta_title')} />
+	<meta property="og:description" content={ps?.meta_description ?? t('work.og_description')} />
 </svelte:head>
 
 <style>
@@ -205,9 +206,9 @@
 					class:opacity-100={mounted}
 					class:translate-y-0={mounted}
 				>
-					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none -mb-8 sm:-mb-12 lg:-mb-16">WORK</span>
+					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none -mb-8 sm:-mb-12 lg:-mb-16">{t('work.watermark')}</span>
 					<h1 class="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl relative z-10">
-						<span class="sm:hidden">Work</span> {ps?.hero_heading ?? 'that'} <span class="text-primary">{ps?.hero_highlight ?? 'speaks'}</span> {ps?.hero_heading ? '' : 'for itself'}
+						<span class="sm:hidden">{t('work.watermark')}</span> {ps?.hero_heading ?? t('work.hero_heading')} <span class="text-primary">{ps?.hero_highlight ?? t('work.hero_highlight')}</span> {ps?.hero_heading ? '' : t('work.hero_suffix')}
 					</h1>
 				</div>
 			</div>
@@ -222,7 +223,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					{ps?.hero_description ?? 'A mix of client work and passion projects, each built with the same care and attention to detail.'}
+					{ps?.hero_description ?? t('work.hero_description')}
 				</p>
 			</div>
 		</div>
@@ -250,7 +251,7 @@
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
-					{ps?.filter_concept_label ?? 'Concept Build'}
+					{ps?.filter_concept_label ?? t('work.filter_concept')}
 				</button>
 				<button
 					onclick={() => activeFilter = 'client'}
@@ -258,7 +259,7 @@
 						? 'text-white'
 						: 'text-muted-foreground hover:text-foreground'}"
 				>
-					{ps?.filter_client_label ?? 'Live Project'}
+					{ps?.filter_client_label ?? t('work.filter_client')}
 				</button>
 			</div>
 		</div>
@@ -282,9 +283,9 @@
 				<span class="text-[120px] lg:text-[180px] font-bold leading-none text-[#4a7c59]/10 dark:text-[#4a7c59]/20 select-none">01</span>
 			</div>
 			<div class="text-right pb-4">
-				<Badge class="mb-3 bg-[#4a7c59]/10 text-[#4a7c59] border-[#4a7c59]/20">Healthcare</Badge>
-				<h2 class="text-4xl lg:text-6xl font-bold tracking-tight gradient-text-dental">Pearl Dental</h2>
-				<p class="mt-2 text-lg text-[#4a7c59] font-medium">Modern dental care, designed for you</p>
+				<Badge class="mb-3 bg-[#4a7c59]/10 text-[#4a7c59] border-[#4a7c59]/20">{t('work.pearl_industry')}</Badge>
+				<h2 class="text-4xl lg:text-6xl font-bold tracking-tight gradient-text-dental">{t('work.pearl_title')}</h2>
+				<p class="mt-2 text-lg text-[#4a7c59] font-medium">{t('work.pearl_subtitle')}</p>
 			</div>
 		</div>
 
@@ -308,7 +309,7 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.05)}px)"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/80 mb-2"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-					<span class="text-[10px] text-white/70 uppercase tracking-wider">Built With</span>
+					<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.pearl_built_with')}</span>
 					<span class="text-xs text-white font-medium mt-0.5">SvelteKit</span>
 				</div>
 
@@ -318,8 +319,8 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.08)}px)"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/80 mb-1"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></svg>
-					<span class="text-[10px] text-white/70 uppercase tracking-wider">UI/UX</span>
-					<span class="text-xs text-white font-medium mt-0.5">Design</span>
+					<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.pearl_ui_ux')}</span>
+					<span class="text-xs text-white font-medium mt-0.5">{t('work.pearl_design')}</span>
 				</div>
 
 				<!-- SEO circle -->
@@ -328,8 +329,8 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.12)}px)"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] mb-1"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-					<span class="text-[10px] text-[#5a5a5a] uppercase tracking-wider">SEO</span>
-					<span class="text-xs text-[#4a7c59] font-medium mt-0.5">Optimized</span>
+					<span class="text-[10px] text-[#5a5a5a] uppercase tracking-wider">{t('work.pearl_seo')}</span>
+					<span class="text-xs text-[#4a7c59] font-medium mt-0.5">{t('work.pearl_optimized')}</span>
 				</div>
 			</div>
 
@@ -341,7 +342,7 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.03)}px)"
 				>
 					<span class="text-xl font-bold text-[#c4a574]">2025</span>
-					<span class="text-[8px] text-[#5a5a5a] uppercase tracking-wider">Year</span>
+					<span class="text-[8px] text-[#5a5a5a] uppercase tracking-wider">{t('work.pearl_year')}</span>
 				</div>
 
 				<!-- Demo badge circle -->
@@ -350,8 +351,8 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.06)}px)"
 				>
 					<div class="w-3 h-3 bg-[#4a7c59] rounded-full mb-1"></div>
-					<span class="text-xs text-[#4a7c59] font-medium">Demo</span>
-					<span class="text-[8px] text-[#5a5a5a] uppercase">Project</span>
+					<span class="text-xs text-[#4a7c59] font-medium">{t('work.pearl_demo')}</span>
+					<span class="text-[8px] text-[#5a5a5a] uppercase">{t('work.pearl_project')}</span>
 				</div>
 
 				<!-- Responsive circle -->
@@ -360,27 +361,27 @@
 					style="transform: translateY({getParallaxOffset(dentalSectionTop, -0.04)}px)"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] mb-0.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-					<span class="text-[8px] text-[#5a5a5a] uppercase tracking-wider">Mobile</span>
+					<span class="text-[8px] text-[#5a5a5a] uppercase tracking-wider">{t('work.pearl_mobile')}</span>
 				</div>
 			</div>
 
 			<!-- Mobile: horizontal scrolling circles -->
 			<div class="flex lg:hidden gap-3 mt-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
 				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#4a7c59] shadow-lg flex flex-col items-center justify-center text-center p-3">
-					<span class="text-[10px] text-white/70 uppercase tracking-wider">Built With</span>
+					<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.pearl_built_with')}</span>
 					<span class="text-sm text-white font-medium">SvelteKit</span>
 				</div>
 				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#c4a574] shadow-lg flex flex-col items-center justify-center text-center p-3">
-					<span class="text-[10px] text-white/70 uppercase tracking-wider">UI/UX</span>
-					<span class="text-sm text-white font-medium">Design</span>
+					<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.pearl_ui_ux')}</span>
+					<span class="text-sm text-white font-medium">{t('work.pearl_design')}</span>
 				</div>
 				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-white shadow-lg border border-[#4a7c59]/20 flex flex-col items-center justify-center text-center p-3">
-					<span class="text-[10px] text-[#5a5a5a] uppercase tracking-wider">SEO</span>
-					<span class="text-sm text-[#4a7c59] font-medium">Optimized</span>
+					<span class="text-[10px] text-[#5a5a5a] uppercase tracking-wider">{t('work.pearl_seo')}</span>
+					<span class="text-sm text-[#4a7c59] font-medium">{t('work.pearl_optimized')}</span>
 				</div>
 				<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#f5f0e8] dark:bg-surface-2 shadow-lg flex flex-col items-center justify-center text-center p-3">
 					<span class="text-xl font-bold text-[#c4a574]">2025</span>
-					<span class="text-[8px] text-[#5a5a5a] uppercase">Year</span>
+					<span class="text-[8px] text-[#5a5a5a] uppercase">{t('work.pearl_year')}</span>
 				</div>
 			</div>
 		</div>
@@ -394,10 +395,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#4a7c59]/10 dark:bg-[#4a7c59]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#4a7c59] dark:text-[#6a9c79]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.challenge_heading ?? 'The Challenge'}</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.challenge_heading ?? t('work.challenge_heading')}</h3>
 					</div>
 					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
-						{pearlDental?.challenge ?? 'Most dental websites feel cold and clinical, or outdated and unprofessional. Pearl Dental needed a site that builds trust instantly while remaining warm and approachable—making new patients feel confident before they even book.'}
+						{pearlDental?.challenge ?? t('work.pearl_challenge')}
 					</p>
 				</div>
 
@@ -407,10 +408,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#c4a574]/20 dark:bg-[#c4a574]/30 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c4a574] dark:text-[#d4b584]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.solution_heading ?? 'The Solution'}</h3>
+						<h3 class="text-lg font-bold text-[#2d2d2d] dark:text-white">{ps?.solution_heading ?? t('work.solution_heading')}</h3>
 					</div>
 					<p class="text-[#5a5a5a] dark:text-gray-300 leading-relaxed">
-						{pearlDental?.solution ?? 'I designed a clean, modern website with trust-building elements like reviews, years of expertise, and clear service presentation. The warm color palette and friendly imagery balance professionalism with approachability.'}
+						{pearlDental?.solution ?? t('work.pearl_solution')}
 					</p>
 				</div>
 			</div>
@@ -420,7 +421,7 @@
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
 				<p class="text-2xl lg:text-3xl font-light text-[#2d2d2d] dark:text-gray-200 leading-relaxed italic">
-					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: {ps?.pearl_pull_quote ?? 'make patients feel welcome before they even walk through the door.'}<span class="text-[#c4a574] font-serif text-4xl">'</span>
+					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: {ps?.pearl_pull_quote ?? t('work.pearl_pull_quote')}<span class="text-[#c4a574] font-serif text-4xl">'</span>
 				</p>
 				<!-- Decorative line -->
 				<div class="mt-8 flex items-center justify-center gap-3">
@@ -434,8 +435,8 @@
 		<!-- Interactive Preview Section -->
 		<InView animation="fade-up" class="mt-16 lg:mt-24 -mx-4 lg:-mx-16 xl:-mx-24">
 			<div class="text-center mb-10 px-4 lg:px-16 xl:px-24">
-				<p class="text-sm font-medium text-[#4a7c59] tracking-widest uppercase mb-2">{ps?.preview_label ?? 'Interactive Preview'}</p>
-				<h3 class="text-2xl lg:text-3xl font-bold text-[#2d2d2d]">{ps?.preview_heading ?? 'Experience it live'}</h3>
+				<p class="text-sm font-medium text-[#4a7c59] tracking-widest uppercase mb-2">{ps?.preview_label ?? t('work.preview_label')}</p>
+				<h3 class="text-2xl lg:text-3xl font-bold text-[#2d2d2d]">{ps?.preview_heading ?? t('work.preview_heading')}</h3>
 			</div>
 
 			<div class="relative overflow-hidden shadow-2xl bg-white dark:bg-surface-1 border border-[#c4a574]/20 dark:border-border/50 mx-4 lg:mx-8">
@@ -460,9 +461,9 @@
 										onclick={startDentalIframeLoad}
 										class="px-6 py-3 bg-[#4a7c59] text-white font-medium hover:bg-[#3d6a4a] transition-colors shadow-lg"
 									>
-										{ps?.load_demo_text ?? 'Load Interactive Demo'}
+										{ps?.load_demo_text ?? t('work.load_demo')}
 									</button>
-									<p class="mt-3 text-sm text-[#5a5a5a]">Click to load the live site</p>
+									<p class="mt-3 text-sm text-[#5a5a5a]">{t('work.load_demo_hint')}</p>
 								</div>
 							</div>
 						</div>
@@ -472,14 +473,14 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-[#c4a574]">
 									<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
 								</svg>
-								<p class="text-[#2d2d2d] font-medium mb-2">Unable to load preview</p>
-								<p class="text-sm text-[#5a5a5a] mb-4">The site may be temporarily unavailable</p>
+								<p class="text-[#2d2d2d] font-medium mb-2">{t('work.unable_to_load')}</p>
+								<p class="text-sm text-[#5a5a5a] mb-4">{t('work.site_unavailable')}</p>
 								<div class="flex gap-3 justify-center">
 									<button
 										onclick={retryDentalIframe}
 										class="px-4 py-2 bg-[#4a7c59] text-white text-sm font-medium hover:bg-[#3d6a4a] transition-colors rounded"
 									>
-										Try Again
+										{t('work.try_again')}
 									</button>
 									<a
 										href={pearlDental?.liveUrl ?? 'https://pearl-dental.vercel.app'}
@@ -487,7 +488,7 @@
 										rel="noopener noreferrer"
 										class="px-4 py-2 border border-[#4a7c59] text-[#4a7c59] text-sm font-medium hover:bg-[#4a7c59]/5 transition-colors rounded"
 									>
-										Open in New Tab
+										{t('work.open_new_tab')}
 									</a>
 								</div>
 							</div>
@@ -497,7 +498,7 @@
 							<div class="absolute inset-0 flex items-center justify-center bg-[#faf7f2] dark:bg-surface-1 z-10">
 								<div class="text-center">
 									<div class="w-8 h-8 border-3 border-[#4a7c59]/20 border-t-[#4a7c59] rounded-full animate-spin mx-auto mb-3"></div>
-									<p class="text-sm text-[#5a5a5a]">Loading preview...</p>
+									<p class="text-sm text-[#5a5a5a]">{t('work.loading_preview')}</p>
 								</div>
 							</div>
 						{/if}
@@ -535,9 +536,9 @@
 		<!-- Project Number & Title Header - FLIPPED from Pearl (title LEFT, number RIGHT) -->
 		<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16 gap-4">
 			<div class="text-left pb-6 flex-1">
-				<Badge class="mb-3 bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30">Fan Art & Illustration</Badge>
-				<h2 class="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight gradient-text-joe pb-4">Designs by Joe</h2>
-				<p class="mt-2 text-lg text-[#c9a227] font-medium">Fan art for the fans</p>
+				<Badge class="mb-3 bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30">{t('work.joe_industry')}</Badge>
+				<h2 class="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight gradient-text-joe pb-4">{t('work.joe_title')}</h2>
+				<p class="mt-2 text-lg text-[#c9a227] font-medium">{t('work.joe_subtitle')}</p>
 			</div>
 			<div class="hidden lg:block flex-shrink-0">
 				<span class="text-[120px] lg:text-[160px] font-bold leading-none text-[#3b82f6]/25 select-none">02</span>
@@ -551,14 +552,14 @@
 				<!-- Tech circle -->
 				<div class="w-28 h-28 rounded-full bg-[#3b82f6] shadow-xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition-transform">
 					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/80 mb-1"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-					<span class="text-[9px] text-white/70 uppercase tracking-wider">Built With</span>
+					<span class="text-[9px] text-white/70 uppercase tracking-wider">{t('work.joe_built_with')}</span>
 					<span class="text-xs text-white font-medium">SvelteKit</span>
 				</div>
 
 				<!-- Artworks circle -->
 				<div class="w-24 h-24 rounded-full bg-[#c9a227] shadow-xl flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform -ml-6">
 					<span class="text-xl font-bold text-white">200+</span>
-					<span class="text-[9px] text-white/70 uppercase tracking-wider">Artworks</span>
+					<span class="text-[9px] text-white/70 uppercase tracking-wider">{t('work.joe_artworks')}</span>
 				</div>
 
 				<!-- Year circle -->
@@ -584,16 +585,16 @@
 		<!-- Mobile: horizontal scrolling circles -->
 		<div class="flex lg:hidden gap-3 mt-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
 			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#3b82f6] shadow-lg flex flex-col items-center justify-center text-center p-3">
-				<span class="text-[10px] text-white/70 uppercase tracking-wider">Built With</span>
+				<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.joe_built_with')}</span>
 				<span class="text-sm text-white font-medium">SvelteKit</span>
 			</div>
 			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#c9a227] shadow-lg flex flex-col items-center justify-center text-center p-3">
 				<span class="text-xl font-bold text-white">200+</span>
-				<span class="text-[9px] text-white/70 uppercase">Artworks</span>
+				<span class="text-[9px] text-white/70 uppercase">{t('work.joe_artworks')}</span>
 			</div>
 			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-slate-700/80 shadow-lg border border-[#c9a227]/30 flex flex-col items-center justify-center text-center p-3">
 				<span class="text-xl font-bold text-[#c9a227]">2025</span>
-				<span class="text-[8px] text-slate-300 uppercase">Year</span>
+				<span class="text-[8px] text-slate-300 uppercase">{t('work.pearl_year')}</span>
 			</div>
 		</div>
 
@@ -606,10 +607,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#3b82f6]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#3b82f6]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">{ps?.challenge_heading ?? 'The Challenge'}</h3>
+						<h3 class="text-lg font-bold text-white">{ps?.challenge_heading ?? t('work.challenge_heading')}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
-						{designsByJoe?.challenge ?? 'Joe needed a bold, eye-catching portfolio to showcase 200+ artworks and attract commission clients from various fandoms. The site needed to feel premium while staying true to the creative, fan-driven nature of the work.'}
+						{designsByJoe?.challenge ?? t('work.joe_challenge')}
 					</p>
 				</div>
 
@@ -619,10 +620,10 @@
 						<div class="w-10 h-10 rounded-full bg-[#c9a227]/20 flex items-center justify-center">
 							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c9a227]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">{ps?.solution_heading ?? 'The Solution'}</h3>
+						<h3 class="text-lg font-bold text-white">{ps?.solution_heading ?? t('work.solution_heading')}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
-						{designsByJoe?.solution ?? 'I designed a dark, immersive portfolio with smooth animations that puts the artwork front and center. The layout features a striking hero section and intuitive navigation between portfolio pieces and commission information.'}
+						{designsByJoe?.solution ?? t('work.joe_solution')}
 					</p>
 				</div>
 			</div>
@@ -632,7 +633,7 @@
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
 				<p class="text-2xl lg:text-3xl font-light text-white leading-relaxed italic">
-					<span class="text-[#c9a227] font-serif text-4xl">"</span>{designsByJoe?.testimonial?.quote ?? 'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.'}<span class="text-[#c9a227] font-serif text-4xl">"</span>
+					<span class="text-[#c9a227] font-serif text-4xl">"</span>{designsByJoe?.testimonial?.quote ?? t('work.joe_testimonial')}<span class="text-[#c9a227] font-serif text-4xl">"</span>
 				</p>
 				<!-- Author -->
 				<div class="mt-8 flex items-center justify-center gap-4">
@@ -654,8 +655,8 @@
 		<!-- Interactive Preview Section -->
 		<InView animation="fade-up" class="mt-20 lg:mt-28 -mx-4 lg:-mx-16 xl:-mx-24">
 			<div class="text-center mb-10 px-4 lg:px-16 xl:px-24">
-				<p class="text-sm font-medium text-[#3b82f6] tracking-widest uppercase mb-2">{ps?.preview_label ?? 'Interactive Preview'}</p>
-				<h3 class="text-2xl lg:text-3xl font-bold text-white">{ps?.preview_heading ?? 'Experience it live'}</h3>
+				<p class="text-sm font-medium text-[#3b82f6] tracking-widest uppercase mb-2">{ps?.preview_label ?? t('work.preview_label')}</p>
+				<h3 class="text-2xl lg:text-3xl font-bold text-white">{ps?.preview_heading ?? t('work.preview_heading')}</h3>
 			</div>
 
 			<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800 border border-white/10 mx-4 lg:mx-8">
@@ -680,9 +681,9 @@
 										onclick={startJoeIframeLoad}
 										class="px-6 py-3 bg-[#3b82f6] text-white rounded-xl font-medium hover:bg-[#2563eb] transition-colors shadow-lg"
 									>
-										{ps?.load_demo_text ?? 'Load Interactive Demo'}
+										{ps?.load_demo_text ?? t('work.load_demo')}
 									</button>
-									<p class="mt-3 text-sm text-slate-300">Click to load the live site</p>
+									<p class="mt-3 text-sm text-slate-300">{t('work.load_demo_hint')}</p>
 								</div>
 							</div>
 						</div>
@@ -692,14 +693,14 @@
 								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-[#c9a227]">
 									<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
 								</svg>
-								<p class="text-white font-medium mb-2">Unable to load preview</p>
-								<p class="text-sm text-slate-400 mb-4">The site may be temporarily unavailable</p>
+								<p class="text-white font-medium mb-2">{t('work.unable_to_load')}</p>
+								<p class="text-sm text-slate-400 mb-4">{t('work.site_unavailable')}</p>
 								<div class="flex gap-3 justify-center">
 									<button
 										onclick={retryJoeIframe}
 										class="px-4 py-2 bg-[#3b82f6] text-white text-sm font-medium hover:bg-[#2563eb] transition-colors rounded"
 									>
-										Try Again
+										{t('work.try_again')}
 									</button>
 									<a
 										href={designsByJoe?.liveUrl ?? 'https://designsbyjoe.net'}
@@ -707,7 +708,7 @@
 										rel="noopener noreferrer"
 										class="px-4 py-2 border border-[#3b82f6] text-[#3b82f6] text-sm font-medium hover:bg-[#3b82f6]/10 transition-colors rounded"
 									>
-										Open in New Tab
+										{t('work.open_new_tab')}
 									</a>
 								</div>
 							</div>
@@ -717,7 +718,7 @@
 							<div class="absolute inset-0 flex items-center justify-center bg-slate-800 z-10">
 								<div class="text-center">
 									<div class="w-8 h-8 border-3 border-[#3b82f6]/20 border-t-[#3b82f6] rounded-full animate-spin mx-auto mb-3"></div>
-									<p class="text-sm text-slate-300">Loading preview...</p>
+									<p class="text-sm text-slate-300">{t('work.loading_preview')}</p>
 								</div>
 							</div>
 						{/if}
@@ -742,12 +743,12 @@
 <Section padding="lg" class="relative overflow-hidden">
 	<Container size="content">
 		<InView animation="fade-up" class="text-center">
-			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">{ps?.cta_number ?? '03'}</span>
+			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">{ps?.cta_number ?? t('work.cta_number')}</span>
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl -mt-8">
-				{ps?.cta_heading ?? 'Have a project in mind?'}
+				{ps?.cta_heading ?? t('work.cta_heading')}
 			</h2>
 			<p class="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-				{ps?.cta_description ?? "I'd love to hear about it and explore how we can bring your vision to life together."}
+				{ps?.cta_description ?? t('work.cta_description')}
 			</p>
 			<div class="mt-10 flex items-center justify-center gap-3">
 				<div class="w-16 h-[2px] bg-primary/30"></div>

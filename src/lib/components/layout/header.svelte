@@ -9,18 +9,25 @@
 		SheetTrigger
 	} from '$lib/components/ui/sheet';
 	import { Container } from '$lib/components/layout';
+	import { LanguageSwitcher } from '$lib/components/ui/language-switcher';
 	import { browser } from '$app/environment';
+	import { t } from '$lib/i18n/index.svelte';
 	import type { DirectusHeaderSettings } from '$lib/data/directus';
 
 	let { settings = null }: { settings?: DirectusHeaderSettings | null } = $props();
 
 	const defaultNavItems = [
-		{ href: '/', label: 'Home' },
-		{ href: '/work', label: 'Work' },
-		{ href: '/services', label: 'Services' },
-		{ href: '/about', label: 'About' }
+		{ href: '/', labelKey: 'nav.home' },
+		{ href: '/work', labelKey: 'nav.work' },
+		{ href: '/services', labelKey: 'nav.services' },
+		{ href: '/about', labelKey: 'nav.about' }
 	];
-	const navItems = settings?.nav_items?.length ? settings.nav_items : defaultNavItems;
+
+	const navItems = $derived(
+		settings?.nav_items?.length
+			? settings.nav_items
+			: defaultNavItems.map((item) => ({ href: item.href, label: t(item.labelKey) }))
+	);
 
 	let mobileMenuOpen = $state(false);
 	let scrolled = $state(false);
@@ -122,6 +129,9 @@
 
 			<!-- Desktop CTA + Menu Button -->
 			<div class="flex items-center gap-3">
+				<!-- Language Switcher -->
+				<LanguageSwitcher />
+
 				<!-- Theme Toggle - Pill shaped with sliding indicator -->
 				<button
 					onclick={toggleTheme}
@@ -174,7 +184,7 @@
 				</button>
 
 				<Button href={settings?.cta_href ?? '/contact'} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
-					<span class="relative z-10">{settings?.cta_text ?? "Let's Talk"}</span>
+					<span class="relative z-10">{settings?.cta_text ?? t('nav.lets_talk')}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 
@@ -247,7 +257,7 @@
 
 						<!-- Navigation -->
 						<nav class="flex flex-col gap-2 flex-1">
-							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">Navigation</p>
+							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">{t('nav.navigation')}</p>
 							{#each navItems as item, i}
 								<a
 									href={item.href}
@@ -279,64 +289,67 @@
 
 						<!-- CTA Section - Fixed at bottom -->
 						<div class="pt-8 mt-auto border-t border-border/30">
-							<!-- Theme Toggle in Mobile Menu - Pill style -->
+							<!-- Language + Theme row -->
 							<div class="flex items-center justify-between px-2 mb-6">
-								<span class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em]">Appearance</span>
-								<button
-									onclick={toggleTheme}
-									class="relative inline-flex items-center h-10 w-20 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
-										{isDark
-											? 'bg-gradient-to-r from-indigo-950 to-slate-900'
-											: 'bg-gradient-to-r from-amber-100 to-sky-100'}"
-									aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-								>
-									<!-- Sliding indicator -->
-									<span
-										class="absolute h-8 w-8 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
+								<span class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em]">{t('nav.appearance')}</span>
+								<div class="flex items-center gap-3">
+									<LanguageSwitcher />
+									<button
+										onclick={toggleTheme}
+										class="relative inline-flex items-center h-10 w-20 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
 											{isDark
-												? 'translate-x-10 bg-gradient-to-br from-slate-700 to-slate-800'
-												: 'translate-x-0 bg-gradient-to-br from-amber-300 to-orange-400'}"
+												? 'bg-gradient-to-r from-indigo-950 to-slate-900'
+												: 'bg-gradient-to-r from-amber-100 to-sky-100'}"
+										aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 									>
-										<!-- Sun -->
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-											class="transition-all duration-300 {isDark ? 'opacity-0 scale-75' : 'opacity-100 scale-100 text-amber-700'}"
+										<!-- Sliding indicator -->
+										<span
+											class="absolute h-8 w-8 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
+												{isDark
+													? 'translate-x-10 bg-gradient-to-br from-slate-700 to-slate-800'
+													: 'translate-x-0 bg-gradient-to-br from-amber-300 to-orange-400'}"
 										>
-											<circle cx="12" cy="12" r="5"/>
-										</svg>
-										<!-- Moon -->
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="16"
-											height="16"
-											viewBox="0 0 24 24"
-											fill="currentColor"
-											class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-indigo-200' : 'opacity-0 scale-75'}"
-										>
-											<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-										</svg>
-									</span>
-									<!-- Stars for dark mode -->
-									<span class="absolute left-2.5 top-2 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-										<span class="block w-1 h-1 rounded-full bg-white/50"></span>
-									</span>
-									<span class="absolute left-4 bottom-2.5 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-										<span class="block w-0.5 h-0.5 rounded-full bg-white/40"></span>
-									</span>
-									<!-- Cloud for light mode -->
-									<span class="absolute right-3 bottom-2 transition-opacity duration-300 {isDark ? 'opacity-0' : 'opacity-100'}">
-										<span class="block w-2 h-2 rounded-full bg-sky-300/70"></span>
-									</span>
-								</button>
+											<!-- Sun -->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="16"
+												height="16"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												class="transition-all duration-300 {isDark ? 'opacity-0 scale-75' : 'opacity-100 scale-100 text-amber-700'}"
+											>
+												<circle cx="12" cy="12" r="5"/>
+											</svg>
+											<!-- Moon -->
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="16"
+												height="16"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+												class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-indigo-200' : 'opacity-0 scale-75'}"
+											>
+												<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
+											</svg>
+										</span>
+										<!-- Stars for dark mode -->
+										<span class="absolute left-2.5 top-2 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
+											<span class="block w-1 h-1 rounded-full bg-white/50"></span>
+										</span>
+										<span class="absolute left-4 bottom-2.5 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
+											<span class="block w-0.5 h-0.5 rounded-full bg-white/40"></span>
+										</span>
+										<!-- Cloud for light mode -->
+										<span class="absolute right-3 bottom-2 transition-opacity duration-300 {isDark ? 'opacity-0' : 'opacity-100'}">
+											<span class="block w-2 h-2 rounded-full bg-sky-300/70"></span>
+										</span>
+									</button>
+								</div>
 							</div>
 
-							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">Ready to start?</p>
+							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">{t('nav.ready_to_start')}</p>
 							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href={settings?.cta_href ?? '/contact'} onclick={() => (mobileMenuOpen = false)}>
-								{settings?.cta_text ?? "Let's Talk"}
+								{settings?.cta_text ?? t('nav.lets_talk')}
 								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 							</Button>
 							<a href="mailto:contact@onurhaniffa.com" class="flex items-center justify-center gap-2 mt-4 px-4 py-3 text-[13px] text-muted-foreground hover:text-primary bg-muted/30 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:bg-muted/50">

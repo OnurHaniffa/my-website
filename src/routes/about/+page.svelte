@@ -3,6 +3,7 @@
 	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
 	import { Container, Section } from '$lib/components/layout';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 	const ps = data.pageSettings;
@@ -12,11 +13,11 @@
 	let toolsSection: HTMLDivElement;
 	let factsSection: HTMLDivElement;
 
-	const fallbackPhilosophy = [
+	const fallbackPhilosophy = $derived([
 		{
 			number: '01',
-			title: 'Design with intent',
-			description: 'Every element has a purpose. If it doesn\'t help your visitor take action, it doesn\'t belong.',
+			title: t('about.philosophy_1_title'),
+			description: t('about.philosophy_1_desc'),
 			gradient: 'from-primary/20 via-primary/5 to-transparent',
 			accent: 'bg-primary',
 			iconBg: 'bg-primary/10',
@@ -24,8 +25,8 @@
 		},
 		{
 			number: '02',
-			title: 'Speed is a feature',
-			description: 'If a site feels slow, people leave. I build for real-world performance.',
+			title: t('about.philosophy_2_title'),
+			description: t('about.philosophy_2_desc'),
 			gradient: 'from-accent/20 via-accent/5 to-transparent',
 			accent: 'bg-accent',
 			iconBg: 'bg-accent/10',
@@ -33,16 +34,16 @@
 		},
 		{
 			number: '03',
-			title: 'Own what you build',
-			description: 'Your site, your code—you own everything. I handle hosting and updates so you don\'t have to worry about the technical side.',
+			title: t('about.philosophy_3_title'),
+			description: t('about.philosophy_3_desc'),
 			gradient: 'from-emerald-500/20 via-emerald-500/5 to-transparent',
 			accent: 'bg-emerald-500',
 			iconBg: 'bg-emerald-500/10',
 			icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'
 		}
-	];
+	]);
 
-	const philosophy = data.philosophyCards?.length
+	const philosophy = $derived(data.philosophyCards?.length
 		? data.philosophyCards.map(c => ({
 				number: c.number,
 				title: c.title,
@@ -52,19 +53,19 @@
 				iconBg: c.icon_bg,
 				icon: c.icon
 			}))
-		: fallbackPhilosophy;
+		: fallbackPhilosophy);
 
-	const fallbackToolGroups = [
+	const fallbackToolGroups = $derived([
 		{
-			label: 'BUILD',
+			label: t('about.build'),
 			tools: [
-				{ name: 'SvelteKit', badge: 'Primary', icon: 'svelte' },
+				{ name: 'SvelteKit', badge: t('about.primary'), icon: 'svelte' },
 				{ name: 'Svelte 5', icon: 'svelte' },
 				{ name: 'TypeScript', icon: 'typescript' }
 			]
 		},
 		{
-			label: 'STYLE',
+			label: t('about.style'),
 			tools: [
 				{ name: 'Tailwind CSS', icon: 'tailwind' },
 				{ name: 'shadcn/ui', icon: 'shadcn' },
@@ -72,20 +73,20 @@
 			]
 		},
 		{
-			label: 'SHIP',
+			label: t('about.ship'),
 			tools: [
 				{ name: 'Vercel', icon: 'vercel' },
 				{ name: 'Git', icon: 'git' }
 			]
 		}
-	];
+	]);
 
-	const toolGroups = data.toolGroups?.length
+	const toolGroups = $derived(data.toolGroups?.length
 		? data.toolGroups.map(g => ({
 				label: g.label,
 				tools: g.tools
 			}))
-		: fallbackToolGroups;
+		: fallbackToolGroups);
 
 	// SVG paths for tool icons (consistent stroke style)
 	const toolIcons: Record<string, string> = {
@@ -98,33 +99,33 @@
 		git: 'M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4'
 	};
 
-	const fallbackQuickFacts = [
-		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Zm-8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z', label: 'Based in', value: 'Europe', bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
-		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: 'Design in', value: 'Figma', bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
-		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: 'Build with', value: 'SvelteKit', bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
-		{ icon: 'M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z', label: 'Work best', value: 'At night', bg: 'bg-gradient-to-br from-indigo-500/10 to-indigo-500/5', color: 'text-indigo-500', border: 'border-t-indigo-500' },
-		{ icon: 'M12 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 6v7m-5 4h10a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1Z', label: 'Enjoy', value: 'Gaming', bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
-		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: 'Major in', value: 'Computer & Biomedical Eng', bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
-	];
+	const fallbackQuickFacts = $derived([
+		{ icon: 'M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Zm-8 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z', label: t('about.fact_1_label'), value: t('about.fact_1_value'), bg: 'bg-gradient-to-br from-blue-500/10 to-blue-500/5', color: 'text-blue-500', border: 'border-t-blue-500' },
+		{ icon: 'M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H5Zm10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm-6 7 3-3 2 2 4-4', label: t('about.fact_2_label'), value: t('about.fact_2_value'), bg: 'bg-gradient-to-br from-purple-500/10 to-purple-500/5', color: 'text-purple-500', border: 'border-t-purple-500' },
+		{ icon: 'M12 2 2 7l10 5 10-5-10-5ZM2 17l10 5 10-5M2 12l10 5 10-5', label: t('about.fact_3_label'), value: t('about.fact_3_value'), bg: 'bg-gradient-to-br from-orange-500/10 to-orange-500/5', color: 'text-orange-500', border: 'border-t-orange-500' },
+		{ icon: 'M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z', label: t('about.fact_4_label'), value: t('about.fact_4_value'), bg: 'bg-gradient-to-br from-indigo-500/10 to-indigo-500/5', color: 'text-indigo-500', border: 'border-t-indigo-500' },
+		{ icon: 'M12 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm0 6v7m-5 4h10a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1Z', label: t('about.fact_5_label'), value: t('about.fact_5_value'), bg: 'bg-gradient-to-br from-emerald-500/10 to-emerald-500/5', color: 'text-emerald-500', border: 'border-t-emerald-500' },
+		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: t('about.fact_6_label'), value: t('about.fact_6_value'), bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
+	]);
 
-	const quickFacts = data.quickFacts?.length ? data.quickFacts : fallbackQuickFacts;
+	const quickFacts = $derived(data.quickFacts?.length ? data.quickFacts : fallbackQuickFacts);
 
-	const fallbackAcademicRoles = [
+	const fallbackAcademicRoles = $derived([
 		{
 			icon: 'M9.75 3.104v5.714a2.25 2.25 0 0 1-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 0 1 4.5 0m0 0v5.714a2.25 2.25 0 0 0 .659 1.591L19 14.5M14.25 3.104c.251.023.501.05.75.082M19 14.5l-2.47 2.47a2.25 2.25 0 0 1-1.591.659H9.061a2.25 2.25 0 0 1-1.591-.659L5 14.5m14 0V17a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-2.5',
-			role: 'Researcher',
-			place: 'BukemLab',
-			description: 'Researching quantum dots for next-generation biomedical applications'
+			role: t('about.researcher'),
+			place: t('about.bukemlab'),
+			description: t('about.researcher_desc')
 		},
 		{
 			icon: 'M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25',
-			role: 'Teaching Assistant',
-			place: 'Acibadem University',
-			description: 'Helping students break down complex engineering concepts'
+			role: t('about.teaching_assistant'),
+			place: t('about.acibadem'),
+			description: t('about.ta_desc')
 		}
-	];
+	]);
 
-	const academicRoles = data.academicRoles?.length ? data.academicRoles : fallbackAcademicRoles;
+	const academicRoles = $derived(data.academicRoles?.length ? data.academicRoles : fallbackAcademicRoles);
 
 	onMount(() => {
 		// Check for reduced motion preference
@@ -200,10 +201,10 @@
 </script>
 
 <svelte:head>
-	<title>{ps?.meta_title ?? 'About | Onur Haniffa'}</title>
-	<meta name="description" content={ps?.meta_description ?? "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide."} />
-	<meta property="og:title" content={ps?.meta_title ?? "About | Onur Haniffa"} />
-	<meta property="og:description" content={ps?.meta_description ?? "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide."} />
+	<title>{ps?.meta_title ?? t('about.meta_title')}</title>
+	<meta name="description" content={ps?.meta_description ?? t('about.meta_description')} />
+	<meta property="og:title" content={ps?.meta_title ?? t('about.meta_title')} />
+	<meta property="og:description" content={ps?.meta_description ?? t('about.og_description')} />
 </svelte:head>
 
 <!-- Hero -->
@@ -226,18 +227,18 @@
 			<!-- Text content -->
 			<div class="lg:col-span-3 space-y-6">
 				<h1 class="hero-item text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.02em] leading-[1.1]">
-					{ps?.hero_heading ?? "Hey, I'm"} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{ps?.hero_name ?? 'Onur'}</span>
+					{ps?.hero_heading ?? t('about.hero_heading')} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{ps?.hero_name ?? t('about.hero_name')}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block animate-wave origin-bottom-right text-amber-500">
 						<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v0 M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v6 M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8 M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
 					</svg>
 				</h1>
 
 				<p class="hero-item text-lg text-muted-foreground leading-relaxed max-w-xl">
-					{@html ps?.hero_description_1 ?? 'I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.'}
+					{@html ps?.hero_description_1 ?? t('about.hero_desc_1')}
 				</p>
 
 				<p class="hero-item text-base text-muted-foreground/90 leading-relaxed max-w-xl">
-					{ps?.hero_description_2 ?? "I work with SvelteKit and modern UI tools to create sites that load instantly, feel smooth, and make it easy for people to contact you or book. My background in computer engineering means I'm particular about performance, clarity, and clean implementation."}
+					{ps?.hero_description_2 ?? t('about.hero_desc_2')}
 				</p>
 
 				<div class="hero-item flex flex-wrap gap-4 pt-2">
@@ -245,10 +246,10 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 group-hover:scale-110 transition-transform">
 							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
 						</svg>
-						Get in touch
+						{t('about.get_in_touch')}
 					</Button>
 					<Button size="lg" variant="outline" href="/work" class="rounded-full px-8 group">
-						View my work
+						{t('about.view_my_work')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 				</div>
@@ -269,14 +270,14 @@
 								<div class="w-28 h-28 rounded-full bg-gradient-to-br from-primary to-accent mx-auto mb-4 flex items-center justify-center shadow-lg transform-gpu group-hover:scale-110 transition-transform duration-200">
 									<span class="text-4xl font-bold text-white">OH</span>
 								</div>
-								<p class="text-sm text-muted-foreground font-medium">Photo coming soon</p>
+								<p class="text-sm text-muted-foreground font-medium">{t('about.photo_coming_soon')}</p>
 							</div>
 						</div>
 					</div>
 
 					<!-- Floating badge -->
 					<div class="absolute -top-3 -right-3 px-4 py-2 rounded-xl bg-gradient-to-r from-primary to-accent text-white shadow-lg transform-gpu hover:scale-105 transition-transform duration-150">
-						<span class="text-sm font-bold">SvelteKit Dev</span>
+						<span class="text-sm font-bold">{t('about.sveltekit_dev')}</span>
 					</div>
 				</div>
 			</div>
@@ -303,12 +304,12 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 						<path d="M3 3l18 18 M3 17V3h14"/>
 					</svg>
-					{ps?.philosophy_badge ?? 'How I approach projects'}
+					{ps?.philosophy_badge ?? t('about.philosophy_badge')}
 				</div>
 				<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-					{ps?.philosophy_heading ?? 'Design philosophy'}
+					{ps?.philosophy_heading ?? t('about.philosophy_heading')}
 				</h2>
-				<p class="mt-4 text-lg text-muted-foreground">{ps?.philosophy_subheading ?? 'The principles behind everything I build.'}</p>
+				<p class="mt-4 text-lg text-muted-foreground">{ps?.philosophy_subheading ?? t('about.philosophy_subheading')}</p>
 			</div>
 
 			<div class="grid md:grid-cols-3 gap-6">
@@ -366,14 +367,14 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 							<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
 						</svg>
-						{ps?.tools_badge ?? 'My stack'}
+						{ps?.tools_badge ?? t('about.tools_badge')}
 					</div>
 					<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-						{ps?.tools_heading ?? 'Tools & tech'}
+						{ps?.tools_heading ?? t('about.tools_heading')}
 						<span class="block h-1 w-16 bg-gradient-to-r from-primary to-accent rounded-full mt-4"></span>
 					</h2>
 					<p class="text-lg text-muted-foreground max-w-md">
-						{ps?.tools_description ?? "The right tools make all the difference. I've built my stack around speed, reliability, and clean code—so your site loads fast and stays easy to maintain."}
+						{ps?.tools_description ?? t('about.tools_desc')}
 					</p>
 				</div>
 
@@ -391,7 +392,7 @@
 							<div class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
 							<div class="w-3 h-3 rounded-full bg-yellow-500/80 hover:bg-yellow-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
 							<div class="w-3 h-3 rounded-full bg-green-500/80 hover:bg-green-500 hover:scale-110 transition-all duration-150 cursor-pointer"></div>
-							<span class="ml-3 text-xs text-white/30 font-mono">stack.config</span>
+							<span class="ml-3 text-xs text-white/30 font-mono">{t('about.stack_config')}</span>
 						</div>
 
 						<!-- Grouped tools -->
@@ -449,10 +450,10 @@
 		<div bind:this={factsSection}>
 			<div class="text-center mb-12">
 				<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-primary/10 to-accent/10 text-primary text-sm font-medium mb-4">
-					{ps?.facts_badge ?? 'The essentials'}
+					{ps?.facts_badge ?? t('about.facts_badge')}
 				</span>
-				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">{ps?.facts_heading ?? 'Quick facts'}</h2>
-				<p class="mt-3 text-muted-foreground">{ps?.facts_subheading ?? 'A few things that make me, me.'}</p>
+				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight">{ps?.facts_heading ?? t('about.facts_heading')}</h2>
+				<p class="mt-3 text-muted-foreground">{ps?.facts_subheading ?? t('about.facts_subheading')}</p>
 			</div>
 
 			<!-- Premium grid layout - single column on mobile for better tap targets -->
@@ -514,7 +515,7 @@
 			<div class="mt-10 text-center">
 				<p class="inline-flex items-center gap-2 text-sm text-muted-foreground">
 					<span class="text-lg">🚀</span>
-					Always shipping, always learning
+					{t('about.tagline')}
 				</p>
 			</div>
 		</div>
@@ -530,10 +531,10 @@
 					<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
 					<span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
 				</span>
-				<span class="text-sm text-muted-foreground">{ps?.availability_text ?? 'Currently available for new projects'}</span>
+				<span class="text-sm text-muted-foreground">{ps?.availability_text ?? t('about.availability')}</span>
 			</div>
 			<span class="hidden sm:block text-muted-foreground/30">|</span>
-			<span class="text-sm text-muted-foreground">{ps?.availability_location ?? 'Based in Europe, working worldwide'}</span>
+			<span class="text-sm text-muted-foreground">{ps?.availability_location ?? t('about.availability_location')}</span>
 		</div>
 	</Container>
 </Section>

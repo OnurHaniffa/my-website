@@ -7,6 +7,7 @@
 	import { Container, Section } from '$lib/components/layout';
 	import { Counter } from '$lib/components/ui/animations';
 	import { sanitizeSvgContent } from '$lib/utils/sanitize';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 
@@ -14,34 +15,34 @@
 	const projects = data.projects;
 	const settings = data.siteSettings;
 
-	const fallbackServices = [
+	const fallbackServices = $derived([
 		{
 			id: 1, sort: 1,
-			title: 'Website Design',
-			description: 'Strategic design that converts visitors into customers. Clean, modern, and built entirely around your goals.',
+			title: t('home.service_1_title'),
+			description: t('home.service_1_desc'),
 			icon: '<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>',
-			features: ['User research & strategy', 'Custom UI/UX design', 'Mobile-first approach'],
+			features: [t('home.service_1_f1'), t('home.service_1_f2'), t('home.service_1_f3')],
 			color_class: 'primary'
 		},
 		{
 			id: 2, sort: 2,
-			title: 'Development',
-			description: 'Fast, accessible websites that search engines love. Built with modern technology that scales.',
+			title: t('home.service_2_title'),
+			description: t('home.service_2_desc'),
 			icon: '<path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/>',
-			features: ['Lightning-fast loading', 'SEO best practices', 'Accessible to everyone'],
+			features: [t('home.service_2_f1'), t('home.service_2_f2'), t('home.service_2_f3')],
 			color_class: 'accent'
 		},
 		{
 			id: 3, sort: 3,
-			title: 'Ongoing Support',
-			description: 'Peace of mind after launch. Regular updates, security monitoring, and priority support.',
+			title: t('home.service_3_title'),
+			description: t('home.service_3_desc'),
 			icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>',
-			features: ['Regular updates', 'Security monitoring', 'Priority support'],
+			features: [t('home.service_3_f1'), t('home.service_3_f2'), t('home.service_3_f3')],
 			color_class: 'green'
 		}
-	];
+	]);
 
-	const services = data.services?.length ? data.services : fallbackServices;
+	const services = $derived(data.services?.length ? data.services : fallbackServices);
 
 	const serviceColorMap: Record<string, { shadow: string; ring: string; iconBg: string; iconHover: string; iconText: string; check: string }> = {
 		primary: { shadow: 'hover:shadow-primary/25', ring: 'hover:ring-primary/40', iconBg: 'bg-primary/10', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-white', check: 'text-primary' },
@@ -50,38 +51,38 @@
 	};
 	const defaultServiceColor = serviceColorMap.primary;
 
-	const fallbackWhyMePoints = [
+	const fallbackWhyMePoints = $derived([
 		{
 			id: 1, sort: 1,
-			title: 'Clear Communication',
-			description: "No jargon, no fluff. I keep you in the loop with straightforward updates so you always know where your project stands.",
+			title: t('home.why_1_title'),
+			description: t('home.why_1_desc'),
 			icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
 			color_class: 'primary'
 		},
 		{
 			id: 2, sort: 2,
-			title: 'Results-Focused',
-			description: 'Every design decision is made with your goals in mind. I care about how your website performs, not just how it looks.',
+			title: t('home.why_2_title'),
+			description: t('home.why_2_desc'),
 			icon: '<path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/>',
 			color_class: 'accent'
 		},
 		{
 			id: 3, sort: 3,
-			title: 'Fast Delivery',
-			description: 'Most projects launch within 2-3 weeks. You get a quality website without the endless wait times.',
+			title: t('home.why_3_title'),
+			description: t('home.why_3_desc'),
 			icon: '<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>',
 			color_class: 'primary'
 		},
 		{
 			id: 4, sort: 4,
-			title: 'Full Ownership',
-			description: "Your website, your code, your content. No lock-ins or hidden fees\u2014you own everything when we're done.",
+			title: t('home.why_4_title'),
+			description: t('home.why_4_desc'),
 			icon: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>',
 			color_class: 'green'
 		}
-	];
+	]);
 
-	const whyMePoints = data.whyMePoints?.length ? data.whyMePoints : fallbackWhyMePoints;
+	const whyMePoints = $derived(data.whyMePoints?.length ? data.whyMePoints : fallbackWhyMePoints);
 
 	const whyMeColorMap: Record<string, { ring: string; iconBg: string; iconHover: string; iconText: string }> = {
 		primary: { ring: 'dark:hover:ring-primary/30 dark:hover:shadow-primary/20', iconBg: 'bg-primary/10 dark:bg-primary/20', iconHover: 'group-hover:bg-primary group-hover:text-primary-foreground', iconText: 'text-primary group-hover:text-inherit' },
@@ -215,12 +216,12 @@
 </script>
 
 <svelte:head>
-	<title>{settings?.site_title ?? 'Onur Haniffa | Web Designer & Developer'}</title>
-	<meta name="description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity. Based in Europe."} />
-	<meta property="og:title" content={settings?.site_title ?? "Onur Haniffa | Web Designer & Developer"} />
-	<meta property="og:description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity."} />
-	<meta name="twitter:title" content={settings?.site_title ?? "Onur Haniffa | Web Designer & Developer"} />
-	<meta name="twitter:description" content={settings?.site_description ?? "I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity."} />
+	<title>{settings?.site_title ?? t('home.meta_title')}</title>
+	<meta name="description" content={settings?.site_description ?? t('home.meta_description')} />
+	<meta property="og:title" content={settings?.site_title ?? t('home.meta_title')} />
+	<meta property="og:description" content={settings?.site_description ?? t('home.og_description')} />
+	<meta name="twitter:title" content={settings?.site_title ?? t('home.meta_title')} />
+	<meta name="twitter:description" content={settings?.site_description ?? t('home.og_description')} />
 </svelte:head>
 
 <!-- Hero Section -->
@@ -251,13 +252,13 @@
 			<div bind:this={heroContent} class="space-y-6 sm:space-y-8 lg:space-y-10">
 				<Badge variant="outline" class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-					{settings?.hero_badge_text ?? 'Available for Projects'}
+					{settings?.hero_badge_text ?? t('home.hero_badge')}
 				</Badge>
 
 				<!-- Headline with animated underline -->
 				<div class="relative">
 					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-						I build websites that turn visitors <span class="relative inline-block">into <span class="text-primary">{settings?.hero_highlight_word ?? 'customers'}</span>
+						{t('home.hero_pre')} <span class="relative inline-block">{t('home.hero_highlight_prefix')}<span class="text-primary">{settings?.hero_highlight_word ?? t('home.hero_highlight')}</span>
 							<!-- Curly underline -->
 							<svg bind:this={curlyLine} class="absolute -bottom-6 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 								<path
@@ -270,40 +271,40 @@
 									style="stroke-dasharray: 300; stroke-dashoffset: 300;"
 								/>
 							</svg>
-						</span>
+						</span> {t('home.hero_post')}
 					</h1>
 				</div>
 
 				<!-- Description -->
 				<p class="text-lg text-muted-foreground/90 max-w-md leading-relaxed">
-					{settings?.hero_description ?? "From first click to final conversion\u2014I design and develop websites that don't just look good, they deliver real business results."}
+					{settings?.hero_description ?? t('home.hero_description')}
 				</p>
 
 				<!-- Quick Stats -->
 				<div class="flex flex-wrap gap-6 sm:gap-8 py-4">
 					<div class="text-center">
-						<p class="text-3xl font-bold text-primary">&le;<Counter value={24} duration={2500} suffix="h" /></p>
-						<p class="text-sm text-muted-foreground">{settings?.stat_1_label ?? 'Response time'}</p>
+						<p class="text-3xl font-bold text-primary">&le;<Counter value={24} duration={2500} suffix={t('home.stat_1_suffix')} /></p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_1_label ?? t('home.stat_1_label')}</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />&ndash;<Counter value={3} duration={2200} delay={300} /> wks</p>
-						<p class="text-sm text-muted-foreground">{settings?.stat_2_label ?? 'Avg. project'}</p>
+						<p class="text-3xl font-bold"><Counter value={2} duration={1800} />&ndash;<Counter value={3} duration={2200} delay={300} /> {t('home.stat_2_suffix')}</p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_2_label ?? t('home.stat_2_label')}</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border"></div>
 					<div class="text-center">
-						<p class="text-3xl font-bold text-green-600 dark:text-green-400">{settings?.stat_3_value ?? 'SEO'}</p>
-						<p class="text-sm text-muted-foreground">{settings?.stat_3_label ?? 'Optimized'}</p>
+						<p class="text-3xl font-bold text-green-600 dark:text-green-400">{settings?.stat_3_value ?? t('home.stat_3_value')}</p>
+						<p class="text-sm text-muted-foreground">{settings?.stat_3_label ?? t('home.stat_3_label')}</p>
 					</div>
 				</div>
 
 				<div class="flex flex-wrap gap-4">
 					<Button size="lg" href="/work" class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
-						{settings?.view_work_button ?? 'View My Work'}
+						{settings?.view_work_button ?? t('home.view_work')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 					<Button size="lg" variant="ghost" href="/contact" class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
-						{settings?.lets_talk_button ?? "Let's Talk"}
+						{settings?.lets_talk_button ?? t('home.lets_talk')}
 					</Button>
 				</div>
 			</div>
@@ -428,12 +429,12 @@
 	<Container>
 		<div bind:this={servicesSection}>
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.services_badge ?? 'Services'}</Badge>
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.services_badge ?? t('home.services_badge')}</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-					{settings?.services_section_title ?? 'What I do'}
+					{settings?.services_section_title ?? t('home.services_title')}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
-					{settings?.services_section_subtitle ?? 'End-to-end web solutions tailored to help your business succeed online.'}
+					{settings?.services_section_subtitle ?? t('home.services_subtitle')}
 				</p>
 			</div>
 
@@ -464,7 +465,7 @@
 
 			<div class="mt-12 text-center">
 				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
-					{settings?.explore_services_button ?? 'Explore All Services'}
+					{settings?.explore_services_button ?? t('home.explore_services')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
@@ -481,16 +482,16 @@
 		<div bind:this={projectsSection}>
 			<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-16 pt-10 lg:pt-14 section-header">
 				<div>
-					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.portfolio_badge ?? 'Portfolio'}</Badge>
+					<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.portfolio_badge ?? t('home.portfolio_badge')}</Badge>
 					<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-						{settings?.portfolio_section_title ?? 'Recent Projects'}
+						{settings?.portfolio_section_title ?? t('home.portfolio_title')}
 					</h2>
 					<p class="mt-4 text-lg text-muted-foreground">
-						{settings?.portfolio_section_subtitle ?? 'Real projects, real results. See what I can do for you.'}
+						{settings?.portfolio_section_subtitle ?? t('home.portfolio_subtitle')}
 					</p>
 				</div>
 				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
-					{settings?.view_all_work_button ?? 'View All Work'}
+					{settings?.view_all_work_button ?? t('home.view_all_work')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
@@ -514,11 +515,11 @@
 									{#if project.isClientWork}
 										<Badge class="{index === 0 ? 'bg-amber-500/90' : 'bg-green-500/90'} text-white shadow-lg">
 											<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="mr-1"><path d="M20 6 9 17l-5-5"/></svg>
-											Client Work
+											{t('home.client_work')}
 										</Badge>
 									{:else}
 										<Badge class="{index === 0 ? 'bg-slate-800/90 text-amber-400' : 'bg-white/90 text-orange-600'} shadow-lg">
-											Demo Project
+											{t('home.demo_project')}
 										</Badge>
 									{/if}
 								</div>
@@ -528,7 +529,7 @@
 										<div class="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm shadow-lg
 											{index === 0 ? 'bg-slate-800/90 text-white' : 'bg-white/90 text-gray-700'}">
 											<span class="w-2 h-2 {index === 0 ? 'bg-amber-400' : 'bg-green-500'} rounded-full"></span>
-											Live
+											{t('home.live')}
 										</div>
 									</div>
 								{/if}
@@ -537,7 +538,7 @@
 									{index === 0 ? 'bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent' : 'bg-gradient-to-t from-orange-900/80 via-transparent to-transparent'}">
 									<span class="px-4 py-2 rounded-full text-sm font-medium shadow-lg
 										{index === 0 ? 'bg-amber-500 text-slate-900' : 'bg-orange-500 text-white'}">
-										View Project
+										{t('home.view_project')}
 									</span>
 								</div>
 							</div>
@@ -583,12 +584,12 @@
 	<Container>
 		<div bind:this={whyMeSection}>
 			<div class="text-center max-w-2xl mx-auto mb-16 pt-10 lg:pt-14 section-header">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.why_me_badge ?? 'Why Me'}</Badge>
+				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">{settings?.why_me_badge ?? t('home.why_me_badge')}</Badge>
 				<h2 class="text-4xl font-bold tracking-tight sm:text-5xl">
-					{settings?.why_me_section_title ?? 'Why work with me'}
+					{settings?.why_me_section_title ?? t('home.why_me_title')}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
-					{settings?.why_me_section_subtitle ?? 'No agencies, no hand-offs\u2014just direct communication and dedicated attention.'}
+					{settings?.why_me_section_subtitle ?? t('home.why_me_subtitle')}
 				</p>
 			</div>
 
@@ -609,7 +610,7 @@
 
 			<div class="mt-12 text-center">
 				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-150">
-					{settings?.learn_more_button ?? 'Learn More About Me'}
+					{settings?.learn_more_button ?? t('home.learn_more')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>

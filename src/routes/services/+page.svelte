@@ -6,6 +6,7 @@
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
 	import { sanitizeSvgContent } from '$lib/utils/sanitize';
+	import { t } from '$lib/i18n/index.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const motionAnimate = animate as any;
@@ -61,52 +62,52 @@
 		}
 	}
 
-	const fallbackServices = [
+	const fallbackServices = $derived([
 		{
 			id: 0,
-			title: 'Design & Development',
-			shortTitle: 'D&D',
-			description: 'Custom websites built to convert visitors into customers. Strategy-first, performance-obsessed.',
+			title: t('services.service_1_title'),
+			shortTitle: t('services.service_1_short'),
+			description: t('services.service_1_desc'),
 			icon: `<path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/>`,
 			color: '#e11d48',
 			lightColor: '#fecdd3',
 			bento: {
-				process: ['Discovery Call', 'Design & Iterate', 'Build & Test'],
-				deliverables: ['Custom Design', 'Responsive Code', 'SEO Foundation'],
-				timeline: '2-6 weeks'
+				process: [t('services.service_1_process_1'), t('services.service_1_process_2'), t('services.service_1_process_3')],
+				deliverables: [t('services.service_1_del_1'), t('services.service_1_del_2'), t('services.service_1_del_3')],
+				timeline: t('services.service_1_timeline')
 			}
 		},
 		{
 			id: 1,
-			title: 'Website Redesign',
-			shortTitle: 'Redesign',
-			description: 'Transform your underperforming site into a conversion machine. Keep what works, fix what doesn\'t.',
+			title: t('services.service_2_title'),
+			shortTitle: t('services.service_2_short'),
+			description: t('services.service_2_desc'),
 			icon: `<path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/>`,
 			color: '#2563eb',
 			lightColor: '#bfdbfe',
 			bento: {
-				process: ['Site Audit', 'Strategy Plan', 'Redesign & Build'],
-				deliverables: ['Performance Boost', 'Modern Stack', 'Fresh Design'],
-				timeline: '2-6 weeks'
+				process: [t('services.service_2_process_1'), t('services.service_2_process_2'), t('services.service_2_process_3')],
+				deliverables: [t('services.service_2_del_1'), t('services.service_2_del_2'), t('services.service_2_del_3')],
+				timeline: t('services.service_2_timeline')
 			}
 		},
 		{
 			id: 2,
-			title: 'Ongoing Support',
-			shortTitle: 'Support',
-			description: 'Your site stays fast, secure, and up-to-date. I handle the tech so you can focus on your business.',
+			title: t('services.service_3_title'),
+			shortTitle: t('services.service_3_short'),
+			description: t('services.service_3_desc'),
 			icon: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/>`,
 			color: '#059669',
 			lightColor: '#a7f3d0',
 			bento: {
-				process: ['Monitor 24/7', 'Update Monthly', 'Fix Priority'],
-				deliverables: ['Security Patches', 'Performance Tuning', 'Content Updates'],
-				timeline: 'Monthly retainer'
+				process: [t('services.service_3_process_1'), t('services.service_3_process_2'), t('services.service_3_process_3')],
+				deliverables: [t('services.service_3_del_1'), t('services.service_3_del_2'), t('services.service_3_del_3')],
+				timeline: t('services.service_3_timeline')
 			}
 		}
-	];
+	]);
 
-	const services = data.servicesDetailed?.length
+	const services = $derived(data.servicesDetailed?.length
 		? data.servicesDetailed.map((s, i) => ({
 				id: i,
 				title: s.title,
@@ -121,16 +122,16 @@
 					timeline: s.timeline
 				}
 			}))
-		: fallbackServices;
+		: fallbackServices);
 
-	const fallbackFaqs = [
-		{ question: 'How much does a website cost?', answer: 'Every project is different. After our discovery call, I\'ll provide a fixed quote based on your specific needs—no hourly surprises or hidden fees.' },
-		{ question: 'Do I need to provide content and images?', answer: 'I can work with what you have or help source professional copy and imagery. We\'ll figure out what works best during our initial call.' },
-		{ question: 'What do you need from me to get started?', answer: 'Just a conversation. We\'ll hop on a call to discuss your goals, and I\'ll guide you through what\'s needed—whether that\'s content, branding assets, or just your ideas.' },
-		{ question: 'What if I need changes after launch?', answer: 'I offer ongoing support packages, or you can reach out for one-off updates. Either way, I\'m here when you need me.' }
-	];
+	const fallbackFaqs = $derived([
+		{ question: t('services.faq_1_q'), answer: t('services.faq_1_a') },
+		{ question: t('services.faq_2_q'), answer: t('services.faq_2_a') },
+		{ question: t('services.faq_3_q'), answer: t('services.faq_3_a') },
+		{ question: t('services.faq_4_q'), answer: t('services.faq_4_a') }
+	]);
 
-	const faqs = data.faqs?.length ? data.faqs : fallbackFaqs;
+	const faqs = $derived(data.faqs?.length ? data.faqs : fallbackFaqs);
 
 	// Gauge arc calculations for semi-circle (180 degrees, 3 segments of 60 degrees each)
 	const gaugeConfig = {
@@ -210,10 +211,10 @@
 </script>
 
 <svelte:head>
-	<title>{ps?.meta_title ?? 'Services | Onur Haniffa'}</title>
-	<meta name="description" content={ps?.meta_description ?? "Professional web design and development services. From complete website builds to redesigns and ongoing support. Fast, modern, SEO-optimized."} />
-	<meta property="og:title" content={ps?.meta_title ?? "Services | Onur Haniffa"} />
-	<meta property="og:description" content={ps?.meta_description ?? "Professional web design and development services. From complete website builds to redesigns and ongoing support."} />
+	<title>{ps?.meta_title ?? t('services.meta_title')}</title>
+	<meta name="description" content={ps?.meta_description ?? t('services.meta_description')} />
+	<meta property="og:title" content={ps?.meta_title ?? t('services.meta_title')} />
+	<meta property="og:description" content={ps?.meta_description ?? t('services.og_description')} />
 </svelte:head>
 
 <style>
@@ -327,12 +328,12 @@
 			class:opacity-0={!mounted}
 			class:translate-y-8={!mounted}
 		>
-			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">SERVICES</span>
+			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">{t('services.watermark')}</span>
 			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10 mb-4">
-				{ps?.hero_heading ?? 'Websites that'} <span class="text-primary">{ps?.hero_highlight ?? 'work'}</span>
+				{ps?.hero_heading ?? t('services.hero_heading')} <span class="text-primary">{ps?.hero_highlight ?? t('services.hero_highlight')}</span>
 			</h1>
 			<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl relative z-10">
-				{ps?.hero_description ?? 'Custom builds, strategic redesigns, and ongoing support. No templates, no hourly billing—just results.'}
+				{ps?.hero_description ?? t('services.hero_description')}
 			</p>
 		</div>
 	</Container>
@@ -436,7 +437,7 @@
 
 						<!-- Hub content -->
 						<g transform="translate(200, 185)">
-							<text text-anchor="middle" class="text-[11px] font-bold uppercase tracking-[0.2em] fill-current text-muted-foreground">Services</text>
+							<text text-anchor="middle" class="text-[11px] font-bold uppercase tracking-[0.2em] fill-current text-muted-foreground">{t('services.hub_label')}</text>
 						</g>
 						<g transform="translate(200, 210)">
 							<text text-anchor="middle" class="text-[28px] font-black fill-current text-foreground">3</text>
@@ -504,7 +505,7 @@
 													<path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
 												</svg>
 											</div>
-											<span class="text-sm font-semibold text-foreground">Process</span>
+											<span class="text-sm font-semibold text-foreground">{t('services.process_label')}</span>
 										</div>
 										<div class="space-y-2 relative">
 											{#each service.bento.process as step, idx}
@@ -527,7 +528,7 @@
 													<path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
 												</svg>
 											</div>
-											<span class="text-sm font-semibold text-foreground">Deliverables</span>
+											<span class="text-sm font-semibold text-foreground">{t('services.deliverables_label')}</span>
 										</div>
 										<div class="flex flex-wrap gap-2 relative">
 											{#each service.bento.deliverables as item}
@@ -549,8 +550,8 @@
 													</svg>
 												</div>
 												<div>
-													<span class="text-sm font-semibold text-foreground block">Timeline</span>
-													<span class="text-xs text-muted-foreground">Estimated duration</span>
+													<span class="text-sm font-semibold text-foreground block">{t('services.timeline_label')}</span>
+													<span class="text-xs text-muted-foreground">{t('services.estimated_duration')}</span>
 												</div>
 											</div>
 											<p class="text-2xl sm:text-3xl font-bold" style="color: {service.color}">{service.bento.timeline}</p>
@@ -595,10 +596,10 @@
 				<div class="relative flex flex-col md:flex-row items-center gap-6 md:gap-10 px-6 md:px-12 py-8">
 					<!-- Author - left side on desktop -->
 					<div class="flex md:flex-col items-center gap-3 md:gap-2 flex-shrink-0">
-						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg ring-4 ring-primary/10">{ps?.testimonial_initial ?? 'J'}</div>
+						<div class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-primary-foreground font-bold text-xl shadow-lg ring-4 ring-primary/10">{ps?.testimonial_initial ?? t('services.testimonial_initial')}</div>
 						<div class="text-left md:text-center">
-							<p class="font-semibold text-foreground">{ps?.testimonial_author ?? 'Joe'}</p>
-							<p class="text-xs text-muted-foreground">{ps?.testimonial_role ?? 'Fan Artist'}</p>
+							<p class="font-semibold text-foreground">{ps?.testimonial_author ?? t('services.testimonial_author')}</p>
+							<p class="text-xs text-muted-foreground">{ps?.testimonial_role ?? t('services.testimonial_role')}</p>
 						</div>
 					</div>
 
@@ -608,7 +609,7 @@
 					<!-- Quote -->
 					<blockquote class="flex-1">
 						<p class="text-lg md:text-xl text-foreground leading-relaxed">
-							"{ps?.testimonial_quote ?? 'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.'}"
+							"{ps?.testimonial_quote ?? t('services.testimonial_quote')}"
 						</p>
 					</blockquote>
 				</div>
@@ -624,7 +625,7 @@
 <Section padding="lg" class="pb-24">
 	<Container>
 		<InView animation="fade-up" class="text-center mb-10">
-			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">{ps?.faq_heading ?? 'FAQ'}</h2>
+			<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">{ps?.faq_heading ?? t('services.faq_heading')}</h2>
 		</InView>
 
 		<div class="grid md:grid-cols-2 gap-4">

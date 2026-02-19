@@ -4,9 +4,13 @@
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { inject } from '@vercel/analytics';
+	import { initLocale, getLocale } from '$lib/i18n/index.svelte';
 
 	// Initialize Vercel Analytics
 	inject();
+
+	// Initialize locale from localStorage
+	initLocale();
 
 	let { children, data } = $props();
 
@@ -26,6 +30,9 @@
 </script>
 
 <svelte:head>
+	<!-- Dynamic lang attribute -->
+	{@html `<script>document.documentElement.lang="${getLocale()}"</script>`}
+
 	<!-- Favicon - Google requires min 48x48, larger sizes look better -->
 	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
 	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />

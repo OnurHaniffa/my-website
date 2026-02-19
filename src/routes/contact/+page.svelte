@@ -7,6 +7,7 @@
 	import { InView } from '$lib/components/ui/animations';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 	const ps = data.pageSettings;
@@ -22,6 +23,13 @@
 	let company = $state('');
 	let message = $state('');
 	let honeypot = $state(''); // Honeypot field for spam prevention
+
+	// FAQ data with i18n fallbacks
+	const faqs = $derived(data.faqs?.length ? data.faqs : [
+		{ question: t('contact.faq_1_q'), answer: t('contact.faq_1_a') },
+		{ question: t('contact.faq_2_q'), answer: t('contact.faq_2_a') },
+		{ question: t('contact.faq_3_q'), answer: t('contact.faq_3_a') }
+	]);
 
 	onMount(() => {
 		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -70,10 +78,10 @@
 </script>
 
 <svelte:head>
-	<title>{ps?.meta_title ?? 'Contact | Onur Haniffa'}</title>
-	<meta name="description" content={ps?.meta_description ?? "Let's talk about your project. Get in touch for a free consultation about your web design and development needs. Quick response guaranteed."} />
-	<meta property="og:title" content={ps?.meta_title ?? "Contact | Onur Haniffa"} />
-	<meta property="og:description" content={ps?.meta_description ?? "Let's talk about your project. Get in touch for a free consultation about your web design and development needs."} />
+	<title>{ps?.meta_title ?? t('contact.meta_title')}</title>
+	<meta name="description" content={ps?.meta_description ?? t('contact.meta_description')} />
+	<meta property="og:title" content={ps?.meta_title ?? t('contact.meta_title')} />
+	<meta property="og:description" content={ps?.meta_description ?? t('contact.meta_description')} />
 </svelte:head>
 
 <!-- Hero Section -->
@@ -93,7 +101,7 @@
 					class:translate-y-0={mounted}
 				>
 					<Badge variant="outline" class="mb-6 border-primary/30 text-primary">
-						{ps?.hero_badge ?? "Let's Talk"}
+						{ps?.hero_badge ?? t('contact.hero_badge')}
 					</Badge>
 				</div>
 
@@ -105,7 +113,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					{ps?.hero_heading ?? 'Start a'} <span class="relative inline-block"><span class="text-primary">{ps?.hero_highlight ?? 'conversation'}</span>
+					{ps?.hero_heading ?? t('contact.hero_heading')} <span class="relative inline-block"><span class="text-primary">{ps?.hero_highlight ?? t('contact.hero_highlight')}</span>
 						<!-- Curly underline -->
 						<svg bind:this={curlyLine} class="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-4" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 							<path
@@ -129,7 +137,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 200ms;"
 				>
-					{ps?.hero_description ?? "Tell me about your project and goals. I'll get back to you within 24 hours with thoughts on how we can work together."}
+					{ps?.hero_description ?? t('contact.hero_description')}
 				</p>
 
 				<!-- Contact Info -->
@@ -162,7 +170,7 @@
 							>
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
-							<p class="font-medium">Email</p>
+							<p class="font-medium">{t('contact.email_label')}</p>
 							<a
 								href="mailto:{ps?.email ?? 'contact@onurhaniffa.com'}"
 								class="text-muted-foreground hover:text-primary transition-colors"
@@ -191,8 +199,8 @@
 							>
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
-							<p class="font-medium">Response Time</p>
-							<p class="text-muted-foreground">{ps?.response_time ?? 'Within 24 hours'}</p>
+							<p class="font-medium">{t('contact.response_time_label')}</p>
+							<p class="text-muted-foreground">{ps?.response_time ?? t('contact.response_time')}</p>
 						</div>
 					</div>
 
@@ -217,8 +225,8 @@
 							>
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
-							<p class="font-medium">Availability</p>
-							<p class="text-muted-foreground">{ps?.availability ?? 'European time zones (CET/CEST)'}</p>
+							<p class="font-medium">{t('contact.availability_label')}</p>
+							<p class="text-muted-foreground">{ps?.availability ?? t('contact.availability')}</p>
 						</div>
 					</div>
 
@@ -241,8 +249,8 @@
 							>
 						</div>
 						<div class="transition-transform duration-300 group-hover:translate-x-1">
-							<p class="font-medium">LinkedIn</p>
-							<p class="text-muted-foreground group-hover:text-[#0A66C2] transition-colors">Connect with me</p>
+							<p class="font-medium">{t('contact.linkedin_label')}</p>
+							<p class="text-muted-foreground group-hover:text-[#0A66C2] transition-colors">{t('contact.linkedin_connect')}</p>
 						</div>
 					</a>
 				</div>
@@ -282,12 +290,12 @@
 									><path d="M20 6 9 17l-5-5" /></svg
 								>
 							</div>
-							<h3 class="text-2xl font-bold mb-2">Message Sent!</h3>
+							<h3 class="text-2xl font-bold mb-2">{t('contact.success_title')}</h3>
 							<p class="text-muted-foreground mb-6">
-								Thanks for reaching out. I'll get back to you within 24 hours.
+								{t('contact.success_desc')}
 							</p>
 							<Button variant="outline" onclick={() => (formState = 'idle')}>
-								Send Another Message
+								{t('contact.send_another')}
 							</Button>
 						</div>
 					{:else if formState === 'error'}
@@ -309,22 +317,22 @@
 									><circle cx="12" cy="12" r="10" /><line x1="15" x2="9" y1="9" y2="15" /><line x1="9" x2="15" y1="9" y2="15" /></svg
 								>
 							</div>
-							<h3 class="text-2xl font-bold mb-2">Something went wrong</h3>
+							<h3 class="text-2xl font-bold mb-2">{t('contact.error_title')}</h3>
 							<p class="text-muted-foreground mb-6">
-								Please try again or email me directly at contact@onurhaniffa.com
+								{t('contact.error_desc')}
 							</p>
 							<Button variant="outline" onclick={() => (formState = 'idle')}>
-								Try Again
+								{t('contact.try_again')}
 							</Button>
 						</div>
 					{:else}
 						<form onsubmit={handleSubmit} class="space-y-7">
 							<div class="space-y-2">
-								<label for="name" class="text-sm font-medium">Name *</label>
+								<label for="name" class="text-sm font-medium">{t('contact.name_label')}</label>
 								<Input
 									id="name"
 									type="text"
-									placeholder="John Doe"
+									placeholder={t('contact.name_placeholder')}
 									bind:value={name}
 									required
 									autocomplete="name"
@@ -333,11 +341,11 @@
 							</div>
 
 							<div class="space-y-2">
-								<label for="email" class="text-sm font-medium">Email *</label>
+								<label for="email" class="text-sm font-medium">{t('contact.email_field_label')}</label>
 								<Input
 									id="email"
 									type="email"
-									placeholder="john@company.com"
+									placeholder={t('contact.email_placeholder')}
 									bind:value={email}
 									required
 									autocomplete="email"
@@ -347,12 +355,12 @@
 
 							<div class="space-y-2">
 								<label for="company" class="text-sm font-medium">
-									Company <span class="text-muted-foreground">(optional)</span>
+									{t('contact.company_label')} <span class="text-muted-foreground">({t('contact.optional')})</span>
 								</label>
 								<Input
 									id="company"
 									type="text"
-									placeholder="Acme Inc."
+									placeholder={t('contact.company_placeholder')}
 									bind:value={company}
 									autocomplete="organization"
 									class="h-12 bg-background/50 border-border/60 transition-all duration-200 focus-visible:border-primary/50 focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:bg-background"
@@ -360,10 +368,10 @@
 							</div>
 
 							<div class="space-y-2">
-								<label for="message" class="text-sm font-medium">Message *</label>
+								<label for="message" class="text-sm font-medium">{t('contact.message_label')}</label>
 								<Textarea
 									id="message"
-									placeholder="Tell me about your project, goals, and timeline..."
+									placeholder={t('contact.message_placeholder')}
 									bind:value={message}
 									required
 									rows={5}
@@ -401,9 +409,9 @@
 											d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
 										></path>
 									</svg>
-									Sending...
+									{t('contact.sending')}
 								{:else}
-									Send Message
+									{t('contact.send_message')}
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="18"
@@ -421,7 +429,7 @@
 							</Button>
 
 							<p class="text-xs text-muted-foreground text-center">
-								I respect your privacy. Your information will never be shared.
+								{t('contact.privacy_note')}
 							</p>
 						</form>
 					{/if}
@@ -435,24 +443,11 @@
 <Section padding="lg" background="muted">
 	<Container size="content">
 		<InView animation="fade-up" class="text-center mb-10">
-			<h2 class="text-2xl font-bold tracking-tight">{ps?.faq_heading ?? 'Common Questions'}</h2>
+			<h2 class="text-2xl font-bold tracking-tight">{ps?.faq_heading ?? t('contact.faq_heading')}</h2>
 		</InView>
 
 		<div class="space-y-5">
-			{#each (data.faqs?.length ? data.faqs : [
-				{
-					question: 'What information should I include in my message?',
-					answer: 'Share your project goals, timeline, and any specific requirements. The more context you provide, the better I can understand how to help.'
-				},
-				{
-					question: 'How quickly will you respond?',
-					answer: "I typically respond within 24 hours during business days. For urgent inquiries, mention it in your message and I'll prioritize accordingly."
-				},
-				{
-					question: 'Do you offer free consultations?',
-					answer: "Yes! Our initial conversation is always free. It's an opportunity for both of us to see if we're a good fit for working together."
-				}
-			]) as faq}
+			{#each faqs as faq}
 				<InView animation="fade-up">
 					<div class="p-6 rounded-xl bg-background border border-border/50 transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5">
 						<h3 class="font-semibold mb-2">{faq.question}</h3>

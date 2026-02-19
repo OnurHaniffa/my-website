@@ -1,22 +1,23 @@
 <script lang="ts">
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
+	import { t } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 	const ps = data.pageSettings;
 </script>
 
 <svelte:head>
-	<title>{ps?.meta_title ?? 'Privacy Policy | Onur Haniffa'}</title>
-	<meta name="description" content={ps?.meta_description ?? "Privacy Policy for Onur Haniffa Web Design. Learn how I collect, use, and protect your personal information."} />
+	<title>{ps?.meta_title ?? t('privacy.meta_title')}</title>
+	<meta name="description" content={ps?.meta_description ?? t('privacy.meta_description')} />
 	<meta name="robots" content="noindex, follow" />
 </svelte:head>
 
 <Section padding="lg">
 	<Container size="content">
 		<InView animation="fade-up">
-			<h1 class="text-4xl font-bold tracking-tight mb-4">{ps?.title ?? 'Privacy Policy'}</h1>
-			<p class="text-muted-foreground mb-8">Last updated: {ps?.last_updated ?? 'December 2024'}</p>
+			<h1 class="text-4xl font-bold tracking-tight mb-4">{ps?.title ?? t('privacy.title')}</h1>
+			<p class="text-muted-foreground mb-8">Last updated: {ps?.last_updated ?? t('privacy.last_updated')}</p>
 		</InView>
 
 		{#if ps?.content}
@@ -27,42 +28,36 @@
 		<div class="prose prose-gray dark:prose-invert max-w-none">
 			<InView animation="fade-up" delay={100}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Introduction</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.intro_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						Haniffa Design Studio ("I", "me", "my") respects your privacy and is committed
-						to protecting your personal data. This privacy policy explains how I collect,
-						use, and safeguard your information when you visit my website or use my
-						services.
+						{t('privacy.intro_text')}
 					</p>
 				</section>
 			</InView>
 
 			<InView animation="fade-up" delay={150}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Information I Collect</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.collect_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed mb-4">
-						I may collect the following types of information:
+						{t('privacy.collect_intro')}
 					</p>
 					<ul class="space-y-3 text-muted-foreground">
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
 							<span>
-								<strong class="text-foreground">Contact Information:</strong> Name, email
-								address, and company name when you submit the contact form.
+								<strong class="text-foreground">{t('privacy.collect_1_label')}</strong> {t('privacy.collect_1_text')}
 							</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
 							<span>
-								<strong class="text-foreground">Usage Data:</strong> Anonymous analytics
-								data about how you interact with the website (pages visited, time spent).
+								<strong class="text-foreground">{t('privacy.collect_2_label')}</strong> {t('privacy.collect_2_text')}
 							</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
 							<span>
-								<strong class="text-foreground">Technical Data:</strong> Browser type,
-								device information, and IP address (anonymized where possible).
+								<strong class="text-foreground">{t('privacy.collect_3_label')}</strong> {t('privacy.collect_3_text')}
 							</span>
 						</li>
 					</ul>
@@ -71,50 +66,46 @@
 
 			<InView animation="fade-up" delay={200}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">How I Use Your Information</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.use_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed mb-4">
-						Your information is used solely for:
+						{t('privacy.use_intro')}
 					</p>
 					<ul class="space-y-3 text-muted-foreground">
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Responding to your inquiries and providing requested services</span>
+							<span>{t('privacy.use_1')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Improving the website experience based on usage patterns</span>
+							<span>{t('privacy.use_2')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Sending project-related communications (only if you've engaged my services)</span>
+							<span>{t('privacy.use_3')}</span>
 						</li>
 					</ul>
-					<p class="text-muted-foreground leading-relaxed mt-4">
-						I will <strong class="text-foreground">never</strong> sell, rent, or share your
-						personal information with third parties for marketing purposes.
-					</p>
+					<p class="text-muted-foreground leading-relaxed mt-4">{t('privacy.use_outro')}</p>
 				</section>
 			</InView>
 
 			<InView animation="fade-up" delay={250}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Cookies & Analytics</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.cookies_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed mb-4">
-						This website uses privacy-focused analytics that do not track individual users
-						or use cookies for advertising. Any analytics tools used are configured to:
+						{t('privacy.cookies_intro')}
 					</p>
 					<ul class="space-y-3 text-muted-foreground">
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Not use cookies or store personal identifiers</span>
+							<span>{t('privacy.cookies_1')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Anonymize IP addresses</span>
+							<span>{t('privacy.cookies_2')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Comply with GDPR and other privacy regulations</span>
+							<span>{t('privacy.cookies_3')}</span>
 						</li>
 					</ul>
 				</section>
@@ -122,35 +113,34 @@
 
 			<InView animation="fade-up" delay={300}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Your Rights (GDPR)</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.gdpr_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed mb-4">
-						Under the General Data Protection Regulation (GDPR), you have the right to:
+						{t('privacy.gdpr_intro')}
 					</p>
 					<ul class="space-y-3 text-muted-foreground">
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Access the personal data I hold about you</span>
+							<span>{t('privacy.gdpr_1')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Request correction of inaccurate data</span>
+							<span>{t('privacy.gdpr_2')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Request deletion of your data</span>
+							<span>{t('privacy.gdpr_3')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Object to processing of your data</span>
+							<span>{t('privacy.gdpr_4')}</span>
 						</li>
 						<li class="flex items-start gap-3">
 							<span class="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></span>
-							<span>Data portability</span>
+							<span>{t('privacy.gdpr_5')}</span>
 						</li>
 					</ul>
 					<p class="text-muted-foreground leading-relaxed mt-4">
-						To exercise any of these rights, please contact me at
-						<a href="mailto:contact@onurhaniffa.com" class="text-primary hover:underline"
+						{t('privacy.gdpr_outro')} <a href="mailto:contact@onurhaniffa.com" class="text-primary hover:underline"
 							>contact@onurhaniffa.com</a
 						>.
 					</p>
@@ -159,45 +149,36 @@
 
 			<InView animation="fade-up" delay={350}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Data Security</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.security_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						I implement appropriate technical and organizational measures to protect your
-						personal data against unauthorized access, alteration, disclosure, or
-						destruction. This website uses HTTPS encryption for all data transmission.
+						{t('privacy.security_text')}
 					</p>
 				</section>
 			</InView>
 
 			<InView animation="fade-up" delay={400}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Data Retention</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.retention_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						I retain your contact form submissions and related correspondence for as long
-						as necessary to fulfill the purposes for which they were collected, or as
-						required by law. Project-related data may be retained for up to 7 years for
-						legal and tax purposes.
+						{t('privacy.retention_text')}
 					</p>
 				</section>
 			</InView>
 
 			<InView animation="fade-up" delay={450}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Third-Party Services</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.third_party_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						This website may use third-party services for hosting, analytics, or form
-						processing. These services have their own privacy policies governing how they
-						handle your data. I only work with services that are GDPR-compliant.
+						{t('privacy.third_party_text')}
 					</p>
 				</section>
 			</InView>
 
 			<InView animation="fade-up" delay={500}>
 				<section class="mb-12">
-					<h2 class="text-2xl font-semibold mb-4">Changes to This Policy</h2>
+					<h2 class="text-2xl font-semibold mb-4">{t('privacy.changes_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						I may update this privacy policy from time to time. Any changes will be posted
-						on this page with an updated revision date. I encourage you to review this
-						policy periodically.
+						{t('privacy.changes_text')}
 					</p>
 				</section>
 			</InView>
@@ -206,10 +187,9 @@
 				<section
 					class="p-6 rounded-2xl bg-muted/50 border border-border/50"
 				>
-					<h2 class="text-xl font-semibold mb-4">Contact</h2>
+					<h2 class="text-xl font-semibold mb-4">{t('privacy.contact_heading')}</h2>
 					<p class="text-muted-foreground leading-relaxed">
-						If you have any questions about this privacy policy or how I handle your data,
-						please contact me at:
+						{t('privacy.contact_text')}
 					</p>
 					<p class="mt-4">
 						<a href="mailto:contact@onurhaniffa.com" class="text-primary hover:underline font-medium">
