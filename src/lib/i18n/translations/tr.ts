@@ -10,9 +10,9 @@ export const tr = {
 		lets_talk: '\u0130letişime Ge\u00e7in'
 	},
 	home: {
-		meta_title: 'Onur Haniffa | Web Tasarımcı & Geliştirici',
-		meta_description: 'Ziyaret\u00e7ileri m\u00fcşteriye d\u00f6n\u00fcşt\u00fcren web siteleri tasarlıyor ve geliştiriyorum. Modern, profesyonel web tasarım ve geliştirme. Avrupa merkezli.',
-		og_description: 'Ziyaret\u00e7ileri m\u00fcşteriye d\u00f6n\u00fcşt\u00fcren web siteleri tasarlıyor ve geliştiriyorum. Modern, profesyonel web tasarım ve geliştirme.',
+		meta_title: '\u0130stanbul Web Tasarımcı | Onur Haniffa - Profesyonel Web Tasarım & Geliştirme',
+		meta_description: '\u0130stanbul\'da profesyonel web tasarımcı. Ziyaret\u00e7ileri m\u00fcşteriye d\u00f6n\u00fcşt\u00fcren hızlı, modern web siteleri. \u00d6zel tasarım, SEO optimize, mobil uyumlu. \u00dccretsiz danışmanlık.',
+		og_description: '\u0130stanbul\'da profesyonel web tasarımcı. Ziyaret\u00e7ileri m\u00fcşteriye d\u00f6n\u00fcşt\u00fcren hızlı, modern web siteleri. \u00d6zel tasarım & SEO optimize.',
 		hero_badge: 'Projelere A\u00e7ık',
 		hero_pre: 'Ziyaret\u00e7ileri',
 		hero_highlight_prefix: '',
@@ -68,9 +68,9 @@ export const tr = {
 		why_4_desc: 'Web siteniz, kodunuz, i\u00e7eriğiniz. Kilitlenme veya gizli \u00fccret yok\u2014işimiz bittiğinde her şey sizin.'
 	},
 	services: {
-		meta_title: 'Hizmetler | Onur Haniffa',
-		meta_description: 'Profesyonel web tasarım ve geliştirme hizmetleri. Komple web sitesi yapımından yeniden tasarıma ve s\u00fcrekli desteğe kadar. Hızlı, modern, SEO optimize.',
-		og_description: 'Profesyonel web tasarım ve geliştirme hizmetleri. Komple web sitesi yapımından yeniden tasarıma ve s\u00fcrekli desteğe kadar.',
+		meta_title: '\u0130stanbul Web Tasarım Hizmetleri | \u00d6zel Web Sitesi & Yenileme | Onur Haniffa',
+		meta_description: '\u0130stanbul\'da profesyonel web tasarım hizmetleri. \u00d6zel web sitesi yapımı, yeniden tasarım ve s\u00fcrekli destek. Hızlı, modern, SEO optimize web siteleri. Hemen teklif alın.',
+		og_description: '\u0130stanbul\'da profesyonel web tasarım hizmetleri. \u00d6zel web sitesi yapımı, yeniden tasarım ve s\u00fcrekli destek. Hızlı, modern, SEO optimize.',
 		watermark: 'H\u0130ZMETLER',
 		hero_heading: '\u00c7alışan web',
 		hero_highlight: 'siteleri',
@@ -125,9 +125,9 @@ export const tr = {
 		faq_4_a: 'S\u00fcrekli destek paketleri sunuyorum veya tek seferlik g\u00fcncellemeler i\u00e7in bana ulaşabilirsiniz. Her durumda, ihtiyacınız olduğunda buradayım.'
 	},
 	about: {
-		meta_title: 'Hakkımda | Onur Haniffa',
-		meta_description: 'Ben Onur, SvelteKit ile hızlı, modern web siteleri oluşturan bir web tasarımcı ve geliştiriciyim. Avrupa merkezli, d\u00fcnya genelinde \u00e7alışıyorum.',
-		og_description: 'Ben Onur, SvelteKit ile hızlı, modern web siteleri oluşturan bir web tasarımcı ve geliştiriciyim. Avrupa merkezli, d\u00fcnya genelinde \u00e7alışıyorum.',
+		meta_title: 'Onur Haniffa Hakkında | \u0130stanbul Freelance Web Tasarımcı & Geliştirici',
+		meta_description: 'Ben Onur, \u0130stanbul\'da SvelteKit ile hızlı, modern web siteleri oluşturan bir freelance web tasarımcı ve geliştiriciyim. D\u00fcnya genelinde \u00e7alışıyorum.',
+		og_description: 'Ben Onur, \u0130stanbul\'da SvelteKit ile hızlı, modern web siteleri oluşturan bir freelance web tasarımcı. D\u00fcnya genelinde \u00e7alışıyorum.',
 		hero_heading: 'Merhaba, ben',
 		hero_name: 'Onur',
 		hero_desc_1: '<span class="text-foreground font-medium">Hızlı</span>, <span class="text-foreground font-medium">temiz</span> ve <span class="text-foreground font-medium">d\u00f6n\u00fcş\u00fcm odaklı</span> web siteleri tasarlıyor ve geliştiriyorum.',
@@ -157,7 +157,7 @@ export const tr = {
 		facts_heading: 'Hızlı bilgiler',
 		facts_subheading: 'Beni ben yapan birka\u00e7 şey.',
 		fact_1_label: 'Konum',
-		fact_1_value: 'Avrupa',
+		fact_1_value: '\u0130stanbul, T\u00fcrkiye',
 		fact_2_label: 'Tasarım aracı',
 		fact_2_value: 'Figma',
 		fact_3_label: 'Geliştirme',
@@ -176,12 +176,12 @@ export const tr = {
 		ta_desc: '\u00d6ğrencilerin karmaşık m\u00fchendislik kavramlarını anlamalarına yardımcı olmak',
 		tagline: 'Her zaman \u00fcretiyorum, her zaman \u00f6ğreniyorum',
 		availability: 'Şu anda yeni projeler i\u00e7in m\u00fcsaitim',
-		availability_location: 'Avrupa merkezli, d\u00fcnya genelinde \u00e7alışıyorum'
+		availability_location: '\u0130stanbul merkezli, d\u00fcnya genelinde \u00e7alışıyorum'
 	},
 	contact: {
-		meta_title: '\u0130letişim | Onur Haniffa',
-		meta_description: 'Projeniz hakkında konuşalım. Web tasarım ve geliştirme ihtiya\u00e7larınız i\u00e7in \u00fccretsiz danışmanlık almak i\u00e7in iletişime ge\u00e7in.',
-		og_description: 'Projeniz hakkında konuşalım. Web tasarım ve geliştirme ihtiya\u00e7larınız i\u00e7in \u00fccretsiz danışmanlık almak i\u00e7in iletişime ge\u00e7in.',
+		meta_title: '\u0130stanbul Web Tasarımcı İle İletişime Ge\u00e7in | Onur Haniffa',
+		meta_description: '\u0130stanbul\'da web tasarımcı mı arıyorsunuz? Projeniz hakkında konuşalım. \u00dccretsiz danışmanlık, 24 saat yanıt. Profesyonel web tasarım ve geliştirme hizmetleri.',
+		og_description: '\u0130stanbul\'da web tasarımcı mı arıyorsunuz? Projeniz hakkında konuşalım. \u00dccretsiz danışmanlık, 24 saat yanıt.',
 		hero_badge: '\u0130letişime Ge\u00e7in',
 		hero_heading: 'Bir',
 		hero_highlight: 'konuşma',
@@ -220,9 +220,9 @@ export const tr = {
 		faq_3_a: 'Evet! \u0130lk g\u00f6r\u00fcşmemiz her zaman \u00fccretsizdir. Bu, birbirimize uygun olup olmadığımızı g\u00f6rmek i\u00e7in her iki taraf i\u00e7in de bir fırsattır.'
 	},
 	work: {
-		meta_title: 'Projeler | Onur Haniffa',
-		meta_description: 'Strateji, tasarım ve ger\u00e7ek sonu\u00e7ları sergileyen se\u00e7ilmiş projeler. Modern web tasarımıyla işletmelerin \u00e7evrimi\u00e7inde başarılı olmasına nasıl yardımcı olduğumu g\u00f6r\u00fcn.',
-		og_description: 'Strateji, tasarım ve ger\u00e7ek sonu\u00e7ları sergileyen se\u00e7ilmiş projeler. Modern web tasarımıyla işletmelerin \u00e7evrimi\u00e7inde başarılı olmasına nasıl yardımcı olduğumu g\u00f6r\u00fcn.',
+		meta_title: '\u0130stanbul Web Tasarım Portf\u00f6y\u00fc | Onur Haniffa Projeleri',
+		meta_description: '\u0130stanbul merkezli web tasarımcı Onur Haniffa\'nın portf\u00f6y\u00fc. Strateji, tasarım ve ger\u00e7ek iş sonu\u00e7larını sergileyen se\u00e7ilmiş projeler.',
+		og_description: '\u0130stanbul merkezli web tasarımcının portf\u00f6y\u00fc. Strateji, tasarım ve ger\u00e7ek sonu\u00e7ları sergileyen se\u00e7ilmiş projeler.',
 		watermark: 'PROJELER',
 		hero_heading: 'kendini',
 		hero_highlight: 'anlatan',
@@ -326,7 +326,7 @@ export const tr = {
 		services: 'Hizmetler',
 		about: 'Hakkımda',
 		get_in_touch: '\u0130letişime ge\u00e7in',
-		based_in: 'Avrupa merkezli',
+		based_in: '\u0130stanbul merkezli',
 		replies_within: '24 saat i\u00e7inde yanıt',
 		tagline: 'Meraklı ziyaret\u00e7ileri sadık m\u00fcşterilere d\u00f6n\u00fcşt\u00fcren g\u00fczel web siteleri tasarlıyorum.',
 		copyright_suffix: 'T\u00fcm hakları saklıdır.',

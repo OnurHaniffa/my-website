@@ -215,6 +215,38 @@
 	<meta name="description" content={ps?.meta_description ?? t('services.meta_description')} />
 	<meta property="og:title" content={ps?.meta_title ?? t('services.meta_title')} />
 	<meta property="og:description" content={ps?.meta_description ?? t('services.og_description')} />
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'FAQPage',
+		mainEntity: faqs.map(faq => ({
+			'@type': 'Question',
+			name: faq.question,
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: faq.answer
+			}
+		}))
+	})}</script>`}
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'Service',
+		provider: {
+			'@type': 'ProfessionalService',
+			name: 'Onur Haniffa',
+			url: 'https://onurhaniffa.com'
+		},
+		serviceType: 'Web Design and Development',
+		areaServed: [
+			{ '@type': 'City', name: 'Istanbul' },
+			{ '@type': 'Country', name: 'Turkey' }
+		],
+		description: ps?.meta_description ?? t('services.meta_description'),
+		offers: {
+			'@type': 'Offer',
+			availability: 'https://schema.org/InStock',
+			priceCurrency: 'USD'
+		}
+	})}</script>`}
 </svelte:head>
 
 <style>

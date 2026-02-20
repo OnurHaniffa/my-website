@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { getLocale, setLocale, type Locale } from '$lib/i18n/index.svelte';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { getLocale, type Locale } from '$lib/i18n/index.svelte';
 
 	const languages: { code: Locale; flag: string; label: string }[] = [
 		{ code: 'en', flag: '\ud83c\uddec\ud83c\udde7', label: 'EN' },
@@ -12,8 +14,19 @@
 	const current = $derived(languages.find((l) => l.code === getLocale()) ?? languages[0]);
 
 	function select(code: Locale) {
-		setLocale(code);
 		open = false;
+		const currentPath = $page.url.pathname;
+
+		if (code === 'tr') {
+			// Navigate to /tr/... version
+			const cleanPath = currentPath.replace(/^\/tr/, '') || '/';
+			const newPath = `/tr${cleanPath === '/' ? '' : cleanPath}`;
+			goto(newPath);
+		} else {
+			// Navigate to English version (strip /tr prefix)
+			const cleanPath = currentPath.replace(/^\/tr/, '') || '/';
+			goto(cleanPath);
+		}
 	}
 
 	function handleClickOutside(e: MouseEvent) {

@@ -3,7 +3,7 @@
 	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
 	import { Container, Section } from '$lib/components/layout';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocalePath } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 	const ps = data.pageSettings;
@@ -242,13 +242,13 @@
 				</p>
 
 				<div class="hero-item flex flex-wrap gap-4 pt-2">
-					<Button size="lg" href="/contact" class="rounded-full px-8 shadow-lg shadow-primary/25 group">
+					<Button size="lg" href={getLocalePath('/contact')} class="rounded-full px-8 shadow-lg shadow-primary/25 group">
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 group-hover:scale-110 transition-transform">
 							<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
 						</svg>
 						{t('about.get_in_touch')}
 					</Button>
-					<Button size="lg" variant="outline" href="/work" class="rounded-full px-8 group">
+					<Button size="lg" variant="outline" href={getLocalePath('/work')} class="rounded-full px-8 group">
 						{t('about.view_my_work')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { Container } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui/button';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocalePath } from '$lib/i18n/index.svelte';
 	import type { DirectusFooterSettings } from '$lib/data/directus';
 
 	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
@@ -53,7 +53,7 @@
 					{settings?.cta_description ?? t('footer.cta_description')}
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
-					<Button href="/contact" variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
+					<Button href={getLocalePath('/contact')} variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
 						{settings?.cta_button_text ?? t('footer.cta_button')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
@@ -67,7 +67,7 @@
 			<div class="grid grid-cols-2 md:grid-cols-12 gap-8 md:gap-6 py-12 border-t border-white/10">
 				<!-- Brand - takes more space -->
 				<div class="col-span-2 md:col-span-5 lg:col-span-4">
-					<a href="/" class="inline-flex items-center gap-3 mb-5 group transition-all group-hover:opacity-80">
+					<a href={getLocalePath('/')} class="inline-flex items-center gap-3 mb-5 group transition-all group-hover:opacity-80">
 						<div class="w-6 h-[2px] bg-white/80"></div>
 						<div class="flex flex-col items-center">
 							<span class="text-xl font-black tracking-[0.15em] uppercase text-white">{settings?.brand_name ?? 'Onur Haniffa'}</span>
@@ -95,10 +95,10 @@
 				<div class="col-span-1 md:col-span-2">
 					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.pages_heading ?? t('footer.explore')}</h4>
 					<nav class="flex flex-col gap-3">
-						<a href="/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.home')}</a>
-						<a href="/work" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.work')}</a>
-						<a href="/services" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.services')}</a>
-						<a href="/about" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.about')}</a>
+						<a href={getLocalePath('/')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.home')}</a>
+						<a href={getLocalePath('/work')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.work')}</a>
+						<a href={getLocalePath('/services')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.services')}</a>
+						<a href={getLocalePath('/about')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.about')}</a>
 					</nav>
 				</div>
 
@@ -106,7 +106,7 @@
 				<div class="col-span-1 md:col-span-3 lg:col-span-2">
 					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.contact_heading ?? t('footer.contact')}</h4>
 					<div class="flex flex-col gap-3">
-						<a href="/contact" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.get_in_touch')}</a>
+						<a href={getLocalePath('/contact')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.get_in_touch')}</a>
 						<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{settings?.email ?? 'contact@onurhaniffa.com'}</a>
 						<p class="text-sm text-gray-500 mt-2">{settings?.location ?? t('footer.based_in')}</p>
 						<p class="text-sm text-gray-500">{settings?.response_time ?? t('footer.replies_within')}</p>

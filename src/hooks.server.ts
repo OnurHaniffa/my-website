@@ -9,6 +9,7 @@ const redirects: Record<string, string> = {
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
+	// Check redirects first
 	const redirect = redirects[event.url.pathname];
 	if (redirect) {
 		return new Response(null, {
@@ -16,5 +17,16 @@ export const handle: Handle = async ({ event, resolve }) => {
 			headers: { Location: redirect }
 		});
 	}
-	return resolve(event);
+
+	// Detect locale from URL path
+	const locale = event.url.pathname.startsWith('/tr') ? 'tr' : 'en';
+	event.locals.locale = locale;
+
+	const response = await resolve(event, {
+		transformPageChunk: ({ html }) => {
+			return html.replace('lang="en"', `lang="${locale}"`);
+		}
+	});
+
+	return response;
 };

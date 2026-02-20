@@ -11,7 +11,7 @@
 	import { Container } from '$lib/components/layout';
 	import { LanguageSwitcher } from '$lib/components/ui/language-switcher';
 	import { browser } from '$app/environment';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocalePath } from '$lib/i18n/index.svelte';
 	import type { DirectusHeaderSettings } from '$lib/data/directus';
 
 	let { settings = null }: { settings?: DirectusHeaderSettings | null } = $props();
@@ -25,8 +25,8 @@
 
 	const navItems = $derived(
 		settings?.nav_items?.length
-			? settings.nav_items
-			: defaultNavItems.map((item) => ({ href: item.href, label: t(item.labelKey) }))
+			? settings.nav_items.map((item: { href: string; label: string }) => ({ href: getLocalePath(item.href), label: item.label }))
+			: defaultNavItems.map((item) => ({ href: getLocalePath(item.href), label: t(item.labelKey) }))
 	);
 
 	let mobileMenuOpen = $state(false);
@@ -72,10 +72,13 @@
 	});
 
 	function isActive(href: string, currentPath: string): boolean {
-		if (href === '/') {
-			return currentPath === '/';
+		// Normalize: strip /tr prefix from currentPath for comparison
+		const cleanCurrent = currentPath.replace(/^\/tr/, '') || '/';
+		const cleanHref = href.replace(/^\/tr/, '') || '/';
+		if (cleanHref === '/') {
+			return cleanCurrent === '/';
 		}
-		return currentPath.startsWith(href);
+		return cleanCurrent.startsWith(cleanHref);
 	}
 </script>
 
@@ -94,7 +97,7 @@
 	<Container>
 		<div class="flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
 			<!-- Logo -->
-			<a href="/" data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80">
+			<a href={getLocalePath('/')} data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80">
 				<!-- Decorative line -->
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 				<!-- Logo text -->
@@ -183,7 +186,7 @@
 					</span>
 				</button>
 
-				<Button href={settings?.cta_href ?? '/contact'} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+				<Button href={settings?.cta_href ?? getLocalePath('/contact')} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
 					<span class="relative z-10">{settings?.cta_text ?? t('nav.lets_talk')}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -348,7 +351,7 @@
 							</div>
 
 							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">{t('nav.ready_to_start')}</p>
-							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href={settings?.cta_href ?? '/contact'} onclick={() => (mobileMenuOpen = false)}>
+							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href={settings?.cta_href ?? getLocalePath('/contact')} onclick={() => (mobileMenuOpen = false)}>
 								{settings?.cta_text ?? t('nav.lets_talk')}
 								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 							</Button>

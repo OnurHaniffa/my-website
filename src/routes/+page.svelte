@@ -7,7 +7,7 @@
 	import { Container, Section } from '$lib/components/layout';
 	import { Counter } from '$lib/components/ui/animations';
 	import { sanitizeSvgContent } from '$lib/utils/sanitize';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocalePath } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
 
@@ -299,11 +299,11 @@
 				</div>
 
 				<div class="flex flex-wrap gap-4">
-					<Button size="lg" href="/work" class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
+					<Button size="lg" href={getLocalePath('/work')} class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
 						{settings?.view_work_button ?? t('home.view_work')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<Button size="lg" variant="ghost" href="/contact" class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
+					<Button size="lg" variant="ghost" href={getLocalePath('/contact')} class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
 						{settings?.lets_talk_button ?? t('home.lets_talk')}
 					</Button>
 				</div>
@@ -464,7 +464,7 @@
 			</div>
 
 			<div class="mt-12 text-center">
-				<Button variant="outline" href="/services" class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
+				<Button variant="outline" href={getLocalePath('/services')} class="group px-8 py-6 rounded-full text-base border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
 					{settings?.explore_services_button ?? t('home.explore_services')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -490,7 +490,7 @@
 						{settings?.portfolio_section_subtitle ?? t('home.portfolio_subtitle')}
 					</p>
 				</div>
-				<Button variant="outline" href="/work" class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
+				<Button variant="outline" href={getLocalePath('/work')} class="group px-6 py-5 rounded-full border-2 hover:border-primary/50 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none">
 					{settings?.view_all_work_button ?? t('home.view_all_work')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -498,7 +498,7 @@
 
 			<div class="grid gap-8 md:grid-cols-2">
 				{#each projects as project, index}
-					<a href="/work?filter={index === 0 ? 'client' : 'concept'}" class="group block project-card focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:rounded-2xl">
+					<a href="{getLocalePath('/work')}?filter={index === 0 ? 'client' : 'concept'}" class="group block project-card focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:rounded-2xl">
 						<Card class="overflow-hidden border border-border/30 shadow-lg hover:shadow-2xl hover:-translate-y-1 rounded-2xl transition-all duration-500
 							{index === 0
 								? 'hover:border-amber-500/40 bg-gradient-to-b from-slate-900/5 to-transparent dark:from-slate-800/20'
@@ -609,7 +609,7 @@
 			</div>
 
 			<div class="mt-12 text-center">
-				<Button href="/about" variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-150">
+				<Button href={getLocalePath('/about')} variant="outline" class="group px-8 py-6 rounded-full text-base border-2 hover:bg-foreground/5 hover:border-foreground/20 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-150">
 					{settings?.learn_more_button ?? t('home.learn_more')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>

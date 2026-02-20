@@ -10,9 +10,9 @@ export const en = {
 		lets_talk: "Let's Talk"
 	},
 	home: {
-		meta_title: 'Onur Haniffa | Web Designer & Developer',
-		meta_description: 'I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity. Based in Europe.',
-		og_description: 'I design and build websites that turn visitors into customers. Modern, professional web design and development with strategy and clarity.',
+		meta_title: 'Web Designer Istanbul | Onur Haniffa - Modern Web Design & Development',
+		meta_description: 'Professional web designer in Istanbul. I build fast, modern websites that convert visitors into customers. Custom design, SEO-optimized, mobile-first. Free consultation.',
+		og_description: 'Professional web designer in Istanbul. Fast, modern websites that convert visitors into customers. Custom design & SEO-optimized.',
 		hero_badge: 'Available for Projects',
 		hero_pre: 'I build websites that turn visitors',
 		hero_highlight_prefix: 'into ',
@@ -68,9 +68,9 @@ export const en = {
 		why_4_desc: "Your website, your code, your content. No lock-ins or hidden fees\u2014you own everything when we're done."
 	},
 	services: {
-		meta_title: 'Services | Onur Haniffa',
-		meta_description: 'Professional web design and development services. From complete website builds to redesigns and ongoing support. Fast, modern, SEO-optimized.',
-		og_description: 'Professional web design and development services. From complete website builds to redesigns and ongoing support.',
+		meta_title: 'Web Design Services Istanbul | Custom Websites & Redesigns | Onur Haniffa',
+		meta_description: 'Professional web design services in Istanbul. Custom website builds, redesigns & ongoing support. Fast, modern, SEO-optimized websites. Get a free quote today.',
+		og_description: 'Professional web design services in Istanbul. Custom website builds, redesigns & ongoing support. Fast, modern, SEO-optimized.',
 		watermark: 'SERVICES',
 		hero_heading: 'Websites that',
 		hero_highlight: 'work',
@@ -125,9 +125,9 @@ export const en = {
 		faq_4_a: "I offer ongoing support packages, or you can reach out for one-off updates. Either way, I'm here when you need me."
 	},
 	about: {
-		meta_title: 'About | Onur Haniffa',
-		meta_description: "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide.",
-		og_description: "I'm Onur, a web designer and developer creating fast, modern websites with SvelteKit. Based in Europe, working with clients worldwide.",
+		meta_title: 'About Onur Haniffa | Freelance Web Designer & Developer in Istanbul',
+		meta_description: "I'm Onur, a freelance web designer and developer in Istanbul creating fast, modern websites with SvelteKit. Working with clients worldwide.",
+		og_description: "I'm Onur, a freelance web designer in Istanbul creating fast, modern websites. Working with clients worldwide.",
 		hero_heading: "Hey, I'm",
 		hero_name: 'Onur',
 		hero_desc_1: 'I design and build websites that are <span class="text-foreground font-medium">fast</span>, <span class="text-foreground font-medium">clean</span>, and <span class="text-foreground font-medium">built to convert</span>.',
@@ -157,7 +157,7 @@ export const en = {
 		facts_heading: 'Quick facts',
 		facts_subheading: 'A few things that make me, me.',
 		fact_1_label: 'Based in',
-		fact_1_value: 'Europe',
+		fact_1_value: 'Istanbul, Turkey',
 		fact_2_label: 'Design in',
 		fact_2_value: 'Figma',
 		fact_3_label: 'Build with',
@@ -176,12 +176,12 @@ export const en = {
 		ta_desc: 'Helping students break down complex engineering concepts',
 		tagline: 'Always shipping, always learning',
 		availability: 'Currently available for new projects',
-		availability_location: 'Based in Europe, working worldwide'
+		availability_location: 'Based in Istanbul, working worldwide'
 	},
 	contact: {
-		meta_title: 'Contact | Onur Haniffa',
-		meta_description: "Let's talk about your project. Get in touch for a free consultation about your web design and development needs. Quick response guaranteed.",
-		og_description: "Let's talk about your project. Get in touch for a free consultation about your web design and development needs.",
+		meta_title: 'Hire a Web Designer in Istanbul | Contact Onur Haniffa',
+		meta_description: "Looking for a web designer in Istanbul? Let's talk about your project. Free consultation, 24h response. Professional web design & development services.",
+		og_description: "Looking for a web designer in Istanbul? Get in touch for a free consultation about your web design and development needs.",
 		hero_badge: "Let's Talk",
 		hero_heading: 'Start a',
 		hero_highlight: 'conversation',
@@ -220,9 +220,9 @@ export const en = {
 		faq_3_a: "Yes! Our initial conversation is always free. It's an opportunity for both of us to see if we're a good fit for working together."
 	},
 	work: {
-		meta_title: 'Work | Onur Haniffa',
-		meta_description: 'Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online with modern web design.',
-		og_description: 'Selected projects showcasing strategy, design, and real results. See how I help businesses succeed online.',
+		meta_title: 'Web Design Portfolio Istanbul | Projects by Onur Haniffa',
+		meta_description: 'Web design portfolio by Istanbul-based designer Onur Haniffa. Selected projects showcasing strategy, design, and real business results.',
+		og_description: 'Web design portfolio by Istanbul-based designer. Selected projects showcasing strategy, design, and real results.',
 		watermark: 'WORK',
 		hero_heading: 'that',
 		hero_highlight: 'speaks',
@@ -326,7 +326,7 @@ export const en = {
 		services: 'Services',
 		about: 'About',
 		get_in_touch: 'Get in touch',
-		based_in: 'Based in Europe',
+		based_in: 'Based in Istanbul',
 		replies_within: 'Replies within 24h',
 		tagline: 'Crafting beautiful websites that turn curious visitors into loyal customers.',
 		copyright_suffix: 'All rights reserved.',
