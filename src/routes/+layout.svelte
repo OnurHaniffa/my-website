@@ -170,6 +170,9 @@
 	<meta property="og:locale" content={locale === 'tr' ? 'tr_TR' : 'en_US'} />
 	<meta property="og:locale:alternate" content={locale === 'tr' ? 'en_US' : 'tr_TR'} />
 
+	<!-- RSS Feed -->
+	<link rel="alternate" type="application/rss+xml" title="Onur Haniffa Blog" href="/rss.xml" />
+
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:image" content={defaultImage} />

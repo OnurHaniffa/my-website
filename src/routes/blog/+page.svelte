@@ -28,12 +28,35 @@
 		<meta name="description" content="Web design and development blog by Istanbul-based designer Onur Haniffa. Tips on web design, SEO, SvelteKit, and growing your business online." />
 		<meta property="og:title" content="Web Design Blog Istanbul | Tips & Insights | Onur Haniffa" />
 		<meta property="og:description" content="Web design tips, SEO insights, and development tutorials from an Istanbul-based web designer." />
+		<meta name="twitter:title" content="Web Design Blog Istanbul | Tips & Insights | Onur Haniffa" />
+		<meta name="twitter:description" content="Web design tips, SEO insights, and development tutorials from an Istanbul-based web designer." />
 	{:else}
 		<title>Web Tasarım Blog | İpuçları & Bilgiler | Onur Haniffa</title>
 		<meta name="description" content="İstanbul merkezli tasarımcı Onur Haniffa'nın web tasarım ve geliştirme blogu. Web tasarım, SEO, SvelteKit ve işletmenizi çevrimiçi büyütme hakkında ipuçları." />
 		<meta property="og:title" content="Web Tasarım Blog | İpuçları & Bilgiler | Onur Haniffa" />
 		<meta property="og:description" content="İstanbul merkezli web tasarımcıdan web tasarım ipuçları, SEO bilgileri ve geliştirme eğitimleri." />
+		<meta name="twitter:title" content="Web Tasarım Blog | İpuçları & Bilgiler | Onur Haniffa" />
+		<meta name="twitter:description" content="İstanbul merkezli web tasarımcıdan web tasarım ipuçları, SEO bilgileri ve geliştirme eğitimleri." />
 	{/if}
+	{@html `<script type="application/ld+json">${JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'CollectionPage',
+		name: isEn ? 'Web Design Blog' : 'Web Tasarım Blog',
+		description: isEn
+			? 'Web design and development blog by Istanbul-based designer Onur Haniffa.'
+			: 'İstanbul merkezli tasarımcı Onur Haniffa\'nın web tasarım ve geliştirme blogu.',
+		url: 'https://onurhaniffa.com/blog/',
+		isPartOf: { '@id': 'https://onurhaniffa.com/#website' },
+		publisher: { '@id': 'https://onurhaniffa.com/#business' },
+		mainEntity: {
+			'@type': 'ItemList',
+			itemListElement: blogPosts.map((post, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				url: `https://onurhaniffa.com/blog/${post.slug}/`
+			}))
+		}
+	})}</script>`}
 </svelte:head>
 
 <Section padding="none" class="relative pt-32 pb-12 lg:pt-40 lg:pb-16">

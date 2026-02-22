@@ -30,6 +30,10 @@
 	<meta property="og:type" content="article" />
 	<meta property="article:published_time" content={post.date} />
 	<meta property="article:author" content="Onur Haniffa" />
+	<meta property="article:section" content={category} />
+	<meta property="article:tag" content={isEn ? post.category : post.categoryTr} />
+	<meta name="twitter:title" content={`${title} | Onur Haniffa Blog`} />
+	<meta name="twitter:description" content={description} />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

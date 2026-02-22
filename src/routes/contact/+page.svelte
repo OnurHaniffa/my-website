@@ -82,6 +82,8 @@
 	<meta name="description" content={ps?.meta_description ?? t('contact.meta_description')} />
 	<meta property="og:title" content={ps?.meta_title ?? t('contact.meta_title')} />
 	<meta property="og:description" content={ps?.meta_description ?? t('contact.meta_description')} />
+	<meta name="twitter:title" content={ps?.meta_title ?? t('contact.meta_title')} />
+	<meta name="twitter:description" content={ps?.meta_description ?? t('contact.meta_description')} />
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'FAQPage',

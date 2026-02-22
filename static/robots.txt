@@ -1,4 +1,4 @@
 User-agent: *
-Disallow:
+Disallow: /api/
 
 Sitemap: https://onurhaniffa.com/sitemap.xml

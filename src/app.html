@@ -3,10 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-FTDXNZN78T"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-FTDXNZN78T');
+		</script>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
-	<script src="https://ivoryai.net/widget/ivory.js" data-practice-id="52"></script>
+	<script async src="https://ivoryai.net/widget/ivory.js" data-practice-id="52"></script>
 	</body>
 </html>

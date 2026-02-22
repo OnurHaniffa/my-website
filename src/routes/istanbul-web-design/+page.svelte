@@ -85,11 +85,15 @@
 		<meta name="description" content="Looking for a professional web designer in Istanbul? I create fast, modern, SEO-optimized websites that convert visitors into customers. Custom design, mobile-first, free consultation. Get your website built by an Istanbul-based expert." />
 		<meta property="og:title" content="Web Designer Istanbul | Professional Website Design & Development" />
 		<meta property="og:description" content="Professional web designer in Istanbul. Fast, modern websites that convert visitors into customers. Free consultation." />
+		<meta name="twitter:title" content="Web Designer Istanbul | Professional Website Design & Development" />
+		<meta name="twitter:description" content="Professional web designer in Istanbul. Fast, modern websites that convert visitors into customers. Free consultation." />
 	{:else}
 		<title>Web Site Yapımı İstanbul | Web Tasarım & Geliştirme Hizmetleri | Onur Haniffa</title>
 		<meta name="description" content="İstanbul'da web site yapımı ve web tasarım hizmetleri. Kurumsal web sitesi, e-ticaret sitesi, SEO uyumlu ve mobil uyumlu web siteleri yapıyorum. Profesyonel web yazılım, özel tasarım, ücretsiz danışmanlık." />
 		<meta property="og:title" content="Web Site Yapımı İstanbul | Web Tasarım & Geliştirme Hizmetleri" />
 		<meta property="og:description" content="İstanbul'da web site yapımı, kurumsal web sitesi, e-ticaret ve SEO uyumlu web tasarım hizmetleri. Ücretsiz danışmanlık." />
+		<meta name="twitter:title" content="Web Site Yapımı İstanbul | Web Tasarım & Geliştirme Hizmetleri" />
+		<meta name="twitter:description" content="İstanbul'da web site yapımı, kurumsal web sitesi, e-ticaret ve SEO uyumlu web tasarım hizmetleri. Ücretsiz danışmanlık." />
 	{/if}
 
 	{@html `<script type="application/ld+json">${JSON.stringify({

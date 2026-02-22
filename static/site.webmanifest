@@ -1,6 +1,9 @@
 {
-  "name": "Onur Haniffa",
-  "short_name": "Onur",
+  "name": "Onur Haniffa - Web Design & Development",
+  "short_name": "Onur Haniffa",
+  "description": "Professional web designer in Istanbul. Fast, modern websites that convert visitors into customers.",
+  "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/favicon-48x48.png",
