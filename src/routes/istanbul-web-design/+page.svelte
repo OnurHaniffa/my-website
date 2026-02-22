@@ -31,24 +31,44 @@
 		}
 	] : [
 		{
-			question: '\u0130stanbul\'da bir web sitesi ne kadara mal olur?',
-			answer: 'Her proje farklıdır. Ke\u015fif g\u00f6r\u00fc\u015fmemizden sonra, \u00f6zel ihtiya\u00e7larınıza g\u00f6re sabit bir fiyat teklifi sunuyorum. Saatlik s\u00fcrpriz veya gizli \u00fccret yok.'
+			question: '\u0130stanbul\'da web site yapımı fiyatları ne kadar?',
+			answer: 'Web site yapımı fiyatları projenin kapsamına g\u00f6re de\u011fi\u015fir. Basit kurumsal web sitesi, e-ticaret sitesi veya \u00f6zel web yazılım projeleri i\u00e7in farklı fiyatlandırmalar sunuyorum. Ke\u015fif g\u00f6r\u00fc\u015fmemizden sonra ihtiya\u00e7larınıza \u00f6zel sabit fiyat teklifi veriyorum. Gizli \u00fccret veya saatlik s\u00fcrpriz yok.'
 		},
 		{
-			question: 'Bir web sitesi yapmak ne kadar s\u00fcrer?',
-			answer: '\u00c7o\u011fu web sitesi karma\u015fıklı\u011fına ba\u011flı olarak 2-6 hafta i\u00e7inde yayına alınır. Basit siteler daha hızlı tamamlanabilir, \u00f6zel \u00f6zellikler gerektiren b\u00fcy\u00fck projeler biraz daha uzun s\u00fcrebilir.'
+			question: 'Web sitesi ne kadar s\u00fcrede yapılır?',
+			answer: 'Web site yapımı s\u00fcresi projenin b\u00fcy\u00fckl\u00fc\u011f\u00fcne ba\u011flıdır. Basit kurumsal web sitesi 2-3 haftada, orta \u00f6l\u00e7ekli projeler 3-4 haftada, e-ticaret gibi kapsamlı projeler 4-6 haftada tamamlanır. Her projeye ba\u015flamadan \u00f6nce net bir zaman \u00e7izelgesi sunuyorum.'
 		},
 		{
 			question: '\u0130stanbul dı\u015fındaki i\u015fletmelerle \u00e7alı\u015fıyor musunuz?',
-			answer: 'Kesinlikle! \u0130stanbul merkezli olmama ra\u011fmen d\u00fcnya genelinde m\u00fc\u015fterilerle \u00e7alı\u015fıyorum. \u0130leti\u015fim g\u00f6r\u00fcnt\u00fcl\u00fc aramalar, e-posta ve proje y\u00f6netim ara\u00e7ları \u00fczerinden yapılır.'
+			answer: 'Kesinlikle! \u0130stanbul merkezli olmama ra\u011fmen T\u00fcrkiye genelinde ve d\u00fcnya \u00e7apında m\u00fc\u015fterilerle \u00e7alı\u015fıyorum. \u0130leti\u015fim g\u00f6r\u00fcnt\u00fcl\u00fc aramalar, e-posta ve proje y\u00f6netim ara\u00e7ları \u00fczerinden yapılır. Saat farkı hi\u00e7bir zaman sorun olmaz.'
+		},
+		{
+			question: 'Kurumsal web sitesi neden \u00f6nemlidir?',
+			answer: 'Profesyonel bir kurumsal web sitesi, \u015firketinizin dijital vitrinidir. M\u00fc\u015fterilerinizin %90\'ı bir i\u015fletmeyi ara\u015ftırırken \u00f6nce web sitesine bakar. Kurumsal web sitesi g\u00fcvenilirlik olu\u015fturur, marka bilinirli\u011finizi artırır ve 7/24 \u00e7alı\u015fan bir satı\u015f temsilcisi gibi hizmet verir.'
+		},
+		{
+			question: 'SEO uyumlu web sitesi nasıl yapılır?',
+			answer: 'SEO uyumlu web sitesi yapımında hızlı y\u00fckleme s\u00fcresi, mobil uyumluluk, do\u011fru meta etiketleri, yapılandırılmı\u015f veri (schema markup), temiz kod yapısı ve kaliteli i\u00e7erik optimizasyonu kritik \u00f6neme sahiptir. \u0130n\u015fa etti\u011fim her web sitesi Google\'da \u00fcst sıralarda yer almanız i\u00e7in bu teknik SEO standartlarına uygun olarak geli\u015ftirilir.'
+		},
+		{
+			question: 'Web sitemi yaptırdıktan sonra destek alabilir miyim?',
+			answer: 'Evet! T\u00fcm projelerimde yayın sonrası teknik destek sunuyorum. G\u00fcvenlik g\u00fcncellemeleri, i\u00e7erik de\u011fi\u015fiklikleri, performans izleme ve yeni \u00f6zellik ekleme gibi konularda s\u00fcrekli destek alabilirsiniz. Web siteniz her zaman g\u00fcncel ve g\u00fcvenli kalır.'
+		},
+		{
+			question: 'E-ticaret web sitesi yaptırmak istiyorum, neler sunuyorsunuz?',
+			answer: 'E-ticaret web sitesi yapımında g\u00fcvenli \u00f6deme altyapısı, \u00fcr\u00fcn y\u00f6netim paneli, stok takibi, kargo entegrasyonu ve mobil uyumlu tasarım sunuyorum. \u0130stanbul\'daki i\u015fletmenizi online satı\u015fa a\u00e7arak m\u00fc\u015fteri kitlenizi geni\u015fletebilirsiniz.'
 		},
 		{
 			question: 'Web sitem Google i\u00e7in optimize edilecek mi?',
-			answer: 'Evet, in\u015fa etti\u011fim her web sitesi SEO en iyi uygulamalarını i\u00e7erir: hızlı y\u00fckleme, mobil uyumluluk, do\u011fru meta etiketleri, yapılandırılmı\u015f veri ve temiz kod.'
+			answer: 'Evet, in\u015fa etti\u011fim her web sitesi SEO en iyi uygulamalarını i\u00e7erir: hızlı y\u00fckleme, mobil uyumluluk, do\u011fru meta etiketleri, yapılandırılmı\u015f veri ve temiz kod. Google\'da daha \u00fcst sıralarda yer almanız i\u00e7in teknik SEO altyapısı standart olarak dahildir.'
+		},
+		{
+			question: 'Mobil uyumlu web sitesi neden gereklidir?',
+			answer: 'T\u00fcrkiye\'de internet kullanıcılarının %80\'inden fazlası mobil cihazlardan eri\u015fim sa\u011flıyor. Google da mobil uyumlu siteleri arama sonu\u00e7larında \u00f6nceliklendirir. T\u00fcm web sitelerimi responsive (duyarlı) tasarım ile geli\u015ftiriyorum \u2014 telefondan tablete, masa\u00fcst\u00fcnden b\u00fcy\u00fck ekrana kadar her cihazda m\u00fckemmel \u00e7alı\u015fır.'
 		},
 		{
 			question: 'Mevcut web sitemi yeniden tasarlayabilir misiniz?',
-			answer: 'Evet! Web sitesi yenileme temel hizmetlerimden biridir. Mevcut sitenizi denetler, neyin i\u015fe yaradı\u011fını belirler ve i\u015f hedeflerinize daha iyi hizmet eden modern, y\u00fcksek performanslı bir s\u00fcr\u00fcm olu\u015ftururum.'
+			answer: 'Evet! Web sitesi yenileme temel hizmetlerimden biridir. Mevcut sitenizi detaylı olarak denetler, neyin i\u015fe yaradı\u011fını belirler ve i\u015f hedeflerinize daha iyi hizmet eden modern, hızlı ve SEO uyumlu bir s\u00fcr\u00fcm olu\u015ftururum.'
 		}
 	]);
 
@@ -66,21 +86,21 @@
 		<meta property="og:title" content="Web Designer Istanbul | Professional Website Design & Development" />
 		<meta property="og:description" content="Professional web designer in Istanbul. Fast, modern websites that convert visitors into customers. Free consultation." />
 	{:else}
-		<title>İstanbul Web Tasarımcı | Profesyonel Web Sitesi Tasarım & Geliştirme</title>
-		<meta name="description" content="İstanbul'da profesyonel web tasarımcı mı arıyorsunuz? Ziyaretçileri müşteriye dönüştüren hızlı, modern, SEO optimize web siteleri yapıyorum. Özel tasarım, mobil uyumlu, ücretsiz danışmanlık." />
-		<meta property="og:title" content="İstanbul Web Tasarımcı | Profesyonel Web Sitesi Tasarım & Geliştirme" />
-		<meta property="og:description" content="İstanbul'da profesyonel web tasarımcı. Hızlı, modern web siteleri. Ücretsiz danışmanlık." />
+		<title>Web Site Yapımı İstanbul | Web Tasarım & Geliştirme Hizmetleri | Onur Haniffa</title>
+		<meta name="description" content="İstanbul'da web site yapımı ve web tasarım hizmetleri. Kurumsal web sitesi, e-ticaret sitesi, SEO uyumlu ve mobil uyumlu web siteleri yapıyorum. Profesyonel web yazılım, özel tasarım, ücretsiz danışmanlık." />
+		<meta property="og:title" content="Web Site Yapımı İstanbul | Web Tasarım & Geliştirme Hizmetleri" />
+		<meta property="og:description" content="İstanbul'da web site yapımı, kurumsal web sitesi, e-ticaret ve SEO uyumlu web tasarım hizmetleri. Ücretsiz danışmanlık." />
 	{/if}
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'ProfessionalService',
-		name: 'Onur Haniffa - Web Design Istanbul',
+		name: isEn ? 'Onur Haniffa - Web Design Istanbul' : 'Onur Haniffa - İstanbul Web Site Yapımı & Web Tasarım',
 		url: 'https://onurhaniffa.com/istanbul-web-design/',
 		image: 'https://onurhaniffa.com/og-image.png',
 		description: isEn
 			? 'Professional web designer in Istanbul creating fast, modern websites that convert visitors into customers.'
-			: 'İstanbul\'da profesyonel web tasarımcı. Ziyaretçileri müşteriye dönüştüren hızlı, modern web siteleri.',
+			: 'İstanbul\'da web site yapımı, kurumsal web sitesi, e-ticaret sitesi ve SEO uyumlu web tasarım hizmetleri.',
 		email: 'contact@onurhaniffa.com',
 		address: {
 			'@type': 'PostalAddress',
@@ -98,7 +118,10 @@
 			{ '@type': 'Country', name: 'Turkey' },
 			{ '@type': 'Continent', name: 'Europe' }
 		],
-		serviceType: ['Web Design', 'Web Development', 'Website Redesign', 'SEO'],
+		serviceType: isEn
+			? ['Web Design', 'Web Development', 'Website Redesign', 'SEO']
+			: ['Web Site Yapımı', 'Web Tasarım', 'Kurumsal Web Sitesi', 'E-Ticaret Web Sitesi', 'Web Yazılım', 'SEO Optimizasyonu', 'Web Sitesi Yenileme'],
+		availableLanguage: ['Turkish', 'English'],
 		priceRange: '$$'
 	})}</script>`}
 
@@ -128,14 +151,14 @@
 		<div class="max-w-4xl">
 			<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 				<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
-				{isEn ? 'Istanbul-Based Web Designer' : 'İstanbul Merkezli Web Tasarımcı'}
+				{isEn ? 'Istanbul-Based Web Designer' : 'İstanbul Web Site Yapımı & Tasarım'}
 			</Badge>
 
 			<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl mb-6">
 				{#if isEn}
 					Professional <span class="text-primary">Web Design</span> in Istanbul
 				{:else}
-					İstanbul'da Profesyonel <span class="text-primary">Web Tasarım</span>
+					İstanbul'da <span class="text-primary">Web Site Yapımı</span> & Web Tasarım
 				{/if}
 			</h1>
 
@@ -143,7 +166,7 @@
 				{#if isEn}
 					I design and develop fast, modern websites for businesses in Istanbul and worldwide. Every site is custom-built, SEO-optimized, and designed to convert visitors into customers.
 				{:else}
-					İstanbul ve dünya genelindeki işletmeler için hızlı, modern web siteleri tasarlıyor ve geliştiriyorum. Her site özel yapım, SEO optimize ve ziyaretçileri müşteriye dönüştürmek için tasarlanmıştır.
+					İstanbul'da kurumsal web sitesi, e-ticaret sitesi ve portfolyo siteleri yapıyorum. SEO uyumlu, mobil uyumlu ve hızlı yüklenen web siteleri ile işletmenizi dijitale taşıyorum. Her proje özel tasarım ve modern web yazılım teknolojileri ile geliştirilir.
 				{/if}
 			</p>
 
@@ -170,7 +193,7 @@
 				{isEn ? 'Local Expertise' : 'Yerel Uzmanlık'}
 			</Badge>
 			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-				{isEn ? 'Why Choose an Istanbul-Based Web Designer?' : 'Neden İstanbul Merkezli Bir Web Tasarımcı Seçmelisiniz?'}
+				{isEn ? 'Why Choose an Istanbul-Based Web Designer?' : 'İstanbul\'da Web Site Yaptırmak İçin Neden Beni Tercih Etmelisiniz?'}
 			</h2>
 		</div>
 
@@ -232,7 +255,7 @@
 			<p class="mt-4 text-lg text-muted-foreground">
 				{isEn
 					? 'From brand-new websites to complete redesigns, I offer end-to-end web solutions for businesses of all sizes.'
-					: 'Sıfırdan web sitelerinden komple yeniden tasarıma kadar, her büyüklükteki işletme için uçtan uca web çözümleri sunuyorum.'}
+					: 'Kurumsal web sitesi, e-ticaret sitesi, portfolyo ve landing page yapımından komple web sitesi yenilemeye kadar, İstanbul\'daki işletmeler için SEO uyumlu ve mobil uyumlu web tasarım çözümleri sunuyorum.'}
 			</p>
 		</div>
 
@@ -298,6 +321,153 @@
 				{isEn ? 'View All Services' : 'Tüm Hizmetleri Gör'}
 				<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 			</Button>
+		</div>
+	</Container>
+</Section>
+
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+<!-- Web Site Yapımı Süreci / Website Building Process -->
+<Section padding="lg" background="muted">
+	<Container>
+		<div class="text-center max-w-2xl mx-auto mb-16">
+			<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				{isEn ? 'My Process' : 'Çalışma Sürecim'}
+			</Badge>
+			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+				{isEn ? 'How I Build Your Website' : 'Web Site Yapımı Süreci'}
+			</h2>
+			<p class="mt-4 text-lg text-muted-foreground">
+				{isEn
+					? 'A clear, transparent process from initial discovery to launch and beyond.'
+					: 'İstanbul\'da web site yaptırmak isteyenler için keşiften yayınlamaya kadar şeffaf bir süreç.'}
+			</p>
+		</div>
+
+		<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+			{#each [
+				{
+					step: '01',
+					titleEn: 'Discovery & Planning',
+					titleTr: 'Keşif & Planlama',
+					descEn: 'We discuss your goals, target audience, and requirements. I create a detailed plan and sitemap for your project.',
+					descTr: 'İşletmenizin hedeflerini, hedef kitlenizi ve ihtiyaçlarınızı analiz ediyorum. Web site yapımı için detaylı bir plan ve site haritası oluşturuyorum.',
+					icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2 M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v0a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z'
+				},
+				{
+					step: '02',
+					titleEn: 'Design',
+					titleTr: 'Tasarım',
+					descEn: 'I create custom mockups focusing on your brand identity, user experience, and conversion optimization.',
+					descTr: 'Markanıza özel, kullanıcı deneyimi odaklı ve dönüşüm optimizasyonlu web tasarım mockup\'ları hazırlıyorum. Mobil uyumlu tasarım önceliğimdir.',
+					icon: 'M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7 M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z'
+				},
+				{
+					step: '03',
+					titleEn: 'Development',
+					titleTr: 'Geliştirme',
+					descEn: 'Your website is built with modern technology — fast, secure, and SEO-optimized from the ground up.',
+					descTr: 'Web sitenizi modern web yazılım teknolojileri ile geliştiriyorum. SEO uyumlu, hızlı yüklenen ve güvenli bir altyapı kuruyorum.',
+					icon: 'M16 18l6-6-6-6 M8 6l-6 6 6 6'
+				},
+				{
+					step: '04',
+					titleEn: 'Launch & Support',
+					titleTr: 'Yayınlama & Destek',
+					descEn: 'After thorough testing, your site goes live. I provide ongoing support and maintenance to keep it running smoothly.',
+					descTr: 'Kapsamlı testlerden sonra web sitenizi yayına alıyorum. Yayın sonrası teknik destek, bakım ve güncelleme hizmeti sunuyorum.',
+					icon: 'M5 12l5 5L20 7'
+				}
+			] as process}
+				<InView animation="fade-up">
+					<div class="relative p-6 rounded-2xl bg-card border border-border/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center">
+						<div class="text-5xl font-black text-primary/15 mb-2">{process.step}</div>
+						<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d={process.icon}/></svg>
+						</div>
+						<h3 class="text-lg font-bold mb-2">{isEn ? process.titleEn : process.titleTr}</h3>
+						<p class="text-sm text-muted-foreground">{isEn ? process.descEn : process.descTr}</p>
+					</div>
+				</InView>
+			{/each}
+		</div>
+	</Container>
+</Section>
+
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+<!-- Her Sektöre Özel Web Site Yapımı / Industry-Specific Websites -->
+<Section padding="lg">
+	<Container>
+		<div class="text-center max-w-2xl mx-auto mb-16">
+			<Badge variant="outline" class="mb-6 border-accent/40 text-accent bg-accent/10 text-xs font-semibold uppercase tracking-wider">
+				{isEn ? 'Industry Solutions' : 'Sektörel Çözümler'}
+			</Badge>
+			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
+				{isEn ? 'Websites for Every Industry' : 'Her Sektöre Özel Web Site Yapımı'}
+			</h2>
+			<p class="mt-4 text-lg text-muted-foreground">
+				{isEn
+					? 'Tailored web solutions designed for the unique needs of your industry.'
+					: 'İstanbul\'da her sektöre özel, profesyonel web site yapımı ve web tasarım hizmetleri sunuyorum.'}
+			</p>
+		</div>
+
+		<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+			{#each [
+				{
+					titleEn: 'Corporate Websites',
+					titleTr: 'Kurumsal Web Sitesi',
+					descEn: 'Professional corporate websites that establish credibility and showcase your brand to clients and partners.',
+					descTr: 'Şirketinizin güvenilirliğini artıran, marka kimliğinizi yansıtan profesyonel kurumsal web sitesi yapımı. SEO uyumlu, hızlı ve mobil uyumlu kurumsal çözümler.',
+					icon: 'M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z M9 22V12h6v10'
+				},
+				{
+					titleEn: 'E-Commerce Websites',
+					titleTr: 'E-Ticaret Web Sitesi',
+					descEn: 'Online stores with seamless shopping experiences, secure payments, and inventory management.',
+					descTr: 'Güvenli ödeme altyapısı, ürün yönetimi ve SEO uyumlu e-ticaret web sitesi yapımı. İstanbul\'daki işletmenizi online satışa açın.',
+					icon: 'M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z M3 6h18 M16 10a4 4 0 0 1-8 0'
+				},
+				{
+					titleEn: 'Portfolio & Personal',
+					titleTr: 'Kişisel & Portfolyo Sitesi',
+					descEn: 'Stunning portfolio websites for freelancers, artists, and professionals to showcase their work.',
+					descTr: 'Freelancer, sanatçı ve profesyoneller için etkileyici kişisel web sitesi ve portfolyo sitesi yapımı. Çalışmalarınızı en iyi şekilde sergileyin.',
+					icon: 'M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2 M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z'
+				},
+				{
+					titleEn: 'Restaurant & Cafe',
+					titleTr: 'Restoran & Kafe Web Sitesi',
+					descEn: 'Appetizing websites for restaurants and cafes with online menus, reservations, and location info.',
+					descTr: 'Online menü, rezervasyon sistemi ve konum bilgisi içeren restoran ve kafe web sitesi yapımı. İstanbul\'daki restoranınız için dijital varlık oluşturun.',
+					icon: 'M18 8h1a4 4 0 0 1 0 8h-1 M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z M6 1v3 M10 1v3 M14 1v3'
+				},
+				{
+					titleEn: 'Healthcare & Clinic',
+					titleTr: 'Sağlık & Klinik Web Sitesi',
+					descEn: 'Trust-building healthcare websites for clinics, dentists, and medical professionals.',
+					descTr: 'Klinik, diş hekimi ve sağlık profesyonelleri için güven oluşturan sağlık sektörü web sitesi yapımı. Hasta randevu sistemi ve hizmet tanıtımı.',
+					icon: 'M22 12h-4l-3 9L9 3l-3 9H2'
+				},
+				{
+					titleEn: 'Start-up & SaaS',
+					titleTr: 'Start-up & SaaS Web Sitesi',
+					descEn: 'High-converting landing pages and product websites for tech start-ups and SaaS companies.',
+					descTr: 'Teknoloji start-up\'ları ve SaaS şirketleri için yüksek dönüşüm oranına sahip landing page ve ürün web sitesi yapımı.',
+					icon: 'M13 2L3 14h9l-1 8 10-12h-9l1-8z'
+				}
+			] as industry}
+				<InView animation="fade-up">
+					<div class="group p-6 rounded-2xl bg-card border border-border/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+						<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+							<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary group-hover:text-white transition-colors"><path d={industry.icon}/></svg>
+						</div>
+						<h3 class="text-lg font-bold mb-2">{isEn ? industry.titleEn : industry.titleTr}</h3>
+						<p class="text-sm text-muted-foreground">{isEn ? industry.descEn : industry.descTr}</p>
+					</div>
+				</InView>
+			{/each}
 		</div>
 	</Container>
 </Section>

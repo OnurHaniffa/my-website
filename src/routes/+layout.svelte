@@ -79,8 +79,14 @@
 					'Web Development',
 					'Website Redesign',
 					'UI/UX Design',
-					'SEO Optimization'
+					'SEO Optimization',
+					'Web Site Yapımı',
+					'Web Tasarım',
+					'Kurumsal Web Sitesi',
+					'E-Ticaret Web Sitesi',
+					'Web Yazılım'
 				],
+				availableLanguage: ['English', 'Turkish'],
 				priceRange: '$$',
 				openingHoursSpecification: {
 					'@type': 'OpeningHoursSpecification',
