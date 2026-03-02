@@ -1,38 +1,40 @@
-# sv
+# onurhaniffa.com — Personal Portfolio & Freelance Website
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+> **Live:** [onurhaniffa.com](https://onurhaniffa.com)
 
-## Creating a project
+Personal portfolio and freelance business website featuring custom interactive UI components, a headless CMS, bilingual content, and performance testing.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Features
 
-```sh
-# create a new project in the current directory
-npx sv create
+- **Custom SVG Gauge:** Interactive speedometer UI with clickable arc segments and curved text
+- **10 Showcase Variants:** Different component layouts for presenting portfolio projects
+- **Headless CMS:** Directus 11 integration with graceful fallback when CMS is unavailable
+- **Internationalization:** Full English/Turkish support with hreflang tags and URL-based locale routing
+- **Animations:** Motion One + GSAP with `prefers-reduced-motion` respect
+- **Theme System:** OKLCH-based dark/light mode
+- **Contact Form:** Rate limiting, honeypot field, XSS sanitization via Resend API
+- **Testing:** Playwright performance tests across multiple viewports
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Tech Stack
 
-## Developing
+- **Framework:** SvelteKit 2, Svelte 5 (runes API)
+- **Language:** TypeScript (strict mode)
+- **Styling:** Tailwind CSS 4
+- **CMS:** Directus 11 (Docker Compose)
+- **Animations:** GSAP, Motion One
+- **Testing:** Playwright
+- **Deployment:** Vercel
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Getting Started
 
-```sh
+```bash
+npm install
 npm run dev
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+# Optional: Start Directus CMS
+docker compose up -d
 ```
 
-## Building
+## Built By
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+**Onur Haniffa** — [onurhaniffa.com](https://onurhaniffa.com) · [LinkedIn](https://linkedin.com/in/onurhaniffa) · [GitHub](https://github.com/OnurHaniffa)
