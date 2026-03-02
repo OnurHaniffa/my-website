@@ -28,3 +28,6 @@ directus/uploads/
 
 # Test results
 test-results/
+
+# Claude Code
+CLAUDE.md
