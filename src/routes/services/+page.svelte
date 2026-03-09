@@ -128,7 +128,9 @@
 		{ question: t('services.faq_1_q'), answer: t('services.faq_1_a') },
 		{ question: t('services.faq_2_q'), answer: t('services.faq_2_a') },
 		{ question: t('services.faq_3_q'), answer: t('services.faq_3_a') },
-		{ question: t('services.faq_4_q'), answer: t('services.faq_4_a') }
+		{ question: t('services.faq_4_q'), answer: t('services.faq_4_a') },
+		{ question: t('services.faq_5_q'), answer: t('services.faq_5_a') },
+		{ question: t('services.faq_6_q'), answer: t('services.faq_6_a') }
 	]);
 
 	const faqs = $derived(data.faqs?.length ? data.faqs : fallbackFaqs);

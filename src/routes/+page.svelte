@@ -370,12 +370,12 @@
 
 							<div class="flex gap-6 pt-4 border-t border-white/10 mt-auto">
 								<div>
-									<p class="text-white text-sm font-bold">100+</p>
-									<p class="text-[7px] text-white/50">Happy Clients</p>
+									<p class="text-white text-sm font-bold">5.0</p>
+									<p class="text-[7px] text-white/50">Client Rating</p>
 								</div>
 								<div>
-									<p class="text-white text-sm font-bold">5 Stars</p>
-									<p class="text-[7px] text-white/50">Average Rating</p>
+									<p class="text-white text-sm font-bold">Fast</p>
+									<p class="text-[7px] text-white/50">Delivery</p>
 								</div>
 								<div>
 									<p class="text-white text-sm font-bold">24/7</p>
