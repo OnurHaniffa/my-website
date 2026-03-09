@@ -11,12 +11,10 @@
 
 	let { children, data } = $props();
 
-	// Set locale from server data first (for SSR correctness)
-	$effect(() => {
-		setLocaleFromServer(data.locale as 'en' | 'tr');
-	});
+	// Set locale from server data immediately (must run before render for SSR)
+	setLocaleFromServer(data.locale as 'en' | 'tr');
 
-	// Then initialize from URL on client
+	// Then initialize from URL on client (handles localStorage sync)
 	initLocale();
 
 	const locale = $derived(data.locale ?? 'en');
