@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.css';
-	import { Header, Footer } from '$lib/components/layout';
+	import { Header, Footer, WhatsAppButton } from '$lib/components/layout';
 	import { afterNavigate } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { inject } from '@vercel/analytics';
@@ -197,3 +197,4 @@
 	</main>
 	<Footer settings={data.footerSettings} />
 </div>
+<WhatsAppButton />

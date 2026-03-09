@@ -331,9 +331,11 @@
 					<!-- Hero image website demo -->
 					<div class="aspect-[4/3] relative overflow-hidden">
 						<img
-							src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=450&fit=crop&q=75"
-							alt="Professional team"
+							src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=450&fit=crop&q=50&fm=webp"
+							alt="Professional website design mockup showing a modern business website"
 							fetchpriority="high"
+							width="600"
+							height="450"
 							class="absolute inset-0 w-full h-full object-cover"
 						/>
 						<div class="absolute inset-0 bg-gradient-to-r from-stone-900/90 via-stone-900/70 to-stone-900/50"></div>
@@ -391,9 +393,11 @@
 						<div class="absolute top-2.5 left-1/2 -translate-x-1/2 w-10 h-1 bg-zinc-800 rounded-full z-10"></div>
 						<div class="rounded-[1.5rem] aspect-[9/16] relative overflow-hidden">
 							<img
-								src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=150&h=260&fit=crop&q=70"
-								alt=""
+								src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=150&h=260&fit=crop&q=40&fm=webp"
+								alt="Mobile responsive website design preview"
 								loading="lazy"
+								width="150"
+								height="260"
 								class="absolute inset-0 w-full h-full object-cover"
 							/>
 							<div class="absolute inset-0 bg-gradient-to-b from-stone-900/90 via-stone-900/70 to-stone-900/90"></div>
