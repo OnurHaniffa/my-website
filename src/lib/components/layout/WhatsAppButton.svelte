@@ -5,7 +5,7 @@
 	let showTooltip = $state(false);
 
 	// WhatsApp number - Turkey format without + or spaces
-	const whatsappNumber = '905550123456'; // TODO: Replace with your actual WhatsApp number
+	const whatsappNumber = '905428324550';
 	const defaultMessage = encodeURIComponent('Merhaba! Web sitesi hakkında bilgi almak istiyorum.');
 	const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
 
