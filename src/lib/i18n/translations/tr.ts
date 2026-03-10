@@ -116,7 +116,7 @@ export const tr = {
 		testimonial_quote: 'Onur web sitem \u00fczerinde m\u00fckemmel bir iş \u00e7ıkardı. \u0130letişimi harikaydı ve web sitem i\u00e7in gereken her noktayı teslim etti.',
 		faq_heading: 'SSS',
 		faq_1_q: 'Web sitesi yaptırmak ne kadar?',
-		faq_1_a: 'Tek sayfalık tanıtım sitesi 15.000 TL\'den, kurumsal web sitesi 40.000 TL\'den, e-ticaret projeleri 80.000 TL\'den başlar. Ücretsiz keşif görüşmesinden sonra sabit fiyat teklifi sunuyorum\u2014saatlik sürpriz veya gizli ücret yok.',
+		faq_1_a: 'Tek sayfalık tanıtım sitesi 15.000 TL\'den, kurumsal web sitesi 30.000 TL\'den, e-ticaret projeleri 75.000 TL\'den başlar. Ücretsiz keşif görüşmesinden sonra sabit fiyat teklifi sunuyorum\u2014saatlik sürpriz veya gizli ücret yok.',
 		faq_2_q: 'Web sitesi ne kadar sürede hazır olur?',
 		faq_2_a: 'Tek sayfalık site 1-2 hafta, kurumsal web sitesi 3-4 hafta, e-ticaret projeleri 4-8 hafta sürer. Süre, içerik ve geri bildirim hızınıza bağlıdır.',
 		faq_3_q: 'İçerik ve görsel sağlamam gerekiyor mu?',

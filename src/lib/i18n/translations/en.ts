@@ -116,7 +116,7 @@ export const en = {
 		testimonial_quote: 'Onur did an excellent job on my website. He was great to communicate with and delivered on every point needed for my website.',
 		faq_heading: 'FAQ',
 		faq_1_q: 'How much does a website cost?',
-		faq_1_a: "A single-page landing site starts from $500, a multi-page business website from $1,500, and e-commerce projects from $3,000. After a free discovery call, I provide a fixed quote\u2014no hourly surprises or hidden fees.",
+		faq_1_a: "A single-page landing site starts from $500, a multi-page business website from $1,000, and e-commerce projects from $2,500. After a free discovery call, I provide a fixed quote\u2014no hourly surprises or hidden fees.",
 		faq_2_q: 'How long does it take to build a website?',
 		faq_2_a: "A landing page takes 1-2 weeks, a full business website 3-4 weeks, and e-commerce projects 4-8 weeks. Timeline depends on how quickly you provide content and feedback.",
 		faq_3_q: 'Do I need to provide content and images?',
