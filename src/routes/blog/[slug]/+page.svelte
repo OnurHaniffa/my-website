@@ -20,6 +20,37 @@
 		month: 'long',
 		day: 'numeric'
 	}));
+
+	function markdownToHtml(md: string): string {
+		let html = md
+			// Headings
+			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
+			.replace(/^## (.*$)/gim, '<h2>$1</h2>')
+			// Bold
+			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+			// List items
+			.replace(/^- (.*$)/gim, '<li>$1</li>');
+
+		// Wrap consecutive <li> in <ul>
+		html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`);
+
+		// Split into blocks by double newline
+		const blocks = html.split(/\n\n+/);
+		const processed = blocks.map(block => {
+			const trimmed = block.trim();
+			if (!trimmed) return '';
+			// Don't wrap if already an HTML block element
+			if (/^<(h[2-6]|ul|ol|li|blockquote|div|table|pre)/.test(trimmed)) {
+				return trimmed;
+			}
+			// Wrap plain text in <p>, handle single newlines as <br>
+			return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
+		});
+
+		return processed.filter(Boolean).join('\n');
+	}
+
+	const htmlContent = $derived(markdownToHtml(content));
 </script>
 
 <svelte:head>
@@ -58,9 +89,10 @@
 	})}</script>`}
 </svelte:head>
 
-<Section padding="none" class="relative pt-32 pb-8 lg:pt-40 lg:pb-12">
+<!-- Blog Header -->
+<Section padding="none" class="relative pt-24 pb-6 lg:pt-28 lg:pb-8">
 	<Container size="content">
-		<a href={getLocalePath('/blog')} class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
+		<a href={getLocalePath('/blog')} class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 			{isEn ? 'Back to Blog' : 'Bloga Dön'}
 		</a>
@@ -72,15 +104,15 @@
 			<time class="text-xs text-muted-foreground">{formattedDate}</time>
 		</div>
 
-		<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-6">
+		<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-4">
 			{title}
 		</h1>
 
-		<p class="text-lg text-muted-foreground leading-relaxed mb-8">
+		<p class="text-lg text-muted-foreground leading-relaxed mb-6">
 			{description}
 		</p>
 
-		<div class="flex items-center gap-3 pb-8 border-b border-border">
+		<div class="flex items-center gap-3 pb-6 border-b border-border">
 			<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white font-bold text-sm">OH</div>
 			<div>
 				<p class="font-medium text-sm">Onur Haniffa</p>
@@ -90,21 +122,11 @@
 	</Container>
 </Section>
 
-<Section padding="lg">
+<!-- Blog Body -->
+<Section padding="none" class="py-10 lg:py-14">
 	<Container size="content">
-		<article class="prose prose-lg dark:prose-invert max-w-none prose-headings:tracking-tight prose-a:text-primary prose-a:no-underline hover:prose-a:underline">
-			{@html content
-				.replace(/^## (.*$)/gim, '<h2>$1</h2>')
-				.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-				.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-				.replace(/^- (.*$)/gim, '<li>$1</li>')
-				.replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
-				.replace(/\n\n/g, '</p><p>')
-				.replace(/^(?!<[hul])/gm, '<p>')
-				.replace(/<p><\/p>/g, '')
-				.replace(/<p>(<[hul])/g, '$1')
-				.replace(/(<\/[hul][l2-6]?>)<\/p>/g, '$1')
-			}
+		<article class="blog-content">
+			{@html htmlContent}
 		</article>
 
 		<!-- CTA -->
@@ -123,3 +145,92 @@
 		</div>
 	</Container>
 </Section>
+
+<style>
+	/* Blog article typography */
+	.blog-content :global(h2) {
+		font-size: 1.75rem;
+		font-weight: 700;
+		letter-spacing: -0.025em;
+		color: var(--foreground);
+		margin-top: 3rem;
+		margin-bottom: 1rem;
+		padding-bottom: 0.5rem;
+		border-bottom: 1px solid hsl(var(--border) / 0.3);
+	}
+
+	.blog-content :global(h2:first-child) {
+		margin-top: 0;
+	}
+
+	.blog-content :global(h3) {
+		font-size: 1.25rem;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--foreground);
+		margin-top: 2rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.blog-content :global(p) {
+		font-size: 1.0625rem;
+		line-height: 1.8;
+		color: hsl(var(--muted-foreground));
+		margin-bottom: 1.25rem;
+	}
+
+	.blog-content :global(strong) {
+		color: var(--foreground);
+		font-weight: 600;
+	}
+
+	.blog-content :global(ul) {
+		margin-top: 0.5rem;
+		margin-bottom: 1.5rem;
+		padding-left: 0;
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.blog-content :global(li) {
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		color: hsl(var(--muted-foreground));
+		padding-left: 1.5rem;
+		position: relative;
+	}
+
+	.blog-content :global(li::before) {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0.7em;
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: hsl(var(--primary));
+		opacity: 0.7;
+	}
+
+	.blog-content :global(a) {
+		color: hsl(var(--primary));
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.blog-content :global(a:hover) {
+		text-decoration: underline;
+	}
+
+	/* Responsive adjustments */
+	@media (min-width: 640px) {
+		.blog-content :global(h2) {
+			font-size: 2rem;
+		}
+		.blog-content :global(h3) {
+			font-size: 1.375rem;
+		}
+	}
+</style>
