@@ -260,7 +260,7 @@
 					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
 						{t('home.hero_pre')} <span class="relative inline-block">{t('home.hero_highlight_prefix')}<span class="text-primary">{settings?.hero_highlight_word ?? t('home.hero_highlight')}</span>
 							<!-- Curly underline -->
-							<svg bind:this={curlyLine} class="absolute -bottom-6 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+							<svg bind:this={curlyLine} class="absolute -bottom-8 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 								<path
 									d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12"
 									stroke="currentColor"

@@ -95,9 +95,9 @@
 		: 'bg-muted/80 backdrop-blur-md border-b border-transparent'}"
 >
 	<Container>
-		<div class="flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
-			<!-- Logo -->
-			<a href={getLocalePath('/')} data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80">
+		<div class="relative flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
+			<!-- Logo - fixed width to prevent shift when nav text changes between languages -->
+			<a href={getLocalePath('/')} data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80 flex-shrink-0">
 				<!-- Decorative line -->
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 				<!-- Logo text -->
@@ -109,8 +109,8 @@
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 			</a>
 
-			<!-- Desktop Navigation -->
-			<nav class="hidden md:flex items-center gap-1">
+			<!-- Desktop Navigation - absolutely centered so it doesn't shift with varying logo/CTA widths -->
+			<nav class="hidden md:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
 				{#each navItems as item}
 					<a
 						href={item.href}
@@ -131,7 +131,7 @@
 			</nav>
 
 			<!-- Desktop CTA + Menu Button -->
-			<div class="flex items-center gap-3">
+			<div class="flex items-center gap-3 flex-shrink-0">
 				<!-- Language Switcher -->
 				<LanguageSwitcher />
 
