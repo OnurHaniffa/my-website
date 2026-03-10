@@ -110,16 +110,16 @@
 			</a>
 
 			<!-- Desktop Navigation - absolutely centered so it doesn't shift with varying logo/CTA widths -->
-			<nav class="hidden md:flex items-center gap-0.5 absolute left-1/2 -translate-x-1/2">
+			<nav class="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
 				{#each navItems as item}
 					<a
 						href={item.href}
-						class="group relative px-3.5 lg:px-5 py-2.5 text-sm font-semibold tracking-normal lg:tracking-wide transition-all duration-300 rounded-xl whitespace-nowrap
+						class="group relative px-2.5 lg:px-4 py-2 text-[13px] font-semibold tracking-normal transition-all duration-300 rounded-lg whitespace-nowrap
 							{isActive(item.href, $page.url.pathname)
 								? 'text-primary bg-primary/10 shadow-sm'
 								: 'text-muted-foreground hover:text-foreground hover:bg-muted/70'}"
 					>
-						<span class="relative z-10 uppercase transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
+						<span class="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
 						<!-- Active indicator line -->
 						{#if isActive(item.href, $page.url.pathname)}
 							<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-primary rounded-full"></span>

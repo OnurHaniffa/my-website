@@ -246,10 +246,10 @@
 	<div aria-hidden="true" class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
 	<div aria-hidden="true" class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
 
-	<Container class="relative pt-24 pb-20 lg:pt-28 lg:pb-28">
+	<Container class="relative pt-8 pb-12 lg:pt-12 lg:pb-16">
 		<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 			<!-- Left Content -->
-			<div bind:this={heroContent} class="space-y-6 sm:space-y-8 lg:space-y-10">
+			<div bind:this={heroContent} class="space-y-4 sm:space-y-5">
 				<Badge variant="outline" class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
 					{settings?.hero_badge_text ?? t('home.hero_badge')}
@@ -257,7 +257,7 @@
 
 				<!-- Headline with animated underline -->
 				<div class="relative">
-					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2]">
+					<h1 class="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl leading-[1.15]">
 						{t('home.hero_pre')} <span class="relative inline-block pb-2">{t('home.hero_highlight_prefix')}<span class="text-primary">{settings?.hero_highlight_word ?? t('home.hero_highlight')}</span>
 							<!-- Curly underline -->
 							<svg bind:this={curlyLine} class="absolute bottom-0 left-0 w-full h-3" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
@@ -281,7 +281,7 @@
 				</p>
 
 				<!-- Quick Stats -->
-				<div class="flex flex-wrap gap-6 sm:gap-8 py-4">
+				<div class="flex flex-wrap gap-6 sm:gap-8 py-2">
 					<div class="text-center">
 						<p class="text-3xl font-bold text-primary">&le;<Counter value={24} duration={2500} suffix={t('home.stat_1_suffix')} /></p>
 						<p class="text-sm text-muted-foreground">{settings?.stat_1_label ?? t('home.stat_1_label')}</p>
@@ -299,11 +299,11 @@
 				</div>
 
 				<div class="flex flex-wrap gap-4">
-					<Button size="lg" href={getLocalePath('/work')} class="group text-base px-10 py-7 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
+					<Button size="lg" href={getLocalePath('/work')} class="group text-sm px-8 py-5 rounded-full shadow-2xl shadow-primary/40 hover:shadow-[0_20px_50px_-10px] hover:shadow-primary/50 hover:scale-[1.02] font-semibold focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-all duration-300">
 						{settings?.view_work_button ?? t('home.view_work')}
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<Button size="lg" variant="ghost" href={getLocalePath('/contact')} class="text-base px-8 py-6 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
+					<Button size="lg" variant="ghost" href={getLocalePath('/contact')} class="text-sm px-6 py-5 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none transition-colors duration-300">
 						{settings?.lets_talk_button ?? t('home.lets_talk')}
 					</Button>
 				</div>
