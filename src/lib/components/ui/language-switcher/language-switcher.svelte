@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { getLocale, type Locale } from '$lib/i18n/index.svelte';
+	import { getLocale, setLocale, type Locale } from '$lib/i18n/index.svelte';
 
 	const languages: { code: Locale; flag: string; label: string }[] = [
 		{ code: 'en', flag: '\ud83c\uddec\ud83c\udde7', label: 'EN' },
@@ -17,15 +17,16 @@
 		open = false;
 		const currentPath = $page.url.pathname;
 
+		// Set locale immediately so translations update
+		setLocale(code);
+
 		if (code === 'tr') {
-			// Navigate to /tr/... version
 			const cleanPath = currentPath.replace(/^\/tr/, '') || '/';
 			const newPath = `/tr${cleanPath === '/' ? '' : cleanPath}`;
-			goto(newPath);
+			goto(newPath, { invalidateAll: true });
 		} else {
-			// Navigate to English version (strip /tr prefix)
 			const cleanPath = currentPath.replace(/^\/tr/, '') || '/';
-			goto(cleanPath);
+			goto(cleanPath, { invalidateAll: true });
 		}
 	}
 
