@@ -246,7 +246,7 @@
 	<div aria-hidden="true" class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
 	<div aria-hidden="true" class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
 
-	<Container class="relative pt-36 pb-24 lg:pt-44 lg:pb-36">
+	<Container class="relative pt-24 pb-20 lg:pt-28 lg:pb-28">
 		<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 			<!-- Left Content -->
 			<div bind:this={heroContent} class="space-y-6 sm:space-y-8 lg:space-y-10">
@@ -257,10 +257,10 @@
 
 				<!-- Headline with animated underline -->
 				<div class="relative">
-					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-						{t('home.hero_pre')} <span class="relative inline-block">{t('home.hero_highlight_prefix')}<span class="text-primary">{settings?.hero_highlight_word ?? t('home.hero_highlight')}</span>
+					<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2]">
+						{t('home.hero_pre')} <span class="relative inline-block pb-2">{t('home.hero_highlight_prefix')}<span class="text-primary">{settings?.hero_highlight_word ?? t('home.hero_highlight')}</span>
 							<!-- Curly underline -->
-							<svg bind:this={curlyLine} class="absolute -bottom-8 left-0 w-full h-6" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+							<svg bind:this={curlyLine} class="absolute bottom-0 left-0 w-full h-3" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 								<path
 									d="M0 12 Q 25 2, 50 12 T 100 12 T 150 12 T 200 12"
 									stroke="currentColor"

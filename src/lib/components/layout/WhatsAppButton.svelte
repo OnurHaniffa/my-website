@@ -1,24 +1,37 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { getLocale } from '$lib/i18n/index.svelte';
 
 	let visible = $state(false);
 	let showTooltip = $state(false);
 
-	// WhatsApp number - Turkey format without + or spaces
 	const whatsappNumber = '905428324550';
-	const defaultMessage = encodeURIComponent('Merhaba! Web sitesi hakkında bilgi almak istiyorum.');
-	const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${defaultMessage}`;
+
+	const messages = {
+		en: 'Hello! I would like to learn more about your web design services.',
+		tr: 'Merhaba! Web sitesi hakkında bilgi almak istiyorum.'
+	};
+
+	const tooltips = {
+		en: { title: 'Message us on WhatsApp', subtitle: 'Quick response' },
+		tr: { title: 'WhatsApp ile yazın', subtitle: 'Hızlı yanıt alın' }
+	};
+
+	const ariaLabels = {
+		en: 'Contact us on WhatsApp',
+		tr: 'WhatsApp ile iletişime geçin'
+	};
+
+	const locale = $derived(getLocale());
+	const whatsappUrl = $derived(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messages[locale])}`);
 
 	onMount(() => {
-		// Show button after a short delay so it doesn't compete with page load
 		const timer = setTimeout(() => {
 			visible = true;
 		}, 2000);
 
-		// Show tooltip after 5 seconds to draw attention
 		const tooltipTimer = setTimeout(() => {
 			showTooltip = true;
-			// Auto-hide tooltip after 5 seconds
 			setTimeout(() => {
 				showTooltip = false;
 			}, 5000);
@@ -39,8 +52,8 @@
 			<div
 				class="bg-card text-card-foreground text-sm px-4 py-2.5 rounded-xl shadow-lg border border-border/50 whitespace-nowrap animate-fade-in max-w-[200px]"
 			>
-				<p class="font-medium">WhatsApp ile yazın</p>
-				<p class="text-xs text-muted-foreground">Hızlı yanıt alın</p>
+				<p class="font-medium">{tooltips[locale].title}</p>
+				<p class="text-xs text-muted-foreground">{tooltips[locale].subtitle}</p>
 				<!-- Arrow pointing left toward button -->
 				<div class="absolute left-[-6px] bottom-4 w-3 h-3 bg-card border-l border-b border-border/50 rotate-45"></div>
 			</div>
@@ -51,7 +64,7 @@
 			href={whatsappUrl}
 			target="_blank"
 			rel="noopener noreferrer"
-			aria-label="WhatsApp ile iletişime geçin"
+			aria-label={ariaLabels[locale]}
 			class="group flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BD5A] shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 animate-fade-in"
 		>
 			<svg
