@@ -246,10 +246,10 @@
 	<div aria-hidden="true" class="hidden lg:block absolute bottom-20 left-[5%] w-64 h-64 rounded-full border border-primary/5 pointer-events-none"></div>
 	<div aria-hidden="true" class="hidden lg:block absolute -bottom-20 right-[20%] w-96 h-96 rounded-full bg-primary/[0.03] pointer-events-none"></div>
 
-	<Container class="relative pt-8 pb-12 lg:pt-12 lg:pb-16">
-		<div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+	<Container class="relative pt-6 pb-10 lg:pt-10 lg:pb-14">
+		<div class="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 			<!-- Left Content -->
-			<div bind:this={heroContent} class="space-y-4 sm:space-y-5">
+			<div bind:this={heroContent} class="space-y-3 sm:space-y-4">
 				<Badge variant="outline" class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
 					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse"></span>
 					{settings?.hero_badge_text ?? t('home.hero_badge')}
