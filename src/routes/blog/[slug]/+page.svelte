@@ -231,13 +231,14 @@
 <style>
 	/* ═══════════════════════════════════════════════
 	   BLOG ARTICLE TYPOGRAPHY & VISUAL DESIGN
+	   Uses color-mix() for opacity since vars are OKLCH
 	   ═══════════════════════════════════════════════ */
 
 	/* --- Sections --- */
 	.blog-content :global(.blog-section) {
 		margin-top: 2.5rem;
 		padding-top: 2rem;
-		border-top: 1px solid hsl(var(--border) / 0.3);
+		border-top: 1px solid color-mix(in oklch, var(--border), transparent 70%);
 	}
 
 	.blog-content :global(.blog-section:first-child) {
@@ -262,8 +263,8 @@
 	.blog-content :global(.h2-number) {
 		font-size: 0.8rem;
 		font-weight: 700;
-		color: hsl(var(--primary));
-		background: hsl(var(--primary) / 0.08);
+		color: var(--primary);
+		background: color-mix(in oklch, var(--primary), transparent 90%);
 		padding: 0.2rem 0.5rem;
 		border-radius: 0.375rem;
 		flex-shrink: 0;
@@ -279,14 +280,14 @@
 		margin-top: 1.75rem;
 		margin-bottom: 0.5rem;
 		padding-left: 0.75rem;
-		border-left: 2px solid hsl(var(--primary) / 0.4);
+		border-left: 2px solid color-mix(in oklch, var(--primary), transparent 60%);
 	}
 
 	/* --- Paragraphs --- */
 	.blog-content :global(p) {
 		font-size: 1.0625rem;
 		line-height: 1.8;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		margin-bottom: 1.25rem;
 	}
 
@@ -306,7 +307,7 @@
 	/* --- Inline code --- */
 	.blog-content :global(code) {
 		font-size: 0.9em;
-		background: hsl(var(--muted));
+		background: var(--muted);
 		padding: 0.15rem 0.4rem;
 		border-radius: 0.25rem;
 		font-family: ui-monospace, monospace;
@@ -320,15 +321,15 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.375rem;
-		background: hsl(var(--muted) / 0.3);
+		background: color-mix(in oklch, var(--muted), transparent 60%);
 		border-radius: 0.625rem;
-		border: 1px solid hsl(var(--border) / 0.2);
+		border: 1px solid color-mix(in oklch, var(--border), transparent 80%);
 	}
 
 	.blog-content :global(li) {
 		font-size: 0.9375rem;
 		line-height: 1.65;
-		color: hsl(var(--muted-foreground));
+		color: var(--muted-foreground);
 		padding-left: 1.125rem;
 		position: relative;
 	}
@@ -341,7 +342,7 @@
 		width: 6px;
 		height: 6px;
 		border-radius: 50%;
-		background: hsl(var(--primary));
+		background: var(--primary);
 		opacity: 0.5;
 	}
 
@@ -362,9 +363,9 @@
 		align-items: flex-start;
 		gap: 0.625rem;
 		padding: 0.75rem 0.875rem;
-		background: hsl(var(--muted) / 0.25);
+		background: color-mix(in oklch, var(--muted), transparent 70%);
 		border-radius: 0.5rem;
-		border: 1px solid hsl(var(--border) / 0.15);
+		border: 1px solid color-mix(in oklch, var(--border), transparent 85%);
 		padding-left: 0.875rem;
 	}
 
@@ -380,8 +381,8 @@
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
-		background: hsl(var(--primary) / 0.1);
-		color: hsl(var(--primary));
+		background: color-mix(in oklch, var(--primary), transparent 90%);
+		color: var(--primary);
 		font-size: 0.75rem;
 		font-weight: 700;
 	}
@@ -391,22 +392,20 @@
 		margin: 1.5rem 0;
 		padding: 1.5rem;
 		border-radius: 0.875rem;
-		background: hsl(var(--card));
-		border: 1px solid hsl(var(--border) / 0.4);
-		box-shadow:
-			0 1px 3px hsl(var(--foreground) / 0.03),
-			0 4px 12px hsl(var(--foreground) / 0.02);
+		background: var(--card);
+		border: 1px solid color-mix(in oklch, var(--border), transparent 60%);
+		box-shadow: 0 1px 3px color-mix(in oklch, var(--foreground), transparent 97%);
 		transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 	}
 
 	.blog-content :global(.pricing-card:hover) {
-		border-color: hsl(var(--primary) / 0.3);
-		box-shadow: 0 4px 20px hsl(var(--primary) / 0.08);
+		border-color: color-mix(in oklch, var(--primary), transparent 70%);
+		box-shadow: 0 4px 20px color-mix(in oklch, var(--primary), transparent 92%);
 		transform: translateY(-1px);
 	}
 
 	.blog-content :global(.pricing-card h3) {
-		border-left: 2px solid hsl(var(--primary));
+		border-left: 2px solid var(--primary);
 		color: var(--foreground);
 		font-size: 1.125rem;
 		margin-top: 0;
@@ -414,15 +413,15 @@
 	}
 
 	.blog-content :global(.pricing-card ul) {
-		background: hsl(var(--muted) / 0.2);
+		background: color-mix(in oklch, var(--muted), transparent 75%);
 		margin-bottom: 0.5rem;
 	}
 
 	/* --- Links --- */
 	.blog-content :global(a) {
-		color: hsl(var(--primary));
+		color: var(--primary);
 		text-decoration: underline;
-		text-decoration-color: hsl(var(--primary) / 0.3);
+		text-decoration-color: color-mix(in oklch, var(--primary), transparent 70%);
 		text-underline-offset: 3px;
 		text-decoration-thickness: 1.5px;
 		font-weight: 500;
@@ -430,7 +429,7 @@
 	}
 
 	.blog-content :global(a:hover) {
-		text-decoration-color: hsl(var(--primary));
+		text-decoration-color: var(--primary);
 	}
 
 	/* --- Responsive --- */
