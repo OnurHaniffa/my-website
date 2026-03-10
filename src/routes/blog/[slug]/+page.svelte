@@ -31,9 +31,9 @@
 			// h3 first (before h2)
 			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
 			// h2 with section numbering and decorative styling
-			.replace(/^## (.*$)/gim, () => {
+			.replace(/^## (.*$)/gim, (_match, heading) => {
 				h2Counter++;
-				return `</section><section class="blog-section"><h2><span class="h2-number">0${h2Counter}</span>$1</h2>`;
+				return `</section><section class="blog-section"><h2><span class="h2-number">0${h2Counter}</span>${heading}</h2>`;
 			})
 			// Bold
 			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
