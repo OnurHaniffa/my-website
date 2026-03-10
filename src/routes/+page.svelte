@@ -225,7 +225,7 @@
 </svelte:head>
 
 <!-- Hero Section -->
-<Section padding="none" class="relative overflow-hidden">
+<Section padding="none" class="relative overflow-hidden min-h-[calc(100vh-85px)] flex flex-col justify-center">
 	<!-- BIG BOLD GLOW - prominent ambient effect -->
 	<div class="absolute inset-0 -z-10">
 		<div class="absolute inset-0 bg-gradient-to-br from-background via-background to-muted"></div>
