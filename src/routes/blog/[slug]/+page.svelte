@@ -21,63 +21,97 @@
 		day: 'numeric'
 	}));
 
-	// Count h2 headings for numbering
-	let h2Counter = 0;
-
-	function markdownToHtml(md: string): string {
-		h2Counter = 0;
-
-		let html = md
-			// h3 first (before h2)
-			.replace(/^### (.*$)/gim, '<h3>$1</h3>')
-			// h2 with section numbering and decorative styling
-			.replace(/^## (.*$)/gim, (_match, heading) => {
-				h2Counter++;
-				return `</section><section class="blog-section"><h2><span class="h2-number">0${h2Counter}</span>${heading}</h2>`;
-			})
-			// Bold
+	/** Apply inline markdown formatting */
+	function inline(text: string): string {
+		return text
 			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-			// Inline code
-			.replace(/`([^`]+)`/g, '<code>$1</code>')
-			// List items
-			.replace(/^- (.*$)/gim, '<li>$1</li>');
+			.replace(/`([^`]+)`/g, '<code>$1</code>');
+	}
 
-		// Wrap consecutive <li> in <ul>
-		html = html.replace(/(<li>.*<\/li>\n?)+/g, (match) => `<ul>${match}</ul>`);
+	/** Line-by-line markdown parser that correctly handles block structure */
+	function markdownToHtml(md: string): string {
+		const lines = md.split('\n');
+		const blocks: string[] = [];
+		let current: { type: 'ul' | 'ol' | 'p'; lines: string[] } | null = null;
+		let h2Count = 0;
 
-		// Detect pricing patterns and wrap in card (e.g., "15,000 - 30,000 TL" or "$500 - $1,500")
-		html = html.replace(
+		function flush() {
+			if (!current) return;
+			if (current.type === 'ul') {
+				blocks.push(`<ul>${current.lines.map(l => `<li>${inline(l)}</li>`).join('')}</ul>`);
+			} else if (current.type === 'ol') {
+				blocks.push(`<ol class="numbered-list">${current.lines.map(l => {
+					const m = l.match(/^(\d+)\.\s+(.*)/);
+					return m ? `<li class="numbered"><span class="num">${m[1]}</span>${inline(m[2])}</li>` : '';
+				}).join('')}</ol>`);
+			} else if (current.type === 'p') {
+				blocks.push(`<p>${current.lines.map(l => inline(l)).join('<br>')}</p>`);
+			}
+			current = null;
+		}
+
+		for (const line of lines) {
+			const trimmed = line.trim();
+
+			// Empty line — flush current block
+			if (!trimmed) { flush(); continue; }
+
+			// H2 heading
+			const h2 = trimmed.match(/^## (.+)$/);
+			if (h2) {
+				flush();
+				h2Count++;
+				const num = String(h2Count).padStart(2, '0');
+				blocks.push(`</section><section class="blog-section"><h2><span class="h2-number">${num}</span>${inline(h2[1])}</h2>`);
+				continue;
+			}
+
+			// H3 heading
+			const h3 = trimmed.match(/^### (.+)$/);
+			if (h3) { flush(); blocks.push(`<h3>${inline(h3[1])}</h3>`); continue; }
+
+			// Unordered list item
+			const ul = trimmed.match(/^- (.+)$/);
+			if (ul) {
+				if (current?.type !== 'ul') { flush(); current = { type: 'ul', lines: [] }; }
+				current!.lines.push(ul[1]);
+				continue;
+			}
+
+			// Ordered list item (1. 2. 3. etc)
+			const ol = trimmed.match(/^(\d+)\.\s+(.+)$/);
+			if (ol) {
+				if (current?.type !== 'ol') { flush(); current = { type: 'ol', lines: [] }; }
+				current!.lines.push(trimmed);
+				continue;
+			}
+
+			// Regular text — accumulate into paragraph
+			if (current?.type !== 'p') { flush(); current = { type: 'p', lines: [] }; }
+			current!.lines.push(trimmed);
+		}
+
+		flush();
+
+		let result = blocks.join('\n');
+
+		// Clean up leading </section> from first h2
+		result = result.replace(/^<\/section>/, '');
+
+		// Close last section
+		if (result.includes('<section class="blog-section">')) {
+			result += '</section>';
+		}
+
+		// Pricing card detection — wrap tier headings and their content
+		result = result.replace(
 			/<h3>(.*?(?:Tier|Kademe|Landing|E-Commerce|E-Ticaret|Business|Kurumsal|Advanced|Gelişmiş|Custom|Özel).*?)<\/h3>/gi,
 			'<div class="pricing-card"><h3>$1</h3>'
 		);
-		// Close pricing cards before next h3 or h2 or section end
-		html = html.replace(/<div class="pricing-card">([\s\S]*?)(?=<div class="pricing-card">|<\/section>|<h2|$)/g, (match) => {
+		result = result.replace(/<div class="pricing-card">([\s\S]*?)(?=<div class="pricing-card">|<\/section>|<h2|$)/g, (match) => {
 			if (!match.endsWith('</div>')) return match + '</div>';
 			return match;
 		});
-
-		// Detect numbered lists (1. 2. 3. etc)
-		html = html.replace(/^(\d+)\.\s+(.*$)/gim, '<li class="numbered"><span class="num">$1</span>$2</li>');
-		html = html.replace(/(<li class="numbered">.*<\/li>\n?)+/g, (match) => `<ol class="numbered-list">${match}</ol>`);
-
-		// Split into blocks by double newline
-		const blocks = html.split(/\n\n+/);
-		const processed = blocks.map(block => {
-			const trimmed = block.trim();
-			if (!trimmed) return '';
-			if (/^<(h[2-6]|ul|ol|li|blockquote|div|section|\/section|table|pre|code)/.test(trimmed)) {
-				return trimmed;
-			}
-			return `<p>${trimmed.replace(/\n/g, '<br>')}</p>`;
-		});
-
-		let result = processed.filter(Boolean).join('\n');
-		// Clean up empty section tags
-		result = result.replace(/<\/section><section class="blog-section">/, '<section class="blog-section">');
-		// Ensure last section is closed
-		if (result.includes('<section class="blog-section">') && !result.endsWith('</section>')) {
-			result += '</section>';
-		}
 
 		return result;
 	}
@@ -123,7 +157,6 @@
 
 <!-- Blog Header -->
 <Section padding="none" class="relative pt-24 pb-0 lg:pt-28">
-	<!-- Subtle background gradient -->
 	<div class="absolute inset-0 bg-gradient-to-b from-primary/[0.03] via-transparent to-transparent pointer-events-none"></div>
 
 	<Container size="content" class="relative">
@@ -147,7 +180,6 @@
 			{description}
 		</p>
 
-		<!-- Author row with share hint -->
 		<div class="flex items-center justify-between pb-8 border-b border-border/50">
 			<div class="flex items-center gap-3">
 				<div class="w-11 h-11 rounded-full bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center text-white font-bold text-sm ring-2 ring-primary/20">OH</div>
@@ -203,9 +235,9 @@
 
 	/* --- Sections --- */
 	.blog-content :global(.blog-section) {
-		margin-top: 3rem;
-		padding-top: 2.5rem;
-		border-top: 1px solid hsl(var(--border) / 0.4);
+		margin-top: 2.5rem;
+		padding-top: 2rem;
+		border-top: 1px solid hsl(var(--border) / 0.3);
 	}
 
 	.blog-content :global(.blog-section:first-child) {
@@ -216,11 +248,11 @@
 
 	/* --- H2 Headings with number accent --- */
 	.blog-content :global(h2) {
-		font-size: 1.75rem;
-		font-weight: 800;
-		letter-spacing: -0.03em;
+		font-size: 1.625rem;
+		font-weight: 700;
+		letter-spacing: -0.025em;
 		color: var(--foreground);
-		margin-bottom: 1.25rem;
+		margin-bottom: 1rem;
 		display: flex;
 		align-items: baseline;
 		gap: 0.75rem;
@@ -228,34 +260,41 @@
 	}
 
 	.blog-content :global(.h2-number) {
-		font-size: 0.875rem;
+		font-size: 0.8rem;
 		font-weight: 700;
 		color: hsl(var(--primary));
-		background: hsl(var(--primary) / 0.1);
-		padding: 0.25rem 0.625rem;
-		border-radius: 0.5rem;
+		background: hsl(var(--primary) / 0.08);
+		padding: 0.2rem 0.5rem;
+		border-radius: 0.375rem;
 		flex-shrink: 0;
 		font-variant-numeric: tabular-nums;
 	}
 
 	/* --- H3 Subheadings --- */
 	.blog-content :global(h3) {
-		font-size: 1.25rem;
-		font-weight: 700;
-		letter-spacing: -0.02em;
+		font-size: 1.175rem;
+		font-weight: 600;
+		letter-spacing: -0.015em;
 		color: var(--foreground);
-		margin-top: 2rem;
-		margin-bottom: 0.75rem;
-		padding-left: 0.875rem;
-		border-left: 3px solid hsl(var(--primary) / 0.4);
+		margin-top: 1.75rem;
+		margin-bottom: 0.5rem;
+		padding-left: 0.75rem;
+		border-left: 2px solid hsl(var(--primary) / 0.4);
 	}
 
 	/* --- Paragraphs --- */
 	.blog-content :global(p) {
 		font-size: 1.0625rem;
-		line-height: 1.85;
+		line-height: 1.8;
 		color: hsl(var(--muted-foreground));
-		margin-bottom: 1.5rem;
+		margin-bottom: 1.25rem;
+	}
+
+	/* First paragraph in article is slightly emphasized */
+	.blog-content :global(.blog-section:first-child > p:first-of-type) {
+		font-size: 1.125rem;
+		color: var(--foreground);
+		line-height: 1.75;
 	}
 
 	/* --- Bold / Strong --- */
@@ -275,23 +314,22 @@
 
 	/* --- Unordered lists --- */
 	.blog-content :global(ul) {
-		margin-top: 0.75rem;
-		margin-bottom: 1.75rem;
-		padding: 1.25rem 1.5rem;
+		margin: 0.5rem 0 1.25rem;
+		padding: 0.875rem 1.25rem;
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		gap: 0.625rem;
-		background: hsl(var(--muted) / 0.4);
-		border-radius: 0.75rem;
-		border: 1px solid hsl(var(--border) / 0.3);
+		gap: 0.375rem;
+		background: hsl(var(--muted) / 0.3);
+		border-radius: 0.625rem;
+		border: 1px solid hsl(var(--border) / 0.2);
 	}
 
 	.blog-content :global(li) {
-		font-size: 1rem;
-		line-height: 1.7;
+		font-size: 0.9375rem;
+		line-height: 1.65;
 		color: hsl(var(--muted-foreground));
-		padding-left: 1.25rem;
+		padding-left: 1.125rem;
 		position: relative;
 	}
 
@@ -299,24 +337,22 @@
 		content: '';
 		position: absolute;
 		left: 0;
-		top: 0.65em;
-		width: 7px;
-		height: 7px;
+		top: 0.6em;
+		width: 6px;
+		height: 6px;
 		border-radius: 50%;
 		background: hsl(var(--primary));
-		opacity: 0.6;
+		opacity: 0.5;
 	}
 
 	/* --- Numbered lists --- */
 	.blog-content :global(.numbered-list) {
-		margin-top: 0.75rem;
-		margin-bottom: 1.75rem;
+		margin: 0.5rem 0 1.25rem;
 		padding: 0;
 		list-style: none;
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
-		counter-reset: none;
+		gap: 0.5rem;
 		background: none;
 		border: none;
 	}
@@ -324,12 +360,12 @@
 	.blog-content :global(.numbered) {
 		display: flex;
 		align-items: flex-start;
-		gap: 0.75rem;
-		padding: 0.875rem 1rem;
-		background: hsl(var(--muted) / 0.3);
-		border-radius: 0.625rem;
-		border: 1px solid hsl(var(--border) / 0.2);
-		padding-left: 1rem;
+		gap: 0.625rem;
+		padding: 0.75rem 0.875rem;
+		background: hsl(var(--muted) / 0.25);
+		border-radius: 0.5rem;
+		border: 1px solid hsl(var(--border) / 0.15);
+		padding-left: 0.875rem;
 	}
 
 	.blog-content :global(.numbered::before) {
@@ -338,46 +374,48 @@
 
 	.blog-content :global(.num) {
 		flex-shrink: 0;
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.5rem;
+		height: 1.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
 		background: hsl(var(--primary) / 0.1);
 		color: hsl(var(--primary));
-		font-size: 0.8rem;
+		font-size: 0.75rem;
 		font-weight: 700;
 	}
 
 	/* --- Pricing cards --- */
 	.blog-content :global(.pricing-card) {
-		margin-top: 1.5rem;
-		margin-bottom: 1.5rem;
+		margin: 1.5rem 0;
 		padding: 1.5rem;
-		border-radius: 1rem;
+		border-radius: 0.875rem;
 		background: hsl(var(--card));
-		border: 1px solid hsl(var(--border) / 0.5);
-		box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04);
-		transition: border-color 0.2s, box-shadow 0.2s;
+		border: 1px solid hsl(var(--border) / 0.4);
+		box-shadow:
+			0 1px 3px hsl(var(--foreground) / 0.03),
+			0 4px 12px hsl(var(--foreground) / 0.02);
+		transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 	}
 
 	.blog-content :global(.pricing-card:hover) {
 		border-color: hsl(var(--primary) / 0.3);
 		box-shadow: 0 4px 20px hsl(var(--primary) / 0.08);
+		transform: translateY(-1px);
 	}
 
 	.blog-content :global(.pricing-card h3) {
-		border-left: 3px solid hsl(var(--primary));
+		border-left: 2px solid hsl(var(--primary));
 		color: var(--foreground);
-		font-size: 1.2rem;
+		font-size: 1.125rem;
 		margin-top: 0;
-		margin-bottom: 1rem;
+		margin-bottom: 0.75rem;
 	}
 
 	.blog-content :global(.pricing-card ul) {
-		background: hsl(var(--muted) / 0.25);
-		margin-bottom: 0.75rem;
+		background: hsl(var(--muted) / 0.2);
+		margin-bottom: 0.5rem;
 	}
 
 	/* --- Links --- */
@@ -385,7 +423,8 @@
 		color: hsl(var(--primary));
 		text-decoration: underline;
 		text-decoration-color: hsl(var(--primary) / 0.3);
-		text-underline-offset: 2px;
+		text-underline-offset: 3px;
+		text-decoration-thickness: 1.5px;
 		font-weight: 500;
 		transition: text-decoration-color 0.2s;
 	}
@@ -397,13 +436,13 @@
 	/* --- Responsive --- */
 	@media (min-width: 640px) {
 		.blog-content :global(h2) {
-			font-size: 2rem;
+			font-size: 1.875rem;
 		}
 		.blog-content :global(h3) {
-			font-size: 1.375rem;
+			font-size: 1.25rem;
 		}
 		.blog-content :global(.pricing-card) {
-			padding: 2rem;
+			padding: 1.75rem;
 		}
 	}
 </style>
