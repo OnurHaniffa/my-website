@@ -7,9 +7,14 @@
 	import { Container, Section } from '$lib/components/layout';
 	import { Counter } from '$lib/components/ui/animations';
 	import { sanitizeSvgContent } from '$lib/utils/sanitize';
-	import { t, getLocalePath } from '$lib/i18n/index.svelte';
+	import { t, getLocalePath, getLocale } from '$lib/i18n/index.svelte';
+	import { blogPosts } from '$lib/data/blog-posts';
 
 	let { data } = $props();
+
+	const locale = $derived(getLocale());
+	const isEn = $derived(locale === 'en');
+	const latestPosts = $derived(blogPosts.slice(0, 3));
 
 	// Use CMS data with fallbacks
 	const projects = data.projects;
@@ -618,6 +623,48 @@
 					<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform duration-150 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 			</div>
+		</div>
+	</Container>
+</Section>
+
+<!-- Subtle section separator -->
+<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+
+<!-- Blog Section -->
+<Section class="bg-muted/30">
+	<Container>
+		<div class="text-center mb-10">
+			<p class="text-sm font-medium text-primary mb-2">{t('home.blog_label') ?? (isEn ? 'From the Blog' : 'Blogdan')}</p>
+			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">{isEn ? 'Latest Articles' : 'Son Yazılar'}</h2>
+			<p class="text-muted-foreground mt-3 max-w-xl mx-auto">{isEn ? 'Tips, guides, and insights about web design and development' : 'Web tasarım ve geliştirme hakkında ipuçları, rehberler ve içgörüler'}</p>
+		</div>
+		<div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			{#each latestPosts as post}
+				<a href={getLocalePath(`/blog/${post.slug}/`)} class="group block bg-card rounded-xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all overflow-hidden">
+					<div class="p-6">
+						<div class="flex items-center gap-2 mb-3">
+							<span class="text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">{isEn ? post.category : post.categoryTr}</span>
+							<span class="text-xs text-muted-foreground">{isEn ? post.readTime : post.readTimeTr}</span>
+						</div>
+						<h3 class="font-semibold leading-snug group-hover:text-primary transition-colors mb-2 line-clamp-2">
+							{isEn ? post.title : post.titleTr}
+						</h3>
+						<p class="text-sm text-muted-foreground line-clamp-2">
+							{isEn ? post.description : post.descriptionTr}
+						</p>
+						<div class="mt-4 text-sm font-medium text-primary flex items-center gap-1 group-hover:gap-2 transition-all">
+							{isEn ? 'Read more' : 'Devamını oku'}
+							<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+						</div>
+					</div>
+				</a>
+			{/each}
+		</div>
+		<div class="text-center mt-8">
+			<a href={getLocalePath('/blog/')} class="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline">
+				{isEn ? 'View all articles' : 'Tüm yazıları görüntüle'}
+				<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+			</a>
 		</div>
 	</Container>
 </Section>

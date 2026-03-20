@@ -3,6 +3,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
 	import { getLocale, getLocalePath } from '$lib/i18n/index.svelte';
+	import { blogPosts } from '$lib/data/blog-posts';
 
 	let { data } = $props();
 	const post = data.post;
@@ -24,6 +25,7 @@
 	/** Apply inline markdown formatting */
 	function inline(text: string): string {
 		return text
+			.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
 			.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
 			.replace(/`([^`]+)`/g, '<code>$1</code>');
 	}
@@ -116,6 +118,19 @@
 		return result;
 	}
 
+	const relatedPosts = $derived(
+		blogPosts
+			.filter(p => p.slug !== post.slug)
+			.filter(p => p.category === post.category || p.categoryTr === post.categoryTr)
+			.slice(0, 3)
+			.concat(
+				blogPosts
+					.filter(p => p.slug !== post.slug && p.category !== post.category)
+					.slice(0, 3)
+			)
+			.slice(0, 3)
+	);
+
 	const htmlContent = $derived(markdownToHtml(content));
 </script>
 
@@ -137,7 +152,9 @@
 		'@type': 'Article',
 		headline: title,
 		description: description,
+		image: 'https://onurhaniffa.com/og-image.png',
 		datePublished: post.date,
+		dateModified: post.date,
 		author: {
 			'@type': 'Person',
 			name: 'Onur Haniffa',
@@ -150,7 +167,7 @@
 		},
 		mainEntityOfPage: {
 			'@type': 'WebPage',
-			'@id': `https://onurhaniffa.com/blog/${post.slug}`
+			'@id': `https://onurhaniffa.com/blog/${post.slug}/`
 		}
 	})}</script>`}
 </svelte:head>
@@ -160,7 +177,7 @@
 	<div class="absolute inset-0 bg-gradient-to-b from-primary/[0.03] via-transparent to-transparent pointer-events-none"></div>
 
 	<Container size="content" class="relative">
-		<a href={getLocalePath('/blog')} class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6 group">
+		<a href={getLocalePath('/blog/')} class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-6 group">
 			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:-translate-x-1"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
 			{isEn ? 'Back to Blog' : 'Bloga Dön'}
 		</a>
@@ -225,6 +242,24 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Related Posts -->
+		{#if relatedPosts.length > 0}
+			<div class="mt-12">
+				<h3 class="text-xl font-bold mb-6">{isEn ? 'Related Articles' : 'İlgili Yazılar'}</h3>
+				<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+					{#each relatedPosts as related}
+						<a href={getLocalePath(`/blog/${related.slug}/`)} class="group block p-5 rounded-xl border border-border/50 hover:border-primary/30 hover:shadow-md transition-all">
+							<Badge variant="outline" class="text-[10px] mb-2 border-primary/20 text-primary">{isEn ? related.category : related.categoryTr}</Badge>
+							<h4 class="font-semibold text-sm leading-snug group-hover:text-primary transition-colors line-clamp-2">
+								{isEn ? related.title : related.titleTr}
+							</h4>
+							<p class="text-xs text-muted-foreground mt-2">{isEn ? related.readTime : related.readTimeTr}</p>
+						</a>
+					{/each}
+				</div>
+			</div>
+		{/if}
 	</Container>
 </Section>
 

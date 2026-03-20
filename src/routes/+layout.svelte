@@ -33,7 +33,7 @@
 	const cleanPath = $derived(currentPath.replace(/^\/tr/, '') || '/');
 	const canonicalUrl = $derived(`${siteUrl}${currentPath}`);
 	const enUrl = $derived(`${siteUrl}${cleanPath}`);
-	const trUrl = $derived(`${siteUrl}/tr${cleanPath === '/' ? '' : cleanPath}`);
+	const trUrl = $derived(`${siteUrl}/tr${cleanPath === '/' ? '/' : cleanPath}`);
 
 	// JSON-LD structured data for organization/local business
 	const jsonLd = $derived(JSON.stringify({

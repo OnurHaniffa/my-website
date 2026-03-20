@@ -20,6 +20,7 @@
 		{ href: '/', labelKey: 'nav.home' },
 		{ href: '/work', labelKey: 'nav.work' },
 		{ href: '/services', labelKey: 'nav.services' },
+		{ href: '/blog', labelKey: 'nav.blog' },
 		{ href: '/about', labelKey: 'nav.about' }
 	];
 

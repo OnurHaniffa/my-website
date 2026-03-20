@@ -105,6 +105,7 @@
 						<a href={getLocalePath('/work')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.work')}</a>
 						<a href={getLocalePath('/services')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.services')}</a>
 						<a href={getLocalePath('/about')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.about')}</a>
+						<a href={getLocalePath('/blog')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.blog')}</a>
 					</nav>
 				</div>
 
