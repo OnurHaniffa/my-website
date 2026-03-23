@@ -5868,6 +5868,510 @@ Her web sitesini dönüşümü bir sonradan düşünce olarak değil, temel metr
 
 Mevcut web sitenizin dönüşüm potansiyelini analiz ettiğim ve tam olarak nerede potansiyel müşteri kaybettiğinizi gösterdiğim ücretsiz bir danışmanlık randevusu alın.
 `
+	},
+	{
+		slug: 'istanbul-kucuk-isletme-web-sitesi-rehberi',
+		title: 'Small Business Website Guide for Istanbul (2026)',
+		titleTr: 'İstanbul\'da Küçük İşletmeler İçin Web Sitesi Rehberi (2026)',
+		description: 'A comprehensive guide for small businesses in Istanbul on building an effective website. Covers must-have features, costs, common mistakes, DIY vs professional options, and a pre-launch checklist.',
+		descriptionTr: 'İstanbul\'daki küçük işletmeler için etkili bir web sitesi oluşturma rehberi. Olmazsa olmaz özellikler, maliyetler, sık yapılan hatalar, kendin yap ile profesyonel karşılaştırması ve yayın öncesi kontrol listesi.',
+		date: '2026-03-23',
+		readTime: '12 min read',
+		readTimeTr: '12 dk okuma',
+		category: 'Business',
+		categoryTr: 'İşletme',
+		content: `
+## Why Every Small Business in Istanbul Needs a Website in 2026
+
+Istanbul is a city of over 16 million people, and as of 2026, more than 85% of Turkish adults are active internet users. The Turkish e-commerce market has grown by over 35% year-on-year, surpassing 1.5 trillion TL in transaction volume. For small businesses in Istanbul, the question is no longer whether you need a website — it is how much business you are losing without one.
+
+Whether you run a restaurant in Kadikoy, a law office in Levent, a dental clinic in Besiktas, or a boutique in Nisantasi, your potential customers are searching for your services online right now. Google data shows that 76% of people who search for a local business on their phone visit a physical location within 24 hours. If your business does not appear in those results, that customer walks into your competitor's door.
+
+### The Istanbul Market Reality
+
+Istanbul is uniquely competitive. With thousands of businesses in every category across 39 districts, standing out requires more than a good location. Social media presence alone is not enough — [a website gives you ownership of your digital presence in ways Instagram and Facebook never can](/blog/sosyal-medya-mi-web-sitesi-mi/).
+
+Consider these numbers for Turkey in 2026:
+
+- **85%+** internet penetration rate
+- **98%** of internet users access via mobile
+- **76%** of local searches result in a same-day visit
+- **70%** of consumers research a business online before visiting
+- **53%** of users leave a site that takes more than 3 seconds to load
+
+If you are a small business owner in Istanbul without a website, you are invisible to a significant portion of your potential customer base.
+
+## What a Good Small Business Website Must Include
+
+Not every website is effective. A poorly built site can actually hurt your business more than having no site at all. Here are the features that every small business website in Istanbul needs to include.
+
+### 1. Mobile-First Design
+
+This is non-negotiable. With 98% of Turkish internet users on mobile, your website must look and work perfectly on smartphones. Not just responsive — truly mobile-first, designed for thumb navigation and small screens before anything else. [Learn more about why mobile-friendly design is essential](/blog/mobil-uyumlu-web-sitesi-neden-sart/).
+
+### 2. Fast Loading Speed
+
+Turkish mobile networks vary in speed, especially in crowded areas of Istanbul. Your site needs to load in under 3 seconds on a standard 4G connection. This means optimized images, minimal JavaScript, and efficient hosting. Speed directly affects both your Google ranking and your conversion rate.
+
+### 3. Clear Contact Information
+
+This sounds obvious, but you would be surprised how many Istanbul business sites bury their phone number. Your contact details — phone, WhatsApp, email, and physical address — should be visible on every page. Include a clickable phone number and a WhatsApp link for mobile users.
+
+### 4. Google Maps Integration
+
+For local businesses, an embedded Google Map showing your exact location is essential. Istanbul is a complex city with sometimes confusing addresses. A map removes friction and makes it easy for customers to find you.
+
+### 5. Turkish and English Content
+
+Istanbul is an international city. Depending on your business, having both Turkish and English content can significantly expand your customer base. At minimum, your core pages should be in Turkish with proper SEO optimization for Turkish search terms.
+
+### 6. SSL Certificate (HTTPS)
+
+A secure website is mandatory in 2026. Google actively penalizes non-HTTPS sites in rankings, and browsers display warning messages that drive away potential customers. Every site I build includes SSL by default.
+
+### 7. SEO Fundamentals
+
+Your website needs to be found. Basic [search engine optimization](/blog/seo-nedir-isletmeler-icin-rehber/) — proper title tags, meta descriptions, heading structure, local schema markup, and Google Business Profile integration — is what makes your site visible to people searching for your services.
+
+### 8. Clear Call-to-Action
+
+Every page should guide visitors toward a specific action: calling you, filling out a form, making a reservation, or requesting a quote. [Strategic CTA placement dramatically improves conversion rates](/blog/web-sitesi-donusum-orani-artirma/).
+
+### 9. Social Proof
+
+Testimonials, Google reviews, client logos, or case studies build trust. Turkish consumers heavily rely on recommendations and social proof when choosing a business.
+
+### 10. Legal Compliance
+
+Turkish e-commerce law (6563 sayili Kanun) and KVKK (Turkey's data protection regulation) require specific disclosures on your website. A privacy policy, cookie consent, and commercial electronic communication compliance are legally required.
+
+## Common Mistakes Istanbul Small Businesses Make
+
+After building websites for businesses across Istanbul, I see the same mistakes repeatedly. Avoiding these will put you ahead of most competitors.
+
+### Relying Solely on Social Media
+
+Instagram is powerful in Turkey, but it is rented land. Algorithm changes can cut your visibility overnight. A website is your own property. [Read the full comparison of social media vs. a website](/blog/sosyal-medya-mi-web-sitesi-mi/).
+
+### Choosing the Cheapest Option
+
+A 2,000 TL website from a Fiverr seller or a nephew who "knows computers" typically costs more in the long run. Poor performance, security vulnerabilities, and the inability to rank on Google mean you eventually pay twice — once for the cheap site and once to replace it.
+
+### Ignoring Mobile Users
+
+Some businesses still approve their website design only on a desktop computer. Your customers are on their phones. If the mobile experience is poor, you lose them.
+
+### No Analytics
+
+If you do not measure it, you cannot improve it. Google Analytics and Search Console are free tools that tell you exactly how people find and use your site. Every business site needs them from day one.
+
+### Overloading With Animations and Effects
+
+Heavy animations, auto-playing videos, and complex visual effects slow your site down and frustrate mobile users. Clean, fast, and clear always outperforms flashy and slow.
+
+### Not Updating Content
+
+A website with a "News" section last updated in 2023 signals neglect. Either commit to updating your content regularly or structure your site so it does not look outdated. Blog posts, seasonal updates, and fresh content signal to both Google and customers that your business is active.
+
+## How Much Should You Expect to Pay?
+
+Website costs in Istanbul vary enormously, and understanding what you are paying for prevents overpaying and underpaying. I wrote a [detailed cost breakdown for websites in Istanbul](/blog/web-sitesi-maliyeti-istanbul-2026/) that covers this comprehensively, but here is the summary for small businesses.
+
+### Typical Price Ranges (2026)
+
+- **Template-based simple site (5-7 pages):** 15,000 - 35,000 TL
+- **Custom-designed business site:** 35,000 - 80,000 TL
+- **E-commerce (up to 100 products):** 50,000 - 120,000 TL
+- **Complex custom web application:** 100,000 TL+
+
+### Ongoing Costs
+
+- **Hosting:** 1,000 - 5,000 TL/year
+- **Domain name (.com.tr):** 300 - 500 TL/year
+- **SSL certificate:** Often included with hosting
+- **Maintenance and updates:** 3,000 - 12,000 TL/year
+
+### What Affects the Price
+
+The biggest cost factors are custom design vs. template, number of pages, e-commerce functionality, content creation, and ongoing SEO work. A restaurant with a 5-page site costs far less than a law firm needing 30 pages of content.
+
+The important thing is to understand what you are getting for your money. The cheapest quote is rarely the best value.
+
+## DIY vs. Professional: An Honest Comparison
+
+As a web professional, I could simply tell you to always hire a professional. But that would not be honest. There are situations where a DIY approach can work, and situations where it absolutely will not.
+
+### When DIY Can Work
+
+- You have a very simple business with minimal competition
+- You are comfortable with technology and willing to invest 40+ hours learning
+- You have a very tight budget and need any web presence quickly
+- You plan to upgrade to a professional site later
+
+Platforms like Wix, Squarespace, or WordPress.com can get a basic site up. However, be aware of the limitations: poor SEO capabilities, slow loading speeds, limited customization, and ongoing subscription costs that add up over time.
+
+### When You Need a Professional
+
+- You operate in a competitive market (most Istanbul businesses)
+- You need to rank on Google for Turkish search terms
+- Your business depends on online leads or appointments
+- You need e-commerce functionality
+- You want a site that reflects the quality of your business
+- You need Turkish language SEO optimization
+
+### The Hidden Costs of DIY
+
+What DIY builders do not tell you: the time you spend wrestling with templates is time not spent running your business. Most business owners I work with tried a DIY approach first and spent 60-100 hours on a site that still did not meet their needs. At any hourly rate, that time has real value.
+
+Additionally, DIY platforms lock you in. Moving from Wix to a custom solution means starting from scratch — you cannot export your design or SEO work.
+
+## How to Choose a Web Developer in Istanbul
+
+Istanbul has thousands of web developers and agencies, from solo freelancers to large agencies. Here is how to evaluate them.
+
+### Check Their Portfolio
+
+Look at actual live websites they have built, not just design mockups. Test those sites on your phone. Check their loading speed at PageSpeed Insights. A developer's portfolio tells you exactly what you will get.
+
+### Ask About Their Technical Stack
+
+Modern websites should be built with current technologies. Ask what framework they use, how they handle performance optimization, and whether they build mobile-first. Avoid developers who only use outdated WordPress themes or page builders — they produce slow, bloated sites.
+
+### Understand Their Process
+
+A good developer has a clear process: discovery, design, development, testing, and launch. They should ask you questions about your business goals, target audience, and competition before showing you any designs.
+
+### Get Everything in Writing
+
+Turkish commercial practice sometimes relies on verbal agreements. Do not do this for your website. Get a clear contract specifying deliverables, timeline, payment schedule, and what happens if you need changes.
+
+### Ask About Ongoing Support
+
+Who handles updates after launch? What if something breaks? What are the maintenance costs? A website is not a one-time purchase — it needs ongoing care.
+
+### Red Flags to Watch For
+
+- No live portfolio examples
+- Prices significantly below market rate
+- Promising first-page Google ranking in weeks
+- No discussion of your business goals
+- No mention of mobile optimization or performance
+- Asking for full payment upfront
+
+## Real ROI: What a Website Actually Brings to Your Business
+
+Let me share some realistic scenarios based on businesses I have worked with in Istanbul.
+
+### Scenario 1: Dental Clinic in Atasehir
+
+A dental clinic invested 45,000 TL in a professional website with SEO. Within 6 months, they were receiving 30+ appointment requests per month through their website. With an average patient value of 3,000 TL, the website generated roughly 90,000 TL in new revenue per month — paying for itself many times over.
+
+### Scenario 2: Law Office in Sisli
+
+A small law firm had no web presence. After launching a content-rich website with articles about common legal questions in Turkish, they began ranking for search terms like "istanbul bosanma avukati" and "kira hukuku danismanlik." They now receive 15-20 qualified leads per month through organic search.
+
+### Scenario 3: Restaurant in Kadikoy
+
+A neighborhood restaurant invested in a simple but fast website with their menu, location, and online reservation. They integrated it with Google Business Profile and began appearing in "near me" searches. Weekend reservations increased by 40% within 3 months.
+
+### The Common Thread
+
+In every case, the website investment paid for itself within 3-6 months. The key was not just having a website but having a well-built, SEO-optimized, fast website designed to convert visitors into customers.
+
+## Your Pre-Launch Checklist
+
+Before your website goes live, make sure every item on this list is complete.
+
+### Technical Checks
+
+- [ ] Site loads in under 3 seconds on mobile
+- [ ] All pages display correctly on iPhone and Android
+- [ ] SSL certificate is active (HTTPS)
+- [ ] All links work (no 404 errors)
+- [ ] Contact forms send emails correctly
+- [ ] Phone numbers are clickable on mobile
+- [ ] WhatsApp links open the correct number
+
+### SEO Checks
+
+- [ ] Every page has a unique title tag and meta description
+- [ ] Heading structure is correct (one H1 per page)
+- [ ] Images have alt text in Turkish
+- [ ] Google Analytics is installed
+- [ ] Google Search Console is connected
+- [ ] Sitemap.xml is generated and submitted
+- [ ] Google Business Profile is linked to your website
+
+### Content Checks
+
+- [ ] All text has been proofread in Turkish
+- [ ] Contact information is accurate on every page
+- [ ] Business hours are current
+- [ ] Pricing or service descriptions are up to date
+- [ ] Legal pages (privacy policy, KVKK disclosure) are in place
+
+### Business Checks
+
+- [ ] Domain name is registered under your own account
+- [ ] You have hosting login credentials
+- [ ] Someone is assigned to respond to form submissions
+- [ ] You have a plan for ongoing content updates
+- [ ] Analytics review is scheduled (monthly minimum)
+
+## Ready to Get Your Business Online?
+
+If you are a small business owner in Istanbul, 2026 is the year to invest in your web presence. The competition is growing, but so is the opportunity. A well-built website is the single most effective marketing investment you can make.
+
+I build fast, modern, SEO-optimized websites specifically for small businesses in Istanbul. Every site I create is mobile-first, performance-optimized, and designed to bring you real customers.
+
+[See what I can build for your business](/services/) or [get in touch for a free consultation](/contact/). Let us discuss your goals and find the right solution for your business and budget.
+`,
+		contentTr: `
+## 2026'da İstanbul'daki Her Küçük İşletmenin Neden Bir Web Sitesine İhtiyacı Var
+
+İstanbul 16 milyonu aşkın nüfusuyla devasa bir şehir ve 2026 itibarıyla Türk yetişkinlerinin %85'inden fazlası aktif internet kullanıcısı. Türk e-ticaret pazarı yıldan yıla %35'in üzerinde büyüyerek 1,5 trilyon TL işlem hacmini aştı. İstanbul'daki küçük işletmeler için artık soru bir web sitesine ihtiyacınız olup olmadığı değil — web sitesi olmadan ne kadar müşteri kaybettiğiniz.
+
+İster Kadıköy'de bir restoran, ister Levent'te bir hukuk bürosu, ister Beşiktaş'ta bir diş kliniği, ister Nişantaşı'nda bir butik işletin — potansiyel müşterileriniz şu anda hizmetlerinizi çevrimiçi arıyor. Google verilerine göre, telefonlarından yerel bir işletme arayan kişilerin %76'sı 24 saat içinde fiziksel bir mekanı ziyaret ediyor. İşletmeniz bu sonuçlarda görünmüyorsa, o müşteri rakibinizin kapısından giriyor.
+
+### İstanbul Pazar Gerçeği
+
+İstanbul benzersiz bir şekilde rekabetçi. 39 ilçe genelinde her kategoride binlerce işletmeyle öne çıkmak iyi bir konumdan fazlasını gerektiriyor. Tek başına sosyal medya varlığı yeterli değil — [bir web sitesi, dijital varlığınızın sahipliğini Instagram ve Facebook'un asla sağlayamayacağı şekillerde size verir](/blog/sosyal-medya-mi-web-sitesi-mi/).
+
+2026'da Türkiye için şu rakamlara bakın:
+
+- **%85+** internet penetrasyon oranı
+- **%98** internet kullanıcısı mobil cihazdan erişiyor
+- **%76** yerel arama aynı gün ziyaretle sonuçlanıyor
+- **%70** tüketici ziyaret etmeden önce işletmeyi çevrimiçi araştırıyor
+- **%53** kullanıcı 3 saniyeden uzun süre yüklenen bir siteyi terk ediyor
+
+İstanbul'da web sitesi olmayan bir küçük işletme sahibiyseniz, potansiyel müşteri kitlenizin önemli bir bölümü için görünmez durumdasınız.
+
+## İyi Bir Küçük İşletme Web Sitesinde Olması Gerekenler
+
+Her web sitesi etkili değildir. Kötü yapılmış bir site, hiç site olmamasından daha fazla zarar verebilir. İstanbul'daki her küçük işletme web sitesinin içermesi gereken özellikler bunlar.
+
+### 1. Mobil Öncelikli Tasarım
+
+Bu tartışılmaz. Türk internet kullanıcılarının %98'i mobilde olduğundan, web siteniz akıllı telefonlarda mükemmel görünmeli ve çalışmalıdır. Sadece duyarlı değil — gerçekten mobil öncelikli, küçük ekranlar ve başparmak navigasyonu için tasarlanmış. [Mobil uyumlu tasarımın neden vazgeçilmez olduğunu öğrenin](/blog/mobil-uyumlu-web-sitesi-neden-sart/).
+
+### 2. Hızlı Yüklenme Süresi
+
+Türk mobil ağları, özellikle İstanbul'un kalabalık bölgelerinde hız bakımından değişkenlik gösterir. Siteniz standart bir 4G bağlantısında 3 saniyenin altında yüklenmelidir. Bu, optimize edilmiş görseller, minimal JavaScript ve verimli barındırma anlamına gelir. Hız hem Google sıralamanızı hem de dönüşüm oranınızı doğrudan etkiler.
+
+### 3. Net İletişim Bilgileri
+
+Bu bariz görünüyor, ama İstanbul'daki kaç işletme sitesinin telefon numarasını gizlediğine şaşırırsınız. İletişim bilgileriniz — telefon, WhatsApp, e-posta ve fiziksel adres — her sayfada görünür olmalıdır. Mobil kullanıcılar için tıklanabilir telefon numarası ve WhatsApp bağlantısı ekleyin.
+
+### 4. Google Haritalar Entegrasyonu
+
+Yerel işletmeler için tam konumunuzu gösteren gömülü bir Google Haritası olmazsa olmazdır. İstanbul bazen kafa karıştırıcı adresleri olan karmaşık bir şehir. Bir harita sürtünmeyi ortadan kaldırır ve müşterilerin sizi kolayca bulmasını sağlar.
+
+### 5. Türkçe ve İngilizce İçerik
+
+İstanbul uluslararası bir şehir. İşletmenize bağlı olarak, hem Türkçe hem de İngilizce içerik müşteri kitlenizi önemli ölçüde genişletebilir. En azından temel sayfalarınız, Türkçe arama terimleri için uygun SEO optimizasyonu ile Türkçe olmalıdır.
+
+### 6. SSL Sertifikası (HTTPS)
+
+2026'da güvenli bir web sitesi zorunludur. Google, HTTPS olmayan siteleri sıralamada aktif olarak cezalandırır ve tarayıcılar potansiyel müşterileri uzaklaştıran uyarı mesajları görüntüler. Yaptığım her siteye SSL varsayılan olarak dahildir.
+
+### 7. SEO Temelleri
+
+Web sitenizin bulunması gerekir. Temel [arama motoru optimizasyonu](/blog/seo-nedir-isletmeler-icin-rehber/) — uygun başlık etiketleri, meta açıklamaları, başlık yapısı, yerel şema işaretlemesi ve Google Business Profile entegrasyonu — sitenizi hizmetlerinizi arayan kişilere görünür kılan şeydir.
+
+### 8. Net Harekete Geçirici Mesaj (CTA)
+
+Her sayfa ziyaretçileri belirli bir eyleme yönlendirmelidir: sizi aramak, form doldurmak, rezervasyon yapmak veya teklif istemek. [Stratejik CTA yerleşimi dönüşüm oranlarını önemli ölçüde artırır](/blog/web-sitesi-donusum-orani-artirma/).
+
+### 9. Sosyal Kanıt
+
+Referanslar, Google yorumları, müşteri logoları veya vaka çalışmaları güven oluşturur. Türk tüketiciler bir işletme seçerken tavsiyelere ve sosyal kanıta büyük ölçüde güvenir.
+
+### 10. Yasal Uyumluluk
+
+Türk e-ticaret kanunu (6563 sayılı Kanun) ve KVKK (Türkiye'nin veri koruma düzenlemesi) web sitenizde belirli açıklamalar gerektirir. Gizlilik politikası, çerez onayı ve ticari elektronik iletişim uyumluluğu yasal olarak zorunludur.
+
+## İstanbul'daki Küçük İşletmelerin Yaptığı Yaygın Hatalar
+
+İstanbul genelinde işletmeler için web siteleri oluşturduktan sonra aynı hataları sürekli görüyorum. Bunlardan kaçınmak sizi çoğu rakibin önüne geçirecektir.
+
+### Sadece Sosyal Medyaya Güvenmek
+
+Instagram Türkiye'de güçlüdür, ancak kiralık bir arazidir. Algoritma değişiklikleri görünürlüğünüzü bir gecede kesebilir. Bir web sitesi kendi mülkünüzdür. [Sosyal medya ile web sitesi karşılaştırmasının tamamını okuyun](/blog/sosyal-medya-mi-web-sitesi-mi/).
+
+### En Ucuz Seçeneği Tercih Etmek
+
+Fiverr'dan 2.000 TL'ye alınan bir web sitesi veya "bilgisayar bilen" bir yeğenin yaptığı site genellikle uzun vadede daha pahalıya mal olur. Düşük performans, güvenlik açıkları ve Google'da sıralama yeteneğinin olmaması, sonunda iki kez ödeme yapmanız anlamına gelir — bir kez ucuz site için, bir kez de onu değiştirmek için.
+
+### Mobil Kullanıcıları Göz Ardı Etmek
+
+Bazı işletmeler hala web sitesi tasarımlarını sadece masaüstü bilgisayarda onaylıyor. Müşterileriniz telefonlarında. Mobil deneyim kötüyse onları kaybedersiniz.
+
+### Analitik Kullanmamak
+
+Ölçmezseniz iyileştiremezsiniz. Google Analytics ve Search Console, insanların sitenizi nasıl bulduğunu ve kullandığını size tam olarak söyleyen ücretsiz araçlardır. Her işletme sitesine ilk günden kurulmalıdırlar.
+
+### Animasyonlar ve Efektlerle Aşırı Yüklemek
+
+Ağır animasyonlar, otomatik oynayan videolar ve karmaşık görsel efektler sitenizi yavaşlatır ve mobil kullanıcıları sinirlendirir. Temiz, hızlı ve net her zaman gösterişli ve yavaştan daha iyi performans gösterir.
+
+### İçeriği Güncellememek
+
+"Haberler" bölümü en son 2023'te güncellenen bir web sitesi ihmali işaret eder. Ya içeriğinizi düzenli olarak güncellemeye söz verin ya da sitenizi eskimiş görünmeyecek şekilde yapılandırın. Blog yazıları, sezonsal güncellemeler ve taze içerik hem Google'a hem de müşterilere işletmenizin aktif olduğunu gösterir.
+
+## Ne Kadar Bütçe Ayırmalısınız?
+
+İstanbul'da web sitesi maliyetleri muazzam ölçüde değişir ve ne için ödeme yaptığınızı anlamak, fazla veya az ödemenizi önler. Bu konuyu kapsamlı olarak ele alan [İstanbul'da web sitesi maliyetlerinin detaylı dökümünü](/blog/web-sitesi-maliyeti-istanbul-2026/) yazdım, ancak küçük işletmeler için özeti burada.
+
+### Tipik Fiyat Aralıkları (2026)
+
+- **Şablona dayalı basit site (5-7 sayfa):** 15.000 - 35.000 TL
+- **Özel tasarım kurumsal site:** 35.000 - 80.000 TL
+- **E-ticaret (100 ürüne kadar):** 50.000 - 120.000 TL
+- **Karmaşık özel web uygulaması:** 100.000 TL+
+
+### Devam Eden Maliyetler
+
+- **Barındırma:** 1.000 - 5.000 TL/yıl
+- **Alan adı (.com.tr):** 300 - 500 TL/yıl
+- **SSL sertifikası:** Genellikle barındırmaya dahil
+- **Bakım ve güncellemeler:** 3.000 - 12.000 TL/yıl
+
+### Fiyatı Ne Etkiler
+
+En büyük maliyet faktörleri özel tasarım ile şablon karşılaştırması, sayfa sayısı, e-ticaret işlevselliği, içerik oluşturma ve devam eden SEO çalışmasıdır. 5 sayfalık bir restoran sitesi, 30 sayfa içerik gerektiren bir hukuk firmasından çok daha az maliyetlidir.
+
+Önemli olan, paranız karşılığında ne aldığınızı anlamaktır. En ucuz teklif nadiren en iyi değerdir.
+
+## Kendin Yap ve Profesyonel Karşılaştırması: Dürüst Bir Değerlendirme
+
+Bir web profesyoneli olarak, size her zaman profesyonel tutmanızı söyleyebilirdim. Ancak bu dürüst olmaz. Kendin yap yaklaşımının işe yarayabileceği durumlar var ve kesinlikle işe yaramayacağı durumlar var.
+
+### Kendin Yap Ne Zaman İşe Yarar
+
+- Minimum rekabetli çok basit bir işletmeniz var
+- Teknolojiye hakimsiniz ve 40+ saat öğrenmeye yatırım yapmaya isteklisiniz
+- Çok kısıtlı bir bütçeniz var ve hızlıca herhangi bir web varlığına ihtiyacınız var
+- İleride profesyonel bir siteye geçmeyi planlıyorsunuz
+
+Wix, Squarespace veya WordPress.com gibi platformlar temel bir site oluşturabilir. Ancak sınırlamaların farkında olun: zayıf SEO yetenekleri, yavaş yükleme hızları, sınırlı özelleştirme ve zamanla biriken devam eden abonelik maliyetleri.
+
+### Ne Zaman Profesyonele İhtiyacınız Var
+
+- Rekabetçi bir pazarda faaliyet gösteriyorsunuz (çoğu İstanbul işletmesi)
+- Türkçe arama terimleri için Google'da sıralanmanız gerekiyor
+- İşletmeniz çevrimiçi potansiyel müşterilere veya randevulara bağlı
+- E-ticaret işlevselliğine ihtiyacınız var
+- İşletmenizin kalitesini yansıtan bir site istiyorsunuz
+- Türkçe SEO optimizasyonuna ihtiyacınız var
+
+### Kendin Yap'ın Gizli Maliyetleri
+
+Kendin yap platformlarının size söylemediği şey: şablonlarla boğuşarak harcadığınız zaman, işletmenizi yönetmek için harcamadığınız zamandır. Birlikte çalıştığım işletme sahiplerinin çoğu önce kendin yap yaklaşımını denedi ve ihtiyaçlarını hala karşılamayan bir siteye 60-100 saat harcadı. Herhangi bir saatlik ücrette, bu zamanın gerçek bir değeri vardır.
+
+Ayrıca kendin yap platformları sizi kilitler. Wix'ten özel bir çözüme geçmek sıfırdan başlamak demektir — tasarımınızı veya SEO çalışmanızı dışa aktaramazsınız.
+
+## İstanbul'da Web Geliştirici Nasıl Seçilir
+
+İstanbul'da solo freelancerlardan büyük ajanslara kadar binlerce web geliştiricisi ve ajans var. İşte onları nasıl değerlendireceğiniz.
+
+### Portföylerini İnceleyin
+
+Sadece tasarım taslakları değil, gerçekten yaptıkları canlı web sitelerine bakın. Bu siteleri telefonunuzda test edin. Yükleme hızlarını PageSpeed Insights'ta kontrol edin. Bir geliştiricinin portföyü size tam olarak ne alacağınızı söyler.
+
+### Teknik Altyapıyı Sorun
+
+Modern web siteleri güncel teknolojilerle inşa edilmelidir. Hangi framework'ü kullandıklarını, performans optimizasyonunu nasıl yaptıklarını ve mobil öncelikli yapıp yapmadıklarını sorun. Sadece eski WordPress temaları veya sayfa oluşturucuları kullanan geliştiricilerden kaçının — yavaş, şişkin siteler üretirler.
+
+### Süreçlerini Anlayın
+
+İyi bir geliştirici net bir sürece sahiptir: keşif, tasarım, geliştirme, test ve lansman. Size herhangi bir tasarım göstermeden önce iş hedefleriniz, hedef kitleniz ve rekabetiniz hakkında sorular sormalıdırlar.
+
+### Her Şeyi Yazılı Alın
+
+Türk ticari uygulaması bazen sözlü anlaşmalara dayanır. Bunu web siteniz için yapmayın. Teslim edilecekler, zaman çizelgesi, ödeme planı ve değişiklik yapmanız gerekirse ne olacağını belirten net bir sözleşme alın.
+
+### Devam Eden Destek Hakkında Sorun
+
+Lansmandan sonra güncellemeleri kim yapar? Bir şey bozulursa ne olur? Bakım maliyetleri nedir? Bir web sitesi tek seferlik bir satın alma değildir — sürekli bakım gerektirir.
+
+### Dikkat Edilmesi Gereken Uyarı İşaretleri
+
+- Canlı portföy örnekleri yok
+- Piyasa fiyatının önemli ölçüde altında fiyatlar
+- Haftalarda Google ilk sayfada sıralama sözü
+- İş hedefleriniz hakkında tartışma yok
+- Mobil optimizasyon veya performans hakkında hiç söz yok
+- Ödemenin tamamını peşin istemek
+
+## Gerçek Yatırım Getirisi: Web Sitesi İşletmenize Gerçekte Ne Kazandırır
+
+İstanbul'da birlikte çalıştığım işletmelere dayanan gerçekçi senaryoları paylaşayım.
+
+### Senaryo 1: Ataşehir'de Diş Kliniği
+
+Bir diş kliniği SEO ile profesyonel bir web sitesine 45.000 TL yatırım yaptı. 6 ay içinde web siteleri aracılığıyla ayda 30'dan fazla randevu talebi alıyorlardı. Ortalama 3.000 TL hasta değeriyle, web sitesi ayda yaklaşık 90.000 TL yeni gelir üretti — kendini defalarca amorti etti.
+
+### Senaryo 2: Şişli'de Hukuk Bürosu
+
+Küçük bir hukuk firmasının web varlığı yoktu. Türkçe yaygın hukuki sorular hakkında içerik açısından zengin bir web sitesi başlattıktan sonra "istanbul boşanma avukatı" ve "kira hukuku danışmanlık" gibi arama terimleri için sıralanmaya başladılar. Artık organik arama yoluyla ayda 15-20 nitelikli potansiyel müşteri alıyorlar.
+
+### Senaryo 3: Kadıköy'de Restoran
+
+Bir mahalle restoranı menüsü, konumu ve çevrimiçi rezervasyonuyla basit ama hızlı bir web sitesine yatırım yaptı. Google Business Profile ile entegre ettiler ve "yakınımdaki" aramalarında görünmeye başladılar. Hafta sonu rezervasyonları 3 ay içinde %40 arttı.
+
+### Ortak Nokta
+
+Her durumda web sitesi yatırımı 3-6 ay içinde kendini amorti etti. Anahtar sadece bir web sitesine sahip olmak değil, ziyaretçileri müşteriye dönüştürmek için tasarlanmış iyi yapılmış, SEO optimize edilmiş, hızlı bir web sitesine sahip olmaktı.
+
+## Yayın Öncesi Kontrol Listeniz
+
+Web siteniz yayına girmeden önce bu listedeki her maddenin tamamlandığından emin olun.
+
+### Teknik Kontroller
+
+- [ ] Site mobilde 3 saniyenin altında yükleniyor
+- [ ] Tüm sayfalar iPhone ve Android'de doğru görüntüleniyor
+- [ ] SSL sertifikası aktif (HTTPS)
+- [ ] Tüm bağlantılar çalışıyor (404 hatası yok)
+- [ ] İletişim formları e-postaları doğru gönderiyor
+- [ ] Telefon numaraları mobilde tıklanabilir
+- [ ] WhatsApp bağlantıları doğru numarayı açıyor
+
+### SEO Kontrolleri
+
+- [ ] Her sayfanın benzersiz başlık etiketi ve meta açıklaması var
+- [ ] Başlık yapısı doğru (sayfa başına bir H1)
+- [ ] Görsellerin Türkçe alt metni var
+- [ ] Google Analytics kurulu
+- [ ] Google Search Console bağlı
+- [ ] Sitemap.xml oluşturulmuş ve gönderilmiş
+- [ ] Google Business Profile web sitenize bağlı
+
+### İçerik Kontrolleri
+
+- [ ] Tüm metin Türkçe olarak düzeltilmiş
+- [ ] İletişim bilgileri her sayfada doğru
+- [ ] Çalışma saatleri güncel
+- [ ] Fiyatlandırma veya hizmet açıklamaları güncel
+- [ ] Yasal sayfalar (gizlilik politikası, KVKK açıklaması) yerinde
+
+### İşletme Kontrolleri
+
+- [ ] Alan adı kendi hesabınız altında kayıtlı
+- [ ] Barındırma giriş bilgileriniz sizde
+- [ ] Form gönderimlerine yanıt verecek biri atanmış
+- [ ] Devam eden içerik güncellemeleri için bir planınız var
+- [ ] Analitik incelemesi planlanmış (en az aylık)
+
+## İşletmenizi Çevrimiçiye Taşımaya Hazır mısınız?
+
+İstanbul'da küçük işletme sahibiyseniz, 2026 web varlığınıza yatırım yapmanın yılıdır. Rekabet büyüyor ama fırsat da büyüyor. İyi yapılmış bir web sitesi, yapabileceğiniz en etkili pazarlama yatırımıdır.
+
+İstanbul'daki küçük işletmeler için özel olarak hızlı, modern, SEO optimize edilmiş web siteleri yapıyorum. Oluşturduğum her site mobil öncelikli, performans optimize edilmiş ve size gerçek müşteriler getirmek için tasarlanmıştır.
+
+[İşletmeniz için neler yapabileceğimi görün](/services/) veya [ücretsiz danışmanlık için iletişime geçin](/contact/). Hedeflerinizi tartışalım ve işletmeniz ile bütçeniz için doğru çözümü bulalım.
+`
 	}
 ];
 
