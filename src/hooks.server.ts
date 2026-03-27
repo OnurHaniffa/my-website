@@ -5,7 +5,11 @@ const redirects: Record<string, string> = {
 	'/work/designs-by-joe': '/work',
 	'/work/dental-clinic-template': '/work',
 	'/work/joe': '/work',
-	'/work/pearl-dental': '/work'
+	'/work/pearl-dental': '/work',
+	'/istanbul-web-design': '/',
+	'/istanbul-web-design/': '/',
+	'/tr/istanbul-web-design': '/tr/',
+	'/tr/istanbul-web-design/': '/tr/'
 };
 
 export const handle: Handle = async ({ event, resolve }) => {

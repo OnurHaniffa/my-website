@@ -69,3 +69,17 @@ import { ProcessChainRings } from '$lib/components/sections';
 ```
 
 **Color System**: Uses OKLCH colors defined as CSS custom properties. Primary is blue, accent is red. Both light and dark modes defined in `app.css`.
+
+## Skill Usage Policy
+
+**MANDATORY: Always invoke the relevant skills before starting any task.** Even if it uses extra context, producing proper, well-thought-out code is the priority. Specific rules:
+
+- **Design/UI tasks**: Always invoke `frontend-design` skill before building or modifying any page, component, or visual element.
+- **Any task requiring creative thinking or planning**: Always invoke `superpowers:brainstorming` skill first. This includes new features, new pages, new components, content strategy, or any non-trivial change.
+- **SvelteKit/Svelte work**: Use framework knowledge from this CLAUDE.md (Svelte 5 runes, OKLCH colors, shadcn-svelte patterns).
+- **Bug fixes**: Invoke `superpowers:systematic-debugging` before proposing fixes.
+- **Implementation plans**: Invoke `superpowers:writing-plans` for multi-step tasks.
+- **Before claiming work is done**: Invoke `superpowers:verification-before-completion`.
+- **Code review**: Invoke `superpowers:requesting-code-review` after completing major features.
+
+**When in doubt, invoke the skill.** It is always better to use a skill and not need it than to skip one and produce lower quality work.

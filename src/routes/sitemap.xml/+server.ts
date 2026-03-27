@@ -4,12 +4,11 @@ import { blogPosts } from '$lib/data/blog-posts';
 const SITE_URL = 'https://onurhaniffa.com';
 
 const pages = [
-	{ path: '/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-02-20' },
+	{ path: '/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-03-27' },
 	{ path: '/services/', priority: '0.9', changefreq: 'monthly', lastmod: '2026-02-10' },
 	{ path: '/work/', priority: '0.9', changefreq: 'monthly', lastmod: '2026-02-10' },
 	{ path: '/about/', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-10' },
 	{ path: '/contact/', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-10' },
-	{ path: '/istanbul-web-design/', priority: '0.9', changefreq: 'monthly', lastmod: '2026-02-15' },
 	{ path: '/blog/', priority: '0.8', changefreq: 'weekly', lastmod: '2026-02-15' }
 ];
 
