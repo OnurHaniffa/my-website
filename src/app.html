@@ -18,5 +18,21 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	<script async src="https://ivoryai.net/widget/ivory.js" data-practice-id="52"></script>
+	<script>
+		// Track WhatsApp clicks as Google Ads conversions
+		document.addEventListener('click', function(e) {
+			var link = e.target.closest('a[href*="wa.me"]');
+			if (link) {
+				gtag('event', 'ads_conversion_Contact_Us_1', {
+					'event_callback': function() {},
+					'event_timeout': 2000
+				});
+				gtag('event', 'whatsapp_click', {
+					'event_category': 'conversion',
+					'event_label': link.href
+				});
+			}
+		});
+	</script>
 	</body>
 </html>
