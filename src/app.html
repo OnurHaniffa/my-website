@@ -11,7 +11,7 @@
 			function gtag(){dataLayer.push(arguments);}
 			gtag('js', new Date());
 			gtag('config', 'G-FTDXNZN78T');
-		gtag('config', 'AW-17970075651');
+			gtag('config', 'AW-17970075651');
 		</script>
 		%sveltekit.head%
 	</head>
@@ -34,9 +34,8 @@
 		// Track WhatsApp clicks as Google Ads conversions
 		document.addEventListener('click', function(e) {
 			var link = e.target.closest('a[href*="wa.me"]');
-			if (link) {
+			if (link && typeof gtag === 'function') {
 				gtag('event', 'ads_conversion_Contact_Us_1', {
-					'event_callback': function() {},
 					'event_timeout': 2000
 				});
 				gtag('event', 'whatsapp_click', {
