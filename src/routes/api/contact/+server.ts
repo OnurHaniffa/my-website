@@ -1,9 +1,7 @@
 import { json } from '@sveltejs/kit';
 import { Resend } from 'resend';
-import { RESEND_API_KEY } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import type { RequestHandler } from './$types';
-
-const resend = new Resend(RESEND_API_KEY);
 
 // HTML escape function to prevent XSS
 function escapeHtml(str: string): string {
@@ -55,6 +53,10 @@ const MAX_MESSAGE_LENGTH = 5000;
 
 export const POST: RequestHandler = async ({ request, getClientAddress }) => {
 	try {
+		if (!env.RESEND_API_KEY) {
+			return json({ error: 'Email service not configured' }, { status: 503 });
+		}
+		const resend = new Resend(env.RESEND_API_KEY);
 		// Rate limiting
 		const clientIp = getClientAddress();
 		if (!checkRateLimit(clientIp)) {
