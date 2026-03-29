@@ -17,7 +17,16 @@
 	</head>
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
-	<script async src="https://ivoryai.net/widget/ivory.js" data-practice-id="52"></script>
+	<script>
+		// Load Ivory AI chatbot after page is ready
+		window.addEventListener('load', function() {
+			var s = document.createElement('script');
+			s.src = 'https://ivoryai.net/widget/ivory.js';
+			s.setAttribute('data-practice-id', '52');
+			s.async = true;
+			document.body.appendChild(s);
+		});
+	</script>
 	<script>
 		// Track WhatsApp clicks as Google Ads conversions
 		document.addEventListener('click', function(e) {
