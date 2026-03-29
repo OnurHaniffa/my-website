@@ -18,15 +18,25 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	<script>
-		// Load Ivory AI chatbot — use setTimeout to ensure DOM is fully ready
+		// Load Ivory AI chatbot
+		// Note: the widget has a bug where var t (themes) overwrites function t (i18n).
+		// Loading via fetch + patching to fix the variable collision.
 		setTimeout(function() {
-			if (!document.getElementById('ivory-widget')) {
-				var s = document.createElement('script');
-				s.src = 'https://ivoryai.net/widget/ivory.js';
-				s.setAttribute('data-practice-id', '52');
-				s.async = true;
-				document.body.appendChild(s);
-			}
+			if (document.getElementById('ivory-widget')) return;
+			fetch('https://ivoryai.net/widget/ivory.js')
+				.then(function(r) { return r.text(); })
+				.then(function(code) {
+					// Fix: rename themes var from 't' to 'themeConfig' to avoid overwriting i18n t()
+					var fixed = code.replace('var t = themes[theme] || themes.general;', 'var themeConfig = themes[theme] || themes.general;');
+					// Update all references to the theme variable (t.bg, t.bgHover, t.icon)
+					fixed = fixed.replace(/\bt\.bg\b/g, 'themeConfig.bg');
+					fixed = fixed.replace(/\bt\.bgHover\b/g, 'themeConfig.bgHover');
+					fixed = fixed.replace(/\bt\.icon\b/g, 'themeConfig.icon');
+					var s = document.createElement('script');
+					s.setAttribute('data-practice-id', '52');
+					s.textContent = fixed;
+					document.body.appendChild(s);
+				});
 		}, 1500);
 	</script>
 	<script>
