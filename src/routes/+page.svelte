@@ -634,7 +634,7 @@
 						size="lg"
 						variant="ghost"
 						href={getLocalePath('/work')}
-						class="text-base px-8 py-[1.15rem] rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none"
+						class="text-base px-8 py-4 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none"
 					>
 						{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
 					</Button>

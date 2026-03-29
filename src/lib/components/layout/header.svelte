@@ -111,11 +111,11 @@
 			</a>
 
 			<!-- Desktop Navigation - absolutely centered so it doesn't shift with varying logo/CTA widths -->
-			<nav class="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2">
+			<nav class="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2 max-w-[calc(100%-380px)]">
 				{#each navItems as item}
 					<a
 						href={item.href}
-						class="group relative px-2.5 lg:px-4 py-2 text-[13px] font-semibold tracking-normal transition-all duration-300 rounded-lg whitespace-nowrap
+						class="group relative px-2 lg:px-4 py-2 text-[13px] font-semibold tracking-normal transition-all duration-300 rounded-lg whitespace-nowrap
 							{isActive(item.href, $page.url.pathname)
 								? 'text-primary bg-primary/10 shadow-sm'
 								: 'text-muted-foreground hover:text-foreground hover:bg-muted/70'}"
