@@ -18,14 +18,16 @@
 	<body data-sveltekit-preload-data="hover">
 		<div style="display: contents">%sveltekit.body%</div>
 	<script>
-		// Load Ivory AI chatbot after page is ready
-		window.addEventListener('load', function() {
-			var s = document.createElement('script');
-			s.src = 'https://ivoryai.net/widget/ivory.js';
-			s.setAttribute('data-practice-id', '52');
-			s.async = true;
-			document.body.appendChild(s);
-		});
+		// Load Ivory AI chatbot — use setTimeout to ensure DOM is fully ready
+		setTimeout(function() {
+			if (!document.getElementById('ivory-widget')) {
+				var s = document.createElement('script');
+				s.src = 'https://ivoryai.net/widget/ivory.js';
+				s.setAttribute('data-practice-id', '52');
+				s.async = true;
+				document.body.appendChild(s);
+			}
+		}, 1500);
 	</script>
 	<script>
 		// Track WhatsApp clicks as Google Ads conversions
