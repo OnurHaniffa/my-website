@@ -99,7 +99,8 @@
 		<div class="relative flex items-center justify-between transition-all duration-300 {scrolled ? 'h-16' : 'h-20'}">
 			<!-- Logo - fixed width to prevent shift when nav text changes between languages -->
 			<a href={getLocalePath('/')} data-sveltekit-reload class="group flex items-center gap-3 transition-all duration-300 group-hover:opacity-80 flex-shrink-0">
-				<img src="/favicon.svg" alt="Onur Haniffa logo" width="32" height="32" class="rounded-md" />
+				<!-- Decorative line -->
+				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 				<!-- Logo text -->
 				<div class="flex flex-col items-center">
 					<span class="text-lg sm:text-xl font-black tracking-[0.15em] uppercase">{settings?.logo_text ?? 'Onur Haniffa'}</span>

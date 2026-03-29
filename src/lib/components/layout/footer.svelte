@@ -68,7 +68,7 @@
 				<!-- Brand - takes more space -->
 				<div class="col-span-2 md:col-span-5 lg:col-span-4">
 					<a href={getLocalePath('/')} class="inline-flex items-center gap-4 mb-5 group transition-all group-hover:opacity-80">
-						<img src="/favicon.svg" alt="Onur Haniffa logo" width="40" height="40" class="rounded-lg" />
+						<img src="/favicon-192x192.png" alt="Onur Haniffa logo" width="48" height="48" class="rounded-xl" />
 						<div class="flex flex-col items-center">
 							<span class="text-xl font-black tracking-[0.15em] uppercase text-white">{settings?.brand_name ?? 'Onur Haniffa'}</span>
 							<span class="text-[9px] text-gray-400 tracking-[0.3em] uppercase">{settings?.brand_subtitle ?? 'Est. 2025'}</span>
