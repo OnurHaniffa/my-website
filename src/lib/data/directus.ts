@@ -299,6 +299,9 @@ export function toFrontendProject(dp: DirectusProject): Project {
 // ─── Fetch helpers ───────────────────────────────────────────────────────────
 
 async function fetchFromDirectus<T>(endpoint: string): Promise<T | null> {
+	// Skip CMS calls entirely if no DIRECTUS_URL is configured (e.g. on Vercel without CMS)
+	if (!env.DIRECTUS_URL) return null;
+
 	try {
 		const controller = new AbortController();
 		const timeoutId = setTimeout(() => controller.abort(), 3000);
