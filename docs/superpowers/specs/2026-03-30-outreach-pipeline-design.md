@@ -530,6 +530,8 @@ VOICE & TONE:
 - Acknowledge honestly that this is unsolicited — don't pretend you "stumbled across" them or that this is anything other than cold outreach
 - Emphasise the genuine effort: you actually took the time to build this because you thought it could help them
 - Be respectful of their time and never pushy
+- Do NOT lead with "I'm a web designer" — that frames it as a sales pitch. Lead with value and their business. "Web Designer" appears in the signature, which is enough.
+- Include a line near the end that honestly acknowledges this is a cold email, e.g., "I know this is a cold email, but I genuinely think this could help you"
 - BANNED PHRASES (never use these): "I came across", "I stumbled upon", "I noticed", "I'd love to", "quick question", "just following up", "I hope this email finds you well", "touching base", "circle back", "reach out", "no-brainer", "low-hanging fruit", "game changer", "win-win", "synergy", "leverage", "take it to the next level"
 - Each of the 4 touches must use a DIFFERENT opening and a different angle. Do not repeat compliments or points across touches.
 
@@ -582,15 +584,15 @@ Subject: An idea for {Business Name}
 
 Hi there,
 
-I hope you're doing fantastic. I know this is a bit out of the blue — I'm a web designer and I actually went ahead and built a website concept for {Business Name}. I know you didn't ask for it, but I genuinely thought your business could benefit from a stronger online presence, especially with your {rating}★ reputation.
+I hope you're doing fantastic. I know this is completely out of the blue, but your {rating}★ Google reviews for {Business Name} genuinely impressed me — you clearly run a great business. But honestly, I think your online presence could be doing a lot more for you.
 
-I put in the time because I honestly think it could help more people find you.
+I actually took the time to put together a website concept for {Business Name} — completely off my own back, no strings attached.
 
 {GIF_PLACEHOLDER}
 
-Here's a 30-second walkthrough of the full concept: {VIDEO_LINK}
+Here's the full 30-second walkthrough: {VIDEO_LINK}
 
-If you're even slightly interested, I'd be happy to chat. No pressure at all.
+I know this is a cold email, but I genuinely think this could help you get more customers through your door. If you're even slightly curious, I'd be happy to chat.
 
 Onur Haniffa
 Web Designer — onurhaniffa.com
