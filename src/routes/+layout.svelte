@@ -128,6 +128,9 @@
 		]
 	}));
 
+	// Hide header/footer on proposal pages
+	const isProposal = $derived(currentPath.startsWith('/teklif'));
+
 	// Scroll to top on navigation/reload
 	afterNavigate(() => {
 		window.scrollTo({ top: 0, behavior: 'instant' });
@@ -188,11 +191,16 @@
 	{@html `<script type="application/ld+json">${jsonLd}</script>`}
 </svelte:head>
 
-<div class="min-h-screen flex flex-col">
-	<Header settings={data.headerSettings} />
-	<main class="flex-1">
-		{@render children()}
-	</main>
-	<Footer settings={data.footerSettings} />
-</div>
-<WhatsAppButton />
+{#if isProposal}
+	{@render children()}
+	<WhatsAppButton />
+{:else}
+	<div class="min-h-screen flex flex-col">
+		<Header settings={data.headerSettings} />
+		<main class="flex-1">
+			{@render children()}
+		</main>
+		<Footer settings={data.footerSettings} />
+	</div>
+	<WhatsAppButton />
+{/if}
