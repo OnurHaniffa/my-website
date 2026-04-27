@@ -15,6 +15,278 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
 	{
+		slug: 'web-tasarimci-secerken-10-soru',
+		title: '10 Questions to Ask Before Hiring a Web Designer (2026 Guide)',
+		titleTr: 'Web Sitesi Yaptırmadan Önce Sormanız Gereken 10 Soru',
+		description: 'The 10 critical questions to ask before signing a web design contract in Turkey — covering domain ownership, transparent pricing, technical setup, mobile-first design, and post-launch support.',
+		descriptionTr: 'Türkiye\'de web tasarımcı seçerken hata yapmamak için sorulacak 10 kritik soru. Domain sahipliği, fiyat şeffaflığı, teknik altyapı, mobil tasarım ve sonrası destek.',
+		date: '2026-04-27',
+		readTime: '8 min read',
+		readTimeTr: '8 dk okuma',
+		category: 'Web Design',
+		categoryTr: 'Web Tasarım',
+		content: `
+## Starting without regret
+
+Two clients reached out to me last month. Both had hired a web designer before. Both were burned.
+
+The first paid 25,000 TL for a site they didn't actually own — the domain and hosting were registered under the designer's name. When they parted ways, they couldn't move the site. They had to start from scratch.
+
+The second bought a "premium theme" WordPress site. It worked Monday. By Friday it wouldn't load. The designer had blocked them on WhatsApp.
+
+These aren't outliers. They're the most common problems I see in Turkey's web design market. The only real protection is asking the right questions before you sign anything.
+
+Below are 10 questions I've watched my own clients say "I wish I'd asked sooner" about — across 50+ projects.
+
+## 1. "Whose name will the domain and hosting be registered under?"
+
+The answer should be "yours". Anything else isn't worth debating.
+
+Some designers register everything in their own name. "I'll manage it, you don't have to worry." When you part ways, the site is held hostage.
+
+Insist: domain and hosting under your name. Bilgi.tr, GoDaddy, Cloudflare — platform doesn't matter. Your name on the registration is what matters.
+
+## 2. "What's the post-launch revision policy?"
+
+Some designers vanish after they finish. New phone, second mobile, suddenly unreachable.
+
+A professional answer sounds like: "30 days of free revisions. After that, hourly or by package, here's the rate."
+
+Don't accept vagueness. "Of course we'll help" isn't a commitment.
+
+## 3. "Which platform will you use, and why?"
+
+WordPress, Wix, Webflow, custom code — each has different trade-offs.
+
+WordPress is common but updates can break things. Wix is easy but customization is limited. Custom code performs best but maintenance works differently.
+
+You're not looking for which they pick — you're looking for *why*. "It's right for your business because..." is the right opener.
+
+If the answer is "WordPress because that's what I do" — keep looking.
+
+## 4. "Will mobile design come after the desktop is done?"
+
+78% of Turkey's internet traffic is mobile. If mobile is an afterthought, that's a problem.
+
+A good designer shows you the mobile design first, then desktop. Because most visitors will see it on a phone.
+
+Test them: "Can you show me a mobile mockup right now?" If they don't have one ready, they're not ready.
+
+## 5. "What are you doing about page speed?"
+
+A page that doesn't load in 3 seconds loses half its visitors. Google knows this and pushes slow sites down in search results.
+
+Most designers say "of course it'll be fast" without giving a concrete target.
+
+A good answer sounds like: "Targeting Lighthouse Performance 90+. Images in WebP, lazy loading on, critical CSS inlined."
+
+Even if the details lose you, ask. The depth of the answer reveals the depth of the work.
+
+## 6. "Is the SEO foundation included?"
+
+The minimum every site should have:
+
+- Unique title and meta description per page
+- Schema.org markup (LocalBusiness, Service, FAQ)
+- XML sitemap
+- robots.txt
+- Google Search Console connection
+- Page speed optimization
+
+These aren't an "extra package". Without them, your site won't show up in Google.
+
+If someone says "SEO is a separate add-on", at least the basics from this list should be standard. Otherwise you're buying a website that doesn't get found.
+
+## 7. "Can I talk to a few of your past clients?"
+
+A portfolio shows the picture. A client conversation shows reality.
+
+Anyone can write "5.0 stars" on their site. "Here are 3 of my clients' phone numbers, all happy to chat" is different.
+
+Ask the client they connect you with:
+
+- Did the project go past the estimated timeline?
+- Were there extra charges beyond the agreed price?
+- When you have a problem now, how quickly do you get a response?
+
+Three questions. Three honest answers. You'll learn a lot.
+
+## 8. "Is the price fixed, or can it change during the project?"
+
+This is the most common complaint I hear in Turkey. Agreement at 15,000 TL. Final invoice 28,000 TL.
+
+The reasoning is always the same: "That feature wasn't in scope", "Remember you also asked for X", "Extra pages cost more".
+
+A professional contract has a clear list:
+
+- How many pages
+- What functions
+- How many revision rounds
+- Delivery date
+- Fixed price or clearly stated hourly rate
+
+Verbal agreements don't hold up. Get it in writing.
+
+## 9. "What happens if the site goes down or gets attacked?"
+
+Uncomfortable to ask. Here's the truth: websites crash sometimes. They get attacked sometimes. Servers fail.
+
+A good designer has thought about this in advance. Are there automatic backups? If there's an attack, how fast do you get back online? Will you find out about a problem before your customers do?
+
+"Don't worry, we'll handle it" isn't enough. Ask for the process.
+
+## 10. "How do I update the site once it's mine?"
+
+The ideal answer: "We give you an admin panel. You can change copy, products, photos yourself. Training videos included."
+
+The bad answer: "Just message me and I'll do it."
+
+The second one keeps you dependent for every small update. Even a logo change becomes a billable task.
+
+Insist on independence. Have control over your own site.
+
+## What these 10 questions reveal
+
+If a web designer answers these clearly and concretely, you can probably trust them.
+
+If their eyes glaze over, if they say "we'll figure that out later", if they just look confused — find someone else.
+
+A website is an asset that lives 10 years. Starting wrong gets expensive later.
+
+If you're talking to a designer and they stumble on any of these, I'll give you a free second opinion. Message me on WhatsApp — we can review the contract together in about 10 minutes. Asking is free, and you don't have to commit to anything.
+`,
+		contentTr: `
+## Pişman olmadan başlamak
+
+Geçen ay bana yazan iki müşteri vardı. İkisi de daha önce başka birine web sitesi yaptırmış. İkisi de pişman.
+
+Birincisi 25.000 TL ödemiş ama sitenin sahibi kendisi değildi — domain ve hosting tasarımcının adına kayıtlıydı. Ayrılırken siteyi taşıyamadı. Sıfırdan başlamak zorunda kaldı.
+
+İkincisi WordPress üzerine "premium tema" almış. Pazartesi günü çalışıyordu. Cuma günü açılmıyordu. Tasarımcıya ulaşamıyordu çünkü WhatsApp'tan bloklamış.
+
+Bunlar uç örnekler değil. Türkiye'de web tasarım hizmeti alırken karşılaşılan en yaygın sorunlar bunlar. Tek gerçek koruma: imzalamadan önce doğru soruları sormak.
+
+Aşağıda kendi 50+ projemde gözlemlediğim, müşterilerimin "keşke daha önce sorsaymışım" dediği 10 soru var.
+
+## 1. "Domain ve hosting kimin adına kayıt olacak?"
+
+Bu sorunun cevabı "sizin" olmalı. Başka türlü tartışmaya değmez.
+
+Tasarımcının kendi adına kaydetmesi yaygın. "Ben yöneteyim, sizi yormayayım" derler. Ayrıldığınızda site rehin gibi.
+
+İsteyin: domain ve hosting size ait olsun. Bilgi.tr, GoDaddy, Cloudflare — hangi platformda olduğu önemli değil. Önemli olan adınızın orada görünmesi.
+
+## 2. "Site açıldıktan sonra düzeltme politikası nedir?"
+
+Bazı tasarımcılar bittiğinde gider. Yeni telefon, ikinci cep, hiçbir yere ulaşmazsınız.
+
+Profesyonel cevap şöyle olur: "30 gün ücretsiz revize hakkınız var. Sonrasında saatlik veya paket halinde, fiyat şudur."
+
+Belirsizlik kabul etmeyin. "Tabii ki destekleriz" cümlesi taahhüt değil.
+
+## 3. "Hangi platform üzerinde yapılacak ve neden?"
+
+WordPress, Wix, Webflow, özel kod — her birinin getirisi farklı.
+
+WordPress yaygın ama güncellemeler bazen siteyi kırar. Wix kolay ama özelleştirmesi sınırlı. Özel kod en performanslı ama bakım modeli farklı.
+
+Hangisini seçtiklerinin değil, **neden** seçtiklerinin cevabını arıyorsunuz. "İşletmeniz için bu uygun çünkü..." diye başlamalı.
+
+Cevap "WordPress, çünkü ben WordPress yapıyorum" ise — kaçın.
+
+## 4. "Mobil görünüm bittikten sonra mı düşünülecek?"
+
+Türkiye'de internet trafiğinin %78'i mobilden geliyor. Mobil tasarım sonradan eklenecekse, sorun var.
+
+İyi tasarımcı önce mobil tasarım gösterir, sonra masaüstü. Çünkü çoğu ziyaretçi telefondan bakacak.
+
+Test edin: "Bana mobil ekran ön görselini şimdi gösterebilir misiniz?" Hazır cevap yoksa, hazırlık eksik.
+
+## 5. "Sayfa yükleme hızı için ne yapılıyor?"
+
+3 saniyede açılmayan sayfa, ziyaretçilerin yarısını kaybeder. Google bunu biliyor ve yavaş siteleri arama sonuçlarında geriye atıyor.
+
+Çoğu tasarımcı "elbette hızlı olacak" der ama somut bir hedef vermez.
+
+İyi cevap şöyle: "Lighthouse Performance skoru 90+ hedefliyoruz. Görseller WebP formatında, lazy loading aktif, kritik CSS inline yüklenecek."
+
+Anlayamasanız bile sorun. Cevabın detayı, kalitenin göstergesidir.
+
+## 6. "SEO için temel altyapı kurulacak mı?"
+
+Her sitede olması gereken minimum:
+
+- Her sayfaya unique title ve meta description
+- Schema.org işaretlemesi (LocalBusiness, Service, FAQ)
+- XML sitemap
+- robots.txt
+- Google Search Console bağlantısı
+- Sayfa hızı optimizasyonu
+
+Bu maddeler "ekstra paket" değil. Bunlar olmadan site Google'da görünmez.
+
+Birisi "SEO ayrı paket olarak çıkar" diyorsa, en azından temel olanlar standart pakete dahil olmalı. Aksi halde web sitesi alıyorsunuz ama Google'da bulunmuyorsunuz.
+
+## 7. "Daha önceki müşterilerinizle konuşabilir miyim?"
+
+Portföy resmi gösterir, müşteri görüşmesi gerçeği gösterir.
+
+Bir tasarımcının sitesinde "5.0 yıldız" yazması kolay. "İşte 3 müşterimin telefonu, hepsi sizinle konuşmaya hazır" demesi farklı.
+
+Konuştuğunuz müşteriye sorun:
+
+- Tahmini süreyi ne kadar aştı?
+- Anlaşılan fiyatın üstüne ek talep geldi mi?
+- Şu anda problem yaşadığınızda ne kadar sürede dönüş alıyorsunuz?
+
+Üç soru. Üç dürüst cevap. Çok şey öğrenirsiniz.
+
+## 8. "Fiyat sabit mi, süreç içinde değişebilir mi?"
+
+Türkiye'de en sık duyulan şikayet bu. Anlaşma 15.000 TL. Site tamamlandığında fatura 28.000 TL.
+
+Sebep her zaman aynı: "Bu özellik kapsamda değildi", "Şunu da istediniz hatırlayın", "İlave sayfalar fiyatı yükseltti".
+
+Profesyonel sözleşme net liste içerir:
+
+- Kaç sayfa
+- Hangi fonksiyonlar
+- Kaç tur revize hakkı
+- Teslim tarihi
+- Sabit fiyat veya net saat ücreti
+
+Sözlü mutabakat işe yaramaz. Yazılı olsun.
+
+## 9. "Site çökerse veya saldırıya uğrarsa ne olur?"
+
+Bunu sormak hoşunuza gitmeyebilir. Gerçek şu: web siteleri bazen çöker. Bazen saldırıya uğrar. Bazen sunucu hatası verir.
+
+İyi tasarımcı bunu önceden düşünmüştür. Otomatik yedekleme var mı? Saldırı olursa kaç saatte ayağa kalkar? Problem siz fark etmeden tespit edilir mi?
+
+"Endişelenmeyin, biz hallederiz" yetersiz. Süreci sorun, taahhüt isteyin.
+
+## 10. "Site benim olduğunda nasıl güncellerim?"
+
+İdeal cevap: "Size bir admin paneli veriyoruz. Yazıları, ürünleri, fotoğrafları kendiniz değiştirebilirsiniz. Eğitim videoları da var."
+
+Kötü cevap: "Bana yazarsanız ben yaparım."
+
+İkincisi, sizi her küçük güncelleme için tasarımcıya bağımlı tutar. Logo değişikliği bile faturalı iş haline gelir.
+
+Bağımsızlık isteyin. Kendi sitenizde söz sahibi olun.
+
+## Bu 10 sorudan ne çıkar?
+
+Bir web tasarımcı bu soruları sade ve net cevaplıyorsa, muhtemelen size güvenebilirsiniz.
+
+Soruyu duyduğunda gözleri kayıyor, "ona sonra bakarız" diyor, ya da kafası karışıyorsa — başkasını bulun.
+
+Web sitesi 10 yıl yaşayan bir varlık. Yanlış başlamak ileride pahalıya patlar.
+
+Eğer bir tasarımcıyla görüşüyorsanız ve bu sorularda takılırsa, ben ücretsiz ikinci görüş veririm. WhatsApp'tan yazın, sözleşmeyi 10 dakikada birlikte gözden geçirelim. Soru sormak ücretsiz, başlamak zorunda da değilsiniz.
+`
+	},
+	{
 		slug: 'web-sitesi-maliyeti-istanbul-2026',
 		title: 'How Much Does a Website Cost in Istanbul? (2026 Guide)',
 		titleTr: 'İstanbul\'da Web Sitesi Yaptırmanın Maliyeti (2026 Rehberi)',
