@@ -196,7 +196,7 @@
 	<WhatsAppButton />
 {:else}
 	<div class="min-h-screen flex flex-col">
-		<Header settings={data.headerSettings} />
+		<Header settings={data.headerSettings} locale={data.locale} />
 		<main class="flex-1">
 			{@render children()}
 		</main>

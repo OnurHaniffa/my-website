@@ -8,7 +8,10 @@ export const tr = {
 		navigation: 'Gezinme',
 		appearance: 'G\u00f6r\u00fcn\u00fcm',
 		ready_to_start: 'Başlamaya hazır mısınız?',
-		lets_talk: '\u0130letişime Ge\u00e7in'
+		lets_talk: '\u0130letişime Ge\u00e7in',
+		call_now: 'Hemen Ara',
+		call_aria: 'Şimdi bizi arayın',
+		or_call: 'Veya hemen arayın'
 	},
 	home: {
 		meta_title: '\u0130stanbul Web Tasarımcı | Onur Haniffa - Profesyonel Web Tasarım & Geliştirme',

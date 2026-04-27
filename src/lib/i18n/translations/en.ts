@@ -8,7 +8,10 @@ export const en = {
 		navigation: 'Navigation',
 		appearance: 'Appearance',
 		ready_to_start: 'Ready to start?',
-		lets_talk: "Let's Talk"
+		lets_talk: "Let's Talk",
+		call_now: 'Call Now',
+		call_aria: 'Call us now',
+		or_call: 'Or call directly'
 	},
 	home: {
 		meta_title: 'Web Designer Istanbul | Onur Haniffa - Modern Web Design & Development',
