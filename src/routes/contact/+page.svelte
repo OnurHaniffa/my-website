@@ -65,7 +65,13 @@
 
 			formState = 'success';
 
-			// Reset form after success
+			if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+				(window as any).gtag('event', 'ads_conversion_Contact_Us_1', {
+					event_category: 'conversion',
+					event_label: 'contact_form_submit'
+				});
+			}
+
 			name = '';
 			email = '';
 			company = '';
