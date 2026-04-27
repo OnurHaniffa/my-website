@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { page } from '$app/stores';
+	import { page } from '$app/state';
 	import { Button } from '$lib/components/ui/button';
 	import {
 		Sheet,
@@ -11,10 +11,25 @@
 	import { Container } from '$lib/components/layout';
 	import { LanguageSwitcher } from '$lib/components/ui/language-switcher';
 	import { browser } from '$app/environment';
-	import { t, getLocalePath } from '$lib/i18n/index.svelte';
+	import { en } from '$lib/i18n/translations/en';
+	import { tr } from '$lib/i18n/translations/tr';
 	import type { DirectusHeaderSettings } from '$lib/data/directus';
 
-	let { settings = null }: { settings?: DirectusHeaderSettings | null } = $props();
+	let {
+		settings = null,
+		locale: localeProp = 'en'
+	}: { settings?: DirectusHeaderSettings | null; locale?: string } = $props();
+
+	function lookup(d: typeof en, key: string): string {
+		const keys = key.split('.');
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		let value: any = d;
+		for (const k of keys) {
+			if (value == null) return key;
+			value = value[k];
+		}
+		return typeof value === 'string' ? value : key;
+	}
 
 	const defaultNavItems = [
 		{ href: '/', labelKey: 'nav.home' },
@@ -24,11 +39,26 @@
 		{ href: '/about', labelKey: 'nav.about' }
 	];
 
-	const navItems = $derived(
-		settings?.nav_items?.length
-			? settings.nav_items.map((item: { href: string; label: string }) => ({ href: getLocalePath(item.href), label: item.label }))
-			: defaultNavItems.map((item) => ({ href: getLocalePath(item.href), label: t(item.labelKey) }))
-	);
+	// Functions that take locale explicitly — no closure over component state
+	function tWith(loc: string, key: string) {
+		return lookup(loc === 'tr' ? tr : en, key);
+	}
+	function pathWith(loc: string, path: string) {
+		return loc === 'tr' ? `/tr${path === '/' ? '' : path}` : path;
+	}
+	// Always use defaultNavItems for translation. CMS settings.nav_items can have raw English labels
+	// that don't get translated; safer to drive nav from i18n keys directly.
+	function buildNavItemsWith(loc: string, _settings: DirectusHeaderSettings | null) {
+		return defaultNavItems.map((item) => ({
+			href: pathWith(loc, item.href),
+			label: tWith(loc, item.labelKey)
+		}));
+	}
+
+	// Wrappers that auto-pull localeProp at call time
+	const t = (key: string) => tWith(localeProp, key);
+	const getLocalePath = (path: string) => pathWith(localeProp, path);
+	const buildNavItems = () => buildNavItemsWith(localeProp, settings);
 
 	let mobileMenuOpen = $state(false);
 	let scrolled = $state(false);
@@ -110,23 +140,23 @@
 				<div class="hidden sm:block w-8 h-[2px] bg-foreground/80"></div>
 			</a>
 
-			<!-- Desktop Navigation - absolutely centered so it doesn't shift with varying logo/CTA widths -->
-			<nav class="hidden md:flex items-center gap-0 absolute left-1/2 -translate-x-1/2 max-w-[calc(100%-480px)]">
-				{#each navItems as item}
+			<!-- Desktop Navigation - flex-grow centers content within remaining space (no overlap risk) -->
+			<nav class="hidden lg:flex items-center justify-center gap-0 flex-1 mx-4 lg:mx-6">
+				{#each buildNavItems() as item}
 					<a
 						href={item.href}
 						class="group relative px-1.5 lg:px-3.5 py-2 text-[13px] font-semibold tracking-normal transition-all duration-300 rounded-lg whitespace-nowrap
-							{isActive(item.href, $page.url.pathname)
+							{isActive(item.href, page.url.pathname)
 								? 'text-primary bg-primary/10 shadow-sm'
 								: 'text-muted-foreground hover:text-foreground hover:bg-muted/70'}"
 					>
 						<span class="relative z-10 transition-transform duration-300 group-hover:translate-x-0.5">{item.label}</span>
 						<!-- Active indicator line -->
-						{#if isActive(item.href, $page.url.pathname)}
+						{#if isActive(item.href, page.url.pathname)}
 							<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-6 h-0.5 bg-primary rounded-full"></span>
 						{/if}
 						<!-- Hover underline animation -->
-						<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary/50 rounded-full transition-all duration-300 group-hover:w-4 {isActive(item.href, $page.url.pathname) ? 'opacity-0' : 'opacity-100'}"></span>
+						<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary/50 rounded-full transition-all duration-300 group-hover:w-4 {isActive(item.href, page.url.pathname) ? 'opacity-0' : 'opacity-100'}"></span>
 					</a>
 				{/each}
 			</nav>
@@ -187,14 +217,47 @@
 					</span>
 				</button>
 
+				<!-- Call Button — sexy, attention-grabbing, fires gtag event -->
+				<a
+					href="tel:+905428324550"
+					onclick={() => {
+						if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+							(window as any).gtag('event', 'phone_call_click', {
+								event_category: 'conversion',
+								event_label: 'header_call_button'
+							});
+						}
+					}}
+					class="call-btn hidden md:inline-flex group relative items-center justify-center gap-2 h-9 w-9 lg:w-auto lg:px-4 xl:px-5 lg:py-2 rounded-full bg-accent text-white font-semibold text-sm shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.03] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+					aria-label={t('nav.call_aria')}
+					title={t('nav.call_aria')}
+				>
+					<!-- Pulsing ring -->
+					<span class="absolute inset-0 rounded-full bg-accent opacity-40 animate-ping pointer-events-none"></span>
+					<!-- Phone icon with ring wiggle -->
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						width="16"
+						height="16"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class="relative call-phone-icon"
+						aria-hidden="true"
+					>
+						<path d="M20.487 17.14l-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.86 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766 4.005 4.004 9.024 4.296 10.406 4.296.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.388z"/>
+					</svg>
+					<span class="relative whitespace-nowrap hidden lg:inline">{t('nav.call_now')}</span>
+				</a>
+
 				<Button href={settings?.cta_href ?? getLocalePath('/contact')} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
-					<span class="relative z-10">{settings?.cta_text ?? t('nav.lets_talk')}</span>
+					<span class="relative z-10">{t('nav.lets_talk')}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
 
 				<!-- Menu Button - mobile only -->
+				<div class="lg:hidden">
 				<Sheet bind:open={mobileMenuOpen}>
-					<SheetTrigger class="md:hidden">
+					<SheetTrigger>
 					{#snippet child({ props })}
 						<button
 							{...props}
@@ -262,27 +325,27 @@
 						<!-- Navigation -->
 						<nav class="flex flex-col gap-2 flex-1">
 							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">{t('nav.navigation')}</p>
-							{#each navItems as item, i}
+							{#each buildNavItems() as item, i}
 								<a
 									href={item.href}
 									onclick={() => (mobileMenuOpen = false)}
 									class="group relative flex items-center gap-5 px-4 py-5 transition-all duration-300 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
-										{isActive(item.href, $page.url.pathname)
+										{isActive(item.href, page.url.pathname)
 											? 'text-foreground bg-primary/10 shadow-xl shadow-primary/10 scale-[1.02] ring-1 ring-primary/20'
 											: 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}"
 									style="animation: slideInNav 0.4s cubic-bezier(0.16, 1, 0.3, 1) {0.1 + i * 0.05}s both;"
 								>
 									<!-- Number indicator -->
-									<span class="text-[11px] font-mono w-6 {isActive(item.href, $page.url.pathname) ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-primary/60'} transition-colors">0{i + 1}</span>
+									<span class="text-[11px] font-mono w-6 {isActive(item.href, page.url.pathname) ? 'text-primary' : 'text-muted-foreground/40 group-hover:text-primary/60'} transition-colors">0{i + 1}</span>
 
 									<!-- Vertical line -->
-									<div class="w-px h-6 {isActive(item.href, $page.url.pathname) ? 'bg-primary/40' : 'bg-border/50 group-hover:bg-primary/30'} transition-colors"></div>
+									<div class="w-px h-6 {isActive(item.href, page.url.pathname) ? 'bg-primary/40' : 'bg-border/50 group-hover:bg-primary/30'} transition-colors"></div>
 
 									<!-- Label -->
 									<span class="text-lg font-bold tracking-tight transition-all duration-300 group-hover:translate-x-1">{item.label}</span>
 
 									<!-- Active indicator -->
-									{#if isActive(item.href, $page.url.pathname)}
+									{#if isActive(item.href, page.url.pathname)}
 										<div class="ml-auto w-2 h-2 rounded-full bg-primary shadow-lg shadow-primary/50"></div>
 									{:else}
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto opacity-0 -translate-x-4 transition-all duration-300 group-hover:opacity-40 group-hover:translate-x-0"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -353,9 +416,33 @@
 
 							<p class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em] mb-3 px-2">{t('nav.ready_to_start')}</p>
 							<Button class="w-full h-14 text-base font-semibold rounded-2xl shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300" href={settings?.cta_href ?? getLocalePath('/contact')} onclick={() => (mobileMenuOpen = false)}>
-								{settings?.cta_text ?? t('nav.lets_talk')}
+								{t('nav.lets_talk')}
 								<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 							</Button>
+
+							<!-- Mobile Call Button — primary tap-to-call action -->
+							<a
+								href="tel:+905428324550"
+								onclick={() => {
+									mobileMenuOpen = false;
+									if (typeof window !== 'undefined' && typeof (window as any).gtag === 'function') {
+										(window as any).gtag('event', 'phone_call_click', {
+											event_category: 'conversion',
+											event_label: 'mobile_menu_call_button'
+										});
+									}
+								}}
+								class="relative mt-3 flex items-center justify-center gap-3 w-full h-14 rounded-2xl bg-accent text-white font-semibold text-base shadow-xl shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 hover:scale-[1.02] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 overflow-hidden"
+								aria-label={t('nav.call_aria')}
+							>
+								<span class="absolute inset-0 rounded-2xl bg-accent opacity-40 animate-ping pointer-events-none"></span>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="relative call-phone-icon" aria-hidden="true">
+									<path d="M20.487 17.14l-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.86 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766 4.005 4.004 9.024 4.296 10.406 4.296.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.388z"/>
+								</svg>
+								<span class="relative">{t('nav.call_now')}</span>
+							</a>
+							<p class="text-center text-xs text-muted-foreground/70 mt-2 font-mono tracking-wider">+90 542 832 45 50</p>
+
 							<a href="mailto:contact@onurhaniffa.com" class="flex items-center justify-center gap-2 mt-4 px-4 py-3 text-[13px] text-muted-foreground hover:text-primary bg-muted/30 rounded-xl transition-all duration-300 hover:scale-[1.02] hover:bg-muted/50">
 								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
 								contact@onurhaniffa.com
@@ -364,6 +451,7 @@
 					</div>
 				</SheetContent>
 				</Sheet>
+				</div>
 			</div>
 		</div>
 	</Container>
@@ -381,12 +469,32 @@
 		}
 	}
 
+	@keyframes phoneRing {
+		0%, 100% { transform: rotate(0); }
+		10%, 30% { transform: rotate(-12deg); }
+		20%, 40% { transform: rotate(12deg); }
+		50% { transform: rotate(0); }
+	}
+
+	.call-phone-icon {
+		animation: phoneRing 2s ease-in-out infinite;
+		animation-delay: 1s;
+		transform-origin: center;
+	}
+
+	.call-btn:hover .call-phone-icon {
+		animation: phoneRing 0.6s ease-in-out infinite;
+	}
+
 	/* Respect reduced motion preference */
 	@media (prefers-reduced-motion: reduce) {
 		:global(a[style*="animation"]) {
 			animation: none !important;
 			opacity: 1 !important;
 			transform: none !important;
+		}
+		.call-phone-icon {
+			animation: none !important;
 		}
 	}
 </style>
