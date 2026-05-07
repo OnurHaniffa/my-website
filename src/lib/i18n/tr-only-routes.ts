@@ -17,7 +17,7 @@ const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	'/web-tasarim-istanbul', // shipped 2026-05-07
 	'/kurumsal-web-sitesi-yaptirma', // shipped 2026-05-07
 	'/e-ticaret-sitesi-yaptirma', // shipped 2026-05-07
-	'/web-sitesi-yenileme', // not yet built
+	'/web-sitesi-yenileme', // shipped 2026-05-07
 
 	// Programmatic district pages
 	'/kadikoy-web-tasarim',
