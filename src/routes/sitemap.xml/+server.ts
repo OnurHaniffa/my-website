@@ -17,6 +17,7 @@ const pages = [
 // generateUrlEntry doesn't add /tr/ alternates that don't exist.
 const trOnlyPages = [
 	{ path: '/web-sitesi-fiyatlari/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-01' },
+	{ path: '/kurumsal-web-sitesi-yaptirma/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	// District landing pages — programmatic, all share the same template + lastmod
 	...districts.map((d) => ({
 		path: `/${d.slug}-web-tasarim/`,
