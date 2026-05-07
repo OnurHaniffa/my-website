@@ -22,21 +22,44 @@ export function setLocale(newLocale: Locale) {
 
 export function initLocale() {
 	if (browser) {
-		// URL-based locale takes priority over localStorage
-		if (window.location.pathname.startsWith('/tr')) {
+		// Locale precedence (server > URL > localStorage):
+		//
+		// The server (hooks.server.ts) is the source of truth. It already
+		// detected URL prefix (`/tr/*`) AND TR-keyword slug routes (e.g.
+		// `/kadikoy-web-tasarim/`) and set locale via setLocaleFromServer
+		// BEFORE this function runs.
+		//
+		// We must NOT let localStorage override the server. That would cause
+		// hydration mismatches: SSR HTML uses server locale, client JS would
+		// flip to localStorage value, footer text would flicker, internal
+		// links would point at the wrong locale prefix.
+		//
+		// localStorage is only consulted when:
+		//   1. URL has no /tr prefix AND
+		//   2. URL is not a TR-only slug (i.e., we're on a "neutral" route
+		//      like the homepage `/` where the server defaulted to 'en' and
+		//      the user's stored preference can apply).
+		//
+		// We can't detect TR-only slugs from the client without duplicating
+		// the allowlist. Instead we infer: if server set 'tr', that's a
+		// definitive signal — don't override. Only override 'en' from
+		// localStorage on URLs without /tr prefix.
+		const urlForcesTr = window.location.pathname.startsWith('/tr');
+		if (urlForcesTr) {
 			locale = 'tr';
-			localStorage.setItem('locale', 'tr');
-		} else {
-			// Check if we're on an English URL - always use 'en' for non-/tr/ paths
+		} else if (locale === 'en') {
+			// Server defaulted to 'en' — user's stored preference may apply.
+			// (If server forced 'tr' via TR-only slug, we leave it alone.)
 			const stored = localStorage.getItem('locale');
-			if (window.location.pathname.startsWith('/tr')) {
-				locale = 'tr';
-			} else {
-				locale = 'en';
-			}
-			// Keep localStorage in sync
-			localStorage.setItem('locale', locale);
+			if (stored === 'tr') locale = 'tr';
 		}
+		// Note: we deliberately do NOT write back to localStorage here.
+		// That happens explicitly via setLocale() when the user toggles.
+		// Auto-syncing on every page load means if the user lands on a TR-only
+		// page (server sets locale='tr'), localStorage gets 'tr' written, and
+		// when they next visit `/` they'll see TR — which they didn't choose.
+		// localStorage should reflect explicit user intent only.
+		document.documentElement.lang = locale;
 	}
 }
 

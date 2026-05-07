@@ -1,12 +1,28 @@
 <script lang="ts">
 	import { Container } from '$lib/components/layout';
 	import { Button } from '$lib/components/ui/button';
-	import { t, getLocalePath } from '$lib/i18n/index.svelte';
+	import { t, getLocale, getLocalePath } from '$lib/i18n/index.svelte';
 	import type { DirectusFooterSettings } from '$lib/data/directus';
 
 	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
 
 	const currentYear = new Date().getFullYear();
+
+	// CMS (Directus) only stores English content. When locale is TR, the i18n
+	// translations have the proper Turkish copy — use those FIRST and only fall
+	// back to CMS for English. Without this gate, every TR page renders the
+	// footer in English because `settings?.field ?? t(...)` lets CMS win.
+	function cmsOrT(field: keyof DirectusFooterSettings, key: string): string {
+		if (getLocale() === 'tr') return t(key);
+		return ((settings?.[field] as string | undefined) ?? t(key));
+	}
+
+	// CTA heading composition logic, extracted for readability:
+	//   - On TR locale OR when CMS has no cta_heading: render the full
+	//     translated three-part heading (pre + highlight + post).
+	//   - On EN locale with CMS-provided cta_heading: render just CMS pre +
+	//     highlight (CMS owns the entire heading text).
+	const showCtaPost = $derived(getLocale() === 'tr' || !settings?.cta_heading);
 </script>
 
 <!-- Curved top edge - wave separates page from dark footer -->
@@ -47,14 +63,14 @@
 			<!-- Main CTA Section -->
 			<div class="text-center mb-16 md:mb-20">
 				<h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-white">
-					{settings?.cta_heading ?? t('footer.cta_pre')} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">{settings?.cta_highlight ?? t('footer.cta_highlight')}</span> {settings?.cta_heading ? '' : t('footer.cta_post')}
+					{cmsOrT('cta_heading', 'footer.cta_pre')} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">{cmsOrT('cta_highlight', 'footer.cta_highlight')}</span> {showCtaPost ? t('footer.cta_post') : ''}
 				</h2>
 				<p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
-					{settings?.cta_description ?? t('footer.cta_description')}
+					{cmsOrT('cta_description', 'footer.cta_description')}
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
 					<Button href={getLocalePath('/contact')} variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
-						{settings?.cta_button_text ?? t('footer.cta_button')}
+						{cmsOrT('cta_button_text', 'footer.cta_button')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
 					<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
@@ -75,7 +91,7 @@
 						</div>
 					</a>
 					<p class="text-gray-400 text-sm leading-relaxed max-w-xs mb-6">
-						{settings?.tagline ?? t('footer.tagline')}
+						{cmsOrT('tagline', 'footer.tagline')}
 					</p>
 					<div class="flex items-center gap-4">
 						<a href="https://wa.me/905428324550" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-full bg-[#25D366]/10 hover:bg-[#25D366]/20 flex items-center justify-center text-[#25D366] hover:text-[#25D366] transition-all" aria-label="WhatsApp">
@@ -98,7 +114,7 @@
 
 				<!-- Pages -->
 				<div class="col-span-1 md:col-span-2">
-					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.pages_heading ?? t('footer.explore')}</h4>
+					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{cmsOrT('pages_heading', 'footer.explore')}</h4>
 					<nav class="flex flex-col gap-3">
 						<a href={getLocalePath('/')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.home')}</a>
 						<a href={getLocalePath('/work')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.work')}</a>
@@ -110,13 +126,13 @@
 
 				<!-- Contact -->
 				<div class="col-span-1 md:col-span-3 lg:col-span-2">
-					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{settings?.contact_heading ?? t('footer.contact')}</h4>
+					<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-5">{cmsOrT('contact_heading', 'footer.contact')}</h4>
 					<div class="flex flex-col gap-3">
 						<a href={getLocalePath('/contact')} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{t('footer.get_in_touch')}</a>
 						<a href="tel:+905428324550" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">+90 542 832 45 50</a>
 						<a href="https://wa.me/905428324550" target="_blank" rel="noopener noreferrer" class="text-sm text-[#25D366] hover:text-[#20BD5A] hover:translate-x-1 transition-all">WhatsApp</a>
 						<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{settings?.email ?? 'contact@onurhaniffa.com'}</a>
-						<p class="text-sm text-gray-500 mt-2">{settings?.location ?? t('footer.based_in')}</p>
+						<p class="text-sm text-gray-500 mt-2">{cmsOrT('location', 'footer.based_in')}</p>
 					</div>
 				</div>
 			</div>
@@ -127,7 +143,7 @@
 					&copy; {currentYear} {settings?.brand_name ?? 'Onur Haniffa'}. {t('footer.copyright_suffix')}
 				</p>
 				<p class="text-sm text-gray-500">
-					{settings?.bottom_tagline ?? t('footer.designed_with')}
+					{cmsOrT('bottom_tagline', 'footer.designed_with')}
 				</p>
 			</div>
 		</div>

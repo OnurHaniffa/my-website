@@ -5,6 +5,7 @@ declare global {
 		// interface Error {}
 		interface Locals {
 			locale: 'en' | 'tr';
+			isTrOnlyRoute: boolean;
 		}
 		// interface PageData {}
 		// interface PageState {}

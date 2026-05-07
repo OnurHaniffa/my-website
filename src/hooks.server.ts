@@ -1,4 +1,5 @@
 import type { Handle } from '@sveltejs/kit';
+import { isTrOnlyRoute } from '$lib/i18n/tr-only-routes';
 
 // Redirects for old/changed URLs
 const redirects: Record<string, string> = {
@@ -22,9 +23,15 @@ export const handle: Handle = async ({ event, resolve }) => {
 		});
 	}
 
-	// Detect locale from URL path
-	const locale = event.url.pathname.startsWith('/tr') ? 'tr' : 'en';
+	// Locale signals (in priority order):
+	//  1. /tr/ URL prefix → explicit Turkish locale
+	//  2. Turkish-keyword slug routes (per src/lib/i18n/tr-only-routes.ts)
+	//  3. Otherwise: English
+	const isTrPath = event.url.pathname.startsWith('/tr');
+	const isTrSlug = isTrOnlyRoute(event.url.pathname);
+	const locale = isTrPath || isTrSlug ? 'tr' : 'en';
 	event.locals.locale = locale;
+	event.locals.isTrOnlyRoute = isTrSlug;
 
 	const response = await resolve(event, {
 		transformPageChunk: ({ html }) => {

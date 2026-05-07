@@ -8,6 +8,12 @@
 		{ code: 'tr', flag: '\ud83c\uddf9\ud83c\uddf7', label: 'TR' }
 	];
 
+	// Switcher visibility is driven by server-side detection (in hooks.server.ts
+	// → layout server load → page.data). This keeps SSR HTML and first client
+	// paint perfectly in sync — no client-side regex match, no SPA-nav flicker.
+	// On TR-only routes the switcher is hidden because there's no EN equivalent.
+	const isTrOnlyRoute = $derived(($page.data as { isTrOnlyRoute?: boolean }).isTrOnlyRoute === true);
+
 	let open = $state(false);
 	let dropdownRef: HTMLDivElement;
 
@@ -54,6 +60,7 @@
 	});
 </script>
 
+{#if !isTrOnlyRoute}
 <div class="relative" bind:this={dropdownRef}>
 	<button
 		onclick={() => (open = !open)}
@@ -121,3 +128,4 @@
 		</div>
 	{/if}
 </div>
+{/if}

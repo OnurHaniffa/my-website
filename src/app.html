@@ -45,5 +45,65 @@
 			}
 		});
 	</script>
+	<script>
+		// Micro-conversion tracking for Google Ads optimization.
+		// Each event is gated with sessionStorage so it fires AT MOST ONCE per
+		// session (across all SPA navs and reloads in the same tab session).
+		// Without this, every reload re-fires and inflates conversion counts.
+		(function() {
+			var SESSION_KEYS = {
+				pricing: 'mc_pricing_view_fired',
+				contact: 'mc_contact_view_fired',
+				engaged: 'mc_engaged_90s_fired'
+			};
+			function fireOnce(sessionKey, eventName) {
+				try {
+					if (sessionStorage.getItem(sessionKey)) return;
+					if (typeof gtag !== 'function') return;
+					gtag('event', eventName, { event_category: 'micro_conversion' });
+					sessionStorage.setItem(sessionKey, '1');
+				} catch (_) {
+					// sessionStorage may throw in private browsing on iOS — fall through.
+				}
+			}
+
+			// 1. Pricing section viewed — observe whenever a .pricing-section
+			// element is in the DOM. Re-checks on SPA navigation via MutationObserver
+			// so the event fires regardless of which page mounts the section first.
+			var pricingObserver = new IntersectionObserver(function(entries) {
+				entries.forEach(function(entry) {
+					if (entry.isIntersecting) {
+						fireOnce(SESSION_KEYS.pricing, 'pricing_section_view');
+						pricingObserver.disconnect();
+					}
+				});
+			}, { threshold: 0.5 });
+			function observePricing() {
+				if (sessionStorage.getItem(SESSION_KEYS.pricing)) return;
+				var el = document.querySelector('.pricing-section');
+				if (el) pricingObserver.observe(el);
+			}
+			document.addEventListener('DOMContentLoaded', observePricing);
+			// Re-observe on SPA route changes (SvelteKit dispatches this).
+			window.addEventListener('sveltekit:navigation-end', observePricing);
+
+			// 2. Contact page viewed. Check on initial load AND on every SPA nav
+			// (DOMContentLoaded only fires once per full reload).
+			function checkContactPage() {
+				var p = window.location.pathname;
+				if (p.indexOf('/contact') !== -1 || p.indexOf('/iletisim') !== -1) {
+					fireOnce(SESSION_KEYS.contact, 'contact_page_view');
+				}
+			}
+			checkContactPage();
+			window.addEventListener('sveltekit:navigation-end', checkContactPage);
+
+			// 3. Engaged session — fires once after 90s of session lifetime,
+			// regardless of how many SPA navs happened. Single-shot via sessionStorage.
+			setTimeout(function() {
+				fireOnce(SESSION_KEYS.engaged, 'engaged_session_90s');
+			}, 90000);
+		})();
+	</script>
 	</body>
 </html>

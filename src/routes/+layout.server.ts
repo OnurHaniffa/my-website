@@ -12,6 +12,9 @@ export const load: LayoutServerLoad = async ({ locals }) => {
 		headerSettings,
 		footerSettings,
 		siteSettings,
-		locale: locals.locale ?? 'en'
+		locale: locals.locale ?? 'en',
+		// Pass through to client so language-switcher can hide reactively without
+		// duplicating the regex/allowlist logic in the component.
+		isTrOnlyRoute: locals.isTrOnlyRoute ?? false
 	};
 };
