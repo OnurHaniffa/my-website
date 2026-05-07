@@ -1,6 +1,7 @@
 import type { RequestHandler } from './$types';
 import { blogPosts } from '$lib/data/blog-posts';
 import { districts } from '$lib/data/districts';
+import { industries } from '$lib/data/industries';
 
 const SITE_URL = 'https://onurhaniffa.com';
 
@@ -24,6 +25,13 @@ const trOnlyPages = [
 	// District landing pages — programmatic, all share the same template + lastmod
 	...districts.map((d) => ({
 		path: `/${d.slug}-web-tasarim/`,
+		priority: '0.7',
+		changefreq: 'monthly',
+		lastmod: '2026-05-07'
+	})),
+	// Industry landing pages — programmatic, all share IndustryPage.svelte template
+	...industries.map((i) => ({
+		path: `/${i.slug}-web-sitesi/`,
 		priority: '0.7',
 		changefreq: 'monthly',
 		lastmod: '2026-05-07'

@@ -29,18 +29,17 @@ const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	'/maltepe-web-tasarim',
 	'/bakirkoy-web-tasarim',
 	'/pendik-web-tasarim',
-	'/kartal-web-tasarim'
+	'/kartal-web-tasarim',
 
-	// Industry pages — directories created but content deferred. When pages are
-	// shipped, add their slugs here:
-	//   '/restoran-web-sitesi',
-	//   '/klinik-web-sitesi',
-	//   '/avukat-web-sitesi',
-	//   '/oto-galeri-web-sitesi',
-	//   '/spor-salonu-web-sitesi',
-	//   '/guzellik-salonu-web-sitesi',
-	//   '/kafe-web-sitesi',
-	//   '/butik-otel-web-sitesi'
+	// Industry pages — shipped 2026-05-07
+	'/restoran-web-sitesi',
+	'/klinik-web-sitesi',
+	'/avukat-web-sitesi',
+	'/oto-galeri-web-sitesi',
+	'/spor-salonu-web-sitesi',
+	'/guzellik-salonu-web-sitesi',
+	'/kafe-web-sitesi',
+	'/butik-otel-web-sitesi'
 ]);
 
 export function isTrOnlyRoute(pathname: string): boolean {
