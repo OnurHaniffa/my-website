@@ -14,10 +14,10 @@
 const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	// Cornerstone landing pages
 	'/web-sitesi-fiyatlari',
-	'/web-tasarim-istanbul',
-	'/kurumsal-web-sitesi-yaptirma',
-	'/e-ticaret-sitesi-yaptirma',
-	'/web-sitesi-yenileme',
+	'/web-tasarim-istanbul', // shipped 2026-05-07
+	'/kurumsal-web-sitesi-yaptirma', // shipped 2026-05-07
+	'/e-ticaret-sitesi-yaptirma', // not yet built
+	'/web-sitesi-yenileme', // not yet built
 
 	// Programmatic district pages
 	'/kadikoy-web-tasarim',
