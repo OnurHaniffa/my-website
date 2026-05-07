@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
 import { blogPosts } from '$lib/data/blog-posts';
+import { districts } from '$lib/data/districts';
 
 const SITE_URL = 'https://onurhaniffa.com';
 
@@ -10,6 +11,19 @@ const pages = [
 	{ path: '/about/', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-10' },
 	{ path: '/contact/', priority: '0.8', changefreq: 'monthly', lastmod: '2026-02-10' },
 	{ path: '/blog/', priority: '0.8', changefreq: 'weekly', lastmod: '2026-02-15' }
+];
+
+// TR-only landing pages — single-locale, NOT bilingual. Listed separately so
+// generateUrlEntry doesn't add /tr/ alternates that don't exist.
+const trOnlyPages = [
+	{ path: '/web-sitesi-fiyatlari/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-01' },
+	// District landing pages — programmatic, all share the same template + lastmod
+	...districts.map((d) => ({
+		path: `/${d.slug}-web-tasarim/`,
+		priority: '0.7',
+		changefreq: 'monthly',
+		lastmod: '2026-05-07'
+	}))
 ];
 
 const locales = ['en', 'tr'] as const;
@@ -47,8 +61,19 @@ ${xDefault}
   </url>`;
 }
 
+// TR-only entry: single URL, no hreflang alternates. These pages target
+// Turkish-language SEO only and don't have English equivalents.
+function generateTrOnlyEntry(path: string, lastmod: string, changefreq: string, priority: string): string {
+	return `  <url>
+    <loc>${SITE_URL}${path}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+}
+
 export const GET: RequestHandler = async () => {
-	// Generate URLs for static pages
+	// Generate URLs for bilingual static pages
 	const pageUrls = pages
 		.map((page) => generateUrlEntry(page.path, page.lastmod, page.changefreq, page.priority))
 		.join('\n');
@@ -60,11 +85,17 @@ export const GET: RequestHandler = async () => {
 		)
 		.join('\n');
 
+	// Generate URLs for TR-only programmatic landing pages
+	const trOnlyUrls = trOnlyPages
+		.map((page) => generateTrOnlyEntry(page.path, page.lastmod, page.changefreq, page.priority))
+		.join('\n');
+
 	const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${pageUrls}
 ${blogUrls}
+${trOnlyUrls}
 </urlset>`;
 
 	return new Response(sitemap.trim(), {
