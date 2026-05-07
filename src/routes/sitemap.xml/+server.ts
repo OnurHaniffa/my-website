@@ -2,6 +2,7 @@ import type { RequestHandler } from './$types';
 import { blogPosts } from '$lib/data/blog-posts';
 import { districts } from '$lib/data/districts';
 import { industries } from '$lib/data/industries';
+import { comparisons } from '$lib/data/comparisons';
 
 const SITE_URL = 'https://onurhaniffa.com';
 
@@ -32,6 +33,13 @@ const trOnlyPages = [
 	// Industry landing pages — programmatic, all share IndustryPage.svelte template
 	...industries.map((i) => ({
 		path: `/${i.slug}-web-sitesi/`,
+		priority: '0.7',
+		changefreq: 'monthly',
+		lastmod: '2026-05-07'
+	})),
+	// Comparison landing pages — programmatic, all share ComparisonPage.svelte template
+	...comparisons.map((c) => ({
+		path: `/${c.slug}/`,
 		priority: '0.7',
 		changefreq: 'monthly',
 		lastmod: '2026-05-07'

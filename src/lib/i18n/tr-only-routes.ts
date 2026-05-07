@@ -39,7 +39,15 @@ const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	'/spor-salonu-web-sitesi',
 	'/guzellik-salonu-web-sitesi',
 	'/kafe-web-sitesi',
-	'/butik-otel-web-sitesi'
+	'/butik-otel-web-sitesi',
+
+	// Comparison pages — shipped 2026-05-07
+	'/wix-vs-ozel-web-sitesi',
+	'/web-ajansi-vs-freelance',
+	'/wordpress-vs-ozel-tasarim',
+	'/sablon-vs-ozel-tasarim',
+	'/ucuz-vs-kaliteli-web-sitesi',
+	'/yurtdisi-vs-yerli-web-tasarimci'
 ]);
 
 export function isTrOnlyRoute(pathname: string): boolean {

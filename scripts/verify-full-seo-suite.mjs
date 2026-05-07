@@ -16,6 +16,12 @@ const PAGES = [
 	{ url: 'http://localhost:5173/klinik-web-sitesi/', type: 'industry', expectLang: 'tr' },
 	{ url: 'http://localhost:5173/avukat-web-sitesi/', type: 'industry', expectLang: 'tr' },
 	{ url: 'http://localhost:5173/butik-otel-web-sitesi/', type: 'industry', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/wix-vs-ozel-web-sitesi/', type: 'comparison', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/web-ajansi-vs-freelance/', type: 'comparison', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/wordpress-vs-ozel-tasarim/', type: 'comparison', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/sablon-vs-ozel-tasarim/', type: 'comparison', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/ucuz-vs-kaliteli-web-sitesi/', type: 'comparison', expectLang: 'tr' },
+	{ url: 'http://localhost:5173/yurtdisi-vs-yerli-web-tasarimci/', type: 'comparison', expectLang: 'tr' },
 	{ url: 'http://localhost:5173/', type: 'home', expectLang: 'en' }
 ];
 

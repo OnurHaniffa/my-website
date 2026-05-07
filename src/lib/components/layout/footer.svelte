@@ -5,6 +5,11 @@
 	import type { DirectusFooterSettings } from '$lib/data/directus';
 	import { districts } from '$lib/data/districts';
 	import { industries } from '$lib/data/industries';
+	import { comparisons } from '$lib/data/comparisons';
+
+	function comparisonLabel(c: { optionA: { name: string }; optionB: { name: string } }) {
+		return `${c.optionA.name} vs ${c.optionB.name}`;
+	}
 
 	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
 
@@ -145,14 +150,14 @@
 				</div>
 			</div>
 
-			<!-- TR-only SEO link cluster: 5 cornerstones + 10 districts + 8 industries.
+			<!-- TR-only SEO link cluster: 5 cornerstones + 10 districts + 8 industries + 6 comparisons.
 			     Lives between the main footer grid and the bottom copyright bar.
 			     Hidden entirely on EN locale to avoid English-speaking visitors
 			     seeing a wall of Turkish-named links. Distributes PageRank from
-			     every page on the site to all 23 TR landing pages. -->
+			     every page on the site to all 29 TR landing pages. -->
 			{#if showSeoLinkCluster}
 				<div class="pt-8 border-t border-white/10">
-					<div class="grid md:grid-cols-3 gap-8 mb-8">
+					<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
 						<div>
 							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Hizmetler</h4>
 							<nav class="flex flex-col gap-2.5">
@@ -168,6 +173,14 @@
 							<nav class="grid grid-cols-2 gap-x-4 gap-y-2.5">
 								{#each industries as i}
 									<a href={`/${i.slug}-web-sitesi/`} class="text-sm text-gray-400 hover:text-white transition-all">{i.name}</a>
+								{/each}
+							</nav>
+						</div>
+						<div>
+							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Karşılaştırmalar</h4>
+							<nav class="flex flex-col gap-2.5">
+								{#each comparisons as c}
+									<a href={`/${c.slug}/`} class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">{comparisonLabel(c)}</a>
 								{/each}
 							</nav>
 						</div>
