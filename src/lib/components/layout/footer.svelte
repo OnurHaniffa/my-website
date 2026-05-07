@@ -3,10 +3,17 @@
 	import { Button } from '$lib/components/ui/button';
 	import { t, getLocale, getLocalePath } from '$lib/i18n/index.svelte';
 	import type { DirectusFooterSettings } from '$lib/data/directus';
+	import { districts } from '$lib/data/districts';
 
 	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
 
 	const currentYear = new Date().getFullYear();
+
+	// SEO internal linking — only render the district + cornerstone link cluster
+	// on the Turkish locale, since these pages are TR-only. Distributes PageRank
+	// from every page on the site to our 13 TR landing pages, accelerating their
+	// ranking signal.
+	const showSeoLinkCluster = $derived(getLocale() === 'tr');
 
 	// CMS (Directus) only stores English content. When locale is TR, the i18n
 	// translations have the proper Turkish copy — use those FIRST and only fall
@@ -136,6 +143,33 @@
 					</div>
 				</div>
 			</div>
+
+			<!-- TR-only SEO link cluster: cornerstones + 10 districts.
+			     Lives between the main footer grid and the bottom copyright bar.
+			     Hidden entirely on EN locale to avoid English-speaking visitors
+			     seeing a wall of Turkish-named links. -->
+			{#if showSeoLinkCluster}
+				<div class="pt-8 border-t border-white/10">
+					<div class="grid md:grid-cols-2 gap-8 mb-8">
+						<div>
+							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Hizmetler</h4>
+							<nav class="flex flex-col gap-2.5">
+								<a href="/web-tasarim-istanbul/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">İstanbul Web Tasarım</a>
+								<a href="/web-sitesi-fiyatlari/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Web Sitesi Fiyatları</a>
+								<a href="/kurumsal-web-sitesi-yaptirma/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Kurumsal Web Sitesi Yaptırma</a>
+							</nav>
+						</div>
+						<div>
+							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Hizmet Bölgeleri</h4>
+							<nav class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2.5">
+								{#each districts as d}
+									<a href={`/${d.slug}-web-tasarim/`} class="text-sm text-gray-400 hover:text-white transition-all">{d.name}</a>
+								{/each}
+							</nav>
+						</div>
+					</div>
+				</div>
+			{/if}
 
 			<!-- Bottom bar -->
 			<div class="pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-4">
