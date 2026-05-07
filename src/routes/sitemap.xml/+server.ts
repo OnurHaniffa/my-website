@@ -19,7 +19,7 @@ const pages = [
 const trOnlyPages = [
 	{ path: '/web-sitesi-fiyatlari/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-01' },
 	{ path: '/kurumsal-web-sitesi-yaptirma/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
-	{ path: '/web-tasarim-istanbul/', priority: '1.0', changefreq: 'weekly', lastmod: '2026-05-07' },
+	{ path: '/web-tasarim-istanbul/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	{ path: '/e-ticaret-sitesi-yaptirma/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	{ path: '/web-sitesi-yenileme/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	// District landing pages — programmatic, all share the same template + lastmod

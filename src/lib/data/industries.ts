@@ -99,7 +99,7 @@ export const industries: Industry[] = [
 		keyPainPoints: [
 			{
 				title: 'Online randevu sayfası yok',
-				desc: "Hastalar telefon etmek istemiyor. Sitede randevu yoksa rakibe gidiyor. Pearl Dental projesinde online randevu eklendiğinde yeni randevuların %65'i siteden geldi."
+				desc: "Hastalar telefon etmek istemiyor. Sitede randevu yoksa rakibe gidiyor. Pearl Dental projesinde online randevu eklendiğinde yeni randevuların önemli bir kısmı doğrudan siteden gelmeye başladı."
 			},
 			{
 				title: 'Hekim profil sayfaları eksik',
@@ -147,7 +147,7 @@ export const industries: Industry[] = [
 			},
 			{
 				q: 'SEO neden önemli?',
-				a: "Hasta 'şişli diş kliniği' aratırken Google ilk sayfasında 10 sonuç var, sizin orada olmanız çok daha fazla hasta demek. Schema.org Medical markup, doğru meta veriler ve hizmet sayfaları organik trafiği 6 ay içinde 3-5 kat artırıyor."
+				a: "Hasta 'şişli diş kliniği' aratırken Google ilk sayfasında 10 sonuç var, sizin orada olmanız çok daha fazla hasta demek. Schema.org Medical markup, doğru meta veriler ve hizmet sayfaları organik trafiği aylar içinde anlamlı şekilde artırıyor."
 			}
 		],
 		whatsappPrefill: 'Merhaba, klinik web sitesi için fiyat teklifi almak istiyorum.'
@@ -305,7 +305,7 @@ export const industries: Industry[] = [
 			'Eğitmen profil sayfaları',
 			'Ders programı (haftalık takvim)',
 			'Üye giriş paneli (ders rezervasyon, üyelik durumu)',
-			'Mobil-öncelikli (üyelerin %80+ telefondan)'
+			'Mobil-öncelikli (üyelerin büyük kısmı telefondan giriyor)'
 		],
 		priceRange: '20.000 - 45.000 TL',
 		priceContext: 'Standart salon 20-25K, üye paneli + online üyelik 35-45K.',
@@ -363,7 +363,7 @@ export const industries: Industry[] = [
 			'Önce/sonra galerisi (uygun olduğunda)',
 			'Ekip ve uzmanlık sayfaları',
 			'WhatsApp + tıkla-ara hızlı iletişim',
-			'Mobil-öncelikli (müşterilerin %95+ telefondan)'
+			'Mobil-öncelikli (müşterilerin büyük çoğunluğu telefondan)'
 		],
 		priceRange: '15.000 - 35.000 TL',
 		priceContext: 'Tek salon 15-20K, çoklu uzman + online randevu + ödeme 28-35K.',

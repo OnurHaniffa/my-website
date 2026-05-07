@@ -97,7 +97,7 @@
 	const reasons = [
 		{
 			title: 'Güvenilirlik & Kurumsal Kimlik',
-			desc: 'Müşterilerinizin %75+ bir işletmeyle çalışmaya karar vermeden önce siteye bakıyor. Şablon görünümlü, mobilde bozuk veya 2018\'den kalma bir site, "bu firma ciddi mi?" sorusuna yanlış cevap veriyor.',
+			desc: 'Çoğu müşteri bir işletmeyle çalışmaya karar vermeden önce siteye bakıyor. Şablon görünümlü, mobilde bozuk veya 2018\'den kalma bir site, "bu firma ciddi mi?" sorusuna yanlış cevap veriyor.',
 			icon: 'M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10'
 		},
 		{
@@ -225,7 +225,7 @@
 			screenshot: '/images/projects/dentist-screenshot.jpg',
 			liveUrl: '/work',
 			theme: 'teal' as const,
-			outcome: 'Yeni randevuların %65\'i siteden geliyor'
+			outcome: 'Yeni randevuların önemli bir kısmı doğrudan siteden geliyor'
 		}
 	];
 

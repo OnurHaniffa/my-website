@@ -4,6 +4,7 @@
 	import { t, getLocale, getLocalePath } from '$lib/i18n/index.svelte';
 	import type { DirectusFooterSettings } from '$lib/data/directus';
 	import { districts } from '$lib/data/districts';
+	import { industries } from '$lib/data/industries';
 
 	let { settings = null }: { settings?: DirectusFooterSettings | null } = $props();
 
@@ -144,24 +145,35 @@
 				</div>
 			</div>
 
-			<!-- TR-only SEO link cluster: cornerstones + 10 districts.
+			<!-- TR-only SEO link cluster: 5 cornerstones + 10 districts + 8 industries.
 			     Lives between the main footer grid and the bottom copyright bar.
 			     Hidden entirely on EN locale to avoid English-speaking visitors
-			     seeing a wall of Turkish-named links. -->
+			     seeing a wall of Turkish-named links. Distributes PageRank from
+			     every page on the site to all 23 TR landing pages. -->
 			{#if showSeoLinkCluster}
 				<div class="pt-8 border-t border-white/10">
-					<div class="grid md:grid-cols-2 gap-8 mb-8">
+					<div class="grid md:grid-cols-3 gap-8 mb-8">
 						<div>
 							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Hizmetler</h4>
 							<nav class="flex flex-col gap-2.5">
 								<a href="/web-tasarim-istanbul/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">İstanbul Web Tasarım</a>
 								<a href="/web-sitesi-fiyatlari/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Web Sitesi Fiyatları</a>
-								<a href="/kurumsal-web-sitesi-yaptirma/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Kurumsal Web Sitesi Yaptırma</a>
+								<a href="/kurumsal-web-sitesi-yaptirma/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Kurumsal Web Sitesi</a>
+								<a href="/e-ticaret-sitesi-yaptirma/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">E-Ticaret Sitesi</a>
+								<a href="/web-sitesi-yenileme/" class="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all">Web Sitesi Yenileme</a>
+							</nav>
+						</div>
+						<div>
+							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Sektörler</h4>
+							<nav class="grid grid-cols-2 gap-x-4 gap-y-2.5">
+								{#each industries as i}
+									<a href={`/${i.slug}-web-sitesi/`} class="text-sm text-gray-400 hover:text-white transition-all">{i.name}</a>
+								{/each}
 							</nav>
 						</div>
 						<div>
 							<h4 class="font-semibold text-xs uppercase tracking-wider text-gray-500 mb-4">Hizmet Bölgeleri</h4>
-							<nav class="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2.5">
+							<nav class="grid grid-cols-2 gap-x-4 gap-y-2.5">
 								{#each districts as d}
 									<a href={`/${d.slug}-web-tasarim/`} class="text-sm text-gray-400 hover:text-white transition-all">{d.name}</a>
 								{/each}

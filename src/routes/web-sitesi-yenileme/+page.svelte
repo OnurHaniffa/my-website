@@ -72,7 +72,7 @@
 	const signs = [
 		{
 			title: 'Mobilde menü çalışmıyor veya zoom gerekiyor',
-			desc: '2026\'da kullanıcıların %75+ telefondan giriyor. Mobilde okunmayan menü = direkt müşteri kaybı.',
+			desc: '2026\'da ziyaretçilerin büyük çoğunluğu telefondan giriyor. Mobilde okunmayan menü = direkt müşteri kaybı.',
 			icon: 'M5 4h4l2 3h7a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z'
 		},
 		{
