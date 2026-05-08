@@ -282,7 +282,7 @@ Bir web tasarımcı bu soruları sade ve net cevaplıyorsa, muhtemelen size güv
 
 Soruyu duyduğunda gözleri kayıyor, "ona sonra bakarız" diyor, ya da kafası karışıyorsa — başkasını bulun.
 
-Web sitesi 10 yıl yaşayan bir varlık. Yanlış başlamak ileride pahalıya patlar.
+Web sitesi 10 yıl yaşayan bir varlık. Yanlış başlamak ileride pahalıya patlar — [şeffaf web sitesi fiyatları](/web-sitesi-fiyatlari/) baştan sözleşmede yazılı olmalı.
 
 Eğer bir tasarımcıyla görüşüyorsanız ve bu sorularda takılırsa, ben ücretsiz ikinci görüş veririm. WhatsApp'tan yazın, sözleşmeyi 10 dakikada birlikte gözden geçirelim. Soru sormak ücretsiz, başlamak zorunda da değilsiniz.
 `
@@ -597,7 +597,7 @@ I offer a **free 30-minute consultation** where we discuss your project goals, I
 
 İstanbul'da işletme sahibiyseniz ve 2026'da bir web sitesi yaptırmayı düşünüyorsanız, aklınızdaki ilk soru büyük ihtimalle şudur: "Bu bana ne kadara mal olacak?" Gayet makul bir soru, ama ne yazık ki çoğu ajanstan alacağınız cevap sinir bozucu derecede belirsiz olacaktır: "Duruma göre değişir."
 
-Bu rehberde, İstanbul'da web sitesi maliyetlerini tam olarak neyin belirlediğini açıklayacağım, Türk Lirası cinsinden gerçekçi fiyat kademeleri vereceğim, her seviyede ne beklemeniz gerektiğini anlatacağım ve çoğu işletme sahibini hazırlıksız yakalayan gizli maliyetlerden kaçınmanıza yardımcı olacağım. Yıllardır İstanbul'daki işletmeler için web siteleri geliştiren biri olarak, kendi müşterilerime ilk görüşmelerde verdiğim bilgilerin aynısını sizinle paylaşıyorum.
+Bu rehberde, İstanbul'da web sitesi maliyetlerini tam olarak neyin belirlediğini açıklayacağım, Türk Lirası cinsinden gerçekçi [web sitesi fiyat kademeleri](/web-sitesi-fiyatlari/) vereceğim, her seviyede ne beklemeniz gerektiğini anlatacağım ve çoğu işletme sahibini hazırlıksız yakalayan gizli maliyetlerden kaçınmanıza yardımcı olacağım. Yıllardır [İstanbul'daki işletmeler için web siteleri](/web-tasarim-istanbul/) geliştiren biri olarak, kendi müşterilerime ilk görüşmelerde verdiğim bilgilerin aynısını sizinle paylaşıyorum.
 
 ### 2026'da İstanbul Web Tasarım Piyasası
 
@@ -1339,7 +1339,7 @@ WordPress'in yönetici arayüzü tanıdık ve teknik olmayan kullanıcılar içi
 **5. Devasa Bir Eklenti Ekosistemine İhtiyacınız Varsa**
 WordPress'in 60.000'den fazla eklentisi var. Sitenizde aynı anda takvim rezervasyonu, üyelik yönetimi, forumlar, LMS işlevselliği ve çok satıcılı pazar yeri özellikleri gerekiyorsa, WordPress'in eklenti ekosistemini yenmek zordur.
 
-### Geçiş Değerlendirmeleri: WordPress'ten SvelteKit'e Taşınma
+### [Geçiş Değerlendirmeleri: WordPress'ten SvelteKit'e Taşınma](/web-sitesi-yenileme/)
 
 Şu anda bir WordPress siteniz varsa ve SvelteKit'e geçmeyi düşünüyorsanız, şunları planlamanız gerekir:
 
@@ -1695,7 +1695,7 @@ I offer a **free website audit** where I analyze your current site against these
 
 Her Ocak ayında tasarım blogları, Dribbble'da harika görünen ama gerçek dünyada sefil bir şekilde başarısız olan gösterişli konseptlerle dolu "en iyi trendler" listeleri yayınlar. Glassmorphism. Neobrutalizm. Yapay zeka ile üretilmiş her şey. Bu trendlerin çoğu estetiği işlevselliğin önüne koyar ve aylar içinde ortadan kaybolur.
 
-Bu yazı farklı. İstanbul'da işletme web siteleri yapan biri olarak, yalnızca ölçülebilir sonuçlar üreten trendlere odaklanacağım: daha fazla trafik, daha fazla dönüşüm, daha fazla gelir. Her trend için spesifik örnekler, uygulama ipuçları, erişilebilirlik değerlendirmeleri ve kaçınılması gerekenler hakkında dürüst tavsiyeler paylaşacağım.
+Bu yazı farklı. [İstanbul'da işletme web siteleri](/web-tasarim-istanbul/) yapan biri olarak, yalnızca ölçülebilir sonuçlar üreten trendlere odaklanacağım: daha fazla trafik, daha fazla dönüşüm, daha fazla gelir. Her trend için spesifik örnekler, uygulama ipuçları, erişilebilirlik değerlendirmeleri ve kaçınılması gerekenler hakkında dürüst tavsiyeler paylaşacağım.
 
 ### 1. Performans Öncelikli Tasarım
 
@@ -2359,7 +2359,7 @@ Ağır görsel dosyaları, optimize edilmemiş kod ve ucuz hosting yavaş web si
 
 ### İstanbul'da Maliyet Beklentileri
 
-2026'da İstanbul'da profesyonel bir restoran web sitesi için şunları bekleyebilirsiniz:
+2026'da İstanbul'da profesyonel bir [restoran web sitesi](/restoran-web-sitesi/) için şunları bekleyebilirsiniz:
 
 - **Temel web sitesi** (5-7 sayfa, menü, iletişim, harita): 15.000-25.000 TL'den başlayan fiyatlar
 - **Orta seviye web sitesi** (özel tasarım, rezervasyon sistemi, blog): 25.000-50.000 TL
@@ -2729,7 +2729,7 @@ Google Search Console'da mobil Core Web Vitals raporunuzu kontrol edin. Bu, ger�
 
 ### Sık Karşılaşılan Mobil UX Sorunları (ve Çözümleri)
 
-İstanbul'da onlarca web sitesini denetleme deneyimime dayanarak, en sık karşılaştığım mobil sorunlar şunlardır:
+[İstanbul'da onlarca web sitesini](/web-tasarim-istanbul/) denetleme deneyimime dayanarak, en sık karşılaştığım mobil sorunlar şunlardır:
 
 **Sorun 1: Küçük, Dokunulamayan Düğmeler ve Bağlantılar**
 
@@ -3062,7 +3062,7 @@ I help businesses in Istanbul and across Turkey launch e-commerce websites that 
 		contentTr: `
 ## Türkiye'de E-Ticaret Neden Patlama Yaşıyor?
 
-Türkiye'nin e-ticaret pazarı yıldan yıla %35'in üzerinde büyüyerek 2025'te 70 milyar dolara ulaştı. 60 milyonun üzerinde internet kullanıcısı ve online alışverişe artan güvenle birlikte, Türkiye'de online mağaza açmak için bundan daha iyi bir zaman olmamıştı.
+Türkiye'nin e-ticaret pazarı yıldan yıla %35'in üzerinde büyüyerek 2025'te 70 milyar dolara ulaştı. 60 milyonun üzerinde internet kullanıcısı ve online alışverişe artan güvenle birlikte, Türkiye'de [e-ticaret sitesi yaptırmak](/e-ticaret-sitesi-yaptirma/) için bundan daha iyi bir zaman olmamıştı.
 
 Ancak işte zorluk: çoğu işletme sahibi düzgün bir strateji olmadan e-ticarete atılıyor. Yanlış platform seçiyorlar, ödeme entegrasyonu karmaşıklıklarını göz ardı ediyorlar ve sonunda dönüşüm sağlamayan bir mağazayla kalıyorlar. Bu rehber bu hatalardan kaçınmanıza yardımcı olacak.
 
@@ -3413,7 +3413,7 @@ Paranızı hangi işletmeye güvenirdiniz?
 
 Ofisiniz akşam 6'da kapanır. Web siteniz asla kapanmaz. Siz uyurken, tatildeyken, toplantıdayken çalışır.
 
-İyi tasarlanmış bir kurumsal web sitesi:
+İyi tasarlanmış bir [kurumsal web sitesi](/kurumsal-web-sitesi-yaptirma/):
 - SSS bölümü aracılığıyla sık sorulan soruları yanıtlar
 - Ürün ve hizmetlerinizi profesyonel görsellerle sergiler
 - Gece 3'te bile iletişim formları aracılığıyla potansiyel müşterileri toplar
@@ -3914,7 +3914,7 @@ Yıldırım hızında bir web sitesi mi istiyorsunuz? [Performans odaklı hizmet
 
 Google PageSpeed Insights'ta 95+ puan alan yüksek performanslı web siteleri oluşturma konusunda uzmanlaşıyorum. SvelteKit ve modern optimizasyon teknikleri kullanarak 1 saniyenin altında yüklenen siteler oluşturuyorum.
 
-Mevcut web sitenizin performansını analiz ettiğim ve iyileştirme için net bir eylem planı verdiğim ücretsiz bir hız denetimi için randevu alın.
+Mevcut [web sitenizin performansını yenilemek](/web-sitesi-yenileme/) ve iyileştirme için net bir eylem planı almak istiyorsanız, ücretsiz bir hız denetimi için randevu alın.
 `
 	}
 	,
@@ -4334,7 +4334,7 @@ Yapılandırılmış veri, Google'ın içeriğinizi anlamasına ve zengin sonuç
 - E-ticaret için Product
 - Referanslar için Review
 
-### İstanbul İşletmeleri İçin Yerel SEO
+### [İstanbul İşletmeleri İçin Yerel SEO](/web-tasarim-istanbul/)
 
 Belirli bir bölgedeki müşterilere hizmet veriyorsanız, yerel SEO en önemli stratejinizdir.
 
@@ -4643,7 +4643,7 @@ Book a free consultation where we discuss your specific situation, and I will gi
 		contentTr: `
 ## Web Geliştirmede En Büyük Karar
 
-İşletmeniz için bir web sitesi kurmaya karar verdiğinizde, ilk soru genellikle şudur: WordPress mu, özel yazılım mı? Bu, bütçenizi, web sitenizin performansını, güvenliğinizi ve uzun vadeli maliyetlerinizi etkileyen bir karardır.
+İşletmeniz için bir web sitesi kurmaya karar verdiğinizde, ilk soru genellikle şudur: [WordPress mu, özel yazılım mı](/wordpress-vs-ozel-tasarim/)? Bu, bütçenizi, web sitenizin performansını, güvenliğinizi ve uzun vadeli maliyetlerinizi etkileyen bir karardır.
 
 Evrensel olarak doğru bir cevap yoktur. Her iki seçeneğin de meşru kullanım alanları vardır. Ancak sizin spesifik durumunuz için doğru bir cevap var ve bu rehber onu bulmanıza yardımcı olacak.
 
@@ -5308,7 +5308,7 @@ SvelteKit gibi modern frameworkler doğal güvenlik avantajları sunar:
 - Statik site oluşturma saldırı yüzeyini azaltır
 - Modern hosting platformları SSL ve DDoS korumasını halleder
 
-Her web sitesini güvenliği bir sonradan düşünce olarak değil, temel ilke olarak inşa ediyorum. KVKK uyumlu gizlilik politikalarından uygun güvenlik başlıklarına ve şifreli veri işlemeye kadar güvenlik temele yerleştirilmiştir.
+Her [kurumsal web sitesini](/kurumsal-web-sitesi-yaptirma/) güvenliği bir sonradan düşünce olarak değil, temel ilke olarak inşa ediyorum. KVKK uyumlu gizlilik politikalarından uygun güvenlik başlıklarına ve şifreli veri işlemeye kadar güvenlik temele yerleştirilmiştir.
 
 Mevcut web sitenizin ücretsiz güvenlik değerlendirmesi için benimle iletişime geçin. Güvenlik açıklarını belirleyeceğim ve işletmenizi online korumak için net bir eylem planı sunacağım.
 `
@@ -5542,7 +5542,7 @@ Biri "web tasarım istanbul" veya "restoran kadıköy" diye Google'da aradığı
 
 İnsanların işletmeleri gerçekte nasıl bulduğunu düşünün:
 - "Yakınımdaki en iyi restoran" → Google → Web Sitesi
-- "Web tasarım ajansı İstanbul" → Google → Web Sitesi
+- "[Web tasarım ajansı İstanbul](/web-tasarim-istanbul/)" → Google → Web Sitesi
 - "Tesisatçı acil Beşiktaş" → Google → Web Sitesi
 
 Web siteniz yoksa, Google'da işletme türünüzü arayan her kişi için görünmezsiniz. Bu, bir arama motoruyla başlayan çevrimiçi deneyimlerin %93'ü demektir — ve hepsini kaçırıyorsunuz.
@@ -6033,7 +6033,7 @@ Spesifik sayılar güvenilirlik oluşturur:
 Google İş Ortağı, Shopify Uzmanı, sektör sertifikaları — bunları belirgin şekilde görüntüleyin.
 
 **Güvenlik Rozetleri**
-SSL sertifikası, ödeme güvenliği rozetleri, gizlilik politikası bağlantısı — özellikle e-ticaret için önemli.
+SSL sertifikası, ödeme güvenliği rozetleri, gizlilik politikası bağlantısı — özellikle [e-ticaret siteleri](/e-ticaret-sitesi-yaptirma/) için önemli.
 
 **Medya Referansları**
 Yayınlarda yer aldıysanız logolarını gösterin.
@@ -6416,7 +6416,7 @@ I build fast, modern, SEO-optimized websites specifically for small businesses i
 		contentTr: `
 ## 2026'da İstanbul'daki Her Küçük İşletmenin Neden Bir Web Sitesine İhtiyacı Var
 
-İstanbul 16 milyonu aşkın nüfusuyla devasa bir şehir ve 2026 itibarıyla Türk yetişkinlerinin %85'inden fazlası aktif internet kullanıcısı. Türk e-ticaret pazarı yıldan yıla %35'in üzerinde büyüyerek 1,5 trilyon TL işlem hacmini aştı. İstanbul'daki küçük işletmeler için artık soru bir web sitesine ihtiyacınız olup olmadığı değil — web sitesi olmadan ne kadar müşteri kaybettiğiniz.
+İstanbul 16 milyonu aşkın nüfusuyla devasa bir şehir ve 2026 itibarıyla Türk yetişkinlerinin %85'inden fazlası aktif internet kullanıcısı. Türk e-ticaret pazarı yıldan yıla %35'in üzerinde büyüyerek 1,5 trilyon TL işlem hacmini aştı. [İstanbul'daki küçük işletmeler için web sitesi](/web-tasarim-istanbul/) artık soru bir web sitesine ihtiyacınız olup olmadığı değil — web sitesi olmadan ne kadar müşteri kaybettiğiniz.
 
 İster Kadıköy'de bir restoran, ister Levent'te bir hukuk bürosu, ister Beşiktaş'ta bir diş kliniği, ister Nişantaşı'nda bir butik işletin — potansiyel müşterileriniz şu anda hizmetlerinizi çevrimiçi arıyor. Google verilerine göre, telefonlarından yerel bir işletme arayan kişilerin %76'sı 24 saat içinde fiziksel bir mekanı ziyaret ediyor. İşletmeniz bu sonuçlarda görünmüyorsa, o müşteri rakibinizin kapısından giriyor.
 
@@ -6832,7 +6832,7 @@ Hala yalnizca sosyal medya profilleri veya hukuk dizinlerine bagimliyorsaniz, on
 
 ## Hukuk Burosu Web Sitesi Icin Olmasi Gereken Sayfalar
 
-Bir avukat web sitesi genel bir isletme sitesi degildir. Ziyaretcilerinizin belirli ihtiyaclari ve beklentileri vardir. Iste her hukuk burosu web sitesinin icermesi gereken temel sayfalar.
+Bir [avukat web sitesi](/avukat-web-sitesi/) genel bir isletme sitesi degildir. Ziyaretcilerinizin belirli ihtiyaclari ve beklentileri vardir. Iste her hukuk burosu web sitesinin icermesi gereken temel sayfalar.
 
 ### Ana Sayfa
 
@@ -7289,7 +7289,7 @@ I build websites for Istanbul businesses that are designed from the ground up fo
 
 Istanbul'da bir isletme yonetiyorsaniz, neredeyse kesinlikle kendinize su soruyu sordunuz: "Google Ads'e mi yoksa SEO'ya mi yatirim yapmaliyim?" Musterilerimden en sik duydugum sorulardan biri bu ve durust cevap, hedeflerinize, butcenize ve zaman cizelgenize bagli oldugu. Ancak bu belirsiz cevap bir karar vermenize yardimci olmuyor, bu yuzden bu rehberde her iki stratejinin nasil calistigini, Turkiye pazarinda ne kadara mal olduklarini ve her birinin ne zaman mantikli oldugunu tam olarak aciklayacagim.
 
-Istanbul'da hem ucretli hem de organik trafik icin optimize edilmis siteler yapan bir web tasarimci olarak, her iki yaklasimla da basari ve basarisizlik goren isletmeler gordum. Fark neredeyse her zaman her stratejinin gercekte ne yaptigini anlamaya ve durumunuza uygun olani secmeye baglidir.
+[Istanbul'da hem ucretli hem de organik trafik icin optimize edilmis siteler](/web-tasarim-istanbul/) yapan bir web tasarimci olarak, her iki yaklasimla da basari ve basarisizlik goren isletmeler gordum. Fark neredeyse her zaman her stratejinin gercekte ne yaptigini anlamaya ve durumunuza uygun olani secmeye baglidir.
 
 ### Google Ads Nedir?
 
@@ -7865,7 +7865,7 @@ Bu dijital pazarlama rehberi tam olarak bunu sagliyor. Karakoy'de yeni acilan ka
 
 Reklama tek bir lira harcamadan once duzgun bir web sitesine ihtiyaciniz var. Web sitenizi tum dijital pazarlama calismalarinizin merkezi olarak dusunun. Her reklam, sosyal medya paylasimi ve arama sonucu, insanlari harekete gecmeye ikna eden bir web sitesine yonlendirmelidir.
 
-### Istanbul Isletmeleri Icin Iyi Bir Web Sitesinin Ozellikleri
+### [Istanbul Isletmeleri Icin Iyi Bir Web Sitesi](/web-tasarim-istanbul/) Ozellikleri
 
 Istanbul isletmeleri icin calisan bir web sitesinin birkac ozel kriteri karsilamasi gerekir:
 
