@@ -11,6 +11,10 @@ export interface BlogPost {
 	categoryTr: string;
 	content: string;
 	contentTr: string;
+	// Cornerstone paths this post supports — used for "Bu konuda daha fazlası"
+	// cluster section on cornerstone pages and as a hint for which cornerstones
+	// the post links upward to. See docs/superpowers/specs/2026-05-08-*.md.
+	relatedCornerstones?: string[];
 }
 
 export const blogPosts: BlogPost[] = [
@@ -25,6 +29,7 @@ export const blogPosts: BlogPost[] = [
 		readTimeTr: '8 dk okuma',
 		category: 'Web Design',
 		categoryTr: 'Web Tasarım',
+		relatedCornerstones: ['/web-sitesi-fiyatlari/', '/web-tasarim-istanbul/'],
 		content: `
 Two clients reached out to me last month. Both had hired a web designer before. Both were burned.
 
@@ -293,6 +298,7 @@ Eğer bir tasarımcıyla görüşüyorsanız ve bu sorularda takılırsa, ben ü
 		readTimeTr: '14 dk okuma',
 		category: 'Web Design',
 		categoryTr: 'Web Tasarım',
+		relatedCornerstones: ['/web-sitesi-fiyatlari/', '/web-tasarim-istanbul/'],
 		content: `
 ## What Determines the Cost of a Website in Istanbul?
 
@@ -891,6 +897,7 @@ Proje hedeflerinizi tartıştığımız, mevcut online varlığınızı değerle
 		readTimeTr: '13 dk okuma',
 		category: 'Development',
 		categoryTr: 'Geliştirme',
+		relatedCornerstones: ['/web-sitesi-yenileme/'],
 		content: `
 ## Why I Build Business Websites with SvelteKit
 
@@ -1397,6 +1404,7 @@ Mevcut web sitenizin performansını incelediğim, hız ve sıralama açısında
 		readTimeTr: '14 dk okuma',
 		category: 'Design',
 		categoryTr: 'Tasarım',
+		relatedCornerstones: ['/web-sitesi-yenileme/', '/web-tasarim-istanbul/'],
 		content: `
 ## Web Design Trends That Actually Matter in 2026
 
@@ -1972,6 +1980,7 @@ Mevcut sitenizi bu 2026 standartlarına göre analiz ettiğim ve ziyaretçi ve d
 		readTimeTr: '9 dk okuma',
 		category: 'Industry',
 		categoryTr: 'Sektörel',
+		relatedCornerstones: ['/restoran-web-sitesi/', '/web-tasarim-istanbul/'],
 		content: `
 ## Why Your Restaurant Needs a Website (Not Just Instagram)
 
@@ -2398,6 +2407,7 @@ Yemekleriniz bulunmayı hak ediyor. Bunun gerçekleştiğinden emin olalım.
 		readTimeTr: '10 dk okuma',
 		category: 'Design',
 		categoryTr: 'Tasarım',
+		relatedCornerstones: ['/web-sitesi-yenileme/', '/kurumsal-web-sitesi-yaptirma/'],
 		content: `
 ## The Mobile Reality in Turkey: Numbers You Cannot Ignore
 
@@ -2880,6 +2890,7 @@ Mevcut web sitenizin mobil deneyimini analiz ettiğim ve uygulanabilir öneriler
 		readTimeTr: '12 dk okuma',
 		category: 'E-Commerce',
 		categoryTr: 'E-Ticaret',
+		relatedCornerstones: ['/e-ticaret-sitesi-yaptirma/', '/web-sitesi-fiyatlari/'],
 		content: `
 ## Why E-Commerce Is Booming in Turkey
 
@@ -3228,6 +3239,7 @@ Başarılı bir e-ticaret sitesi kurmak, sadece ürünleri online koymaktan fazl
 		readTimeTr: '9 dk okuma',
 		category: 'Business',
 		categoryTr: 'İş Dünyası',
+		relatedCornerstones: ['/kurumsal-web-sitesi-yaptirma/', '/web-tasarim-istanbul/'],
 		content: `
 ## Your Website Is Your First Impression
 
@@ -3539,6 +3551,7 @@ Türk işletmelerinin güvenilirlik oluşturan, müşteri kazandıran ve büyüm
 		readTimeTr: '10 dk okuma',
 		category: 'Performance',
 		categoryTr: 'Performans',
+		relatedCornerstones: ['/web-sitesi-yenileme/', '/e-ticaret-sitesi-yaptirma/'],
 		content: `
 ## Speed Is Not a Feature, It Is a Requirement
 
@@ -3916,6 +3929,7 @@ Mevcut web sitenizin performansını analiz ettiğim ve iyileştirme için net b
 		readTimeTr: '14 dk okuma',
 		category: 'SEO',
 		categoryTr: 'SEO',
+		relatedCornerstones: ['/web-tasarim-istanbul/', '/kurumsal-web-sitesi-yaptirma/'],
 		content: `
 ## SEO in Plain Language
 
@@ -4429,6 +4443,7 @@ Mevcut arama varlığınızı analiz ettiğim ve Google'daki görünürlüğün�
 		readTimeTr: '11 dk okuma',
 		category: 'Development',
 		categoryTr: 'Geliştirme',
+		relatedCornerstones: ['/wordpress-vs-ozel-tasarim/', '/web-sitesi-yenileme/'],
 		content: `
 ## The Biggest Decision in Web Development
 
@@ -4834,6 +4849,7 @@ Hem WordPress hem de özel frameworklerde web siteleri oluşturdum. WordPress ge
 		readTimeTr: '11 dk okuma',
 		category: 'Security',
 		categoryTr: 'Güvenlik',
+		relatedCornerstones: ['/kurumsal-web-sitesi-yaptirma/', '/web-sitesi-yenileme/'],
 		content: `
 ## Why Website Security Is Your Business Problem
 
@@ -5309,6 +5325,7 @@ Mevcut web sitenizin ücretsiz güvenlik değerlendirmesi için benimle iletişi
 		readTimeTr: '8 dk okuma',
 		category: 'Strategy',
 		categoryTr: 'Strateji',
+		relatedCornerstones: ['/web-tasarim-istanbul/', '/web-sitesi-fiyatlari/'],
 		content: `
 ## The Myth: "I Have Instagram, I Do Not Need a Website"
 
@@ -5656,6 +5673,7 @@ Bir web sitesinin mevcut pazarlama stratejinize nasıl uyduğunu tartıştığı
 		readTimeTr: '10 dk okuma',
 		category: 'Marketing',
 		categoryTr: 'Pazarlama',
+		relatedCornerstones: ['/e-ticaret-sitesi-yaptirma/', '/kurumsal-web-sitesi-yaptirma/'],
 		content: `
 ## Your Website Has Traffic. Now What?
 
@@ -6148,6 +6166,7 @@ Mevcut web sitenizin dönüşüm potansiyelini analiz ettiğim ve tam olarak ner
 		readTimeTr: '12 dk okuma',
 		category: 'Business',
 		categoryTr: 'İşletme',
+		relatedCornerstones: ['/web-tasarim-istanbul/', '/web-sitesi-fiyatlari/'],
 		content: `
 ## Why Every Small Business in Istanbul Needs a Website in 2026
 
@@ -6652,6 +6671,7 @@ Web siteniz yayına girmeden önce bu listedeki her maddenin tamamlandığından
 		readTimeTr: '13 dk okuma',
 		category: 'Industry Guide',
 		categoryTr: 'Sektör Rehberi',
+		relatedCornerstones: ['/avukat-web-sitesi/', '/kurumsal-web-sitesi-yaptirma/'],
 		content: `
 ## Why Every Lawyer in Istanbul Needs a Professional Website
 
@@ -6962,6 +6982,7 @@ Istanbul'da cevrimici varliginizi kurmak veya yukseltmek isteyen bir avukat veya
 		readTimeTr: '15 dk okuma',
 		category: 'Digital Marketing',
 		categoryTr: 'Dijital Pazarlama',
+		relatedCornerstones: ['/web-tasarim-istanbul/', '/web-sitesi-fiyatlari/'],
 		content: `
 ## The Big Question Every Istanbul Business Owner Asks
 
@@ -7576,6 +7597,7 @@ Istanbul'daki isletmeler icin hem ucretli hem de organik trafik icin tasarlanmis
 		readTimeTr: '15 dk okuma',
 		category: 'Digital Marketing',
 		categoryTr: 'Dijital Pazarlama',
+		relatedCornerstones: ['/web-tasarim-istanbul/', '/e-ticaret-sitesi-yaptirma/'],
 		content: `
 ## Why Digital Marketing Matters for Istanbul Businesses in 2026
 

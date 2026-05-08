@@ -4,6 +4,7 @@
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
 	import { InView, Counter } from '$lib/components/ui/animations';
+	import CornerstoneCluster from '$lib/components/sections/CornerstoneCluster.svelte';
 
 	const whatsappNumber = '905428324550';
 	const whatsappMessage =
@@ -542,7 +543,7 @@
 	</Container>
 </Section>
 
-<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+<CornerstoneCluster cornerstonePath="/web-sitesi-yenileme/" />
 
 <!-- FINAL CTA -->
 <Section padding="lg" class="relative overflow-hidden">

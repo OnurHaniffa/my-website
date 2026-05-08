@@ -5,6 +5,7 @@
 	import { Container, Section } from '$lib/components/layout';
 	import { InView, Counter } from '$lib/components/ui/animations';
 	import { districts } from '$lib/data/districts';
+	import CornerstoneCluster from '$lib/components/sections/CornerstoneCluster.svelte';
 
 	const whatsappNumber = '905428324550';
 	const whatsappMessage = 'Merhaba, İstanbul için web tasarım fiyat teklifi almak istiyorum.';
@@ -516,7 +517,7 @@
 	</Container>
 </Section>
 
-<div class="w-full h-px bg-gradient-to-r from-transparent via-border to-transparent"></div>
+<CornerstoneCluster cornerstonePath="/web-tasarim-istanbul/" />
 
 <!-- FINAL CTA -->
 <Section padding="lg" class="relative overflow-hidden">
