@@ -290,9 +290,9 @@ Eğer bir tasarımcıyla görüşüyorsanız ve bu sorularda takılırsa, ben ü
 	{
 		slug: 'web-sitesi-maliyeti-istanbul-2026',
 		title: 'How Much Does a Website Cost in Istanbul? (2026 Guide)',
-		titleTr: 'İstanbul\'da Web Sitesi Yaptırmanın Maliyeti (2026 Rehberi)',
+		titleTr: 'İstanbul\'da Web Sitesi Ne Kadar? 2026 Fiyat Tablosu',
 		description: 'A comprehensive guide to website costs in Istanbul. Learn what affects pricing, what to expect, and how to get the best value for your investment.',
-		descriptionTr: 'İstanbul\'da web sitesi maliyetleri hakkında kapsamlı bir rehber. Fiyatlandırmayı nelerin etkilediğini, ne beklemeniz gerektiğini ve yatırımınızdan en iyi değeri nasıl elde edeceğinizi öğrenin.',
+		descriptionTr: '2026\'da web sitesi ne kadar? Basit, kurumsal ve e-ticaret siteleri için gerçek TL fiyat aralıkları, gizli maliyetler ve neye ne ödediğinizin net dökümü.',
 		date: '2026-02-15',
 		readTime: '14 min read',
 		readTimeTr: '14 dk okuma',
@@ -598,6 +598,8 @@ I offer a **free 30-minute consultation** where we discuss your project goals, I
 İstanbul'da işletme sahibiyseniz ve 2026'da bir web sitesi yaptırmayı düşünüyorsanız, aklınızdaki ilk soru büyük ihtimalle şudur: "Bu bana ne kadara mal olacak?" Gayet makul bir soru, ama ne yazık ki çoğu ajanstan alacağınız cevap sinir bozucu derecede belirsiz olacaktır: "Duruma göre değişir."
 
 Bu rehberde, İstanbul'da web sitesi maliyetlerini tam olarak neyin belirlediğini açıklayacağım, Türk Lirası cinsinden gerçekçi [web sitesi fiyat kademeleri](/web-sitesi-fiyatlari/) vereceğim, her seviyede ne beklemeniz gerektiğini anlatacağım ve çoğu işletme sahibini hazırlıksız yakalayan gizli maliyetlerden kaçınmanıza yardımcı olacağım. Yıllardır [İstanbul'daki işletmeler için web siteleri](/web-tasarim-istanbul/) geliştiren biri olarak, kendi müşterilerime ilk görüşmelerde verdiğim bilgilerin aynısını sizinle paylaşıyorum.
+
+**Hemen net fiyat mı istiyorsunuz?** Aşağıdaki rehberi okuyabilir ya da projenize özel sabit teklifi doğrudan [web sitesi fiyatları sayfamdan](/web-sitesi-fiyatlari/) görüp WhatsApp'tan 24 saat içinde alabilirsiniz.
 
 ### 2026'da İstanbul Web Tasarım Piyasası
 
