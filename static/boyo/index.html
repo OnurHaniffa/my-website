@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOYO — Private Label Snack Manufacturing | Launch Your Food Brand</title>
+<meta name="description" content="BOYO develops and manufactures private label cookies, snack bars, energy balls and nut butters for brands across the USA & Europe. Formulation, production, packaging and logistics under one roof.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23D4671D'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Georgia,serif' font-weight='900' text-anchor='middle' fill='%23F7EFE1'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;0,9..144,900;1,9..144,500;1,9..144,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F7EFE1;
+  --cream-soft:#FDF7EB;
+  --ink:#2A1A0E;
+  --cocoa:#3E2A16;
+  --cocoa-deep:#2E1F10;
+  --tan:#A98963;
+  --tan-soft:#D8C3A5;
+  --orange:#D4671D;
+  --orange-deep:#B5500F;
+  --gold:#E0A95C;
+  --radius:22px;
+  --font-display:"Fraunces",serif;
+  --font-body:"Outfit",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{
+  font-family:var(--font-body);
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.6;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--orange);color:var(--cream-soft)}
+
+/* grain overlay */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,92vw);margin-inline:auto}
+
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.05;letter-spacing:-.01em}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:.6em;
+  font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--orange-deep);
+}
+.eyebrow::before{content:"";width:34px;height:2px;background:var(--orange);border-radius:2px}
+.section-title{font-size:clamp(2rem,4.4vw,3.4rem);margin:.35em 0 .4em}
+.section-sub{font-size:clamp(1rem,1.4vw,1.15rem);color:#5d4830;max-width:56ch;font-weight:400}
+
+/* ============ NAV ============ */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  transition:background .35s,box-shadow .35s,padding .35s;
+  padding:22px 0;
+}
+nav.scrolled{
+  background:rgba(247,239,225,.88);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 1px 0 rgba(62,42,22,.08);
+  padding:12px 0;
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{font-family:var(--font-display);font-weight:900;font-size:1.7rem;letter-spacing:.02em;color:var(--ink)}
+.logo span{color:var(--orange)}
+.logo small{display:block;font-family:var(--font-body);font-weight:600;font-size:.55rem;letter-spacing:.34em;text-transform:uppercase;color:var(--tan);margin-top:-2px}
+.nav-links{display:flex;gap:30px;font-weight:500;font-size:.95rem}
+.nav-links a{position:relative;padding:4px 0;color:#54402a}
+.nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--orange);border-radius:2px;transition:width .3s}
+.nav-links a:hover::after{width:100%}
+.btn{
+  display:inline-flex;align-items:center;gap:.55em;
+  font-family:var(--font-body);font-weight:600;font-size:1rem;
+  padding:.95em 1.7em;border-radius:100px;border:2px solid transparent;
+  cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s;
+  white-space:nowrap;
+}
+.btn-solid{background:var(--orange);color:#fff;box-shadow:0 8px 24px -8px rgba(212,103,29,.55)}
+.btn-solid:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(181,80,15,.6)}
+.btn-ghost{border-color:rgba(62,42,22,.25);color:var(--ink);background:transparent}
+.btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn-light{background:var(--cream-soft);color:var(--ink)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(0,0,0,.45)}
+nav .btn{padding:.7em 1.4em;font-size:.92rem}
+.nav-toggle{display:none}
+
+/* ============ HERO ============ */
+.hero{
+  position:relative;min-height:100svh;
+  display:flex;align-items:center;
+  padding:150px 0 110px;
+  background:
+    radial-gradient(1100px 600px at 85% -10%,rgba(224,169,92,.28),transparent 60%),
+    radial-gradient(900px 700px at -10% 110%,rgba(212,103,29,.14),transparent 55%),
+    var(--cream);
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center;
+}
+.hero h1{
+  font-size:clamp(2.6rem,5vw,4.3rem);
+  margin:.35em 0 .25em;
+}
+.hero h1 em{
+  font-style:italic;font-weight:700;color:var(--orange);
+  font-variation-settings:"opsz" 144;
+}
+.hero p.lede{
+  max-width:50ch;font-size:clamp(1.02rem,1.5vw,1.18rem);color:#5d4830;
+}
+.hero-ctas{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap}
+.hero-foot{
+  margin-top:46px;display:flex;gap:14px 30px;flex-wrap:wrap;
+  font-size:.82rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7a6346;
+}
+.hero-foot span{display:flex;align-items:center;gap:.5em}
+.hero-foot svg{width:15px;height:15px;color:var(--orange)}
+
+/* hero visual collage */
+.hero-visual{position:relative;padding:0 0 56px}
+.hero-visual .main-img{
+  width:100%;aspect-ratio:4/3.4;object-fit:cover;
+  border-radius:28px;
+  box-shadow:0 40px 80px -34px rgba(46,31,16,.55);
+}
+.hero-visual .accent-img{
+  position:absolute;left:-44px;bottom:0;width:46%;aspect-ratio:5/4;object-fit:cover;
+  border-radius:20px;border:6px solid var(--cream-soft);
+  box-shadow:0 30px 60px -26px rgba(46,31,16,.5);
+  transform:rotate(-3deg);
+}
+.hero-visual .chip{
+  position:absolute;right:-14px;top:-20px;
+  background:var(--cream-soft);border-radius:16px;
+  padding:14px 22px;
+  box-shadow:0 20px 44px -20px rgba(46,31,16,.45);
+  transform:rotate(2deg);
+  text-align:center;
+}
+.hero-visual .chip b{font-family:var(--font-display);font-size:1.5rem;font-weight:900;color:var(--orange-deep);display:block;line-height:1.1}
+.hero-visual .chip small{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--tan)}
+
+/* ============ TICKER ============ */
+.ticker{
+  background:var(--orange);color:var(--cream-soft);
+  padding:14px 0;overflow:hidden;transform:rotate(-1.2deg) scale(1.02);
+  box-shadow:0 10px 30px -12px rgba(181,80,15,.5);
+  position:relative;z-index:4;
+}
+.ticker-track{display:flex;width:max-content;animation:scroll 28s linear infinite}
+.ticker span{
+  font-family:var(--font-display);font-weight:600;font-style:italic;
+  font-size:1.05rem;letter-spacing:.06em;text-transform:uppercase;
+  display:flex;align-items:center;gap:1.2em;padding-right:1.2em;white-space:nowrap;
+}
+.ticker span::after{content:"✦";font-style:normal;opacity:.7}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============ STATS ============ */
+.stats{background:var(--cocoa-deep);color:var(--cream-soft);padding:110px 0 100px;position:relative;overflow:hidden}
+.stats::before{
+  content:"";position:absolute;inset:0;opacity:.5;
+  background:radial-gradient(800px 400px at 50% -20%,rgba(224,169,92,.22),transparent 60%);
+}
+.stats .eyebrow{color:var(--gold)}
+.stats .eyebrow::before{background:var(--gold)}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px;position:relative}
+.stat{text-align:center;padding:0 10px}
+.stat + .stat{border-left:1px solid rgba(247,239,225,.14)}
+.stat .num{
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(3rem,6.5vw,5.2rem);line-height:1;color:var(--cream-soft);
+}
+.stat .num i{font-style:normal;color:var(--gold)}
+.stat .lbl{margin-top:14px;font-size:.85rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--tan-soft)}
+.stats-note{text-align:center;margin-top:64px;color:var(--tan-soft);font-size:.95rem;position:relative}
+
+/* ============ SECTIONS COMMON ============ */
+section{padding:110px 0}
+.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+
+/* ============ PRODUCT LINES ============ */
+.lines-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.line-card{
+  background:var(--cream-soft);border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 2px 0 rgba(62,42,22,.06),0 18px 44px -26px rgba(62,42,22,.35);
+  transition:transform .35s cubic-bezier(.2,.7,.3,1.2),box-shadow .35s;
+  display:flex;flex-direction:column;
+}
+.line-card:hover{transform:translateY(-10px);box-shadow:0 2px 0 rgba(62,42,22,.06),0 34px 60px -28px rgba(62,42,22,.45)}
+.line-media{position:relative;aspect-ratio:16/10;overflow:hidden}
+.line-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1)}
+.line-card:hover .line-media img{transform:scale(1.07)}
+.line-tag{
+  position:absolute;top:16px;left:16px;
+  background:rgba(46,31,16,.82);color:var(--cream-soft);backdrop-filter:blur(4px);
+  font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:.55em 1.1em;border-radius:100px;
+}
+.line-body{padding:28px 28px 32px;display:flex;flex-direction:column;gap:14px;flex:1}
+.line-body h3{font-size:1.55rem}
+.line-body p{color:#5d4830;font-size:.98rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:8px}
+.chips span{
+  font-size:.78rem;font-weight:600;color:var(--orange-deep);
+  background:rgba(212,103,29,.1);border:1px solid rgba(212,103,29,.22);
+  padding:.4em .95em;border-radius:100px;
+}
+
+/* ============ FUNCTIONAL BAND ============ */
+.func{background:linear-gradient(180deg,var(--cream) 0%,#F1E5CF 100%);padding:90px 0}
+.func-inner{text-align:center}
+.func h2{font-size:clamp(1.8rem,3.4vw,2.7rem);max-width:24ch;margin-inline:auto}
+.func h2 em{color:var(--orange);font-style:italic;font-weight:700}
+.badges{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;margin-top:44px}
+.badge{
+  display:inline-flex;align-items:center;gap:.6em;
+  background:var(--cream-soft);border:1.5px solid rgba(62,42,22,.14);
+  padding:.85em 1.5em;border-radius:100px;
+  font-weight:600;font-size:.98rem;color:var(--cocoa);
+  box-shadow:0 10px 24px -16px rgba(62,42,22,.4);
+  transition:transform .3s,border-color .3s;
+}
+.badge:hover{transform:translateY(-4px) rotate(-1deg);border-color:var(--orange)}
+.badge svg{width:17px;height:17px;color:var(--orange)}
+
+/* ============ PROCESS ============ */
+.process{position:relative}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:18px;counter-reset:step;position:relative;margin-top:10px}
+.steps::before{
+  content:"";position:absolute;top:33px;left:6%;right:6%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--tan) 0 10px,transparent 10px 20px);
+  opacity:.5;z-index:0;
+}
+.step{position:relative;z-index:1;text-align:center;padding:0 8px}
+.step .dot{
+  counter-increment:step;width:66px;height:66px;margin:0 auto;
+  background:var(--cream-soft);border:2px solid var(--orange);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:800;font-size:1.45rem;color:var(--orange-deep);
+  box-shadow:0 12px 26px -14px rgba(212,103,29,.6);
+  transition:transform .3s,background .3s,color .3s;
+}
+.step .dot::before{content:counter(step)}
+.step:hover .dot{transform:scale(1.12);background:var(--orange);color:#fff}
+.step h3{font-size:1.18rem;margin:18px 0 8px}
+.step p{font-size:.88rem;color:#5d4830}
+
+/* ============ PACKAGING ============ */
+.pack{background:var(--cocoa);color:var(--cream-soft);position:relative;overflow:hidden}
+.pack::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(900px 500px at 80% 0%,rgba(224,169,92,.18),transparent 55%);
+}
+.pack .eyebrow{color:var(--gold)}.pack .eyebrow::before{background:var(--gold)}
+.pack .section-sub{color:var(--tan-soft)}
+.pack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px;position:relative}
+.pack-card{
+  background:rgba(247,239,225,.06);border:1px solid rgba(247,239,225,.12);
+  border-radius:var(--radius);padding:34px 22px 26px;text-align:center;
+  transition:transform .35s,background .35s,border-color .35s;
+}
+.pack-card:hover{transform:translateY(-8px);background:rgba(247,239,225,.1);border-color:rgba(224,169,92,.45)}
+.pack-card img{height:150px;width:auto;margin:0 auto 22px;object-fit:contain;filter:drop-shadow(0 18px 22px rgba(0,0,0,.4))}
+.pack-card h3{font-size:1.15rem;color:var(--cream-soft)}
+.pack-card p{font-size:.85rem;color:var(--tan-soft);margin-top:6px}
+
+/* ============ PROOF / BRANDS ============ */
+.proof-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.proof-media{display:flex;flex-direction:column;gap:18px}
+.proof-media .shelf{border-radius:var(--radius);box-shadow:0 30px 60px -28px rgba(62,42,22,.5);width:100%}
+.proof-media .packs{
+  display:flex;align-items:flex-end;justify-content:center;gap:18px;
+  background:var(--cream-soft);border-radius:var(--radius);
+  padding:26px 22px 20px;
+  box-shadow:0 2px 0 rgba(62,42,22,.06),0 18px 44px -26px rgba(62,42,22,.3);
+}
+.proof-media .packs img{
+  height:130px;width:auto;filter:drop-shadow(0 12px 16px rgba(46,31,16,.25));
+  transition:transform .35s;
+}
+.proof-media .packs img:hover{transform:translateY(-8px) rotate(-2deg)}
+.proof-list{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+.proof-list li{
+  list-style:none;display:flex;gap:14px;align-items:flex-start;
+  font-size:1rem;color:#4a3a26;
+}
+.proof-list svg{flex:none;width:21px;height:21px;color:var(--orange);margin-top:3px}
+.unfi{
+  display:inline-flex;align-items:center;gap:.7em;margin-top:30px;
+  background:var(--cream-soft);border:1.5px dashed rgba(212,103,29,.5);
+  padding:.9em 1.4em;border-radius:14px;font-weight:600;font-size:.92rem;color:var(--cocoa);
+}
+
+/* ============ CONTACT ============ */
+.contact{
+  background:
+    radial-gradient(900px 500px at 50% 120%,rgba(212,103,29,.16),transparent 60%),
+    linear-gradient(180deg,#F1E5CF 0%,var(--cream) 30%);
+  text-align:center;
+}
+.contact h2{font-size:clamp(2.4rem,5.5vw,4.2rem);max-width:14ch;margin:.3em auto .25em}
+.contact h2 em{color:var(--orange);font-style:italic;font-weight:700}
+.contact .section-sub{margin-inline:auto}
+.contact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:60px;text-align:left}
+.c-card{
+  background:var(--cream-soft);border-radius:var(--radius);padding:30px 28px;
+  box-shadow:0 2px 0 rgba(62,42,22,.06),0 18px 44px -26px rgba(62,42,22,.35);
+  display:flex;flex-direction:column;gap:6px;
+  transition:transform .3s,box-shadow .3s;
+}
+.c-card:hover{transform:translateY(-7px);box-shadow:0 2px 0 rgba(62,42,22,.06),0 30px 56px -26px rgba(62,42,22,.45)}
+.c-card .ico{
+  width:48px;height:48px;border-radius:14px;background:rgba(212,103,29,.12);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;
+}
+.c-card .ico svg{width:23px;height:23px;color:var(--orange-deep)}
+.c-card h3{font-size:1.2rem}
+.c-card p{font-size:.9rem;color:#5d4830}
+.c-card .val{font-weight:700;font-size:1.05rem;color:var(--orange-deep);margin-top:8px;word-break:break-all}
+
+/* ============ FOOTER ============ */
+footer{background:var(--cocoa-deep);color:var(--tan-soft);padding:80px 0 40px}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:44px}
+.foot-grid .logo{color:var(--cream-soft);margin-bottom:14px}
+.foot-grid p{font-size:.9rem;line-height:1.7}
+.foot-grid h4{
+  font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.foot-grid address{font-style:normal;font-size:.9rem;line-height:1.8}
+.foot-grid a:hover{color:var(--cream-soft)}
+.foot-bottom{
+  margin-top:64px;padding-top:26px;border-top:1px solid rgba(247,239,225,.12);
+  display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.82rem;
+}
+
+/* ============ REVEAL ANIMATIONS ============ */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.6,.2,1),transform .8s cubic-bezier(.2,.6,.2,1);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:1020px){
+  .lines-grid{grid-template-columns:1fr 1fr}
+  .pack-grid{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:repeat(3,1fr);row-gap:42px}
+  .steps::before{display:none}
+  .proof-grid{grid-template-columns:1fr;gap:60px}
+  .hero-grid{grid-template-columns:1fr;gap:60px}
+  .hero-visual{max-width:560px}
+  .hero-visual .accent-img{left:-10px}
+}
+@media (max-width:760px){
+  section{padding:80px 0}
+  .nav-links{display:none}
+  .lines-grid{grid-template-columns:1fr}
+  .contact-cards{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr;gap:34px}
+  .stat + .stat{border-left:none;border-top:1px solid rgba(247,239,225,.14);padding-top:34px}
+  .steps{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hero{padding-top:120px}
+  .hero-visual .chip{right:6px;top:-16px;padding:10px 16px}
+  .hero-visual .chip b{font-size:1.2rem}
+}
+@media (max-width:480px){
+  .pack-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">BOYO<small>Private Label</small></a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#process">Process</a>
+      <a href="#packaging">Packaging</a>
+      <a href="#brands">Our Brands</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="btn btn-solid">Start Your Brand</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal">Private Label Manufacturing · USA &amp; Europe</span>
+      <h1 class="reveal" style="--d:.08s">Launch your food brand <em>without building a factory.</em></h1>
+      <p class="lede reveal" style="--d:.16s">From formulation to packaging, BOYO develops and manufactures healthy snack products for brands across the USA and Europe — cookies, bars, energy balls and spreads, all under one roof.</p>
+      <div class="hero-ctas reveal" style="--d:.24s">
+        <a href="#contact" class="btn btn-solid">Start Your Brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="https://wa.me/905322904658" target="_blank" rel="noopener" class="btn btn-ghost">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.05 2a9.9 9.9 0 0 0-8.57 14.87L2 22l5.27-1.38A9.9 9.9 0 1 0 12.05 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 6.97 3.87z"/></svg>
+          WhatsApp Us
+        </a>
+      </div>
+      <div class="hero-foot reveal" style="--d:.32s">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Low MOQ</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Fast Production</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>EU &amp; US Standards</span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Flexible Packaging</span>
+      </div>
+    </div>
+    <div class="hero-visual reveal" style="--d:.2s">
+      <div class="chip"><b>USA &amp; EU</b><small>Already on shelves</small></div>
+      <img class="main-img" src="assets/photo-hazelnut.jpg" alt="Smooth hazelnut cream in a wooden bowl surrounded by hazelnuts">
+      <img class="accent-img" src="assets/photo-cookies.jpg" alt="Freshly baked pistachio cookies">
+    </div>
+  </div>
+</header>
+
+<!-- ============ TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>Cookies</span><span>Snack Bars</span><span>Energy Balls</span><span>Nut Butters</span><span>Brownies</span><span>Spreads</span><span>Protein Enriched</span><span>Collagen Enriched</span>
+    <span>Cookies</span><span>Snack Bars</span><span>Energy Balls</span><span>Nut Butters</span><span>Brownies</span><span>Spreads</span><span>Protein Enriched</span><span>Collagen Enriched</span>
+  </div>
+</div>
+
+<!-- ============ STATS ============ -->
+<section class="stats">
+  <div class="wrap">
+    <span class="eyebrow reveal">Production Capacity</span>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num"><span data-count="1.5" data-decimals="1">0</span><i>M</i></div><div class="lbl">Cookies / Month</div></div>
+      <div class="stat reveal" style="--d:.12s"><div class="num"><span data-count="1.8" data-decimals="1">0</span><i>M</i></div><div class="lbl">Snack Bars / Month</div></div>
+      <div class="stat reveal" style="--d:.24s"><div class="num"><span data-count="600">0</span><i>K</i></div><div class="lbl">Filled Jars / Month</div></div>
+    </div>
+    <p class="stats-note reveal" style="--d:.3s">High-capacity bakery, snack and filling lines — advanced processing &amp; packaging technology with strict quality control, in Balıkesir, Türkiye.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCT LINES ============ -->
+<section id="products">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow reveal">What We Make</span>
+        <h2 class="section-title reveal" style="--d:.08s">Three lines, endless<br>possibilities.</h2>
+      </div>
+      <p class="section-sub reveal" style="--d:.16s">Every product is available with vegan, gluten-free, sugar-free, dairy-free, clean label, and protein or collagen enriched formulations — with custom flavors on request.</p>
+    </div>
+    <div class="lines-grid">
+      <article class="line-card reveal">
+        <div class="line-media"><span class="line-tag">Bakery Line</span><img src="assets/photo-brownies.jpg" alt="Stack of chocolate brownies dusted with cocoa" loading="lazy"></div>
+        <div class="line-body">
+          <h3>Functional Cookies &amp; Brownies</h3>
+          <p>Protein and collagen enriched cookies, brownies, cookie bars and cake bites — baked at scale.</p>
+          <div class="chips"><span>Pistachio</span><span>Peanut</span><span>Cocoa</span><span>Chocolate Chip</span><span>Apple &amp; Cinnamon</span><span>Collagen Brownie</span></div>
+        </div>
+      </article>
+      <article class="line-card reveal" style="--d:.12s">
+        <div class="line-media"><span class="line-tag">Snack Line</span><img src="assets/photo-barline.jpg" alt="Granola bars on the production line" loading="lazy"></div>
+        <div class="line-body">
+          <h3>Bars &amp; Energy Balls</h3>
+          <p>Functional fruit bars, nut bars and protein balls — single fruit, mixed nut, and fully custom recipes.</p>
+          <div class="chips"><span>Fruit Bars</span><span>Pistachio Bar</span><span>Hazelnut Bar</span><span>Mixed Nut Bar</span><span>Protein Balls</span><span>Energy Balls</span></div>
+        </div>
+      </article>
+      <article class="line-card reveal" style="--d:.24s">
+        <div class="line-media"><span class="line-tag">Filling Line</span><img src="assets/photo-hazelnut.jpg" alt="Smooth hazelnut cream in a wooden bowl" loading="lazy"></div>
+        <div class="line-body">
+          <h3>Nut Butters &amp; Spreads</h3>
+          <p>Tahini, hazelnut and almond creams filled into glass jars from 190g to 1000g.</p>
+          <div class="chips"><span>Tahini</span><span>Hazelnut Cream</span><span>Cocoa Hazelnut</span><span>Pistachio Cream</span><span>Almond Cream</span><span>Protein Spreads</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FUNCTIONAL BAND ============ -->
+<section class="func">
+  <div class="wrap func-inner">
+    <h2 class="reveal">Formulated for how people <em>actually eat today.</em></h2>
+    <div class="badges">
+      <span class="badge reveal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.97-7 8-10.03 8-14a8 8 0 1 0-16 0c0 3.97 3.03 7 8 14z"/></svg>Vegan</span>
+      <span class="badge reveal" style="--d:.06s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5 5 14 14"/></svg>Gluten-Free</span>
+      <span class="badge reveal" style="--d:.12s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5 5 14 14"/></svg>Sugar-Free</span>
+      <span class="badge reveal" style="--d:.18s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m5 5 14 14"/></svg>Dairy-Free</span>
+      <span class="badge reveal" style="--d:.24s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Clean Label</span>
+      <span class="badge reveal" style="--d:.3s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Protein Enriched</span>
+      <span class="badge reveal" style="--d:.36s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5.5 6.5l13 11M18.5 6.5l-13 11"/></svg>Collagen Enriched</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section id="process" class="process">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow reveal">How It Works</span>
+        <h2 class="section-title reveal" style="--d:.08s">From concept to shelf.</h2>
+      </div>
+      <p class="section-sub reveal" style="--d:.16s">We don't just manufacture — we develop products specifically for your brand, then handle everything until they're on shelves.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="dot"></div><h3>Concept</h3><p>Share your idea, target market and positioning. We shape it together.</p></div>
+      <div class="step reveal" style="--d:.1s"><div class="dot"></div><h3>Formulation</h3><p>Recipe development, functional ingredients, taste &amp; shelf-life studies.</p></div>
+      <div class="step reveal" style="--d:.2s"><div class="dot"></div><h3>Production</h3><p>High-capacity manufacturing under strict quality control.</p></div>
+      <div class="step reveal" style="--d:.3s"><div class="dot"></div><h3>Packaging</h3><p>Fully customized retail-ready packaging for your brand.</p></div>
+      <div class="step reveal" style="--d:.4s"><div class="dot"></div><h3>Delivery</h3><p>Export-ready logistics to the USA, Europe and beyond.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PACKAGING ============ -->
+<section id="packaging" class="pack">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow reveal">Packaging</span>
+        <h2 class="section-title reveal" style="--d:.08s">Your brand, retail-ready.</h2>
+      </div>
+      <p class="section-sub reveal" style="--d:.16s">Flexible formats for retail and distribution — single packs, multipacks (3×40g, 6×30g) and bulk packaging, fully customized to your brand identity.</p>
+    </div>
+    <div class="pack-grid">
+      <div class="pack-card reveal"><img src="assets/pack-flowpack.png" alt="Flowpack single-serve pack" loading="lazy"><h3>Flowpack</h3><p>Single-serve snack packs, 15g–110g</p></div>
+      <div class="pack-card reveal" style="--d:.1s"><img src="assets/pack-doypack.png" alt="Doypack stand-up pouch" loading="lazy"><h3>Doypack</h3><p>Stand-up pouches with zip closure</p></div>
+      <div class="pack-card reveal" style="--d:.2s"><img src="assets/pack-jars.png" alt="Glass jars" loading="lazy"><h3>Glass Jars</h3><p>Filling from 190g to 1000g</p></div>
+      <div class="pack-card reveal" style="--d:.3s"><img src="assets/pack-bar.png" alt="Bar wrapper" loading="lazy"><h3>Bar Wraps</h3><p>Single bars &amp; multipack formats</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF / BRANDS ============ -->
+<section id="brands">
+  <div class="wrap proof-grid">
+    <div class="proof-media reveal">
+      <img class="shelf" src="assets/photo-shelf.jpg" alt="Supermarket shelves stocked with snack products" loading="lazy">
+      <div class="packs">
+        <img src="assets/balanu-balls.png" alt="Balanu Fruity Protein Balls pouch" loading="lazy">
+        <img src="assets/balanu-brownie.png" alt="Balanu Collagen Brownie pouch" loading="lazy">
+        <img src="assets/balanu-cookies.png" alt="Balanu Almond Cookies pouch" loading="lazy">
+        <img src="assets/leila-pouch.png" alt="Leila almond cookie pouch" loading="lazy">
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Proven In Market</span>
+      <h2 class="section-title reveal" style="--d:.08s">Already on shelves in the USA &amp; EU.</h2>
+      <p class="section-sub reveal" style="--d:.16s">We practice what we produce. Our own brands — <strong>Balanu</strong> and <strong>Leila</strong> — are built on the same production lines we offer you, and are actively distributed in the United States and expanding across Europe.</p>
+      <ul class="proof-list reveal" style="--d:.24s">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Active distribution in the USA market</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Experience with major retail &amp; wholesale networks</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Export-ready production standards</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Strong positioning for ethnic &amp; health-focused markets</li>
+      </ul>
+      <div class="unfi reveal" style="--d:.3s">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
+        Our brands are available through <strong>&nbsp;UNFI&nbsp;</strong> distribution across the USA
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="justify-content:center">Start Today</span>
+    <h2 class="reveal" style="--d:.08s">Let's build your brand <em>together.</em></h2>
+    <p class="section-sub reveal" style="--d:.16s">Tell us about your product idea — we'll come back to you with formulation options, capacity and timelines.</p>
+    <div class="contact-cards">
+      <a class="c-card reveal" href="mailto:info@balanu.com?subject=Private%20Label%20Inquiry" style="--d:.1s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m4 7 8 6 8-6"/></svg></div>
+        <h3>Email Us</h3>
+        <p>For inquiries, product catalogs and quotes.</p>
+        <span class="val">info@balanu.com</span>
+      </a>
+      <a class="c-card reveal" href="https://wa.me/905322904658" target="_blank" rel="noopener" style="--d:.2s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.05 2a9.9 9.9 0 0 0-8.57 14.87L2 22l5.27-1.38A9.9 9.9 0 1 0 12.05 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 6.97 3.87z"/></svg></div>
+        <h3>WhatsApp</h3>
+        <p>Message us directly — fastest way to reach our team.</p>
+        <span class="val">+90 532 290 46 58</span>
+      </a>
+      <a class="c-card reveal" href="tel:+905322904658" style="--d:.3s">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Call Us</h3>
+        <p>Speak directly with our export team.</p>
+        <span class="val">+90 532 290 46 58</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">BOYO<small style="color:var(--tan)">Private Label</small></div>
+        <p>Full-service private label manufacturing — from recipe development to final packaging. High-quality cookies, bars, functional snacks and spreads at scale.</p>
+      </div>
+      <div>
+        <h4>Boyo Organik Gıda</h4>
+        <address>Eğmir Mah. 10014 Sok. No:9<br>Havran, 10562<br>Balıkesir / Türkiye</address>
+      </div>
+      <div>
+        <h4>Balanu GmbH</h4>
+        <address>Ruhe am Bach 11<br>82377 Penzberg, München<br>Deutschland<br>UID: DE356769213</address>
+      </div>
+      <div>
+        <h4>Balanu Foods LLC</h4>
+        <address>525 Washington Blvd, 3rd Floor<br>Jersey City, NJ 07310, USA<br>DUNS: 13-275-5222</address>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 BOYO Organik Gıda. All rights reserved.</span>
+      <span><a href="mailto:info@balanu.com">info@balanu.com</a> · <a href="tel:+905322904658">+90 532 290 46 58</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// nav scroll state
+const nav = document.getElementById('nav');
+const onScrollNav = () => nav.classList.toggle('scrolled', scrollY > 30);
+addEventListener('scroll', onScrollNav, {passive:true}); onScrollNav();
+
+// reveal on scroll
+const io = new IntersectionObserver(entries => {
+  for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}, {threshold:.16, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// count-up stats
+const fmt = (v, d) => d ? v.toFixed(d) : Math.round(v).toString();
+const cio = new IntersectionObserver(entries => {
+  for (const e of entries) {
+    if (!e.isIntersecting) continue;
+    const el = e.target, target = parseFloat(el.dataset.count), dec = +(el.dataset.decimals||0);
+    const t0 = performance.now(), dur = 1600;
+    const tick = now => {
+      const p = Math.min((now - t0) / dur, 1), ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = fmt(target * ease, dec);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    cio.unobserve(el);
+  }
+}, {threshold:.6});
+document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+
+</script>
+</body>
+</html>
