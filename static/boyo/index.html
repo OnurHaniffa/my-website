@@ -28,7 +28,9 @@
 html{scroll-behavior:smooth;overflow-x:clip}
 body{
   font-family:var(--font);
-  background:var(--bg0);
+  background:linear-gradient(180deg,
+    #503B25 0%, #5D462B 16%, #4A3520 34%,
+    #614A2E 52%, #4E3922 70%, #58422a 86%, #3C2C1A 100%);
   color:var(--text);
   line-height:1.65;
   overflow-x:hidden;
@@ -92,9 +94,8 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
   display:flex;align-items:center;
   padding:150px 0 100px;
   background:
-    radial-gradient(1000px 560px at 88% -10%,rgba(227,176,98,.13),transparent 60%),
-    radial-gradient(800px 600px at -10% 110%,rgba(227,176,98,.07),transparent 55%),
-    var(--bg0);
+    radial-gradient(1100px 620px at 88% -10%,rgba(227,176,98,.22),transparent 60%),
+    radial-gradient(800px 600px at -10% 110%,rgba(227,176,98,.1),transparent 55%);
   overflow:hidden;
 }
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center}
@@ -140,8 +141,8 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 .hv-caption svg{width:16px;height:16px;color:var(--gold);flex:none}
 
 /* ============ STATS ============ */
-.stats{background:var(--bg3);padding:100px 0 92px;position:relative;overflow:hidden;border-block:1px solid var(--line)}
-.stats::before{content:"";position:absolute;inset:0;opacity:.6;background:radial-gradient(800px 400px at 50% -20%,rgba(227,176,98,.12),transparent 60%)}
+.stats{background:var(--bg3);padding:100px 0 92px;position:relative;overflow:hidden;border-block:1px solid var(--line);box-shadow:inset 0 18px 40px -20px rgba(0,0,0,.5),inset 0 -18px 40px -20px rgba(0,0,0,.5)}
+.stats::before{content:"";position:absolute;inset:0;opacity:.7;background:radial-gradient(800px 400px at 50% -20%,rgba(227,176,98,.16),transparent 60%)}
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;position:relative}
 .stat{text-align:center;padding:0 10px}
 .stat + .stat{border-left:1px solid var(--line)}
@@ -184,7 +185,7 @@ section{padding:104px 0}
 }
 
 /* ============ FUNCTIONAL BAND ============ */
-.func{background:var(--bg1);padding:88px 0;border-block:1px solid var(--line)}
+.func{background:rgba(28,19,11,.28);padding:88px 0;border-block:1px solid var(--line)}
 .func-inner{text-align:center}
 .func h2{font-size:clamp(1.7rem,3.1vw,2.4rem);max-width:26ch;margin-inline:auto}
 .func h2 em{color:var(--gold);font-style:normal}
@@ -220,8 +221,8 @@ section{padding:104px 0}
 .step p{font-size:.86rem;color:var(--muted)}
 
 /* ============ PACKAGING ============ */
-.pack{background:var(--bg3);position:relative;overflow:hidden;border-block:1px solid var(--line)}
-.pack::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 80% 0%,rgba(227,176,98,.1),transparent 55%)}
+.pack{background:var(--bg3);position:relative;overflow:hidden;border-block:1px solid var(--line);box-shadow:inset 0 18px 40px -20px rgba(0,0,0,.5),inset 0 -18px 40px -20px rgba(0,0,0,.5)}
+.pack::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 80% 0%,rgba(227,176,98,.14),transparent 55%)}
 .pack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:54px;position:relative}
 .pack-card{
   background:rgba(243,233,215,.05);border:1px solid var(--line);
@@ -255,7 +256,7 @@ section{padding:104px 0}
 .brands-note strong{color:var(--gold);font-weight:600}
 
 /* ============ OFFICES ============ */
-.offices{background:var(--bg1);border-block:1px solid var(--line)}
+.offices{background:rgba(28,19,11,.22);border-block:1px solid var(--line)}
 .office-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
 .office{
   background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);
@@ -268,7 +269,7 @@ section{padding:104px 0}
 .office address{font-style:normal;font-size:.9rem;color:var(--muted);line-height:1.8}
 
 /* ============ CONTACT ============ */
-.contact{text-align:center;background:radial-gradient(900px 500px at 50% 120%,rgba(227,176,98,.12),transparent 60%),var(--bg0)}
+.contact{text-align:center;background:radial-gradient(900px 500px at 50% 120%,rgba(227,176,98,.18),transparent 60%)}
 .contact h2{font-size:clamp(2.1rem,4.6vw,3.4rem);max-width:18ch;margin:.35em auto .3em}
 .contact h2 em{color:var(--gold);font-style:normal}
 .contact .section-sub{margin-inline:auto}
