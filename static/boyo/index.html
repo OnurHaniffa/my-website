@@ -133,16 +133,16 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 .hero-foot span{display:flex;align-items:center;gap:.5em}
 .hero-foot svg{width:15px;height:15px;color:var(--gold-soft)}
 
-/* big circular play button (desktop video cue) */
+/* big circular play button (wide-screen video cue, centred over the footage) */
 .hero-play{
-  position:absolute;z-index:2;right:7%;top:50%;transform:translateY(-50%);
-  width:94px;height:94px;border-radius:50%;border:0;cursor:pointer;
+  position:absolute;z-index:2;right:15%;top:50%;transform:translateY(-50%);
+  width:88px;height:88px;border-radius:50%;border:0;cursor:pointer;
   background:rgba(227,176,98,.96);
   display:flex;align-items:center;justify-content:center;
   box-shadow:0 26px 60px -16px rgba(0,0,0,.6);
   animation:pulse 2.6s ease-out infinite;transition:transform .25s,background .25s;
 }
-.hero-play:hover{transform:translateY(-50%) scale(1.06);background:#EDC480}
+.hero-play:hover{transform:translateY(-50%) scale(1.07);background:#EDC480}
 .hero-play svg{width:34px;height:34px;color:#231708;margin-left:5px}
 @keyframes pulse{0%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 0 rgba(227,176,98,.5)}70%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 26px rgba(227,176,98,0)}100%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 0 rgba(227,176,98,0)}}
 
@@ -547,7 +547,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   .map-arcs .arc{stroke-dashoffset:0}
   .progress{display:none}
 }
-@media (max-width:900px){ .hero-play{display:none} }
+@media (max-width:1100px){ .hero-play{display:none} }
 @media (max-width:760px){
   /* shrink stepped hero so long single words (e.g. German "Lebensmittelmarke") never clip */
   .hero h1{font-size:clamp(1.5rem,6.4vw,2.15rem)}
@@ -594,6 +594,9 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
     <img src="assets/photo-hazelnut.jpg" alt="BOYO private label snack production">
   </div>
   <div class="hero-scrim"></div>
+  <button class="hero-play" data-video aria-label="Play video">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72c0 .92 1.02 1.48 1.8.98l10.3-6.86a1.17 1.17 0 0 0 0-1.96L9.8 4.16c-.78-.5-1.8.06-1.8.98z"/></svg>
+  </button>
   <div class="wrap">
     <div class="hero-content">
       <span class="eyebrow reveal" data-i18n="hero_eyebrow">Private Label Manufacturing · USA &amp; Europe</span>
