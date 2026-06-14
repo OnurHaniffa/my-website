@@ -443,6 +443,72 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
   .steps{grid-template-columns:1fr}
 }
 </style>
+
+<style id="dark-overrides">
+/* ===== DARK THEME — the active, canonical theme. Tonal rhythm:
+   base sections var(--cream) | lifted alt sections var(--cream-2) | deep glowing bands var(--coffee) ===== */
+:root{
+  --cream:#2C1F12;       /* base page sections */
+  --cream-2:#3A2B19;     /* lifted alternating sections */
+  --card:#48361F;        /* cards (lift off both) */
+  --coffee:#1A1107;      /* deep feature bands (capacity / packaging / finale) */
+  --coffee-2:#140C04;    /* footer (deepest) */
+  --coffee-3:#33251400;
+  --coffee-3:#33251466;  /* translucent cards on deep bands */
+  --ink:#F2E7CF;
+  --mut:#C6B089;
+  --cream-text:#F2E7CF;
+  --cream-mut:#C6B089;
+  --gold:#E3B062;
+  --gold-deep:#E9B96B;   /* bright enough to read on dark */
+  --gold-soft:#EDC480;
+  --line-d:rgba(242,231,207,.13);
+  --line-l:rgba(242,231,207,.13);
+}
+body{background:var(--cream)}
+nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
+.nav-links a{color:var(--ink)}
+.logo{color:#FFF7E8}
+.btn-solid{background:var(--gold);color:#241910}
+.btn-solid:hover{background:#F0C47C}
+.btn-gold{color:#241910}
+.btn-gold:hover{background:var(--gold-soft)}
+.btn-ghost{border-color:rgba(242,231,207,.32);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold-soft);color:var(--gold-soft)}
+.link-arrow{color:var(--gold-deep)}
+
+/* hero with warm spotlight */
+.hero{background:radial-gradient(1100px 640px at 84% -12%,rgba(227,176,98,.20),transparent 60%),radial-gradient(760px 520px at -8% 108%,rgba(227,176,98,.10),transparent 55%)}
+.hv-play{background:rgba(227,176,98,.96)}.hv-play svg{color:#241910}
+.hero-video{box-shadow:0 44px 90px -36px rgba(0,0,0,.75)}
+
+/* deep bands get a stronger warm glow so they never read flat */
+.stats::before,.finale::before{opacity:1;background:radial-gradient(960px 500px at 50% -14%,rgba(227,176,98,.20),transparent 62%)}
+.pack::before{opacity:1;background:radial-gradient(940px 520px at 80% -6%,rgba(227,176,98,.17),transparent 58%)}
+
+/* cards: lift off the dark with shadow + a faint top highlight (lit-from-above) */
+.make-item,.why,.brand-card,.line-card{box-shadow:0 20px 44px -26px rgba(0,0,0,.75),inset 0 1px 0 rgba(255,243,216,.05)}
+.make-item:hover,.why:hover{box-shadow:0 30px 56px -26px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,243,216,.07)}
+.brand-card{box-shadow:0 22px 48px -28px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,243,216,.05)}
+.brand-card:hover{box-shadow:0 30px 58px -26px rgba(0,0,0,.8)}
+.diet span{color:var(--ink)}
+.diet span:hover{border-color:var(--gold)}
+.pline .chips span{color:#EFD7A6}
+.pline .chips span,.chips span{background:rgba(227,176,98,.12);border-color:rgba(227,176,98,.26)}
+
+/* product & lab imagery glows warmly against the dark */
+.pline-media img,.form-media img{box-shadow:0 42px 84px -40px rgba(227,176,98,.22),0 30px 60px -32px rgba(0,0,0,.7)}
+.form-list li{color:var(--ink)}
+.step .dot{background:var(--card);color:var(--gold-soft);box-shadow:0 12px 26px -14px rgba(0,0,0,.7)}
+.step:hover .dot{background:var(--gold);color:#241910}
+.market-point{color:var(--ink)}.unfi{color:var(--ink)}
+.map-shape{background:#E0BD83;opacity:.40}
+.map-marker .tag{background:#F4EAD3;color:#2A1D0F}
+.brand-media{background:#241910}.promise{color:var(--ink)}
+.cta-sub{color:var(--mut)}
+.c-card,.pack-card{background:var(--coffee-3)}
+::selection{background:var(--gold);color:#241910}
+</style>
 </head>
 <body>
 
@@ -805,7 +871,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 BOYO Organik Gıda. All rights reserved. · <a href="dark.html" style="opacity:.7">Dark version</a></span>
+      <span>© 2026 BOYO Organik Gıda. All rights reserved.</span>
       <span><a href="mailto:info@balanu.com">info@balanu.com</a> · <a href="tel:+905322904658">+90 532 290 46 58</a></span>
     </div>
   </div>
