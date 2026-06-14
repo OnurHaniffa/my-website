@@ -106,54 +106,53 @@ nav.scrolled{
 .nav-links a:hover::after{width:100%}
 nav .btn{padding:.65em 1.35em;font-size:.9rem}
 
-/* ============ HERO ============ */
+/* ============ HERO (full-bleed, video-ready) ============ */
 .hero{
-  position:relative;min-height:92svh;
+  position:relative;min-height:94svh;
   display:flex;align-items:center;
-  padding:150px 0 90px;
-  background:
-    radial-gradient(1000px 600px at 88% -10%,rgba(217,150,59,.16),transparent 60%),
-    radial-gradient(700px 500px at -8% 108%,rgba(217,150,59,.1),transparent 55%);
+  padding:150px 0 64px;
   overflow:hidden;
 }
-.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center}
-.hero h1{font-size:clamp(2.2rem,4.7vw,3.9rem);margin:.4em 0 .32em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em}
-.hero h1 em{font-style:normal;color:var(--gold-deep)}
-.hero p.lede{max-width:50ch;font-size:clamp(1rem,1.4vw,1.15rem);color:var(--mut)}
-.hero-ctas{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img,.hero-bg video{width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(95deg, rgba(18,11,4,.94) 0%, rgba(18,11,4,.82) 34%, rgba(18,11,4,.46) 64%, rgba(18,11,4,.34) 100%),
+    linear-gradient(0deg, rgba(18,11,4,.82) 0%, transparent 44%),
+    radial-gradient(1100px 640px at 86% 2%, rgba(227,176,98,.20), transparent 60%);
+}
+.hero-content{position:relative;z-index:2;max-width:660px}
+.hero h1{font-size:clamp(2.2rem,4.7vw,3.9rem);margin:.34em 0 .3em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em;color:#FFF7E8}
+.hero p.lede{max-width:47ch;font-size:clamp(1rem,1.4vw,1.15rem);color:#E8DAC0}
+.hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 .hero-foot{
-  margin-top:42px;display:flex;gap:12px 28px;flex-wrap:wrap;
-  font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);
+  margin-top:40px;display:flex;gap:12px 26px;flex-wrap:wrap;
+  font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#CDBD9C;
 }
 .hero-foot span{display:flex;align-items:center;gap:.5em}
-.hero-foot svg{width:15px;height:15px;color:var(--gold-deep)}
+.hero-foot svg{width:15px;height:15px;color:var(--gold-soft)}
 
-.hero-video{
-  position:relative;border-radius:24px;overflow:hidden;
-  aspect-ratio:16/10.5;
-  box-shadow:0 44px 90px -36px rgba(46,33,19,.55);
-}
-.hero-video img{width:100%;height:100%;object-fit:cover}
-.hero-video::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(28,19,11,0) 35%,rgba(28,19,11,.72) 100%);
-}
-.hv-play{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
-  width:84px;height:84px;border-radius:50%;
-  background:rgba(246,238,223,.95);
+/* big circular play button (desktop video cue) */
+.hero-play{
+  position:absolute;z-index:2;right:7%;top:50%;transform:translateY(-50%);
+  width:94px;height:94px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(227,176,98,.96);
   display:flex;align-items:center;justify-content:center;
-  box-shadow:0 20px 50px -12px rgba(0,0,0,.5);
-  animation:pulse 2.6s ease-out infinite;
+  box-shadow:0 26px 60px -16px rgba(0,0,0,.6);
+  animation:pulse 2.6s ease-out infinite;transition:transform .25s,background .25s;
 }
-.hv-play svg{width:30px;height:30px;color:var(--coffee);margin-left:4px}
-@keyframes pulse{0%{box-shadow:0 20px 50px -12px rgba(0,0,0,.5),0 0 0 0 rgba(246,238,223,.5)}70%{box-shadow:0 20px 50px -12px rgba(0,0,0,.5),0 0 0 24px rgba(246,238,223,0)}100%{box-shadow:0 20px 50px -12px rgba(0,0,0,.5),0 0 0 0 rgba(246,238,223,0)}}
-.hv-caption{
-  position:absolute;left:0;right:0;bottom:0;z-index:2;
-  padding:18px 24px;font-size:.92rem;font-weight:500;color:#FFF6E4;
-  display:flex;align-items:center;gap:.6em;
-}
-.hv-caption svg{width:16px;height:16px;color:var(--gold-soft);flex:none}
+.hero-play:hover{transform:translateY(-50%) scale(1.06);background:#EDC480}
+.hero-play svg{width:34px;height:34px;color:#231708;margin-left:5px}
+@keyframes pulse{0%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 0 rgba(227,176,98,.5)}70%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 26px rgba(227,176,98,0)}100%{box-shadow:0 26px 60px -16px rgba(0,0,0,.6),0 0 0 0 rgba(227,176,98,0)}}
+
+/* video lightbox */
+.lb{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;background:rgba(8,5,2,.9);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:24px}
+.lb.open{display:flex}
+.lb-inner{position:relative;width:min(980px,94vw);aspect-ratio:16/9;background:#000;border-radius:14px;overflow:hidden;box-shadow:0 50px 120px -30px #000}
+.lb-inner img,.lb-inner iframe,.lb-inner video{width:100%;height:100%;object-fit:cover;border:0;display:block}
+.lb-close{position:absolute;top:-48px;right:-4px;width:40px;height:40px;border:0;background:transparent;color:#F2E7CF;font-size:1.8rem;line-height:1;cursor:pointer}
+.lb-close:hover{color:#fff}
 
 /* ============ CAPACITY (coffee band) ============ */
 .stats{padding:96px 0 88px;position:relative;overflow:hidden}
@@ -548,9 +547,14 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   .map-arcs .arc{stroke-dashoffset:0}
   .progress{display:none}
 }
+@media (max-width:900px){ .hero-play{display:none} }
 @media (max-width:760px){
   /* shrink stepped hero so long single words (e.g. German "Lebensmittelmarke") never clip */
   .hero h1{font-size:clamp(1.5rem,6.4vw,2.15rem)}
+  .hero{min-height:auto;padding:124px 0 72px}
+  .hero-scrim{background:
+    linear-gradient(0deg, rgba(18,11,4,.92) 0%, rgba(18,11,4,.6) 55%, rgba(18,11,4,.74) 100%),
+    radial-gradient(800px 500px at 80% 0%, rgba(227,176,98,.16), transparent 60%)}
 }
 @media (max-width:600px){
   .nav-right{gap:9px}
@@ -583,10 +587,15 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
 </nav>
 <div class="progress" id="progress"></div>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO (full-bleed, video-ready) ============ -->
 <header class="hero">
-  <div class="wrap hero-grid">
-    <div>
+  <div class="hero-bg">
+    <!-- swap this <img> for a muted autoplay <video> when factory footage is supplied -->
+    <img src="assets/photo-hazelnut.jpg" alt="BOYO private label snack production">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="wrap">
+    <div class="hero-content">
       <span class="eyebrow reveal" data-i18n="hero_eyebrow">Private Label Manufacturing · USA &amp; Europe</span>
       <h1 class="hero-head">
         <span class="ln"><span data-i18n="hero_l1">Launch your</span></span>
@@ -598,24 +607,16 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
         <a href="#contact" class="btn btn-gold"><span data-i18n="hero_cta1">Request a Consultation</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/905322904658" target="_blank" rel="noopener" class="btn btn-ghost">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.05 2a9.9 9.9 0 0 0-8.57 14.87L2 22l5.27-1.38A9.9 9.9 0 1 0 12.05 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 6.97 3.87z"/></svg>
-          <span data-i18n="hero_cta2">WhatsApp Us</span>
-        </a>
+        <button type="button" class="btn btn-ghost" data-video>
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72c0 .92 1.02 1.48 1.8.98l10.3-6.86a1.17 1.17 0 0 0 0-1.96L9.8 4.16c-.78-.5-1.8.06-1.8.98z"/></svg>
+          <span data-i18n="hero_watch">Watch our story</span>
+        </button>
       </div>
       <div class="hero-foot reveal" style="--d:.66s">
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot1">Low MOQ</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot2">Fast Production</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot3">EU &amp; US Standards</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot4">Flexible Packaging</span></span>
-      </div>
-    </div>
-    <div class="hero-video reveal" style="--d:.2s">
-      <img src="assets/photo-barline.jpg" alt="Snack bars moving along the BOYO production line">
-      <div class="hv-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.14v13.72c0 .92 1.02 1.48 1.8.98l10.3-6.86a1.17 1.17 0 0 0 0-1.96L9.8 4.16c-.78-.5-1.8.06-1.8.98z"/></svg></div>
-      <div class="hv-caption">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></svg>
-        <span data-i18n="hero_caption">Watch how we turn ideas into scalable snack brands</span>
       </div>
     </div>
   </div>
@@ -941,6 +942,12 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   </div>
 </footer>
 
+<!-- video lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Video">
+  <div class="lb-inner" id="lb-inner"></div>
+  <button class="lb-close" id="lb-close" aria-label="Close">×</button>
+</div>
+
 <script>
 // ===== nav scroll state + scroll progress bar =====
 const nav = document.getElementById('nav');
@@ -979,13 +986,35 @@ const cio = new IntersectionObserver(entries => {
 }, {threshold:.6});
 document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
 
+// ===== video lightbox =====
+// When the client supplies factory footage, set HERO_VIDEO to a YouTube embed URL
+// (https://www.youtube.com/embed/XXXX?autoplay=1) or an .mp4 path. Empty = show poster.
+const HERO_VIDEO = "";
+const HERO_POSTER = "assets/photo-barline.jpg";
+const lb = document.getElementById('lb'), lbInner = document.getElementById('lb-inner');
+function openVideo(){
+  if (HERO_VIDEO && /\.(mp4|webm)$/i.test(HERO_VIDEO)) {
+    lbInner.innerHTML = '<video src="'+HERO_VIDEO+'" controls autoplay playsinline></video>';
+  } else if (HERO_VIDEO) {
+    lbInner.innerHTML = '<iframe src="'+HERO_VIDEO+'" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+  } else {
+    lbInner.innerHTML = '<img src="'+HERO_POSTER+'" alt="BOYO production line">';
+  }
+  lb.classList.add('open'); document.body.style.overflow = 'hidden';
+}
+function closeVideo(){ lb.classList.remove('open'); lbInner.innerHTML = ''; document.body.style.overflow = ''; }
+document.querySelectorAll('[data-video]').forEach(b => b.addEventListener('click', openVideo));
+document.getElementById('lb-close').addEventListener('click', closeVideo);
+lb.addEventListener('click', e => { if (e.target === lb) closeVideo(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+
 // ===== i18n (EN / DE) =====
 const I18N = {
   en: {
     nav_products:"Products", nav_packaging:"Packaging", nav_formulation:"Formulation", nav_markets:"Markets", nav_why:"Why BOYO", nav_cta:"Request a Quote",
     hero_eyebrow:"Private Label Manufacturing · USA &amp; Europe", hero_l1:"Launch your", hero_l2:"Food Brand", hero_l3:"without building a factory",
     hero_lede:"Build your brand — leave the production to us. From idea to product, BOYO manages the entire process: formulation, manufacturing, brand design, packaging and logistics, for brands across the USA and Europe.",
-    hero_cta1:"Request a Consultation", hero_cta2:"WhatsApp Us", hero_foot1:"Low MOQ", hero_foot2:"Fast Production", hero_foot3:"EU &amp; US Standards", hero_foot4:"Flexible Packaging",
+    hero_cta1:"Request a Consultation", hero_cta2:"WhatsApp Us", hero_watch:"Watch our story", hero_foot1:"Low MOQ", hero_foot2:"Fast Production", hero_foot3:"EU &amp; US Standards", hero_foot4:"Flexible Packaging",
     hero_caption:"Watch how we turn ideas into scalable snack brands",
     stats_eyebrow:"Production Capacity", stat1_lbl:"Cookies / Month", stat2_lbl:"Snack Bars / Month", stat3_lbl:"Filled Jars / Month",
     stats_note:"High-capacity bakery, snack and filling lines — advanced processing &amp; packaging technology with strict quality control, in Balıkesir, Türkiye.",
@@ -1035,7 +1064,7 @@ const I18N = {
     nav_products:"Produkte", nav_packaging:"Verpackung", nav_formulation:"Rezeptur", nav_markets:"Märkte", nav_why:"Warum BOYO", nav_cta:"Angebot anfordern",
     hero_eyebrow:"Eigenmarken-Herstellung · USA &amp; Europa", hero_l1:"Starten Sie Ihre", hero_l2:"Lebensmittelmarke", hero_l3:"ohne eigene Fabrik",
     hero_lede:"Bauen Sie Ihre Marke auf — die Produktion übernehmen wir. Von der Idee bis zum fertigen Produkt steuert BOYO den gesamten Prozess: Rezeptur, Herstellung, Markendesign, Verpackung und Logistik — für Marken in den USA und Europa.",
-    hero_cta1:"Beratung anfordern", hero_cta2:"WhatsApp", hero_foot1:"Geringe Mindestmenge", hero_foot2:"Schnelle Produktion", hero_foot3:"EU- &amp; US-Standards", hero_foot4:"Flexible Verpackung",
+    hero_cta1:"Beratung anfordern", hero_cta2:"WhatsApp", hero_watch:"Unsere Story ansehen", hero_foot1:"Geringe Mindestmenge", hero_foot2:"Schnelle Produktion", hero_foot3:"EU- &amp; US-Standards", hero_foot4:"Flexible Verpackung",
     hero_caption:"So machen wir aus Ideen skalierbare Snackmarken",
     stats_eyebrow:"Produktionskapazität", stat1_lbl:"Kekse / Monat", stat2_lbl:"Snackriegel / Monat", stat3_lbl:"Gefüllte Gläser / Monat",
     stats_note:"Leistungsstarke Linien für Backwaren, Snacks und Füllungen — moderne Verarbeitungs- &amp; Verpackungstechnik mit strenger Qualitätskontrolle, in Balıkesir, Türkei.",
