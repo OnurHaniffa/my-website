@@ -189,7 +189,7 @@ section{padding:104px 0}
 
 /* dietary ribbon */
 .diet{display:flex;flex-wrap:wrap;justify-content:center;gap:11px;margin-top:46px}
-.diet span{
+.diet > span{
   display:inline-flex;align-items:center;gap:.55em;
   background:transparent;border:1.5px solid var(--line-d);
   padding:.7em 1.3em;border-radius:100px;
@@ -491,8 +491,8 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
 .make-item:hover,.why:hover{box-shadow:0 30px 56px -26px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,243,216,.07)}
 .brand-card{box-shadow:0 22px 48px -28px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,243,216,.05)}
 .brand-card:hover{box-shadow:0 30px 58px -26px rgba(0,0,0,.8)}
-.diet span{color:var(--ink)}
-.diet span:hover{border-color:var(--gold)}
+.diet > span{color:var(--ink)}
+.diet > span:hover{border-color:var(--gold)}
 .pline .chips span{color:#EFD7A6}
 .pline .chips span,.chips span{background:rgba(227,176,98,.12);border-color:rgba(227,176,98,.26)}
 
@@ -845,7 +845,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
     <p class="section-sub reveal" style="--d:.16s" data-i18n="br_sub">We don't just manufacture for others — we build and export our own brands on the same lines we offer you. Proof that what we make sells.</p>
     <div class="brands-grid">
       <article class="brand-card reveal" style="--d:.1s">
-        <div class="brand-media"><img src="assets/balanu-cookies.png" alt="Balanu functional snack products" loading="lazy"></div>
+        <div class="brand-media"><img src="assets/balanu-card.jpg" alt="Balanu functional snack products" loading="lazy"></div>
         <div class="brand-body">
           <div class="bn">Balanu</div>
           <div class="bt" data-i18n="balanu_t">Functional Snack Brand</div>
