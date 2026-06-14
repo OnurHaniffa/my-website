@@ -122,8 +122,8 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
     linear-gradient(0deg, rgba(18,11,4,.82) 0%, transparent 44%),
     radial-gradient(1100px 640px at 86% 2%, rgba(227,176,98,.20), transparent 60%);
 }
-.hero-content{position:relative;z-index:2;max-width:660px}
-.hero h1{font-size:clamp(2.2rem,4.7vw,3.9rem);margin:.34em 0 .3em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em;color:#FFF7E8}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero h1{font-size:clamp(2rem,4.2vw,3.5rem);margin:.34em 0 .3em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em;color:#FFF7E8}
 .hero p.lede{max-width:47ch;font-size:clamp(1rem,1.4vw,1.15rem);color:#E8DAC0}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 .hero-foot{
@@ -167,7 +167,9 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 
 /* ============ SECTIONS ============ */
 section{padding:104px 0}
-.head-row{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:54px}
+.head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:30px 48px;flex-wrap:wrap;margin-bottom:54px}
+.head-row > .section-sub{max-width:46ch}
+.head-row > .btn{align-self:flex-end}
 .center{text-align:center}
 .center .section-sub{margin-inline:auto}
 
@@ -673,7 +675,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   <div class="wrap pline-grid">
     <div class="pline-media reveal">
       <img src="assets/photo-cookies.jpg" alt="Freshly baked pistachio cookies on a plate" loading="lazy">
-      <span class="pm-tag">Bakery Line</span>
+      <span class="pm-tag" data-i18n="tag_bakery">Bakery Line</span>
     </div>
     <div>
       <div class="num reveal" data-i18n="bakery_num">01 — BAKERY SOLUTIONS</div>
@@ -695,7 +697,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   <div class="wrap pline-grid flip">
     <div class="pline-media reveal">
       <img src="assets/photo-barline.jpg" alt="Granola bars on the BOYO production line" loading="lazy">
-      <span class="pm-tag">Snack Line</span>
+      <span class="pm-tag" data-i18n="tag_snack">Snack Line</span>
     </div>
     <div>
       <div class="num reveal" data-i18n="snack_num">02 — SNACK SOLUTIONS</div>
@@ -717,7 +719,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   <div class="wrap pline-grid">
     <div class="pline-media reveal">
       <img src="assets/photo-hazelnut.jpg" alt="Smooth hazelnut cream in a wooden bowl" loading="lazy">
-      <span class="pm-tag">Filling Line</span>
+      <span class="pm-tag" data-i18n="tag_filling">Filling Line</span>
     </div>
     <div>
       <div class="num reveal" data-i18n="filling_num">03 — FILLING SOLUTIONS</div>
@@ -1025,6 +1027,7 @@ const I18N = {
     man_sub:"From healthy snacks to functional foods, we help brands launch quality products — every line available with custom flavors and protein, collagen, vegan, gluten-free and sugar-free formulations, developed specifically for your brand.",
     make_cookies:"Functional Cookies", make_brownies:"Brownies &amp; Cake Bites", make_fruitbars:"Fruit Bars", make_nutbars:"Nut Bars &amp; Energy Balls", make_spreads:"Nut Butters &amp; Spreads", make_protein:"Protein &amp; Collagen Products",
     diet_vegan:"Vegan", diet_gf:"Gluten-Free", diet_sf:"Sugar-Free", diet_df:"Dairy-Free", diet_clean:"Clean Label", diet_protein:"Protein Enriched", diet_collagen:"Collagen Enriched",
+    tag_bakery:"Bakery Line", tag_snack:"Snack Line", tag_filling:"Filling Line",
     bakery_num:"01 — BAKERY SOLUTIONS", bakery_title:"Functional cookies, brownies &amp; cake bites.",
     bakery_desc:"Functional cookies, brownies and cake bites made with clean-label ingredients and modern formulations — protein and collagen enriched, baked at scale up to 1.5M units per month.",
     bakery_chips:"<span>Pistachio</span><span>Peanut</span><span>Cocoa</span><span>Chocolate Chip</span><span>Apple &amp; Cinnamon</span><span>Collagen Brownie</span><span>Protein Cookie Bars</span><span>Cake Bites</span>",
@@ -1075,6 +1078,7 @@ const I18N = {
     man_sub:"Von gesunden Snacks bis zu funktionalen Lebensmitteln — wir helfen Marken, hochwertige Produkte auf den Markt zu bringen. Jede Linie mit individuellen Geschmacksrichtungen und Protein-, Kollagen-, veganen, glutenfreien und zuckerfreien Rezepturen, speziell für Ihre Marke entwickelt.",
     make_cookies:"Funktionale Kekse", make_brownies:"Brownies &amp; Cake Bites", make_fruitbars:"Fruchtriegel", make_nutbars:"Nussriegel &amp; Energiekugeln", make_spreads:"Nussmuse &amp; Aufstriche", make_protein:"Protein- &amp; Kollagenprodukte",
     diet_vegan:"Vegan", diet_gf:"Glutenfrei", diet_sf:"Zuckerfrei", diet_df:"Milchfrei", diet_clean:"Clean Label", diet_protein:"Mit Protein angereichert", diet_collagen:"Mit Kollagen angereichert",
+    tag_bakery:"Backwaren", tag_snack:"Snacks", tag_filling:"Füllungen",
     bakery_num:"01 — BACKWAREN", bakery_title:"Funktionale Kekse, Brownies &amp; Cake Bites.",
     bakery_desc:"Funktionale Kekse, Brownies und Cake Bites aus Clean-Label-Zutaten und modernen Rezepturen — mit Protein und Kollagen angereichert, in großem Maßstab gebacken, bis zu 1,5 Mio. Stück pro Monat.",
     bakery_chips:"<span>Pistazie</span><span>Erdnuss</span><span>Kakao</span><span>Schokostückchen</span><span>Apfel &amp; Zimt</span><span>Kollagen-Brownie</span><span>Protein-Keksriegel</span><span>Cake Bites</span>",
