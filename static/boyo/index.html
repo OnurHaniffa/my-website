@@ -311,6 +311,36 @@ section{padding:104px 0}
 .unfi svg{color:var(--gold-deep)}
 .brands-note{margin-top:24px;color:var(--mut);font-size:.95rem;max-width:54ch;margin-inline:auto}
 .brands-note strong{color:var(--gold-deep)}
+.market-cta{margin-top:30px}
+
+/* ============ PRODUCT CTA ROW ============ */
+.pline-ctas{display:flex;align-items:center;gap:22px;margin-top:22px;flex-wrap:wrap}
+.cta-sub{
+  display:inline-flex;align-items:center;gap:.45em;
+  font-weight:500;font-size:.92rem;color:var(--mut);
+  border-bottom:1px solid transparent;transition:color .25s,border-color .25s;
+}
+.cta-sub:hover{color:var(--gold-deep);border-color:var(--gold-deep)}
+
+/* ============ OUR BRANDS ============ */
+.brands{background:var(--cream-2)}
+.brands-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:54px}
+.brand-card{
+  background:var(--card);border:1px solid var(--line-d);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;
+  transition:transform .35s,box-shadow .35s,border-color .35s;
+}
+.brand-card:hover{transform:translateY(-8px);border-color:var(--gold);box-shadow:0 26px 54px -28px rgba(46,33,19,.4)}
+.brand-media{aspect-ratio:16/10;overflow:hidden;background:#EDE0CB}
+.brand-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.6,.2,1)}
+.brand-card:hover .brand-media img{transform:scale(1.06)}
+.brand-body{padding:28px 30px 32px}
+.brand-body .bn{font-family:var(--font-display);font-weight:400;font-size:1.5rem;color:var(--ink);letter-spacing:.02em}
+.brand-body .bt{font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);margin:8px 0 12px}
+.brand-body p{color:var(--mut);font-size:.96rem}
+.promise-row{display:flex;gap:30px;justify-content:center;flex-wrap:wrap;margin-top:46px}
+.promise{display:flex;align-items:center;gap:.6em;font-weight:600;font-size:.92rem;color:#54402a}
+.promise svg{width:18px;height:18px;color:var(--gold-deep)}
 
 /* ============ WHY BOYO ============ */
 .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:54px}
@@ -427,7 +457,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
       <a href="#markets">Markets</a>
       <a href="#why">Why BOYO</a>
     </div>
-    <a href="#contact" class="btn btn-gold">Start Your Brand</a>
+    <a href="#contact" class="btn btn-gold">Request a Quote</a>
   </div>
 </nav>
 
@@ -437,9 +467,9 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
     <div>
       <span class="eyebrow reveal">Private Label Manufacturing · USA &amp; Europe</span>
       <h1 class="reveal" style="--d:.08s">Launch your <em>food brand</em> without building a factory.</h1>
-      <p class="lede reveal" style="--d:.16s">From formulation to packaging, BOYO develops and manufactures healthy snack products for brands across the USA and Europe — cookies, bars, energy balls and spreads, all under one roof.</p>
+      <p class="lede reveal" style="--d:.16s">Build your brand — leave the production to us. From idea to product, BOYO manages the entire process: formulation, manufacturing, brand design, packaging and logistics, for brands across the USA and Europe.</p>
       <div class="hero-ctas reveal" style="--d:.24s">
-        <a href="#contact" class="btn btn-gold">Start Your Brand
+        <a href="#contact" class="btn btn-gold">Request a Consultation
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
         <a href="https://wa.me/905322904658" target="_blank" rel="noopener" class="btn btn-ghost">
@@ -486,7 +516,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
         <span class="eyebrow reveal">What Can We Manufacture?</span>
         <h2 class="section-title reveal" style="--d:.08s">Three lines, endless<br>possibilities.</h2>
       </div>
-      <p class="section-sub reveal" style="--d:.16s">Every product is available with custom flavors and functional formulations — developed specifically for your brand.</p>
+      <p class="section-sub reveal" style="--d:.16s">From healthy snacks to functional foods, we help brands launch quality products — every line available with custom flavors and protein, collagen, vegan, gluten-free and sugar-free formulations, developed specifically for your brand.</p>
     </div>
     <div class="make-grid">
       <a href="#bakery" class="make-item reveal"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="14.5" cy="11" r="1" fill="currentColor"/><circle cx="10.5" cy="14.5" r="1" fill="currentColor"/></svg></span>Functional Cookies</a>
@@ -518,11 +548,14 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
     <div>
       <div class="num reveal">01 — BAKERY SOLUTIONS</div>
       <h2 class="reveal" style="--d:.08s">Functional cookies, brownies &amp; cake bites.</h2>
-      <p class="desc reveal" style="--d:.16s">Protein and collagen enriched bakery products, baked at scale on dedicated lines — up to 1.5M cookies per month with flowpack and multipack formats.</p>
+      <p class="desc reveal" style="--d:.16s">Functional cookies, brownies and cake bites made with clean-label ingredients and modern formulations — protein and collagen enriched, baked at scale up to 1.5M units per month.</p>
       <div class="chips reveal" style="--d:.24s"><span>Pistachio</span><span>Peanut</span><span>Cocoa</span><span>Chocolate Chip</span><span>Apple &amp; Cinnamon</span><span>Collagen Brownie</span><span>Protein Cookie Bars</span><span>Cake Bites</span></div>
-      <a href="#contact" class="link-arrow reveal" style="--d:.3s">Start your cookie brand
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="pline-ctas reveal" style="--d:.3s">
+        <a href="#contact" class="link-arrow">Start your cookie brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:info@balanu.com?subject=Bakery%20Line%20—%20Request%20Samples" class="cta-sub">Request samples</a>
+      </div>
     </div>
   </div>
 </section>
@@ -537,11 +570,14 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
     <div>
       <div class="num reveal">02 — SNACK SOLUTIONS</div>
       <h2 class="reveal" style="--d:.08s">Bars &amp; energy balls, on-the-go.</h2>
-      <p class="desc reveal" style="--d:.16s">Functional fruit bars, nut bars and protein balls — single fruit, mixed nut and fully custom recipes, up to 1.8M bars per month.</p>
+      <p class="desc reveal" style="--d:.16s">Go-to snacks for every lifestyle — functional fruit bars, nut bars and protein balls, from single-fruit to fully custom recipes, at up to 1.8M bars per month.</p>
       <div class="chips reveal" style="--d:.24s"><span>Fruit Bars</span><span>Single Fruit Bars</span><span>Pistachio Bar</span><span>Hazelnut Bar</span><span>Mixed Nut Bar</span><span>Fruity Protein Balls</span><span>Energy Balls</span></div>
-      <a href="#contact" class="link-arrow reveal" style="--d:.3s">Create your bar brand
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="pline-ctas reveal" style="--d:.3s">
+        <a href="#contact" class="link-arrow">Create your bar brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:info@balanu.com?subject=Snack%20Line%20—%20Request%20Samples" class="cta-sub">Request samples</a>
+      </div>
     </div>
   </div>
 </section>
@@ -556,11 +592,14 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
     <div>
       <div class="num reveal">03 — FILLING SOLUTIONS</div>
       <h2 class="reveal" style="--d:.08s">Nut butters &amp; spreads, jar-ready.</h2>
-      <p class="desc reveal" style="--d:.16s">Tahini, hazelnut and almond creams filled into glass jars from 190g to 1000g — up to 600K jars per month on dedicated filling lines.</p>
+      <p class="desc reveal" style="--d:.16s">Delicious fillings and spreads that elevate any treat — tahini, hazelnut and almond creams filled into glass jars from 190g to 1000g, up to 600K jars per month.</p>
       <div class="chips reveal" style="--d:.24s"><span>Tahini</span><span>Tahini Hazelnut Cream</span><span>Hazelnut Cocoa Cream</span><span>White Chocolate Pistachio</span><span>Almond Cream</span><span>Protein Spreads</span><span>Collagen Spreads</span></div>
-      <a href="#contact" class="link-arrow reveal" style="--d:.3s">Build your spread brand
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+      <div class="pline-ctas reveal" style="--d:.3s">
+        <a href="#contact" class="link-arrow">Build your spread brand
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:info@balanu.com?subject=Filling%20Line%20—%20Request%20Samples" class="cta-sub">Request samples</a>
+      </div>
     </div>
   </div>
 </section>
@@ -591,7 +630,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
       <div>
         <span class="eyebrow reveal">From Concept to Perfect Formulation</span>
         <h2 class="section-title reveal" style="--d:.08s">We don't just manufacture — we develop.</h2>
-        <p class="section-sub reveal" style="--d:.16s">Turnkey solutions covering every stage, from product development to packaging and regulatory processes.</p>
+        <p class="section-sub reveal" style="--d:.16s">Our R&amp;D team turns ideas into delicious, functional products — turnkey solutions covering every stage, from product development to packaging and regulatory processes.</p>
         <ul class="form-list reveal" style="--d:.24s">
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Custom recipe development for your brand</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Protein &amp; collagen ingredient integration</li>
@@ -619,7 +658,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
   <div class="wrap">
     <span class="eyebrow reveal" style="justify-content:center">Proven In Market</span>
     <h2 class="section-title reveal" style="--d:.08s">Already selling in the USA &amp; Europe.</h2>
-    <p class="section-sub reveal" style="--d:.16s">With an established supply chain and export experience, we support brands in entering competitive international and ethnic markets.</p>
+    <p class="section-sub reveal" style="--d:.16s">We make export simple. With an established supply chain and export experience, we support brands entering competitive international and ethnic markets — already on shelves in the USA and expanding across Europe.</p>
 
     <div class="map-stage reveal" style="--d:.2s">
       <div class="map-shape"></div>
@@ -639,7 +678,11 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.6 9h16.8M3.6 15h16.8M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>
       Our brands are available through <strong>&nbsp;UNFI&nbsp;</strong> distribution across the USA
     </div>
-    <p class="brands-note reveal" style="--d:.36s">We practice what we produce — our own brands <strong>Balanu</strong> and <strong>Leila</strong> are built on the same production lines we offer you.</p>
+    <div class="market-cta reveal" style="--d:.4s">
+      <a href="mailto:info@balanu.com?subject=Market%20Entry%20—%20Let's%20Discuss" class="btn btn-solid">Let's discuss your market entry
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -664,21 +707,55 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
   </div>
 </section>
 
+<!-- ============ OUR BRANDS ============ -->
+<section id="brands" class="brands center">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="justify-content:center">Our Brands, Our Promise</span>
+    <h2 class="section-title reveal" style="--d:.08s">Private label expertise, backed by our own brands.</h2>
+    <p class="section-sub reveal" style="--d:.16s">We don't just manufacture for others — we build and export our own brands on the same lines we offer you. Proof that what we make sells.</p>
+    <div class="brands-grid">
+      <article class="brand-card reveal" style="--d:.1s">
+        <div class="brand-media"><img src="assets/balanu-cookies.png" alt="Balanu functional snack products" loading="lazy"></div>
+        <div class="brand-body">
+          <div class="bn">Balanu</div>
+          <div class="bt">Functional Snack Brand</div>
+          <p>Healthy, delicious and functional snacks for modern lifestyles — scalable production, flexible formulations and export-ready snack solutions.</p>
+        </div>
+      </article>
+      <article class="brand-card reveal" style="--d:.2s">
+        <div class="brand-media"><img src="assets/leila-cookies.jpg" alt="Leila premium almond cookies" loading="lazy"></div>
+        <div class="brand-body">
+          <div class="bn">Leila</div>
+          <div class="bt">Premium Taste</div>
+          <p>Crafted with high-quality ingredients for a rich, authentic taste — almond cookies and premium creams rooted in traditional recipes.</p>
+        </div>
+      </article>
+    </div>
+    <div class="promise-row reveal" style="--d:.28s">
+      <span class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Real brands in market</span>
+      <span class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Quality you can trust</span>
+      <span class="promise"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Growth in the industry</span>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FINALE (coffee) ============ -->
 <section id="contact" class="finale dark">
   <div class="wrap finale-inner">
     <span class="eyebrow reveal" style="justify-content:center">Ready to Launch Your Brand?</span>
-    <h2 class="reveal" style="--d:.08s">Let's build your brand <em>together.</em></h2>
+    <h2 class="reveal" style="--d:.08s">Let's build your next <em>best seller</em> together.</h2>
     <p class="section-sub reveal" style="--d:.16s;margin-inline:auto">Tell us about your product idea — we'll come back to you with formulation options, capacity and timelines.</p>
     <div class="finale-ctas reveal" style="--d:.22s">
-      <a href="mailto:info@balanu.com?subject=Private%20Label%20Inquiry%20—%20Quote%20Request" class="btn btn-gold btn-xl">Get a Quote
+      <a href="mailto:info@balanu.com?subject=Request%20Samples" class="btn btn-gold btn-xl">Request Samples
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="https://wa.me/905322904658" target="_blank" rel="noopener" class="btn btn-ghost btn-xl">
-        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.05 2a9.9 9.9 0 0 0-8.57 14.87L2 22l5.27-1.38A9.9 9.9 0 1 0 12.05 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 6.97 3.87z"/></svg>
-        Chat on WhatsApp
-      </a>
+      <a href="mailto:info@balanu.com?subject=Quote%20Request" class="btn btn-ghost btn-xl">Get a Quote</a>
+      <a href="mailto:info@balanu.com?subject=Book%20a%20Discovery%20Call" class="btn btn-ghost btn-xl">Book a Discovery Call</a>
     </div>
+    <a href="https://wa.me/905322904658" target="_blank" rel="noopener" class="cta-sub reveal" style="--d:.3s;color:var(--gold-soft);margin-top:24px;justify-content:center">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.14-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/><path d="M12.05 2a9.9 9.9 0 0 0-8.57 14.87L2 22l5.27-1.38A9.9 9.9 0 1 0 12.05 2zm0 18.1a8.2 8.2 0 0 1-4.18-1.15l-.3-.18-3.13.82.84-3.05-.2-.31a8.2 8.2 0 1 1 6.97 3.87z"/></svg>
+      Or quick chat on WhatsApp — we're here to help
+    </a>
     <div class="contact-cards">
       <a class="c-card reveal" href="mailto:info@balanu.com?subject=Private%20Label%20Inquiry" style="--d:.1s">
         <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="m4 7 8 6 8-6"/></svg></div>
