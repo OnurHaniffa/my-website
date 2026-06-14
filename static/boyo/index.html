@@ -123,7 +123,7 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
     radial-gradient(1100px 640px at 86% 2%, rgba(227,176,98,.20), transparent 60%);
 }
 .hero-content{position:relative;z-index:2;max-width:760px}
-.hero h1{font-size:clamp(2rem,4.2vw,3.5rem);margin:.34em 0 .3em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em;color:#FFF7E8}
+.hero h1{font-size:clamp(2rem,4vw,3.3rem);margin:.34em 0 .3em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em;color:#FFF7E8}
 .hero p.lede{max-width:47ch;font-size:clamp(1rem,1.4vw,1.15rem);color:#E8DAC0}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 .hero-foot{
@@ -380,7 +380,7 @@ section{padding:104px 0}
 .c-card .ico svg{width:23px;height:23px;color:var(--gold-soft)}
 .c-card h3{font-size:1.15rem}
 .c-card p{font-size:.88rem;color:var(--cream-mut)}
-.c-card .val{font-weight:600;font-size:1.02rem;color:var(--gold-soft);margin-top:8px;word-break:break-all}
+.c-card .val{font-weight:600;font-size:1.02rem;color:var(--gold-soft);margin-top:8px;overflow-wrap:anywhere}
 
 /* ============ FOOTER ============ */
 footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;border-top:1px solid var(--line-l)}
@@ -725,7 +725,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
       <div class="num reveal" data-i18n="filling_num">03 — FILLING SOLUTIONS</div>
       <h2 class="reveal" style="--d:.08s" data-i18n="filling_title">Nut butters &amp; spreads, jar-ready.</h2>
       <p class="desc reveal" style="--d:.16s" data-i18n="filling_desc">Delicious fillings and spreads that elevate any treat — tahini, hazelnut and almond creams filled into glass jars from 190g to 1000g, up to 600K jars per month.</p>
-      <div class="chips reveal" style="--d:.24s" data-i18n="filling_chips"><span>Tahini</span><span>Tahini Hazelnut Cream</span><span>Hazelnut Cocoa Cream</span><span>White Chocolate Pistachio</span><span>Almond Cream</span><span>Protein Spreads</span><span>Collagen Spreads</span></div>
+      <div class="chips reveal" style="--d:.24s" data-i18n="filling_chips"><span>Tahini</span><span>Tahini Hazelnut Cream</span><span>Tahini Hazelnut Cocoa Cream</span><span>White Chocolate Pistachio</span><span>Natural Hazelnut Cream</span><span>Natural Almond Cream</span><span>Protein Hazelnut Cream</span><span>Protein Cocoa Hazelnut Cream</span><span>Collagen Almond Cream</span></div>
       <div class="pline-ctas reveal" style="--d:.3s">
         <a href="#contact" class="link-arrow"><span data-i18n="filling_cta">Build your spread brand</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -744,10 +744,10 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
         <span class="eyebrow reveal" data-i18n="pack_eyebrow">Packaging</span>
         <h2 class="section-title reveal" style="--d:.08s" data-i18n="pack_title">Your brand, retail-ready.</h2>
       </div>
-      <p class="section-sub reveal" style="--d:.16s" data-i18n="pack_sub">Flexible formats for retail and distribution — single packs, multipacks (3×40g, 6×30g), bulk packaging and granule filling systems, fully customized to your brand identity.</p>
+      <p class="section-sub reveal" style="--d:.16s" data-i18n="pack_sub">Flexible formats for retail and distribution — single packs, multipacks, bulk packaging and granule filling systems, fully customized to your brand identity.</p>
     </div>
     <div class="pack-grid">
-      <div class="pack-card reveal"><img src="assets/pack-flowpack.png" alt="Flowpack single-serve pack" loading="lazy"><h3 data-i18n="pack1_t">Flowpack</h3><p data-i18n="pack1_p">Single-serve snack packs, 15g–110g</p></div>
+      <div class="pack-card reveal"><img src="assets/pack-flowpack.png" alt="Flowpack single-serve pack" loading="lazy"><h3 data-i18n="pack1_t">Flowpack</h3><p data-i18n="pack1_p">Single-serve flowpacks for bars &amp; cookies</p></div>
       <div class="pack-card reveal" style="--d:.1s"><img src="assets/pack-doypack.png" alt="Doypack stand-up pouch" loading="lazy"><h3 data-i18n="pack2_t">Doypack</h3><p data-i18n="pack2_p">Stand-up pouches with zip closure</p></div>
       <div class="pack-card reveal" style="--d:.2s"><img src="assets/pack-jars.png" alt="Glass jars" loading="lazy"><h3 data-i18n="pack3_t">Glass Jars</h3><p data-i18n="pack3_p">Filling from 190g to 1000g</p></div>
       <div class="pack-card reveal" style="--d:.3s"><img src="assets/pack-bar.png" alt="Bar wrapper" loading="lazy"><h3 data-i18n="pack4_t">Bar Wraps</h3><p data-i18n="pack4_p">Single bars &amp; multipack formats</p></div>
@@ -1006,9 +1006,15 @@ function openVideo(){
     lbInner.innerHTML = '<img src="'+HERO_POSTER+'" alt="BOYO production line">';
   }
   lb.classList.add('open'); document.body.style.overflow = 'hidden';
+  document.getElementById('lb-close').focus();
 }
-function closeVideo(){ lb.classList.remove('open'); lbInner.innerHTML = ''; document.body.style.overflow = ''; }
-document.querySelectorAll('[data-video]').forEach(b => b.addEventListener('click', openVideo));
+let lastFocus = null;
+function closeVideo(){
+  if (!lb.classList.contains('open')) return;
+  lb.classList.remove('open'); lbInner.innerHTML = ''; document.body.style.overflow = '';
+  if (lastFocus) { lastFocus.focus(); lastFocus = null; }
+}
+document.querySelectorAll('[data-video]').forEach(b => b.addEventListener('click', () => { lastFocus = b; openVideo(); }));
 document.getElementById('lb-close').addEventListener('click', closeVideo);
 lb.addEventListener('click', e => { if (e.target === lb) closeVideo(); });
 addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
@@ -1038,7 +1044,7 @@ const I18N = {
     snack_cta:"Create your bar brand",
     filling_num:"03 — FILLING SOLUTIONS", filling_title:"Nut butters &amp; spreads, jar-ready.",
     filling_desc:"Delicious fillings and spreads that elevate any treat — tahini, hazelnut and almond creams filled into glass jars from 190g to 1000g, up to 600K jars per month.",
-    filling_chips:"<span>Tahini</span><span>Tahini Hazelnut Cream</span><span>Tahini Hazelnut Cocoa Cream</span><span>White Chocolate Pistachio</span><span>Natural Hazelnut Cream</span><span>Protein Hazelnut Cream</span><span>Almond Cream</span><span>Collagen Almond Cream</span>",
+    filling_chips:"<span>Tahini</span><span>Tahini Hazelnut Cream</span><span>Tahini Hazelnut Cocoa Cream</span><span>White Chocolate Pistachio</span><span>Natural Hazelnut Cream</span><span>Natural Almond Cream</span><span>Protein Hazelnut Cream</span><span>Protein Cocoa Hazelnut Cream</span><span>Collagen Almond Cream</span>",
     filling_cta:"Build your spread brand",
     pack_eyebrow:"Packaging", pack_title:"Your brand, retail-ready.",
     pack_sub:"Flexible formats for retail and distribution — single packs, multipacks, bulk packaging and granule filling systems, fully customized to your brand identity.",
@@ -1089,7 +1095,7 @@ const I18N = {
     snack_cta:"Kreieren Sie Ihre Riegelmarke",
     filling_num:"03 — FÜLLUNGEN", filling_title:"Nussmuse &amp; Aufstriche, glasfertig.",
     filling_desc:"Köstliche Füllungen und Aufstriche, die jeden Genuss veredeln — Tahini, Haselnuss- und Mandelcremes, abgefüllt in Gläser von 190 bis 1000 g, bis zu 600.000 Gläser pro Monat.",
-    filling_chips:"<span>Tahini</span><span>Tahini-Haselnusscreme</span><span>Tahini-Haselnuss-Kakao-Creme</span><span>Weiße Schoko-Pistazie</span><span>Natürliche Haselnusscreme</span><span>Protein-Haselnusscreme</span><span>Mandelcreme</span><span>Kollagen-Mandelcreme</span>",
+    filling_chips:"<span>Tahini</span><span>Tahini-Haselnusscreme</span><span>Tahini-Haselnuss-Kakao-Creme</span><span>Weiße Schoko-Pistazie</span><span>Natürliche Haselnusscreme</span><span>Natürliche Mandelcreme</span><span>Protein-Haselnusscreme</span><span>Protein-Kakao-Haselnusscreme</span><span>Kollagen-Mandelcreme</span>",
     filling_cta:"Bauen Sie Ihre Aufstrich-Marke auf",
     pack_eyebrow:"Verpackung", pack_title:"Ihre Marke, verkaufsfertig.",
     pack_sub:"Flexible Formate für Handel und Vertrieb — Einzelpackungen, Multipacks, Großgebinde und Granulat-Abfüllsysteme, vollständig auf Ihre Markenidentität zugeschnitten.",
@@ -1101,7 +1107,7 @@ const I18N = {
     mk_eyebrow:"Im Markt bewährt", mk_title:"Bereits im Verkauf in den USA &amp; Europa.",
     mk_sub:"Wir machen Export einfach. Mit etablierter Lieferkette und Exporterfahrung unterstützen wir Marken beim Eintritt in wettbewerbsintensive internationale Märkte und Spezialitätenmärkte — bereits in den USA im Regal und mit wachsender Präsenz in Europa.",
     map_usa:"USA · New Jersey", map_de:"Deutschland · München", map_tr:"Türkei · Fabrik",
-    mp1:"Aktiver Vertrieb im US-Markt", mp2:"Erfahrung mit großen Einzel- &amp; Großhandelsnetzwerken", mp3:"Exportfertige Produktionsstandards", mp4:"Starke Positionierung für internationale Spezialitäten- und Gesundheitsmärkte",
+    mp1:"Aktiver Vertrieb im US-Markt", mp2:"Erfahrung mit großen Einzelhandels- &amp; Großhandelsnetzwerken", mp3:"Exportfertige Produktionsstandards", mp4:"Starke Positionierung für internationale Spezialitäten- und Gesundheitsmärkte",
     unfi:"Unsere Marken sind über die <strong>&nbsp;UNFI&nbsp;</strong>-Distribution in den gesamten USA erhältlich", mk_cta:"Sprechen wir über Ihren Markteintritt",
     why_eyebrow:"Warum BOYO?", why_title:"Ihr kompletter Eigenmarken-Partner.", why_cta:"Angebot anfordern",
     why1_t:"Komplettlösung", why1_p:"Ein Partner von der Idee bis ins Regal — Entwicklung, Produktion, Verpackung und Logistik.", why2_t:"Produktentwicklung", why2_p:"Rezepturen, von Grund auf für Ihre Positionierung und Ihren Markt entwickelt.", why3_t:"Hochkapazitäts-Fertigung", why3_p:"Skalierbare, zuverlässige Versorgung mit strengen Qualitätskontrollsystemen.", why4_t:"Verpackungslösungen", why4_p:"Flexible verkaufsfertige Formate, vollständig auf Ihre Marke zugeschnitten.", why5_t:"Export &amp; Logistik", why5_p:"Exportfertige Standards und Lieferprozesse für die USA &amp; Europa.", why6_t:"Schnelle Markteinführung", why6_p:"Geringe Mindestmengen und schnelle Produktion — starten Sie ohne eigene Fabrik.",
