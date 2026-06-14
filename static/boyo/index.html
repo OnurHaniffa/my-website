@@ -8,7 +8,7 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%234A3622'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Arial,sans-serif' font-weight='900' text-anchor='middle' fill='%23F6EEDF'%3EB%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#F6EEDF;        /* page canvas */
@@ -28,6 +28,7 @@
   --line-l:rgba(240,228,203,.16);
   --radius:18px;
   --font:"Outfit",sans-serif;
+  --font-display:"Archivo Black","Outfit",sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:clip}
@@ -44,13 +45,14 @@ img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1180px,92vw);margin-inline:auto}
 
-h1,h2,h3{font-weight:700;line-height:1.12;letter-spacing:-.015em}
+h1,h2{font-family:var(--font-display);font-weight:400;line-height:1.04;letter-spacing:-.005em}
+h3{font-weight:700;line-height:1.18;letter-spacing:-.01em}
 .eyebrow{
   display:inline-flex;align-items:center;gap:.6em;
   font-size:.76rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-deep);
 }
 .eyebrow::before{content:"";width:34px;height:2px;background:var(--gold);border-radius:2px}
-.section-title{font-size:clamp(1.9rem,3.8vw,2.9rem);margin:.4em 0 .4em}
+.section-title{font-size:clamp(1.8rem,3.6vw,2.7rem);margin:.4em 0 .4em}
 .section-sub{font-size:clamp(.98rem,1.3vw,1.1rem);color:var(--mut);max-width:58ch}
 
 /* dark sections inherit light text */
@@ -96,8 +98,8 @@ nav.scrolled{
   padding:12px 0;
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{font-weight:800;font-size:1.55rem;letter-spacing:.06em;color:var(--ink)}
-.logo small{display:block;font-weight:600;font-size:.55rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:-2px}
+.logo{font-family:var(--font-display);font-weight:400;font-size:1.5rem;letter-spacing:.04em;color:var(--ink)}
+.logo small{display:block;font-family:var(--font);font-weight:600;font-size:.55rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:0}
 .nav-links{display:flex;gap:28px;font-weight:500;font-size:.94rem}
 .nav-links a{position:relative;padding:4px 0;color:#54402a}
 .nav-links a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);border-radius:2px;transition:width .3s}
@@ -115,7 +117,7 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
   overflow:hidden;
 }
 .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:64px;align-items:center}
-.hero h1{font-size:clamp(2.4rem,4.6vw,3.9rem);margin:.4em 0 .3em;font-weight:800}
+.hero h1{font-size:clamp(2.2rem,4.7vw,3.9rem);margin:.4em 0 .32em;text-transform:uppercase;line-height:1.02;letter-spacing:.005em}
 .hero h1 em{font-style:normal;color:var(--gold-deep)}
 .hero p.lede{max-width:50ch;font-size:clamp(1rem,1.4vw,1.15rem);color:var(--mut)}
 .hero-ctas{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
@@ -159,7 +161,7 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:52px;position:relative}
 .stat{text-align:center;padding:0 10px}
 .stat + .stat{border-left:1px solid var(--line-l)}
-.stat .num{font-weight:800;font-size:clamp(2.8rem,6vw,4.6rem);line-height:1;color:#FFF6E4;letter-spacing:-.02em}
+.stat .num{font-family:var(--font-display);font-weight:400;font-size:clamp(2.8rem,6vw,4.6rem);line-height:1;color:#FFF6E4;letter-spacing:-.01em}
 .stat .num i{font-style:normal;color:var(--gold-soft)}
 .stat .lbl{margin-top:14px;font-size:.82rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-mut)}
 .stats-note{text-align:center;margin-top:56px;color:var(--cream-mut);font-size:.94rem;position:relative}
@@ -434,7 +436,7 @@ footer{background:var(--coffee-2);color:var(--cream-mut);padding:80px 0 40px;bor
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow reveal">Private Label Manufacturing · USA &amp; Europe</span>
-      <h1 class="reveal" style="--d:.08s">Launch your food brand <em>without building a factory.</em></h1>
+      <h1 class="reveal" style="--d:.08s">Launch your <em>food brand</em> without building a factory.</h1>
       <p class="lede reveal" style="--d:.16s">From formulation to packaging, BOYO develops and manufactures healthy snack products for brands across the USA and Europe — cookies, bars, energy balls and spreads, all under one roof.</p>
       <div class="hero-ctas reveal" style="--d:.24s">
         <a href="#contact" class="btn btn-gold">Start Your Brand
