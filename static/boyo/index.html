@@ -111,7 +111,7 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 .hero{
   position:relative;min-height:94svh;
   display:flex;align-items:center;
-  padding:150px 0 64px;
+  padding:150px 0 150px;
   overflow:hidden;
 }
 .hero-bg{position:absolute;inset:0;z-index:0}
@@ -128,13 +128,17 @@ nav .btn{padding:.65em 1.35em;font-size:.9rem}
 .hero p.lede{max-width:47ch;font-size:clamp(1rem,1.4vw,1.15rem);color:#E8DAC0}
 .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
 .hero-foot{
-  margin-top:54px;width:100%;display:flex;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;
+  position:absolute;left:50%;transform:translateX(-50%);bottom:26px;z-index:2;
+  width:min(1180px,92vw);
+  display:flex;justify-content:space-between;gap:14px 24px;flex-wrap:wrap;
   font-size:.82rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#CDBD9C;
-  border-top:1px solid rgba(242,231,207,.14);padding-top:24px;
+  border-top:1px solid rgba(242,231,207,.16);padding-top:22px;
 }
 .hero-foot > span{display:flex;align-items:center;gap:.55em}
 .hero-foot svg{width:15px;height:15px;color:var(--gold-soft)}
-@media (max-width:760px){ .hero-foot{justify-content:flex-start;gap:10px 22px;margin-top:38px} }
+@media (max-width:760px){
+  .hero-foot{position:static;transform:none;width:100%;margin-top:36px;justify-content:flex-start;gap:10px 22px}
+}
 
 /* big circular play button (wide-screen video cue, centred over the footage) */
 .hero-play{
@@ -622,7 +626,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
         </button>
       </div>
     </div>
-    <div class="hero-foot reveal" style="--d:.66s">
+    <div class="hero-foot">
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot1">Low MOQ</span></span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot2">Fast Production</span></span>
       <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span data-i18n="hero_foot3">EU &amp; US Standards</span></span>
