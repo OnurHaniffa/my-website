@@ -3,9 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BOYO — Private Label Snack Manufacturing | Launch Your Food Brand</title>
-<meta name="description" content="BOYO develops and manufactures private label cookies, snack bars, energy balls and nut butters for brands across the USA & Europe. Formulation, production, packaging and logistics under one roof.">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#2C1F12">
+<title>Private Label Snack Manufacturing — Cookies, Bars & Spreads | BOYO</title>
+<meta name="description" content="BOYO is a private label snack manufacturer for the USA & Europe. We develop and produce cookies, protein & snack bars, energy balls and nut-butter spreads — formulation, manufacturing, packaging and logistics under one roof. Low MOQ, fast production.">
+<meta name="keywords" content="private label snack manufacturer, contract manufacturing, private label cookies, protein bars, energy balls, nut butter, food co-packer, USA, Europe">
 <link rel="canonical" href="https://onurhaniffa.com/boyo/">
+<link rel="preload" as="image" href="assets/hero-products.jpg" fetchpriority="high">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://onurhaniffa.com/boyo/">
 <meta property="og:site_name" content="BOYO Private Label">
@@ -20,9 +24,10 @@
 <meta name="twitter:description" content="Private label snack manufacturing for the USA & Europe.">
 <meta name="twitter:image" content="https://onurhaniffa.com/boyo/assets/og.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%234A3622'/%3E%3Ctext x='50' y='66' font-size='52' font-family='Arial,sans-serif' font-weight='900' text-anchor='middle' fill='%23F6EEDF'%3EB%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --cream:#F6EEDF;        /* page canvas */
@@ -592,6 +597,27 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   .map-marker .tag{display:none}
 }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BOYO",
+  "alternateName": "Boyo Organik Gıda",
+  "url": "https://onurhaniffa.com/boyo/",
+  "logo": "https://onurhaniffa.com/boyo/assets/logo-boyo.png",
+  "image": "https://onurhaniffa.com/boyo/assets/og.jpg",
+  "description": "Private label snack manufacturer for the USA and Europe — cookies, protein and snack bars, energy balls and nut-butter spreads, from formulation to packaging.",
+  "email": "pl@balanu.com",
+  "telephone": "+1-888-602-7730",
+  "address": [
+    {"@type": "PostalAddress", "streetAddress": "Eğmir Mah. 10014 Sok. No:9, Havran", "addressLocality": "Balıkesir", "postalCode": "10562", "addressCountry": "TR"},
+    {"@type": "PostalAddress", "streetAddress": "Ruhe am Bach 11", "addressLocality": "Penzberg, München", "postalCode": "82377", "addressCountry": "DE"},
+    {"@type": "PostalAddress", "streetAddress": "525 Washington Blvd, 3rd Floor", "addressLocality": "Jersey City", "addressRegion": "NJ", "postalCode": "07310", "addressCountry": "US"}
+  ],
+  "areaServed": ["United States", "Europe"],
+  "knowsAbout": ["Private label food manufacturing", "Contract manufacturing", "Functional snacks", "Protein bars", "Nut butters"]
+}
+</script>
 </head>
 <body>
 
@@ -617,6 +643,7 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
 </nav>
 <div class="progress" id="progress"></div>
 
+<main>
 <!-- ============ HERO (full-bleed, video-ready) ============ -->
 <header class="hero">
   <div class="hero-bg">
@@ -943,6 +970,8 @@ nav.scrolled{background:rgba(28,19,11,.9);box-shadow:0 1px 0 var(--line-d)}
   </div>
 </section>
 
+</main>
+
 <!-- ============ FOOTER ============ -->
 <footer>
   <div class="wrap">
@@ -1047,7 +1076,16 @@ function closeVideo(){
 document.querySelectorAll('[data-video]').forEach(b => b.addEventListener('click', () => { lastFocus = b; openVideo(); }));
 document.getElementById('lb-close').addEventListener('click', closeVideo);
 lb.addEventListener('click', e => { if (e.target === lb) closeVideo(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeVideo(); return; }
+  if (e.key === 'Tab' && lb.classList.contains('open')) {
+    const f = [...lb.querySelectorAll('button, video, a[href]')].filter(el => el.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
 
 // ===== i18n (EN / DE) =====
 const I18N = {
