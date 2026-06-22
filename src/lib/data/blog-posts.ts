@@ -599,6 +599,16 @@ I offer a **free 30-minute consultation** where we discuss your project goals, I
 
 Bu rehberde, İstanbul'da web sitesi maliyetlerini tam olarak neyin belirlediğini açıklayacağım, Türk Lirası cinsinden gerçekçi [web sitesi fiyat kademeleri](/web-sitesi-fiyatlari/) vereceğim, her seviyede ne beklemeniz gerektiğini anlatacağım ve çoğu işletme sahibini hazırlıksız yakalayan gizli maliyetlerden kaçınmanıza yardımcı olacağım. Yıllardır [İstanbul'daki işletmeler için web siteleri](/web-tasarim-istanbul/) geliştiren biri olarak, kendi müşterilerime ilk görüşmelerde verdiğim bilgilerin aynısını sizinle paylaşıyorum.
 
+**2026'da web sitesi maliyeti — hızlı özet:**
+
+- **Tek sayfa / landing page:** 15.000–30.000 TL (1-2 hafta)
+- **İşletme sitesi (5-10 sayfa):** 30.000–60.000 TL (3-5 hafta)
+- **CMS'li gelişmiş site (blog, çok dilli):** 50.000–100.000 TL (5-8 hafta)
+- **E-ticaret sitesi:** 75.000–180.000 TL+ (8-14 hafta)
+- **Özel web uygulaması:** 120.000 TL+
+
+Aşağıda her kademeye tam olarak neyin dahil olduğunu ve çoğu işletmenin gözden kaçırdığı gizli maliyetleri tek tek açıklıyorum.
+
 **Hemen net fiyat mı istiyorsunuz?** Aşağıdaki rehberi okuyabilir ya da projenize özel sabit teklifi doğrudan [web sitesi fiyatları sayfamdan](/web-sitesi-fiyatlari/) görüp WhatsApp'tan 24 saat içinde alabilirsiniz.
 
 ### 2026'da İstanbul Web Tasarım Piyasası
@@ -6160,9 +6170,9 @@ Mevcut web sitenizin dönüşüm potansiyelini analiz ettiğim ve tam olarak ner
 	{
 		slug: 'istanbul-kucuk-isletme-web-sitesi-rehberi',
 		title: 'Small Business Website Guide for Istanbul (2026)',
-		titleTr: 'İstanbul\'da Küçük İşletmeler İçin Web Sitesi Rehberi (2026)',
+		titleTr: 'Küçük İşletme Web Sitesi 2026: İstanbul Rehberi',
 		description: 'A comprehensive guide for small businesses in Istanbul on building an effective website. Covers must-have features, costs, common mistakes, DIY vs professional options, and a pre-launch checklist.',
-		descriptionTr: 'İstanbul\'daki küçük işletmeler için etkili bir web sitesi oluşturma rehberi. Olmazsa olmaz özellikler, maliyetler, sık yapılan hatalar, kendin yap ile profesyonel karşılaştırması ve yayın öncesi kontrol listesi.',
+		descriptionTr: '2026\'da küçük işletmeniz için web sitesi: olmazsa olmaz özellikler, gerçek maliyetler, en sık yapılan hatalar ve yayın öncesi kontrol listesi.',
 		date: '2026-03-23',
 		readTime: '12 min read',
 		readTimeTr: '12 dk okuma',
@@ -6665,9 +6675,9 @@ Web siteniz yayına girmeden önce bu listedeki her maddenin tamamlandığından
 	{
 		slug: 'avukat-hukuk-burosu-web-sitesi-tasarimi',
 		title: 'Law Firm Website Design: The Complete Guide for Istanbul Lawyers (2026)',
-		titleTr: 'Avukat ve Hukuk Bürosu Web Sitesi Tasarımı: İstanbul İçin Kapsamlı Rehber (2026)',
+		titleTr: 'Avukat Web Sitesi Tasarımı 2026: İstanbul Rehberi',
 		description: 'Everything Istanbul lawyers need to know about law firm website design in 2026. From must-have pages to compliance, SEO, and cost expectations.',
-		descriptionTr: 'İstanbul avukatlarının hukuk bürosu web sitesi tasarımı hakkında bilmesi gereken her şey. Olması gereken sayfalardan uyum kurallarına, SEO ve maliyet beklentilerine kadar.',
+		descriptionTr: 'İstanbul\'da avukat ve hukuk bürosu web sitesi: olması gereken sayfalar, Baro reklam yasağına uyum, SEO ve gerçek maliyet beklentileri.',
 		date: '2026-03-24',
 		readTime: '13 min read',
 		readTimeTr: '13 dk okuma',
@@ -6976,9 +6986,9 @@ Istanbul'da cevrimici varliginizi kurmak veya yukseltmek isteyen bir avukat veya
 	{
 		slug: 'google-ads-mi-seo-mu-isletmeler-icin-karsilastirma',
 		title: 'Google Ads vs SEO: Which Should Istanbul Businesses Choose? (2026 Guide)',
-		titleTr: 'Google Ads m\u0131 SEO mu? \u0130stanbul \u0130\u015fletmeleri \u0130\u00e7in Kar\u015f\u0131la\u015ft\u0131rma Rehberi (2026)',
+		titleTr: 'Google Ads m\u0131 SEO mu? 2026: Hangisi Kazand\u0131r\u0131r?',
 		description: 'A practical comparison of Google Ads and SEO for Istanbul businesses in 2026. Learn costs in TL, ROI timelines, when to use each strategy, and how to combine them for maximum results.',
-		descriptionTr: '\u0130stanbul i\u015fletmeleri i\u00e7in Google Ads ve SEO kar\u015f\u0131la\u015ft\u0131rmas\u0131. TL bazl\u0131 maliyetler, yat\u0131r\u0131m getirisi s\u00fcreleri, hangi stratejiyi ne zaman kullanaca\u011f\u0131n\u0131z ve her ikisini birle\u015ftirerek maksimum sonu\u00e7 nas\u0131l al\u0131rs\u0131n\u0131z \u00f6\u011frenin.',
+		descriptionTr: '\u0130stanbul i\u015fletmeleri i\u00e7in Google Ads ve SEO kar\u015f\u0131la\u015ft\u0131rmas\u0131: TL bazl\u0131 maliyetler, yat\u0131r\u0131m getirisi s\u00fcreleri ve hangisinin ne zaman daha \u00e7ok kazand\u0131rd\u0131\u011f\u0131.',
 		date: '2026-03-24',
 		readTime: '15 min read',
 		readTimeTr: '15 dk okuma',
@@ -7591,9 +7601,9 @@ Istanbul'daki isletmeler icin hem ucretli hem de organik trafik icin tasarlanmis
 	{
 		slug: 'istanbul-dijital-pazarlama-rehberi-2026',
 		title: 'The Complete Digital Marketing Guide for Istanbul Businesses (2026)',
-		titleTr: 'İstanbul İşletmeleri İçin Dijital Pazarlama Rehberi (2026)',
+		titleTr: 'Dijital Pazarlama 2026: Hangi Kanal Kazandırıyor?',
 		description: 'A comprehensive digital marketing guide for Istanbul businesses. Learn which channels deliver the best ROI, how to allocate your budget, and follow a 90-day plan to build your online presence from scratch.',
-		descriptionTr: 'İstanbul işletmeleri için kapsamlı dijital pazarlama rehberi. Hangi kanalların en iyi yatırım getirisini sağladığını, bütçenizi nasıl dağıtacağınızı ve sıfırdan çevrimiçi varlığınızı oluşturmak için 90 günlük planı öğrenin.',
+		descriptionTr: 'İstanbul işletmeleri için dijital pazarlama: hangi kanallar gerçekten yatırım getiriyor, bütçeyi nasıl dağıtmalı ve sıfırdan 90 günlük uygulanabilir plan.',
 		date: '2026-03-24',
 		readTime: '15 min read',
 		readTimeTr: '15 dk okuma',
