@@ -41,6 +41,9 @@ const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	'/kafe-web-sitesi',
 	'/butik-otel-web-sitesi',
 
+	// Interactive tools
+	'/web-sitesi-maliyet-hesaplama',
+
 	// Comparison pages — shipped 2026-05-07
 	'/wix-vs-ozel-web-sitesi',
 	'/web-ajansi-vs-freelance',

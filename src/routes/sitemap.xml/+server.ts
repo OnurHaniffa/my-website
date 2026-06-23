@@ -23,6 +23,7 @@ const trOnlyPages = [
 	{ path: '/web-tasarim-istanbul/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	{ path: '/e-ticaret-sitesi-yaptirma/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
 	{ path: '/web-sitesi-yenileme/', priority: '0.9', changefreq: 'weekly', lastmod: '2026-05-07' },
+	{ path: '/web-sitesi-maliyet-hesaplama/', priority: '0.8', changefreq: 'monthly', lastmod: '2026-06-23' },
 	// District landing pages — programmatic, all share the same template + lastmod
 	...districts.map((d) => ({
 		path: `/${d.slug}-web-tasarim/`,
