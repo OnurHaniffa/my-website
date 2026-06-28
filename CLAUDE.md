@@ -70,6 +70,39 @@ import { ProcessChainRings } from '$lib/components/sections';
 
 **Color System**: Uses OKLCH colors defined as CSS custom properties. Primary is blue, accent is red. Both light and dark modes defined in `app.css`.
 
+## Turkish SEO Landing Pages & Locale System
+
+The site is bilingual (EN default, TR) **and** hosts 30+ **TR-only** programmatic SEO landing pages that target Turkish keywords and have no English equivalent. This is the most architecturally non-obvious part of the codebase — touch it carefully.
+
+**Locale forcing (server-side):**
+- `src/lib/i18n/tr-only-routes.ts` is an EXPLICIT allowlist (`Set`) of every TR-only path — the single source of truth. It's an allowlist on purpose (a regex like `*-web-tasarim` would silently force-Turk future routes).
+- `src/hooks.server.ts` reads it via `isTrOnlyRoute()` and forces `locale='tr'` server-side for those routes.
+- `+layout.server.ts` exposes `isTrOnlyRoute` to the client; `ui/language-switcher` hides the toggle on TR-only routes (no EN to switch to).
+- TR-only pages live at the **root** path (e.g. `/kadikoy-web-tasarim/`), NOT under `/tr/`. Bilingual pages use `/` (EN) and `/tr/` (TR).
+- `src/lib/i18n/index.svelte.ts` `initLocale` must NOT clobber the server-set locale (past bug). Footer prefers i18n translations over CMS strings on the TR locale.
+
+**Adding a new TR-only landing page — REQUIRED steps (easy to miss any one):**
+1. Create the route `src/routes/<slug>/+page.svelte`.
+2. Add `'/<slug>'` to the allowlist in `tr-only-routes.ts` — else it won't force TR and the switcher won't hide.
+3. Add it to `trOnlyPages` in `src/routes/sitemap.xml/+server.ts` — else it's missing from the sitemap.
+
+**Data-driven page pattern:** Most landing pages are generated from a data file + one shared component, not hand-written per page. Each route file is an ~8-line wrapper that looks up its data entry and renders the component:
+- `data/districts.ts` → `sections/DistrictPage.svelte` (10 Istanbul district pages)
+- `data/industries.ts` → `sections/IndustryPage.svelte` (8 vertical pages)
+- `data/comparisons.ts` → `sections/ComparisonPage.svelte` (6 "X vs Y" pages)
+- `data/cornerstone-clusters.ts` → `sections/CornerstoneCluster.svelte` (related-blog cluster shown on cornerstone pages)
+
+**Blog:** `data/blog-posts.ts` holds bilingual posts (`content`/`contentTr`, `titleTr`/`descriptionTr`, optional `relatedCornerstones`). The body is Markdown rendered by a **custom line-parser** in `routes/blog/[slug]/+page.svelte` — it supports headings, lists, inline links, bold, code; it does **not** support tables (use lists). The SERP `<title>` appends `| Onur Haniffa Blog`, so keep `titleTr` short or it truncates.
+
+**Structured data (JSON-LD):** The root `+layout.svelte` emits the site-wide `@graph` (LocalBusiness/ProfessionalService + WebSite + per-page BreadcrumbList) **and the dynamic canonical for every page**. Individual landing/blog pages add their own `FAQPage` / `Service` / `Article` blocks. GOTCHA: do **not** add a self-serving `aggregateRating` to the business schema — Google disallows a business rating itself and it triggers "Review snippet" errors in Search Console; real stars come from the Google Business Profile.
+
+## Content & Verification Rules
+
+- **No fabricated stats** in landing/marketing copy — don't invent percentages ("%65 of customers…"), load times, or counts. Hedge ("çoğu", "büyük kısmı") or omit. Prices must match the site's real tiers (15K–70K+ TL).
+- **Never crop project images** — always `w-full h-auto`; never `object-cover` or fixed aspect ratios on portfolio/project images.
+- **Verify before commit** — render-verify changed pages with Playwright (see `scripts/verify-*.mjs`, e.g. `scripts/verify-full-seo-suite.mjs`) and run `npm run check`. Never ship unverified.
+- SEO is monitored outside the repo via `~/mcp-google-ads/gsc_scoreboard.py` (weekly Search Console snapshot of clicks/impressions/positions).
+
 ## Skill Usage Policy
 
 **MANDATORY: Always invoke the relevant skills before starting any task.** Even if it uses extra context, producing proper, well-thought-out code is the priority. Specific rules:
