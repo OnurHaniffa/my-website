@@ -44,6 +44,9 @@ const TR_ONLY_PATHS: ReadonlySet<string> = new Set([
 	// Interactive tools
 	'/web-sitesi-maliyet-hesaplama',
 
+	// Legal / utility (TR)
+	'/kvkk-aydinlatma',
+
 	// Comparison pages — shipped 2026-05-07
 	'/wix-vs-ozel-web-sitesi',
 	'/web-ajansi-vs-freelance',
