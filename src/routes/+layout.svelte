@@ -91,12 +91,6 @@
 					dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
 					opens: '09:00',
 					closes: '18:00'
-				},
-				aggregateRating: {
-					'@type': 'AggregateRating',
-					ratingValue: '5',
-					reviewCount: '2',
-					bestRating: '5'
 				}
 			},
 			{
