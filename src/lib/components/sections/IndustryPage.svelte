@@ -78,7 +78,6 @@
 		name="description"
 		content={`${industry.name} web sitesi yaptırma — ${industry.priceContext} Şeffaf fiyat, KVKK uyumlu, mobil-öncelikli. WhatsApp'tan ücretsiz teklif alın.`}
 	/>
-	<link rel="canonical" href={`https://onurhaniffa.com/${industry.slug}-web-sitesi/`} />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

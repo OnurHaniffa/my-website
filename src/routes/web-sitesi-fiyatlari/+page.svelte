@@ -189,7 +189,7 @@
 </script>
 
 <svelte:head>
-	<title>Web Sitesi Fiyatları 2026 | İstanbul'da Web Sitesi Yaptırma — 15.000 TL'den</title>
+	<title>Web Sitesi Fiyatları 2026 — İstanbul (15.000 TL'den) | Onur Haniffa</title>
 	<meta
 		name="description"
 		content="Web sitesi fiyatları ne kadar? Kurumsal site 15.000 TL'den, e-ticaret 50.000 TL'den. Şeffaf, sabit fiyat. 2-6 haftada teslim. WhatsApp'tan ücretsiz teklif alın."
@@ -199,7 +199,6 @@
 		property="og:description"
 		content="İstanbul'da web sitesi yaptırma fiyatları. Şeffaf, sabit fiyat. Gizli ücret yok. WhatsApp'tan teklif alın."
 	/>
-	<link rel="canonical" href="https://onurhaniffa.com/web-sitesi-fiyatlari/" />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

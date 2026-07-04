@@ -208,7 +208,6 @@
 		name="description"
 		content="E-ticaret sitesi yaptırma fiyatları — Başlangıç 50.000 TL'den, Profesyonel 80.000 TL'den, Enterprise 150.000 TL'den. Iyzico/PayTR ödeme, MNG/Yurtiçi/Aras kargo, KVKK uyumlu. Şeffaf fiyat. WhatsApp'tan ücretsiz teklif."
 	/>
-	<link rel="canonical" href="https://onurhaniffa.com/e-ticaret-sitesi-yaptirma/" />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

@@ -34,6 +34,10 @@
 	const canonicalUrl = $derived(`${siteUrl}${currentPath}`);
 	const enUrl = $derived(`${siteUrl}${cleanPath}`);
 	const trUrl = $derived(`${siteUrl}/tr${cleanPath === '/' ? '/' : cleanPath}`);
+	// TR-only landing pages have NO English equivalent and no /tr/ variant, so they
+	// must emit NO hreflang alternates (a bogus hreflang="en" pointing at Turkish
+	// content is an error). Only bilingual pages get alternates.
+	const isTrOnly = $derived(data.isTrOnlyRoute ?? false);
 
 	// JSON-LD structured data for organization/local business
 	const jsonLd = $derived(JSON.stringify({
@@ -150,10 +154,12 @@
 	<!-- Canonical URL -->
 	<link rel="canonical" href={canonicalUrl} />
 
-	<!-- hreflang alternate links for multilingual SEO -->
-	<link rel="alternate" hreflang="en" href={enUrl} />
-	<link rel="alternate" hreflang="tr" href={trUrl} />
-	<link rel="alternate" hreflang="x-default" href={enUrl} />
+	<!-- hreflang alternate links for multilingual SEO (bilingual pages ONLY) -->
+	{#if !isTrOnly}
+		<link rel="alternate" hreflang="en" href={enUrl} />
+		<link rel="alternate" hreflang="tr" href={trUrl} />
+		<link rel="alternate" hreflang="x-default" href={enUrl} />
+	{/if}
 
 	<!-- Open Graph / Facebook -->
 	<meta property="og:type" content="website" />

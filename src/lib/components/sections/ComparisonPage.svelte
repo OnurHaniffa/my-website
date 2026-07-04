@@ -54,7 +54,6 @@
 <svelte:head>
 	<title>{comparison.metaTitle}</title>
 	<meta name="description" content={comparison.metaDescription} />
-	<link rel="canonical" href={`https://onurhaniffa.com/${comparison.slug}/`} />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

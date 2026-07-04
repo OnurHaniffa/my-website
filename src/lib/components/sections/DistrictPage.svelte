@@ -153,7 +153,6 @@
 		name="description"
 		content={`${district.name}'de web sitesi yaptırma. Kurumsal site 15.000 TL'den, e-ticaret 50.000 TL'den. Şeffaf fiyat, 2-6 hafta teslim. WhatsApp'tan ücretsiz teklif.`}
 	/>
-	<link rel="canonical" href={`https://onurhaniffa.com/${district.slug}-web-tasarim/`} />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

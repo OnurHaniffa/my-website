@@ -78,7 +78,6 @@
 <svelte:head>
 	<title>Web Sitesi Maliyet Hesaplama 2026 | Anında Tahmini Fiyat</title>
 	<meta name="description" content="Web sitesi maliyetini saniyeler içinde hesaplayın. Site tipini ve özellikleri seçin, 2026 güncel TL fiyat aralığını anında görün. Ücretsiz, kayıt yok." />
-	<link rel="canonical" href="https://onurhaniffa.com/web-sitesi-maliyet-hesaplama/" />
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'FAQPage',

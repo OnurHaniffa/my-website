@@ -157,7 +157,6 @@
 		name="description"
 		content="İstanbul'da freelance web tasarımcı. Kurumsal site 15.000 TL'den, e-ticaret 50.000 TL'den. Şablon değil, özel tasarım. Ajans değil, direkt benimle çalışıyorsunuz. WhatsApp'tan ücretsiz teklif alın."
 	/>
-	<link rel="canonical" href="https://onurhaniffa.com/web-tasarim-istanbul/" />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

@@ -280,7 +280,6 @@
 		name="description"
 		content="Kurumsal web sitesi yaptırma fiyatları — Başlangıç 15.000 TL'den, Profesyonel 30.000 TL'den, Enterprise 70.000 TL'den. Şablon değil, özel tasarım. Şeffaf fiyat, KVKK uyumlu, 2-6 hafta teslim. WhatsApp'tan ücretsiz teklif alın."
 	/>
-	<link rel="canonical" href="https://onurhaniffa.com/kurumsal-web-sitesi-yaptirma/" />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',

@@ -9,7 +9,6 @@
 		content="Onur Haniffa soğuk e-posta iletişimi kapsamında kişisel verilerin işlenmesine ilişkin KVKK aydınlatma metni ve çıkış (opt-out) hakkı."
 	/>
 	<meta name="robots" content="noindex, follow" />
-	<link rel="canonical" href="https://onurhaniffa.com/kvkk-aydinlatma/" />
 </svelte:head>
 
 <Section padding="lg">

@@ -231,7 +231,6 @@
 		name="description"
 		content="Mevcut web sitenizi yenileyin — Mini 12.000 TL'den, Standart 25.000 TL'den, Tam Yeniden Yapım 40.000 TL'den. SEO sıralamanız korunur, eski URL'ler 301 yönlendirme ile transfer edilir. Ücretsiz site denetimi alın."
 	/>
-	<link rel="canonical" href="https://onurhaniffa.com/web-sitesi-yenileme/" />
 
 	{@html `<script type="application/ld+json">${JSON.stringify({
 		'@context': 'https://schema.org',
