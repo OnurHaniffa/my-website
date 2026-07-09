@@ -496,81 +496,60 @@
 </svelte:head>
 
 <!-- ====================================================
-     HERO — Statement masthead + work shelf
+     HERO — Typographic statement (type is the hero)
      ==================================================== -->
 <Section padding="none" class="relative border-b border-border overflow-hidden">
-	<Container class="relative pt-10 pb-14 lg:pt-14 lg:pb-16">
+	<!-- Atmosphere: giant drifting Fraunces ampersand, print-mark faint -->
+	<span aria-hidden="true" class="hero-glyph font-display italic select-none pointer-events-none absolute -right-[6%] -top-[12%] leading-none text-foreground/[0.045]">&amp;</span>
+
+	<Container class="relative pt-16 pb-16 lg:pt-24 lg:pb-24">
 		<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
 			{isEn ? 'Web Designer — Istanbul' : 'Web Tasarımcı — İstanbul'}
 		</p>
 
-		<!-- Statement headline: full-width masthead, italic accent -->
-		<h1 class="hero-reveal font-display font-semibold text-[clamp(2.6rem,6.3vw,5.5rem)] leading-[1.02] tracking-tight mt-6" style="--stagger: 1">
+		<h1 class="hero-reveal font-display font-semibold text-[clamp(3rem,7.5vw,6.5rem)] leading-[1.03] tracking-tight mt-7 max-w-[16ch]" style="--stagger: 1">
 			{#if isEn}
-				Professional Web Design <em class="font-display italic font-medium">in Istanbul</em>
+				Professional Web Design <span class="hero-accent"><em class="font-display italic font-medium">in Istanbul</em><svg class="hero-underline" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 50 3, 120 11, 197 5" pathLength="100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span>
 			{:else}
-				İstanbul'da <em class="font-display italic font-medium">Web Tasarım</em> & Geliştirme
+				İstanbul'da <span class="hero-accent"><em class="font-display italic font-medium">Web Tasarım</em><svg class="hero-underline" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 50 3, 120 11, 197 5" pathLength="100" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/></svg></span> & Geliştirme
 			{/if}
 		</h1>
 
-		<!-- Conversion row: paragraph left, CTAs right -->
-		<div class="hero-reveal mt-8 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6" style="--stagger: 2">
-			<p class="text-lg text-muted-foreground leading-relaxed max-w-[52ch]">
-				{#if isEn}
-					I design and build fast, modern websites for businesses across Turkey and worldwide. Every site is custom-built, SEO-optimized, and designed to convert.
-				{:else}
-					Türkiye genelinde ve dünya çapında kurumsal web sitesi, e-ticaret sitesi ve portfolyo siteleri yapıyorum. SEO uyumlu, mobil uyumlu ve dönüşüm odaklı.
-				{/if}
-			</p>
-			<div class="flex flex-wrap items-center gap-6 shrink-0">
-				<a
-					href={whatsappUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
-				>
-					<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-					</svg>
-					{isEn ? 'Write on WhatsApp' : 'WhatsApp ile Yazın'}
-				</a>
-				<a
-					href={getLocalePath('/work')}
-					class="group inline-flex items-center gap-1.5 text-base font-medium text-foreground underline underline-offset-8 decoration-border hover:decoration-foreground transition-colors duration-200"
-				>
-					{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
-					<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
-				</a>
-			</div>
-		</div>
+		<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[54ch] mt-9" style="--stagger: 2">
+			{#if isEn}
+				I design and build fast, modern websites for businesses across Turkey and worldwide. Every site is custom-built, SEO-optimized, and designed to convert.
+			{:else}
+				Türkiye genelinde ve dünya çapında kurumsal web sitesi, e-ticaret sitesi ve portfolyo siteleri yapıyorum. SEO uyumlu, mobil uyumlu ve dönüşüm odaklı.
+			{/if}
+		</p>
 
 		<!-- Facts line -->
-		<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-7 pt-4 border-t border-border" style="--stagger: 3">
+		<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-9 pt-4 border-t border-border max-w-2xl" style="--stagger: 3">
 			{isEn
 				? '50+ projects · 5.0 Google (9 reviews) · from 15,000 TL · 2–6 weeks'
 				: "50+ proje · 5.0 Google (9 değerlendirme) · 15.000 TL'den · 2–6 hafta"}
 		</p>
 
-		<!-- Work shelf: three real projects, varied heights -->
-		<div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-7 items-start">
-			<figure class="hero-reveal" style="--stagger: 4">
-				<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
-					<img src="/images/projects/joe-fresh-desktop.png" alt="Designs by Joe" class="w-full h-auto" loading="eager" fetchpriority="high" width="1440" height="900" />
-				</a>
-				<figcaption class="mt-2.5 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Designs by Joe — {isEn ? 'Portfolio & e-commerce' : 'Portfolyo & e-ticaret'}</figcaption>
-			</figure>
-			<figure class="hero-reveal sm:mt-8" style="--stagger: 5">
-				<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
-					<img src="/images/projects/ivory-ai-screenshot.png" alt="Ivory AI" class="w-full h-auto" loading="eager" width="1440" height="900" />
-				</a>
-				<figcaption class="mt-2.5 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Ivory AI — {isEn ? 'SaaS landing' : 'SaaS sitesi'}</figcaption>
-			</figure>
-			<figure class="hero-reveal sm:mt-4" style="--stagger: 6">
-				<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
-					<img src="/images/projects/dentist-screenshot.jpg" alt="Pearl Dental" class="w-full h-auto" loading="eager" width="1440" height="900" />
-				</a>
-				<figcaption class="mt-2.5 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">Pearl Dental — {isEn ? 'Clinic concept' : 'Klinik konsepti'}</figcaption>
-			</figure>
+		<!-- CTAs -->
+		<div class="hero-reveal flex flex-wrap items-center gap-7 mt-8" style="--stagger: 4">
+			<a
+				href={whatsappUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+				</svg>
+				{isEn ? 'Write on WhatsApp' : 'WhatsApp ile Yazın'}
+			</a>
+			<a
+				href={getLocalePath('/work')}
+				class="group inline-flex items-center gap-1.5 text-base font-medium text-foreground underline underline-offset-8 decoration-border hover:decoration-foreground transition-colors duration-200"
+			>
+				{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
+				<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
+			</a>
 		</div>
 	</Container>
 </Section>
@@ -1398,6 +1377,38 @@
 {/if}
 
 <style>
+	/* Hero atmosphere: giant drifting print-mark glyph */
+	.hero-glyph {
+		font-size: clamp(24rem, 42vw, 46rem);
+		animation: glyph-drift 16s ease-in-out infinite alternate;
+	}
+	@keyframes glyph-drift {
+		from { transform: translateY(0) rotate(0deg); }
+		to { transform: translateY(22px) rotate(1.2deg); }
+	}
+	/* Hand-drawn underline that draws itself under the italic accent */
+	.hero-accent { position: relative; display: inline-block; }
+	.hero-underline {
+		position: absolute;
+		left: 0;
+		bottom: -0.06em;
+		width: 100%;
+		height: 0.14em;
+		color: var(--primary);
+	}
+	.hero-underline path {
+		stroke-dasharray: 100;
+		stroke-dashoffset: 100;
+		animation: draw-underline 0.9s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
+	}
+	@keyframes draw-underline {
+		to { stroke-dashoffset: 0; }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.hero-glyph { animation: none; }
+		.hero-underline path { animation: none; stroke-dashoffset: 0; }
+	}
+
 	/* Editorial hero reveal — one orchestrated stagger, transform/opacity only */
 	.hero-reveal {
 		opacity: 0;
