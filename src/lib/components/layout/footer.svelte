@@ -66,9 +66,6 @@
 		</div>
 
 		<!-- Minimal decorative elements - static for performance -->
-		<div class="absolute top-[20%] right-[15%] w-2 h-2 bg-cyan-400/20 rounded-full"></div>
-		<div class="absolute top-[60%] left-[10%] w-2 h-2 bg-rose-500/15 rounded-full"></div>
-		<div class="absolute bottom-[30%] right-[20%] w-1.5 h-1.5 bg-primary/20 rounded-full"></div>
 	</div>
 
 	<Container class="relative">
@@ -76,17 +73,17 @@
 			<!-- Main CTA Section -->
 			<div class="text-center mb-16 md:mb-20">
 				<h2 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6 text-white">
-					{cmsOrT('cta_heading', 'footer.cta_pre')} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-primary">{cmsOrT('cta_highlight', 'footer.cta_highlight')}</span> {showCtaPost ? t('footer.cta_post') : ''}
+					{cmsOrT('cta_heading', 'footer.cta_pre')} {cmsOrT('cta_highlight', 'footer.cta_highlight')} {showCtaPost ? t('footer.cta_post') : ''}
 				</h2>
 				<p class="text-lg text-gray-400 max-w-2xl mx-auto mb-10">
 					{cmsOrT('cta_description', 'footer.cta_description')}
 				</p>
 				<div class="flex flex-wrap justify-center gap-4">
-					<Button href={getLocalePath('/contact')} variant="secondary" size="lg" class="group rounded-full px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
+					<Button href={getLocalePath('/contact')} variant="secondary" size="lg" class="group rounded-md px-10 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all">
 						{cmsOrT('cta_button_text', 'footer.cta_button')}
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 transition-transform group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 					</Button>
-					<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
+					<a href="mailto:{settings?.email ?? 'contact@onurhaniffa.com'}" class="inline-flex items-center gap-3 px-8 py-4 rounded-md border border-white/20 text-gray-400 hover:text-white hover:border-white/40 hover:bg-white/5 transition-all text-base">
 						{settings?.email ?? 'contact@onurhaniffa.com'}
 					</a>
 				</div>

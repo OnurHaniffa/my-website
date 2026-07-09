@@ -115,7 +115,7 @@
 
 <!-- Premium accent line at top - hides on scroll -->
 <div
-	class="h-1 w-full bg-gradient-to-r from-primary via-primary/80 to-accent transition-all duration-300"
+	class="h-px w-full bg-border transition-all duration-300"
 	class:opacity-0={scrolled}
 	class:h-0={scrolled}
 ></div>
@@ -171,16 +171,16 @@
 					onclick={toggleTheme}
 					class="theme-toggle group relative inline-flex items-center h-9 w-16 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
 						{isDark
-							? 'bg-gradient-to-r from-indigo-950 to-slate-900 shadow-inner shadow-indigo-950/50'
-							: 'bg-gradient-to-r from-amber-100 to-sky-100 shadow-inner shadow-amber-200/50'}"
+							? 'bg-secondary'
+							: 'bg-secondary'}"
 					aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 				>
 					<!-- Sliding circle indicator -->
 					<span
 						class="absolute h-7 w-7 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
 							{isDark
-								? 'translate-x-7 bg-gradient-to-br from-slate-700 to-slate-800 shadow-indigo-500/20'
-								: 'translate-x-0 bg-gradient-to-br from-amber-300 to-orange-400 shadow-orange-400/40'}"
+								? 'translate-x-7 bg-foreground text-background'
+								: 'translate-x-0 bg-foreground text-background'}"
 					>
 						<!-- Sun rays (visible in light mode) -->
 						<svg
@@ -200,21 +200,12 @@
 							height="14"
 							viewBox="0 0 24 24"
 							fill="currentColor"
-							class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-indigo-200' : 'opacity-0 scale-75'}"
+							class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-background' : 'opacity-0 scale-75'}"
 						>
 							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
 						</svg>
 					</span>
 					<!-- Background decorations -->
-					<span class="absolute left-2 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-						<span class="block w-1 h-1 rounded-full bg-white/40"></span>
-					</span>
-					<span class="absolute left-3.5 top-2 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-						<span class="block w-0.5 h-0.5 rounded-full bg-white/30"></span>
-					</span>
-					<span class="absolute right-2.5 bottom-2.5 transition-opacity duration-300 {isDark ? 'opacity-0' : 'opacity-100'}">
-						<span class="block w-1.5 h-1.5 rounded-full bg-sky-400/60"></span>
-					</span>
 				</button>
 
 				<!-- Call Button — sexy, attention-grabbing, fires gtag event -->
@@ -228,12 +219,10 @@
 							});
 						}
 					}}
-					class="call-btn hidden md:inline-flex group relative items-center justify-center gap-2 h-9 w-9 lg:w-auto lg:px-4 xl:px-5 lg:py-2 rounded-full bg-accent text-white font-semibold text-sm shadow-lg shadow-accent/30 hover:shadow-xl hover:shadow-accent/40 hover:scale-[1.03] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
+					class="call-btn hidden md:inline-flex group relative items-center justify-center gap-2 h-9 w-9 lg:w-auto lg:px-4 xl:px-5 lg:py-2 rounded-md border border-border text-foreground font-medium text-sm hover:border-foreground/40 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
 					aria-label={t('nav.call_aria')}
 					title={t('nav.call_aria')}
 				>
-					<!-- Pulsing ring -->
-					<span class="absolute inset-0 rounded-full bg-accent opacity-40 animate-ping pointer-events-none"></span>
 					<!-- Phone icon with ring wiggle -->
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -249,7 +238,7 @@
 					<span class="relative whitespace-nowrap hidden lg:inline">{t('nav.call_now')}</span>
 				</a>
 
-				<Button href={settings?.cta_href ?? getLocalePath('/contact')} class="hidden md:inline-flex group relative overflow-hidden shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:scale-[1.02] transition-all duration-300">
+				<Button href={settings?.cta_href ?? getLocalePath('/contact')} class="hidden md:inline-flex group relative overflow-hidden rounded-md transition-colors duration-200">
 					<span class="relative z-10">{t('nav.lets_talk')}</span>
 					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="relative z-10 ml-1 transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 				</Button>
@@ -295,8 +284,6 @@
 						<div class="absolute -bottom-40 -left-32 w-96 h-96 bg-accent/8 rounded-full blur-3xl"></div>
 
 						<!-- Decorative lines -->
-						<div class="absolute top-20 right-8 w-px h-32 bg-gradient-to-b from-transparent via-primary/20 to-transparent"></div>
-						<div class="absolute bottom-40 left-8 w-px h-24 bg-gradient-to-b from-transparent via-accent/20 to-transparent"></div>
 
 						<!-- Corner accent -->
 						<div class="absolute top-0 right-0 w-32 h-32">
@@ -365,16 +352,16 @@
 										onclick={toggleTheme}
 										class="relative inline-flex items-center h-10 w-20 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
 											{isDark
-												? 'bg-gradient-to-r from-indigo-950 to-slate-900'
-												: 'bg-gradient-to-r from-amber-100 to-sky-100'}"
+												? 'bg-secondary'
+												: 'bg-secondary'}"
 										aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
 									>
 										<!-- Sliding indicator -->
 										<span
 											class="absolute h-8 w-8 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
 												{isDark
-													? 'translate-x-10 bg-gradient-to-br from-slate-700 to-slate-800'
-													: 'translate-x-0 bg-gradient-to-br from-amber-300 to-orange-400'}"
+													? 'translate-x-10 bg-foreground'
+													: 'translate-x-0 bg-foreground'}"
 										>
 											<!-- Sun -->
 											<svg
@@ -394,18 +381,12 @@
 												height="16"
 												viewBox="0 0 24 24"
 												fill="currentColor"
-												class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-indigo-200' : 'opacity-0 scale-75'}"
+												class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-background' : 'opacity-0 scale-75'}"
 											>
 												<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
 											</svg>
 										</span>
 										<!-- Stars for dark mode -->
-										<span class="absolute left-2.5 top-2 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-											<span class="block w-1 h-1 rounded-full bg-white/50"></span>
-										</span>
-										<span class="absolute left-4 bottom-2.5 transition-opacity duration-300 {isDark ? 'opacity-100' : 'opacity-0'}">
-											<span class="block w-0.5 h-0.5 rounded-full bg-white/40"></span>
-										</span>
 										<!-- Cloud for light mode -->
 										<span class="absolute right-3 bottom-2 transition-opacity duration-300 {isDark ? 'opacity-0' : 'opacity-100'}">
 											<span class="block w-2 h-2 rounded-full bg-sky-300/70"></span>
@@ -435,8 +416,7 @@
 								class="relative mt-3 flex items-center justify-center gap-3 w-full h-14 rounded-2xl bg-accent text-white font-semibold text-base shadow-xl shadow-accent/30 hover:shadow-2xl hover:shadow-accent/40 hover:scale-[1.02] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 overflow-hidden"
 								aria-label={t('nav.call_aria')}
 							>
-								<span class="absolute inset-0 rounded-2xl bg-accent opacity-40 animate-ping pointer-events-none"></span>
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="relative call-phone-icon" aria-hidden="true">
+																<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="relative call-phone-icon" aria-hidden="true">
 									<path d="M20.487 17.14l-4.065-3.696a1.001 1.001 0 0 0-1.391.043l-2.393 2.461c-.576-.11-1.734-.471-2.926-1.66-1.192-1.193-1.553-2.354-1.66-2.926l2.459-2.394a1 1 0 0 0 .043-1.391L6.86 3.513a1 1 0 0 0-1.391-.087l-2.17 1.861a1 1 0 0 0-.29.649c-.015.25-.301 6.172 4.291 10.766 4.005 4.004 9.024 4.296 10.406 4.296.202 0 .326-.006.359-.008a.992.992 0 0 0 .648-.291l1.86-2.171a.997.997 0 0 0-.086-1.388z"/>
 								</svg>
 								<span class="relative">{t('nav.call_now')}</span>
