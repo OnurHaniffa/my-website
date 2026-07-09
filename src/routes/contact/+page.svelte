@@ -7,10 +7,11 @@
 	import { InView } from '$lib/components/ui/animations';
 	import { onMount } from 'svelte';
 	import { gsap } from 'gsap';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocale } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
-	const ps = data.pageSettings;
+	// On TR locale the CMS (EN-only) must not override translations — same rule as footer cmsOrT.
+	const ps = $derived(getLocale() === 'tr' ? null : data.pageSettings);
 
 	let mounted = $state(false);
 	let formState = $state<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -25,7 +26,7 @@
 	let honeypot = $state(''); // Honeypot field for spam prevention
 
 	// FAQ data with i18n fallbacks
-	const faqs = $derived(data.faqs?.length ? data.faqs : [
+	const faqs = $derived(getLocale() !== 'tr' && data.faqs?.length ? data.faqs : [
 		{ question: t('contact.faq_1_q'), answer: t('contact.faq_1_a') },
 		{ question: t('contact.faq_2_q'), answer: t('contact.faq_2_a') },
 		{ question: t('contact.faq_3_q'), answer: t('contact.faq_3_a') }

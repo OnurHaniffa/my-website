@@ -3,10 +3,11 @@
 	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
 	import { Container, Section } from '$lib/components/layout';
-	import { t, getLocalePath } from '$lib/i18n/index.svelte';
+	import { t, getLocale, getLocalePath } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
-	const ps = data.pageSettings;
+	// On TR locale the CMS (EN-only) must not override translations — same rule as footer cmsOrT.
+	const ps = $derived(getLocale() === 'tr' ? null : data.pageSettings);
 
 	let heroSection: HTMLDivElement;
 	let philosophySection: HTMLDivElement;
@@ -43,7 +44,7 @@
 		}
 	]);
 
-	const philosophy = $derived(data.philosophyCards?.length
+	const philosophy = $derived(getLocale() !== 'tr' && data.philosophyCards?.length
 		? data.philosophyCards.map(c => ({
 				number: c.number,
 				title: c.title,
@@ -81,7 +82,7 @@
 		}
 	]);
 
-	const toolGroups = $derived(data.toolGroups?.length
+	const toolGroups = $derived(getLocale() !== 'tr' && data.toolGroups?.length
 		? data.toolGroups.map(g => ({
 				label: g.label,
 				tools: g.tools
@@ -108,7 +109,7 @@
 		{ icon: 'M22 10v6M2 10l10-5 10 5-10 5-10-5ZM6 12v5c0 1.5 2.5 3 6 3s6-1.5 6-3v-5M12 7v15', label: t('about.fact_6_label'), value: t('about.fact_6_value'), bg: 'bg-gradient-to-br from-rose-500/10 to-rose-500/5', color: 'text-rose-500', border: 'border-t-rose-500' }
 	]);
 
-	const quickFacts = $derived(data.quickFacts?.length ? data.quickFacts : fallbackQuickFacts);
+	const quickFacts = $derived(getLocale() !== 'tr' && data.quickFacts?.length ? data.quickFacts : fallbackQuickFacts);
 
 	const fallbackAcademicRoles = $derived([
 		{
@@ -125,7 +126,7 @@
 		}
 	]);
 
-	const academicRoles = $derived(data.academicRoles?.length ? data.academicRoles : fallbackAcademicRoles);
+	const academicRoles = $derived(getLocale() !== 'tr' && data.academicRoles?.length ? data.academicRoles : fallbackAcademicRoles);
 
 	onMount(() => {
 		// Check for reduced motion preference

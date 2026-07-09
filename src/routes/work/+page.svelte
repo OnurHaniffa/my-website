@@ -7,11 +7,12 @@
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
 	import { projects as fallbackProjectsData } from '$lib/data/projects';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocale } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
-	const ps = data.pageSettings;
-	const projects = data.projects?.length ? data.projects : fallbackProjectsData;
+	// On TR locale the CMS (EN-only) must not override translations — same rule as footer cmsOrT.
+	const ps = $derived(getLocale() === 'tr' ? null : data.pageSettings);
+	const projects = $derived(getLocale() !== 'tr' && data.projects?.length ? data.projects : fallbackProjectsData);
 
 	let mounted = $state(false);
 	let dentistIframeLoaded = $state(false);
@@ -411,7 +412,7 @@
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
 				<p class="text-2xl lg:text-3xl font-light text-[#2d2d2d] dark:text-gray-200 leading-relaxed italic">
-					<span class="text-[#c4a574] font-serif text-4xl">'</span>The goal was simple: {ps?.pearl_pull_quote ?? t('work.pearl_pull_quote')}<span class="text-[#c4a574] font-serif text-4xl">'</span>
+					<span class="text-[#c4a574] font-serif text-4xl">'</span>{getLocale() === 'tr' ? 'Hedef basitti:' : 'The goal was simple:'} {ps?.pearl_pull_quote ?? t('work.pearl_pull_quote')}<span class="text-[#c4a574] font-serif text-4xl">'</span>
 				</p>
 				<!-- Decorative line -->
 				<div class="mt-8 flex items-center justify-center gap-3">

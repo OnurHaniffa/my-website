@@ -6,13 +6,14 @@
 	import { browser } from '$app/environment';
 	import { animate } from 'motion';
 	import { sanitizeSvgContent } from '$lib/utils/sanitize';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocale } from '$lib/i18n/index.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const motionAnimate = animate as any;
 
 	let { data } = $props();
-	const ps = data.pageSettings;
+	// On TR locale the CMS (EN-only) must not override translations — same rule as footer cmsOrT.
+	const ps = $derived(getLocale() === 'tr' ? null : data.pageSettings);
 
 	let mounted = $state(false);
 	let openFaq = $state<number | null>(null);
@@ -107,7 +108,7 @@
 		}
 	]);
 
-	const services = $derived(data.servicesDetailed?.length
+	const services = $derived(getLocale() !== 'tr' && data.servicesDetailed?.length
 		? data.servicesDetailed.map((s, i) => ({
 				id: i,
 				title: s.title,
@@ -133,7 +134,7 @@
 		{ question: t('services.faq_6_q'), answer: t('services.faq_6_a') }
 	]);
 
-	const faqs = $derived(data.faqs?.length ? data.faqs : fallbackFaqs);
+	const faqs = $derived(getLocale() !== 'tr' && data.faqs?.length ? data.faqs : fallbackFaqs);
 
 	// Gauge arc calculations for semi-circle (180 degrees, 3 segments of 60 degrees each)
 	const gaugeConfig = {

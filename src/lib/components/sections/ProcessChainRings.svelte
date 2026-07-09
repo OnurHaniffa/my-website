@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import { browser } from '$app/environment';
 	import { animate, stagger, inView } from 'motion';
+	import { getLocale } from '$lib/i18n/index.svelte';
 
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	const motionAnimate = animate as any;
@@ -41,58 +42,69 @@
 		}
 	});
 
-	const steps = [
+	const isEn = $derived(getLocale() === 'en');
+	const steps = $derived([
 		{
 			num: '01',
-			title: 'Discovery',
-			subtitle: 'Understanding your world',
-			description: 'We dive into your business, audience, and goals. No generic questionnaires—just a real conversation about what success looks like for you.',
-			details: ['Business goals & challenges', 'Target audience research'],
+			title: isEn ? 'Discovery' : 'Keşif',
+			subtitle: isEn ? 'Understanding your world' : 'İşinizi tanıyorum',
+			description: isEn
+				? 'We dive into your business, audience, and goals. No generic questionnaires—just a real conversation about what success looks like for you.'
+				: 'İşinizi, hedef kitlenizi ve amaçlarınızı konuşuyoruz. Şablon anketler yok — sizin için başarının ne anlama geldiğine dair gerçek bir sohbet.',
+			details: isEn ? ['Business goals & challenges', 'Target audience research'] : ['İş hedefleri ve zorluklar', 'Hedef kitle araştırması'],
 			icon: `<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/>`,
-			color: '#0d9488',
-			lightColor: '#ccfbf1'
+			color: '#33509e',
+			lightColor: '#e9edf8'
 		},
 		{
 			num: '02',
-			title: 'Strategy',
-			subtitle: 'Mapping the blueprint',
-			description: 'Before any design work begins, the user journey, content structure, and conversion paths are mapped out. Strategy first, pixels later.',
-			details: ['Information architecture', 'User flow mapping', 'Content strategy'],
+			title: isEn ? 'Strategy' : 'Strateji',
+			subtitle: isEn ? 'Mapping the blueprint' : 'Yol haritası çıkıyor',
+			description: isEn
+				? 'Before any design work begins, the user journey, content structure, and conversion paths are mapped out. Strategy first, pixels later.'
+				: 'Tasarıma başlamadan önce kullanıcı yolculuğu, içerik yapısı ve dönüşüm adımları planlanıyor. Önce strateji, sonra piksel.',
+			details: isEn ? ['Information architecture', 'User flow mapping', 'Content strategy'] : ['Bilgi mimarisi', 'Kullanıcı akışları', 'İçerik stratejisi'],
 			icon: `<path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke-linecap="round" stroke-linejoin="round"/>`,
-			color: '#6366f1',
-			lightColor: '#e0e7ff'
+			color: '#33509e',
+			lightColor: '#e9edf8'
 		},
 		{
 			num: '03',
-			title: 'Design',
-			subtitle: 'Bringing ideas to life',
-			description: 'This is where vision becomes visual. You\'ll see your brand come alive with beauty balanced with usability.',
-			details: ['Responsive layouts', 'Iterative refinement'],
+			title: isEn ? 'Design' : 'Tasarım',
+			subtitle: isEn ? 'Bringing ideas to life' : 'Fikirler görsele dönüşüyor',
+			description: isEn
+				? "This is where vision becomes visual. You'll see your brand come alive with beauty balanced with usability."
+				: 'Vizyonun görselleştiği aşama. Markanız, estetik ile kullanılabilirliğin dengelendiği bir tasarımla hayat buluyor.',
+			details: isEn ? ['Responsive layouts', 'Iterative refinement'] : ['Mobil uyumlu tasarım', 'Adım adım iyileştirme'],
 			icon: `<path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round"/>`,
-			color: '#f97316',
-			lightColor: '#ffedd5'
+			color: '#33509e',
+			lightColor: '#e9edf8'
 		},
 		{
 			num: '04',
-			title: 'Build',
-			subtitle: 'Code that performs',
-			description: 'Clean, modern code that loads fast and works flawlessly. No bloated templates—just development that\'s built to scale.',
-			details: ['Modern tech stack', 'SEO implementation', 'Cross-browser testing'],
+			title: isEn ? 'Build' : 'Geliştirme',
+			subtitle: isEn ? 'Code that performs' : 'Hızlı ve sağlam kod',
+			description: isEn
+				? "Clean, modern code that loads fast and works flawlessly. No bloated templates—just development that's built to scale."
+				: 'Hızlı yüklenen, kusursuz çalışan temiz ve modern kod. Şişkin şablonlar yok — büyümeye hazır bir altyapı var.',
+			details: isEn ? ['Modern tech stack', 'SEO implementation', 'Cross-browser testing'] : ['Modern teknoloji altyapısı', 'SEO kurulumu', 'Tarayıcı testleri'],
 			icon: `<path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-linecap="round" stroke-linejoin="round"/>`,
-			color: '#e11d48',
-			lightColor: '#ffe4e6'
+			color: '#33509e',
+			lightColor: '#e9edf8'
 		},
 		{
 			num: '05',
-			title: 'Launch',
-			subtitle: 'Going live with confidence',
-			description: 'Your site goes live with thorough testing and a smooth handoff. I\'ll walk you through everything and stick around to make sure it\'s perfect.',
-			details: ['Final QA & testing', 'Launch preparation', 'Ongoing support'],
+			title: isEn ? 'Launch' : 'Yayın',
+			subtitle: isEn ? 'Going live with confidence' : 'Gönül rahatlığıyla yayına',
+			description: isEn
+				? "Your site goes live with thorough testing and a smooth handoff. I'll walk you through everything and stick around to make sure it's perfect."
+				: 'Siteniz kapsamlı testlerden geçip sorunsuz bir devir teslimle yayına giriyor. Her şeyi birlikte gözden geçiriyoruz; sonrasında da yanınızdayım.',
+			details: isEn ? ['Final QA & testing', 'Launch preparation', 'Ongoing support'] : ['Son kontroller ve test', 'Yayın hazırlığı', 'Sürekli destek'],
 			icon: `<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-linecap="round" stroke-linejoin="round"/>`,
-			color: '#eab308',
-			lightColor: '#fef9c3'
+			color: '#33509e',
+			lightColor: '#e9edf8'
 		}
-	];
+	]);
 </script>
 
 <section
@@ -109,14 +121,14 @@
 	<div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 		<!-- Header -->
 		<div class="text-center mb-16 md:mb-20">
-			<span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-				The Process
-			</span>
-			<h2 id="process-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-				From first call to final launch
+			<p class="text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium mb-4">
+				{isEn ? 'The Process' : 'Çalışma Süreci'}
+			</p>
+			<h2 id="process-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight mb-5">
+				{isEn ? 'From first call to final launch' : 'İlk görüşmeden yayına kadar'}
 			</h2>
 			<p class="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
-				A transparent, collaborative process designed to eliminate surprises and deliver results.
+				{isEn ? 'A transparent, collaborative process designed to eliminate surprises and deliver results.' : 'Sürprizleri ortadan kaldıran, sonuç odaklı ve şeffaf bir süreç.'}
 			</p>
 		</div>
 

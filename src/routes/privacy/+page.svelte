@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
-	import { t } from '$lib/i18n/index.svelte';
+	import { t, getLocale } from '$lib/i18n/index.svelte';
 
 	let { data } = $props();
-	const ps = data.pageSettings;
+	// On TR locale the CMS (EN-only) must not override translations — same rule as footer cmsOrT.
+	const ps = $derived(getLocale() === 'tr' ? null : data.pageSettings);
 </script>
 
 <svelte:head>
