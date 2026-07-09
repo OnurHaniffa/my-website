@@ -10,40 +10,15 @@
 	const whatsappMessage = 'Merhaba, kurumsal web sitesi yaptırmak için fiyat teklifi almak istiyorum.';
 	const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-	// Hero rotating screenshots
-	const heroScreenshots = [
-		{
-			src: '/images/projects/joe-fresh-desktop.png',
-			mobile: '/images/projects/joe-fresh-mobile.png',
-			label: 'Designs by Joe',
-			url: 'designsbyjoe.net'
-		},
-		{
-			src: '/images/projects/ivory-ai-screenshot.png',
-			mobile: '/images/projects/ivory-ai-mobile.png',
-			label: 'Ivory AI',
-			url: 'ivoryai.net'
-		},
-		{
-			src: '/images/projects/dentist-screenshot.jpg',
-			mobile: '/images/projects/dental-mobile-real.png',
-			label: 'Pearl Dental',
-			url: 'pearldental.com'
-		}
-	];
-	let currentScreenshot = $state(0);
 
 	let showStickyCta = $state(false);
 	let openFaq = $state<number | null>(null);
-	let heroContent: HTMLDivElement;
-	let heroMockup: HTMLDivElement;
 
 	function toggleFaq(i: number) {
 		openFaq = openFaq === i ? null : i;
 	}
 
 	onMount(() => {
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		const handleScroll = () => {
 			showStickyCta = window.scrollY > 600;
@@ -51,47 +26,12 @@
 		window.addEventListener('scroll', handleScroll, { passive: true });
 
 		// Screenshot rotation, paused when tab is backgrounded
-		let screenshotInterval: ReturnType<typeof setInterval> | null = null;
-		const startRotation = () => {
-			if (screenshotInterval) return;
-			screenshotInterval = setInterval(() => {
-				currentScreenshot = (currentScreenshot + 1) % heroScreenshots.length;
-			}, 4000);
-		};
-		const stopRotation = () => {
-			if (screenshotInterval) {
-				clearInterval(screenshotInterval);
-				screenshotInterval = null;
-			}
-		};
-		const handleVisibility = () => {
-			if (document.visibilityState === 'visible') startRotation();
-			else stopRotation();
-		};
-		startRotation();
-		document.addEventListener('visibilitychange', handleVisibility);
 
 		// GSAP lazy-loaded
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		let heroTl: any = null;
-		if (!prefersReducedMotion && heroContent && heroMockup) {
-			import('gsap')
-				.then(({ gsap }) => {
-					if (!heroContent || !heroMockup) return;
-					gsap.set([heroContent, heroMockup], { opacity: 0, y: 30 });
-					heroTl = gsap.timeline({ delay: 0.1 });
-					heroTl
-						.to(heroContent, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
-						.to(heroMockup, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5');
-				})
-				.catch(() => {});
-		}
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			document.removeEventListener('visibilitychange', handleVisibility);
-			stopRotation();
-			heroTl?.kill?.();
 		};
 	});
 
@@ -333,7 +273,6 @@
 	class="relative overflow-hidden min-h-[calc(100vh-85px)] flex flex-col justify-center"
 >
 	<div class="absolute inset-0 -z-10" aria-hidden="true">
-		<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-background to-muted/80"></div>
 		<div class="absolute -top-[100px] -left-[150px] w-[800px] h-[700px] kurumsal-glow-topleft rounded-full"></div>
 		<div class="absolute -top-[200px] -right-[200px] w-[900px] h-[900px] kurumsal-glow-accent rounded-full"></div>
 		<div class="absolute -bottom-[300px] -left-[300px] w-[800px] h-[800px] kurumsal-glow-primary rounded-full"></div>
@@ -341,15 +280,9 @@
 
 
 	<Container class="relative pt-12 pb-12 lg:pt-20 lg:pb-20">
-		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-			<div bind:this={heroContent} class="space-y-5">
-				<Badge
-					variant="outline"
-					class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
-				>
-					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
-					Kurumsal Web Tasarım • İstanbul
-				</Badge>
+		<div class="max-w-4xl">
+			<div class="hero-reveal space-y-5">
+				<p class="text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium">Kurumsal Web Tasarım • İstanbul · Yeni projelere açık</p>
 
 				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
 					Kurumsal Web Sitesi <br class="hidden sm:block" />Yaptırma
@@ -400,7 +333,7 @@
 						href={whatsappUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base shadow-2xl shadow-[#25D366]/40 hover:shadow-[#25D366]/60 hover:scale-[1.02] transition-all duration-300"
+						class="inline-flex items-center gap-2.5 px-8 py-4 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base hover:shadow-[#25D366]/60 transition-all duration-300"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -411,76 +344,14 @@
 						size="lg"
 						variant="ghost"
 						href="#fiyatlar"
-						class="text-base px-8 py-4 rounded-full border border-border/60 hover:bg-foreground/5"
+						class="text-base px-7 py-3.5 rounded-md border border-border/60 hover:bg-foreground/5"
 					>
 						Fiyatları Gör
 					</Button>
 				</div>
 			</div>
 
-			<div bind:this={heroMockup} class="relative">
-				<div class="relative bg-card rounded-2xl shadow-2xl border-2 border-border/50 overflow-hidden">
-					<div class="flex items-center gap-2 px-4 py-3 bg-muted/80 border-b">
-						<div class="flex gap-1.5" aria-hidden="true">
-							<div class="w-3 h-3 rounded-full bg-rose-400"></div>
-							<div class="w-3 h-3 rounded-full bg-amber-400"></div>
-							<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
-						</div>
-						<div class="flex-1 mx-4">
-							<div class="bg-background/80 rounded-lg px-4 py-1.5 text-sm text-muted-foreground flex items-center gap-2 border">
-								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-								<span class="truncate font-mono text-xs">{heroScreenshots[currentScreenshot].url}</span>
-							</div>
-						</div>
-					</div>
-					<div class="aspect-[16/10] relative overflow-hidden bg-muted">
-						{#each heroScreenshots as screenshot, i}
-							<img
-								src={screenshot.src}
-								alt={screenshot.label}
-								class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 {i === currentScreenshot ? 'opacity-100' : 'opacity-0'}"
-								loading={i === 0 ? 'eager' : 'lazy'}
-								width="640"
-								height="400"
-							/>
-						{/each}
-						<div class="absolute bottom-3 left-3 z-10">
-							<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-medium">
-								<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-								{heroScreenshots[currentScreenshot].label}
-							</div>
-						</div>
-						<div class="absolute bottom-3 right-3 flex gap-1.5 z-10">
-							{#each heroScreenshots as _, i}
-								<button
-									onclick={() => { currentScreenshot = i; }}
-									class="w-2 h-2 rounded-full transition-all duration-300 {i === currentScreenshot ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'}"
-									aria-label="Show {heroScreenshots[i].label}"
-								></button>
-							{/each}
-						</div>
-					</div>
-				</div>
-
-				<div class="hidden lg:block absolute -bottom-6 -right-6 w-36 rounded-2xl shadow-2xl border-2 border-border/50 bg-card overflow-hidden z-10">
-					<div class="flex items-center justify-center py-1 bg-muted/80 border-b">
-						<div class="w-12 h-1 rounded-full bg-border" aria-hidden="true"></div>
-					</div>
-					<div class="aspect-[9/16] relative overflow-hidden bg-muted">
-						{#each heroScreenshots as screenshot, i}
-							<img
-								src={screenshot.mobile}
-								alt="{screenshot.label} mobile"
-								class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 {i === currentScreenshot ? 'opacity-100' : 'opacity-0'}"
-								loading="lazy"
-								width="144"
-								height="256"
-							/>
-						{/each}
-					</div>
-				</div>
 			</div>
-		</div>
 	</Container>
 </Section>
 
@@ -619,7 +490,7 @@
 								href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Merhaba! ' + tier.msg)}`}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 hover:scale-[1.02] {tier.highlight ? 'bg-white text-primary hover:bg-white/90 shadow-lg' : 'bg-[#25D366] hover:bg-[#20BD5A] text-white shadow hover:shadow-lg'}"
+								class="flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 {tier.highlight ? 'bg-white text-primary hover:bg-white/90 shadow-lg' : 'bg-[#25D366] hover:bg-[#20BD5A] text-white shadow hover:shadow-lg'}"
 							>
 								WhatsApp'tan Teklif Al
 							</a>
@@ -767,7 +638,7 @@
 						href={whatsappUrl}
 						target="_blank"
 						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2.5 px-10 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base shadow-2xl shadow-[#25D366]/40 transition-all duration-300"
+						class="inline-flex items-center gap-2.5 px-10 py-4 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-all duration-300"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -791,7 +662,7 @@
 				<p class="text-sm font-semibold">Kurumsal Site Teklifi</p>
 				<p class="text-xs text-muted-foreground">24sa içinde yanıt</p>
 			</div>
-			<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#25D366] text-white font-semibold text-sm shadow-lg shadow-[#25D366]/30">
+			<a href={whatsappUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#25D366] text-white font-semibold text-sm ">
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
 					<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
 				</svg>
@@ -802,6 +673,29 @@
 {/if}
 
 <style>
+	/* Editorial hero (v4 language) */
+	.hero-reveal {
+		opacity: 0;
+		transform: translateY(14px);
+		animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+		animation-delay: calc(var(--stagger, 0) * 90ms);
+	}
+	@keyframes hero-rise {
+		to { opacity: 1; transform: translateY(0); }
+	}
+	.hero-glyph {
+		font-size: clamp(24rem, 42vw, 46rem);
+		animation: glyph-drift 16s ease-in-out infinite alternate;
+	}
+	@keyframes glyph-drift {
+		from { transform: translateY(0) rotate(0deg); }
+		to { transform: translateY(22px) rotate(1.2deg); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.hero-reveal { animation: none; opacity: 1; transform: none; }
+		.hero-glyph { animation: none; }
+	}
+
 	.kurumsal-grid-bg {
 		background-image:
 			linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px),
