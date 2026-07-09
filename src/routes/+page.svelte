@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { Button } from '$lib/components/ui/button';
-	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
 	import { InView } from '$lib/components/ui/animations';
 	import { t, getLocale, getLocalePath } from '$lib/i18n/index.svelte';
@@ -297,7 +296,7 @@
 			initials: 'J',
 			roleEn: 'Fan Artist & Illustrator',
 			roleTr: 'Fan Sanatçısı & İllüstratör',
-			color: 'bg-violet-500',
+			color: 'bg-primary',
 			verified: true,
 			source: 'Google'
 		},
@@ -310,7 +309,7 @@
 			initials: 'ST',
 			roleEn: 'E-Commerce Owner',
 			roleTr: 'E-Ticaret İşletmecisi',
-			color: 'bg-teal-500',
+			color: 'bg-primary',
 			verified: true,
 			source: 'Google'
 		},
@@ -323,7 +322,7 @@
 			initials: 'FA',
 			roleEn: 'E-Commerce Owner',
 			roleTr: 'E-Ticaret İşletmecisi',
-			color: 'bg-amber-500',
+			color: 'bg-primary',
 			verified: true,
 			source: 'Google'
 		}
@@ -628,14 +627,14 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'Portfolio' : 'Portfolyo'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
 					{#if isEn}
-						Recent <span class="case-gradient-text">Work</span>
+						Recent Work
 					{:else}
-						Son <span class="case-gradient-text">Çalışmalar</span>
+						Son Çalışmalar
 					{/if}
 				</h2>
 			</div>
@@ -644,9 +643,9 @@
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
 			{#each portfolioProjects as project, i}
 				{@const tc1 = {
-					violet: { label: 'bg-violet-500 text-white', dot: 'bg-violet-400', tag: 'bg-violet-100 text-violet-700 dark:bg-violet-900/40 dark:text-violet-300', cta: 'bg-violet-500 hover:bg-violet-600 text-white' },
-					blue: { label: 'bg-blue-500 text-white', dot: 'bg-blue-400', tag: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300', cta: 'bg-blue-500 hover:bg-blue-600 text-white' },
-					teal: { label: 'bg-teal-500 text-white', dot: 'bg-teal-400', tag: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300', cta: 'bg-teal-500 hover:bg-teal-600 text-white' }
+					violet: { label: 'bg-foreground text-background', dot: 'bg-primary', tag: 'bg-muted text-muted-foreground', cta: 'bg-primary hover:bg-primary/90 text-primary-foreground' },
+					blue: { label: 'bg-foreground text-background', dot: 'bg-primary', tag: 'bg-muted text-muted-foreground', cta: 'bg-primary hover:bg-primary/90 text-primary-foreground' },
+					teal: { label: 'bg-foreground text-background', dot: 'bg-primary', tag: 'bg-muted text-muted-foreground', cta: 'bg-primary hover:bg-primary/90 text-primary-foreground' }
 				}[project.theme]}
 				{@const isExternal = project.liveUrl.startsWith('http')}
 				<InView animation="fade-up" delay={i * 150}>
@@ -746,22 +745,19 @@
 	<!-- Background pattern grid -->
 	<div class="absolute inset-0 -z-[2] pricing-grid-bg opacity-[0.04] dark:opacity-[0.05]" aria-hidden="true"></div>
 	<!-- Section glow accent -->
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] pricing-glow rounded-full -z-[1]" aria-hidden="true"></div>
 	<!-- Decorative floating circles -->
-	<div class="absolute top-16 left-[8%] w-20 h-20 rounded-full border border-primary/10 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-24 right-[6%] w-14 h-14 rounded-full border border-primary/8 pointer-events-none" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-16">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'Pricing' : 'Fiyatlandırma'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
 					{#if isEn}
-						Transparent <span class="pricing-gradient-text">Pricing</span>
+						Transparent Pricing
 					{:else}
-						Şeffaf <span class="pricing-gradient-text">Fiyatlandırma</span>
+						Şeffaf Fiyatlandırma
 					{/if}
 				</h2>
 				<!-- Decorative underline -->
@@ -851,32 +847,21 @@
      ==================================================== -->
 <Section padding="lg" class="relative overflow-hidden">
 	<!-- Decorative floating shapes -->
-	<div class="absolute top-16 left-[8%] w-20 h-20 rounded-full border border-primary/10 process-float-1 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-24 right-[6%] w-14 h-14 rounded-full border border-accent/10 process-float-2 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute top-1/3 right-[12%] w-3 h-3 rounded-full bg-primary/20 process-float-3 pointer-events-none" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-10 relative">
-				<Badge variant="outline" class="mb-4 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-4 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'My Process' : 'Çalışma Sürecim'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
 					{#if isEn}
-						How I Build <span class="process-gradient-text">Your Website</span>
+						How I Build Your Website
 					{:else}
-						Web Site Yapımı <span class="process-gradient-text">Süreci</span>
+						Web Site Yapımı Süreci
 					{/if}
 				</h2>
-				<!-- Decorative underline -->
-				<div class="mx-auto mt-3 mb-4 flex items-center justify-center gap-2" aria-hidden="true">
-					<div class="w-8 h-0.5 rounded-full bg-primary/40"></div>
-					<div class="w-2 h-2 rounded-full bg-primary"></div>
-					<div class="w-16 h-0.5 rounded-full bg-gradient-to-r from-primary to-accent"></div>
-					<div class="w-2 h-2 rounded-full bg-accent"></div>
-					<div class="w-8 h-0.5 rounded-full bg-accent/40"></div>
-				</div>
-				<p class="text-base text-muted-foreground">
+				<p class="mt-4 text-base text-muted-foreground">
 					{isEn
 						? 'A clear, transparent process from discovery to launch.'
 						: "Keşiften yayınlamaya kadar şeffaf bir süreç."}
@@ -912,55 +897,55 @@
 										{#if i === 0}
 											<!-- Discovery: animated magnifying glass with orbit -->
 											<svg width="80" height="80" viewBox="0 0 80 80" class="process-anim-scan">
-												<circle cx="35" cy="35" r="18" fill="none" stroke="oklch(0.55 0.24 260)" stroke-width="2" opacity="0.3"/>
-												<circle cx="35" cy="35" r="12" fill="oklch(0.55 0.24 260 / 0.08)"/>
-												<line x1="49" y1="49" x2="65" y2="65" stroke="oklch(0.55 0.24 260)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
+												<circle cx="35" cy="35" r="18" fill="none" stroke="oklch(0.42 0.15 262)" stroke-width="2" opacity="0.3"/>
+												<circle cx="35" cy="35" r="12" fill="oklch(0.42 0.15 262 / 0.08)"/>
+												<line x1="49" y1="49" x2="65" y2="65" stroke="oklch(0.42 0.15 262)" stroke-width="3" stroke-linecap="round" opacity="0.5"/>
 												<!-- Orbiting dot -->
-												<circle cx="35" cy="17" r="3" fill="oklch(0.55 0.24 260)" opacity="0.6" class="process-orbit-dot"/>
+												<circle cx="35" cy="17" r="3" fill="oklch(0.42 0.15 262)" opacity="0.6" class="process-orbit-dot"/>
 											</svg>
 										{:else if i === 1}
 											<!-- Design: animated color swatches -->
 											<svg width="80" height="80" viewBox="0 0 80 80">
-												<rect x="8" y="8" width="20" height="20" rx="5" fill="oklch(0.55 0.22 300 / 0.6)" class="process-anim-dot-1"/>
-												<rect x="34" y="8" width="20" height="20" rx="5" fill="oklch(0.65 0.18 50 / 0.6)" class="process-anim-dot-2"/>
-												<rect x="8" y="34" width="20" height="20" rx="5" fill="oklch(0.6 0.20 145 / 0.6)" class="process-anim-dot-3"/>
-												<rect x="34" y="34" width="20" height="20" rx="5" fill="oklch(0.55 0.24 260 / 0.6)" class="process-anim-dot-1" style="animation-delay: 0.6s;"/>
+												<rect x="8" y="8" width="20" height="20" rx="5" fill="oklch(0.42 0.15 262 / 0.6)" class="process-anim-dot-1"/>
+												<rect x="34" y="8" width="20" height="20" rx="5" fill="oklch(0.72 0.11 262 / 0.6)" class="process-anim-dot-2"/>
+												<rect x="8" y="34" width="20" height="20" rx="5" fill="oklch(0.72 0.11 262 / 0.6)" class="process-anim-dot-3"/>
+												<rect x="34" y="34" width="20" height="20" rx="5" fill="oklch(0.42 0.15 262 / 0.6)" class="process-anim-dot-1" style="animation-delay: 0.6s;"/>
 												<!-- Pen cursor -->
-												<path d="M60 16l-4 4M56 20l2-8 6 6-8 2z" fill="oklch(0.55 0.22 300)" opacity="0.7" class="process-anim-pen"/>
+												<path d="M60 16l-4 4M56 20l2-8 6 6-8 2z" fill="oklch(0.42 0.15 262)" opacity="0.7" class="process-anim-pen"/>
 											</svg>
 										{:else if i === 2}
 											<!-- Development: animated terminal -->
 											<svg width="80" height="80" viewBox="0 0 80 80">
-												<rect x="5" y="10" width="70" height="55" rx="6" fill="oklch(0.15 0.02 260)" stroke="oklch(0.6 0.18 180 / 0.3)" stroke-width="1.5"/>
+												<rect x="5" y="10" width="70" height="55" rx="6" fill="oklch(0.15 0.02 260)" stroke="oklch(0.72 0.11 262 / 0.3)" stroke-width="1.5"/>
 												<!-- Terminal dots -->
-												<circle cx="16" cy="20" r="3" fill="oklch(0.65 0.2 25)"/>
-												<circle cx="26" cy="20" r="3" fill="oklch(0.75 0.18 85)"/>
-												<circle cx="36" cy="20" r="3" fill="oklch(0.6 0.2 145)"/>
+												<circle cx="16" cy="20" r="3" fill="oklch(0.72 0.11 262)"/>
+												<circle cx="26" cy="20" r="3" fill="oklch(0.72 0.11 262)"/>
+												<circle cx="36" cy="20" r="3" fill="oklch(0.72 0.11 262)"/>
 												<!-- Code lines typing -->
-												<rect x="14" y="32" width="35" height="3" rx="1.5" fill="oklch(0.6 0.18 180 / 0.6)" class="process-code-line-1"/>
-												<rect x="14" y="40" width="25" height="3" rx="1.5" fill="oklch(0.55 0.22 300 / 0.4)" class="process-code-line-2"/>
-												<rect x="14" y="48" width="40" height="3" rx="1.5" fill="oklch(0.55 0.24 260 / 0.4)" class="process-code-line-3"/>
+												<rect x="14" y="32" width="35" height="3" rx="1.5" fill="oklch(0.72 0.11 262 / 0.6)" class="process-code-line-1"/>
+												<rect x="14" y="40" width="25" height="3" rx="1.5" fill="oklch(0.42 0.15 262 / 0.4)" class="process-code-line-2"/>
+												<rect x="14" y="48" width="40" height="3" rx="1.5" fill="oklch(0.42 0.15 262 / 0.4)" class="process-code-line-3"/>
 												<!-- Blinking cursor -->
-												<rect x="56" y="48" width="2" height="3" rx="0.5" fill="oklch(0.6 0.18 180)" class="process-cursor-blink"/>
+												<rect x="56" y="48" width="2" height="3" rx="0.5" fill="oklch(0.72 0.11 262)" class="process-cursor-blink"/>
 											</svg>
 										{:else}
 											<!-- Launch: animated rocket with exhaust -->
 											<svg width="80" height="80" viewBox="0 0 80 80" class="process-anim-rocket">
 												<!-- Exhaust particles -->
-												<circle cx="32" cy="62" r="4" fill="oklch(0.75 0.18 50 / 0.5)" class="process-exhaust-1"/>
-												<circle cx="40" cy="68" r="3" fill="oklch(0.65 0.2 25 / 0.4)" class="process-exhaust-2"/>
-												<circle cx="36" cy="72" r="5" fill="oklch(0.75 0.18 50 / 0.3)" class="process-exhaust-3"/>
+												<circle cx="32" cy="62" r="4" fill="oklch(0.72 0.11 262 / 0.5)" class="process-exhaust-1"/>
+												<circle cx="40" cy="68" r="3" fill="oklch(0.72 0.11 262 / 0.4)" class="process-exhaust-2"/>
+												<circle cx="36" cy="72" r="5" fill="oklch(0.72 0.11 262 / 0.3)" class="process-exhaust-3"/>
 												<!-- Rocket body -->
-												<path d="M40 10c-6 8-10 20-10 30l6 8h8l6-8c0-10-4-22-10-30z" fill="oklch(0.6 0.20 145)" opacity="0.8"/>
+												<path d="M40 10c-6 8-10 20-10 30l6 8h8l6-8c0-10-4-22-10-30z" fill="oklch(0.72 0.11 262)" opacity="0.8"/>
 												<!-- Rocket window -->
-												<circle cx="40" cy="28" r="5" fill="oklch(0.85 0.12 200)" opacity="0.7"/>
+												<circle cx="40" cy="28" r="5" fill="oklch(0.72 0.11 262)" opacity="0.7"/>
 												<!-- Fins -->
-												<path d="M30 40l-6 12 6-4z" fill="oklch(0.55 0.24 260 / 0.6)"/>
-												<path d="M50 40l6 12-6-4z" fill="oklch(0.55 0.24 260 / 0.6)"/>
+												<path d="M30 40l-6 12 6-4z" fill="oklch(0.42 0.15 262 / 0.6)"/>
+												<path d="M50 40l6 12-6-4z" fill="oklch(0.42 0.15 262 / 0.6)"/>
 												<!-- Stars -->
-												<circle cx="15" cy="15" r="1.5" fill="oklch(0.75 0.18 85)" class="process-star-1"/>
-												<circle cx="65" cy="22" r="1" fill="oklch(0.75 0.18 85)" class="process-star-2"/>
-												<circle cx="60" cy="50" r="1.5" fill="oklch(0.75 0.18 85)" class="process-star-3"/>
+												<circle cx="15" cy="15" r="1.5" fill="oklch(0.72 0.11 262)" class="process-star-1"/>
+												<circle cx="65" cy="22" r="1" fill="oklch(0.72 0.11 262)" class="process-star-2"/>
+												<circle cx="60" cy="50" r="1.5" fill="oklch(0.72 0.11 262)" class="process-star-3"/>
 											</svg>
 										{/if}
 									</div>
@@ -1010,7 +995,6 @@
      ==================================================== -->
 <Section padding="lg" background="muted" class="relative overflow-hidden">
 	<!-- Section glow -->
-	<div class="absolute top-0 right-0 w-[400px] h-[400px] testimonial-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
@@ -1018,14 +1002,14 @@
 				<!-- Large decorative quote mark -->
 				<div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[120px] leading-none font-serif text-primary/[0.06] pointer-events-none select-none" aria-hidden="true">&ldquo;</div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'Client Reviews' : 'Müşteri Yorumları'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
 					{#if isEn}
-						What Clients <span class="testimonial-gradient-text">Say</span>
+						What Clients Say
 					{:else}
-						Müşterilerimiz Ne <span class="testimonial-gradient-text">Diyor?</span>
+						Müşterilerimiz Ne Diyor?
 					{/if}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
@@ -1097,15 +1081,14 @@
      ==================================================== -->
 <Section padding="lg" class="relative overflow-hidden">
 	<!-- Section glow -->
-	<div class="absolute bottom-0 left-0 w-[400px] h-[400px] industry-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-16">
-				<Badge variant="outline" class="mb-6 border-accent/40 text-accent bg-accent/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'Industry Solutions' : 'Sektörel Çözümler'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
 					{isEn ? 'Websites for Every Industry' : 'Her Sektöre Özel Web Site Yapımı'}
 				</h2>
 				<p class="mt-4 text-lg text-muted-foreground">
@@ -1145,20 +1128,20 @@
 							<!-- Heartbeat line -->
 							<div class="absolute top-5 right-4 opacity-0 group-hover:opacity-50 transition-opacity duration-500" aria-hidden="true">
 								<svg width="60" height="20" viewBox="0 0 60 20" fill="none">
-									<path d="M0 10 L15 10 L20 2 L25 18 L30 6 L35 14 L40 10 L60 10" stroke="oklch(0.7 0.15 180)" stroke-width="1.5" fill="none" class="heartbeat-line" />
+									<path d="M0 10 L15 10 L20 2 L25 18 L30 6 L35 14 L40 10 L60 10" stroke="oklch(0.72 0.11 262)" stroke-width="1.5" fill="none" class="heartbeat-line" />
 								</svg>
 							</div>
 						{:else if industry.color === 'startup'}
 							<!-- Lightning flash -->
 							<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-60 transition-opacity duration-300" aria-hidden="true">
-								<svg width="16" height="24" viewBox="0 0 16 24" fill="oklch(0.75 0.18 300 / 0.6)" class="lightning-flash">
+								<svg width="16" height="24" viewBox="0 0 16 24" fill="oklch(0.72 0.11 262 / 0.6)" class="lightning-flash">
 									<path d="M9 0L0 14h7l-2 10 11-14H9l2-10z" />
 								</svg>
 							</div>
 						{:else if industry.color === 'ecommerce'}
 							<!-- Shopping bag bounce -->
 							<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-50 transition-opacity duration-500" aria-hidden="true">
-								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="oklch(0.7 0.18 150)" stroke-width="1.5" class="bag-bounce"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" /></svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="oklch(0.72 0.11 262)" stroke-width="1.5" class="bag-bounce"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0" /></svg>
 							</div>
 						{/if}
 					</div>
@@ -1175,20 +1158,18 @@
      ==================================================== -->
 <Section padding="lg" background="muted" class="relative overflow-hidden">
 	<!-- Decorative elements -->
-	<div class="absolute top-12 right-[5%] w-40 h-40 rounded-full border border-primary/5 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-12 left-[3%] w-24 h-24 rounded-full border border-accent/5 pointer-events-none" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? 'FAQ' : 'SSS'}
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
 					{#if isEn}
-						Frequently Asked <span class="faq-gradient-text">Questions</span>
+						Frequently Asked Questions
 					{:else}
-						Sık Sorulan <span class="faq-gradient-text">Sorular</span>
+						Sık Sorulan Sorular
 					{/if}
 				</h2>
 				<!-- Decorative divider -->
@@ -1257,10 +1238,10 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center mb-10">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Blog
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
 					{isEn ? 'Latest Articles' : 'Son Yazılar'}
 				</h2>
 				<p class="text-muted-foreground mt-3 max-w-xl mx-auto">
@@ -1308,7 +1289,6 @@
      ==================================================== -->
 <Section padding="lg" class="relative overflow-hidden">
 	<div class="absolute inset-0 -z-10" aria-hidden="true">
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] cta-glow rounded-full"></div>
 		<!-- Animated rings -->
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full border border-primary/10 cta-ring-1"></div>
 		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-primary/5 cta-ring-2"></div>
@@ -1321,14 +1301,14 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{isEn ? "Let's Talk" : 'Konuşalım'}
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-2">
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-2">
 					{#if isEn}
-						Let's Talk About <span class="cta-gradient-text">Your Project</span>
+						Let's Talk About Your Project
 					{:else}
-						<span class="cta-gradient-text">Projenizi</span> Konuşalım
+						Projenizi Konuşalım
 					{/if}
 				</h2>
 				<!-- Decorative line -->
@@ -1429,127 +1409,79 @@
 	}
 
 	/* ===== Section-specific glows ===== */
-	.pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.08) 0%, transparent 70%);
-	}
-	:global(.dark) .pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.12) 0%, transparent 70%);
-	}
-	.testimonial-glow {
-		background: radial-gradient(ellipse, oklch(0.6 0.18 260 / 0.06) 0%, transparent 70%);
-	}
-	:global(.dark) .testimonial-glow {
-		background: radial-gradient(ellipse, oklch(0.6 0.18 260 / 0.10) 0%, transparent 70%);
-	}
-	.industry-glow {
-		background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.06) 0%, transparent 70%);
-	}
-	:global(.dark) .industry-glow {
-		background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.10) 0%, transparent 70%);
-	}
-	.cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%);
-	}
-	:global(.dark) .cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%);
-	}
 
 	/* ===== Case Study Columns ===== */
-	.case-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .case-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* ===== Pricing section ===== */
 	.pricing-grid-bg {
 		background-image:
-			linear-gradient(oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px),
-			linear-gradient(90deg, oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px);
+			linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px),
+			linear-gradient(90deg, oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px);
 		background-size: 40px 40px;
-	}
-	.pricing-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.50 0.20 200));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .pricing-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.68 0.18 200));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
 	}
 
 	/* ===== Industry card colors ===== */
 	/* Corporate - Navy blue */
-	.industry-icon-corporate { background: oklch(0.55 0.20 260 / 0.1); }
-	.industry-icon-text-corporate { color: oklch(0.55 0.20 260); }
-	:global(.dark) .industry-icon-corporate { background: oklch(0.65 0.18 260 / 0.2); }
-	:global(.dark) .industry-icon-text-corporate { color: oklch(0.75 0.15 260); }
-	.industry-corporate:hover .industry-icon-corporate { background: oklch(0.55 0.20 260); }
+	.industry-icon-corporate { background: oklch(0.42 0.15 262 / 0.1); }
+	.industry-icon-text-corporate { color: oklch(0.42 0.15 262); }
+	:global(.dark) .industry-icon-corporate { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-corporate { color: oklch(0.72 0.11 262); }
+	.industry-corporate:hover .industry-icon-corporate { background: oklch(0.42 0.15 262); }
 	.industry-corporate:hover .industry-icon-text-corporate { color: white; }
-	.industry-bg-corporate { background: radial-gradient(ellipse at top right, oklch(0.55 0.20 260 / 0.04) 0%, transparent 60%); }
+	.industry-bg-corporate { background: radial-gradient(ellipse at top right, oklch(0.42 0.15 262 / 0.04) 0%, transparent 60%); }
 
 	/* E-commerce - Green */
-	.industry-icon-ecommerce { background: oklch(0.7 0.18 150 / 0.1); }
-	.industry-icon-text-ecommerce { color: oklch(0.6 0.18 150); }
-	:global(.dark) .industry-icon-ecommerce { background: oklch(0.7 0.18 150 / 0.2); }
-	:global(.dark) .industry-icon-text-ecommerce { color: oklch(0.75 0.15 150); }
-	.industry-ecommerce:hover .industry-icon-ecommerce { background: oklch(0.6 0.18 150); }
+	.industry-icon-ecommerce { background: oklch(0.72 0.11 262 / 0.1); }
+	.industry-icon-text-ecommerce { color: oklch(0.72 0.11 262); }
+	:global(.dark) .industry-icon-ecommerce { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-ecommerce { color: oklch(0.72 0.11 262); }
+	.industry-ecommerce:hover .industry-icon-ecommerce { background: oklch(0.72 0.11 262); }
 	.industry-ecommerce:hover .industry-icon-text-ecommerce { color: white; }
-	.industry-bg-ecommerce { background: radial-gradient(ellipse at top right, oklch(0.7 0.18 150 / 0.04) 0%, transparent 60%); }
+	.industry-bg-ecommerce { background: radial-gradient(ellipse at top right, oklch(0.72 0.11 262 / 0.04) 0%, transparent 60%); }
 
 	/* Restaurant - Warm orange */
-	.industry-icon-restaurant { background: oklch(0.75 0.16 60 / 0.1); }
-	.industry-icon-text-restaurant { color: oklch(0.65 0.18 50); }
-	:global(.dark) .industry-icon-restaurant { background: oklch(0.75 0.16 60 / 0.2); }
-	:global(.dark) .industry-icon-text-restaurant { color: oklch(0.8 0.14 60); }
-	.industry-restaurant:hover .industry-icon-restaurant { background: oklch(0.65 0.18 50); }
+	.industry-icon-restaurant { background: oklch(0.72 0.11 262 / 0.1); }
+	.industry-icon-text-restaurant { color: oklch(0.72 0.11 262); }
+	:global(.dark) .industry-icon-restaurant { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-restaurant { color: oklch(0.72 0.11 262); }
+	.industry-restaurant:hover .industry-icon-restaurant { background: oklch(0.72 0.11 262); }
 	.industry-restaurant:hover .industry-icon-text-restaurant { color: white; }
-	.industry-bg-restaurant { background: radial-gradient(ellipse at top right, oklch(0.75 0.16 60 / 0.04) 0%, transparent 60%); }
+	.industry-bg-restaurant { background: radial-gradient(ellipse at top right, oklch(0.72 0.11 262 / 0.04) 0%, transparent 60%); }
 
 	/* Healthcare - Teal */
-	.industry-icon-healthcare { background: oklch(0.7 0.15 180 / 0.1); }
-	.industry-icon-text-healthcare { color: oklch(0.6 0.15 180); }
-	:global(.dark) .industry-icon-healthcare { background: oklch(0.7 0.15 180 / 0.2); }
-	:global(.dark) .industry-icon-text-healthcare { color: oklch(0.75 0.12 180); }
-	.industry-healthcare:hover .industry-icon-healthcare { background: oklch(0.6 0.15 180); }
+	.industry-icon-healthcare { background: oklch(0.72 0.11 262 / 0.1); }
+	.industry-icon-text-healthcare { color: oklch(0.72 0.11 262); }
+	:global(.dark) .industry-icon-healthcare { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-healthcare { color: oklch(0.72 0.11 262); }
+	.industry-healthcare:hover .industry-icon-healthcare { background: oklch(0.72 0.11 262); }
 	.industry-healthcare:hover .industry-icon-text-healthcare { color: white; }
-	.industry-bg-healthcare { background: radial-gradient(ellipse at top right, oklch(0.7 0.15 180 / 0.04) 0%, transparent 60%); }
+	.industry-bg-healthcare { background: radial-gradient(ellipse at top right, oklch(0.72 0.11 262 / 0.04) 0%, transparent 60%); }
 
 	/* Startup - Electric purple */
-	.industry-icon-startup { background: oklch(0.65 0.22 300 / 0.1); }
-	.industry-icon-text-startup { color: oklch(0.55 0.22 300); }
-	:global(.dark) .industry-icon-startup { background: oklch(0.65 0.22 300 / 0.2); }
-	:global(.dark) .industry-icon-text-startup { color: oklch(0.75 0.18 300); }
-	.industry-startup:hover .industry-icon-startup { background: oklch(0.55 0.22 300); }
+	.industry-icon-startup { background: oklch(0.72 0.11 262 / 0.1); }
+	.industry-icon-text-startup { color: oklch(0.42 0.15 262); }
+	:global(.dark) .industry-icon-startup { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-startup { color: oklch(0.72 0.11 262); }
+	.industry-startup:hover .industry-icon-startup { background: oklch(0.42 0.15 262); }
 	.industry-startup:hover .industry-icon-text-startup { color: white; }
-	.industry-bg-startup { background: radial-gradient(ellipse at top right, oklch(0.65 0.22 300 / 0.04) 0%, transparent 60%); }
+	.industry-bg-startup { background: radial-gradient(ellipse at top right, oklch(0.72 0.11 262 / 0.04) 0%, transparent 60%); }
 
 	/* Portfolio - Rose */
-	.industry-icon-portfolio { background: oklch(0.65 0.18 350 / 0.1); }
-	.industry-icon-text-portfolio { color: oklch(0.6 0.20 350); }
-	:global(.dark) .industry-icon-portfolio { background: oklch(0.65 0.18 350 / 0.2); }
-	:global(.dark) .industry-icon-text-portfolio { color: oklch(0.75 0.15 350); }
-	.industry-portfolio:hover .industry-icon-portfolio { background: oklch(0.6 0.20 350); }
+	.industry-icon-portfolio { background: oklch(0.72 0.11 262 / 0.1); }
+	.industry-icon-text-portfolio { color: oklch(0.72 0.11 262); }
+	:global(.dark) .industry-icon-portfolio { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .industry-icon-text-portfolio { color: oklch(0.72 0.11 262); }
+	.industry-portfolio:hover .industry-icon-portfolio { background: oklch(0.72 0.11 262); }
 	.industry-portfolio:hover .industry-icon-text-portfolio { color: white; }
-	.industry-bg-portfolio { background: radial-gradient(ellipse at top right, oklch(0.65 0.18 350 / 0.04) 0%, transparent 60%); }
+	.industry-bg-portfolio { background: radial-gradient(ellipse at top right, oklch(0.72 0.11 262 / 0.04) 0%, transparent 60%); }
 
 	/* Industry hover shadow colors */
-	.industry-corporate:hover { box-shadow: 0 20px 40px oklch(0.55 0.20 260 / 0.1); transform: translateY(-4px); }
-	.industry-ecommerce:hover { box-shadow: 0 20px 40px oklch(0.6 0.18 150 / 0.1); transform: translateY(-4px); }
-	.industry-restaurant:hover { box-shadow: 0 20px 40px oklch(0.65 0.18 50 / 0.1); transform: translateY(-4px); }
-	.industry-healthcare:hover { box-shadow: 0 20px 40px oklch(0.6 0.15 180 / 0.1); transform: translateY(-4px); }
-	.industry-startup:hover { box-shadow: 0 20px 40px oklch(0.55 0.22 300 / 0.1); transform: translateY(-4px); }
-	.industry-portfolio:hover { box-shadow: 0 20px 40px oklch(0.6 0.20 350 / 0.1); transform: translateY(-4px); }
+	.industry-corporate:hover { box-shadow: 0 20px 40px oklch(0.42 0.15 262 / 0.1); transform: translateY(-4px); }
+	.industry-ecommerce:hover { box-shadow: 0 20px 40px oklch(0.72 0.11 262 / 0.1); transform: translateY(-4px); }
+	.industry-restaurant:hover { box-shadow: 0 20px 40px oklch(0.72 0.11 262 / 0.1); transform: translateY(-4px); }
+	.industry-healthcare:hover { box-shadow: 0 20px 40px oklch(0.72 0.11 262 / 0.1); transform: translateY(-4px); }
+	.industry-startup:hover { box-shadow: 0 20px 40px oklch(0.42 0.15 262 / 0.1); transform: translateY(-4px); }
+	.industry-portfolio:hover { box-shadow: 0 20px 40px oklch(0.72 0.11 262 / 0.1); transform: translateY(-4px); }
 
 	/* ===== Micro-animations ===== */
 
@@ -1697,8 +1629,8 @@
 	.road-line {
 		background: repeating-linear-gradient(
 			to bottom,
-			oklch(0.55 0.24 260 / 0.25) 0px,
-			oklch(0.55 0.24 260 / 0.25) 12px,
+			oklch(0.42 0.15 262 / 0.25) 0px,
+			oklch(0.42 0.15 262 / 0.25) 12px,
 			transparent 12px,
 			transparent 24px
 		);
@@ -1706,114 +1638,59 @@
 	:global(.dark) .road-line {
 		background: repeating-linear-gradient(
 			to bottom,
-			oklch(0.68 0.18 260 / 0.3) 0px,
-			oklch(0.68 0.18 260 / 0.3) 12px,
+			oklch(0.72 0.11 262 / 0.3) 0px,
+			oklch(0.72 0.11 262 / 0.3) 12px,
 			transparent 12px,
 			transparent 24px
 		);
 	}
 
 	/* ===== Process gradient heading ===== */
-	.process-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 300));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .process-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.75 0.18 300));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* Process floating decorations */
-	.process-float-1 { animation: process-float 6s ease-in-out infinite; }
-	.process-float-2 { animation: process-float 8s ease-in-out infinite reverse; }
-	.process-float-3 { animation: process-float 4s ease-in-out infinite; }
-	@keyframes process-float {
-		0%, 100% { transform: translateY(0); opacity: 0.4; }
-		50% { transform: translateY(-12px); opacity: 0.8; }
-	}
 
 	/* ===== Process step colors ===== */
 	/* Discovery - Blue */
-	.process-step-discovery-bg { background: oklch(0.55 0.24 260); }
-	.process-step-discovery-shadow { box-shadow: 0 8px 24px oklch(0.55 0.24 260 / 0.35); }
-	.process-step-discovery-icon { background: oklch(0.55 0.24 260 / 0.1); }
-	.process-step-discovery-icon-text { color: oklch(0.55 0.24 260); }
-	.process-step-discovery-card:hover { border-color: oklch(0.55 0.24 260 / 0.3); }
-	:global(.dark) .process-step-discovery-icon { background: oklch(0.65 0.20 260 / 0.2); }
-	:global(.dark) .process-step-discovery-icon-text { color: oklch(0.72 0.18 260); }
+	.process-step-discovery-bg { background: oklch(0.42 0.15 262); }
+	.process-step-discovery-shadow { box-shadow: 0 8px 24px oklch(0.42 0.15 262 / 0.35); }
+	.process-step-discovery-icon { background: oklch(0.42 0.15 262 / 0.1); }
+	.process-step-discovery-icon-text { color: oklch(0.42 0.15 262); }
+	.process-step-discovery-card:hover { border-color: oklch(0.42 0.15 262 / 0.3); }
+	:global(.dark) .process-step-discovery-icon { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .process-step-discovery-icon-text { color: oklch(0.72 0.11 262); }
 
 	/* Design - Purple */
-	.process-step-design-bg { background: oklch(0.55 0.22 300); }
-	.process-step-design-shadow { box-shadow: 0 8px 24px oklch(0.55 0.22 300 / 0.35); }
-	.process-step-design-icon { background: oklch(0.55 0.22 300 / 0.1); }
-	.process-step-design-icon-text { color: oklch(0.55 0.22 300); }
-	.process-step-design-card:hover { border-color: oklch(0.55 0.22 300 / 0.3); }
-	:global(.dark) .process-step-design-icon { background: oklch(0.65 0.20 300 / 0.2); }
-	:global(.dark) .process-step-design-icon-text { color: oklch(0.72 0.18 300); }
+	.process-step-design-bg { background: oklch(0.42 0.15 262); }
+	.process-step-design-shadow { box-shadow: 0 8px 24px oklch(0.42 0.15 262 / 0.35); }
+	.process-step-design-icon { background: oklch(0.42 0.15 262 / 0.1); }
+	.process-step-design-icon-text { color: oklch(0.42 0.15 262); }
+	.process-step-design-card:hover { border-color: oklch(0.42 0.15 262 / 0.3); }
+	:global(.dark) .process-step-design-icon { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .process-step-design-icon-text { color: oklch(0.72 0.11 262); }
 
 	/* Develop - Teal */
-	.process-step-develop-bg { background: oklch(0.6 0.18 180); }
-	.process-step-develop-shadow { box-shadow: 0 8px 24px oklch(0.6 0.18 180 / 0.35); }
-	.process-step-develop-icon { background: oklch(0.6 0.18 180 / 0.1); }
-	.process-step-develop-icon-text { color: oklch(0.6 0.18 180); }
-	.process-step-develop-card:hover { border-color: oklch(0.6 0.18 180 / 0.3); }
-	:global(.dark) .process-step-develop-icon { background: oklch(0.7 0.15 180 / 0.2); }
-	:global(.dark) .process-step-develop-icon-text { color: oklch(0.75 0.14 180); }
+	.process-step-develop-bg { background: oklch(0.72 0.11 262); }
+	.process-step-develop-shadow { box-shadow: 0 8px 24px oklch(0.72 0.11 262 / 0.35); }
+	.process-step-develop-icon { background: oklch(0.72 0.11 262 / 0.1); }
+	.process-step-develop-icon-text { color: oklch(0.72 0.11 262); }
+	.process-step-develop-card:hover { border-color: oklch(0.72 0.11 262 / 0.3); }
+	:global(.dark) .process-step-develop-icon { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .process-step-develop-icon-text { color: oklch(0.72 0.11 262); }
 
 	/* Launch - Green */
-	.process-step-launch-bg { background: oklch(0.6 0.20 145); }
-	.process-step-launch-shadow { box-shadow: 0 8px 24px oklch(0.6 0.20 145 / 0.35); }
-	.process-step-launch-icon { background: oklch(0.6 0.20 145 / 0.1); }
-	.process-step-launch-icon-text { color: oklch(0.6 0.20 145); }
-	.process-step-launch-card:hover { border-color: oklch(0.6 0.20 145 / 0.3); }
-	:global(.dark) .process-step-launch-icon { background: oklch(0.7 0.18 145 / 0.2); }
-	:global(.dark) .process-step-launch-icon-text { color: oklch(0.75 0.15 145); }
+	.process-step-launch-bg { background: oklch(0.72 0.11 262); }
+	.process-step-launch-shadow { box-shadow: 0 8px 24px oklch(0.72 0.11 262 / 0.35); }
+	.process-step-launch-icon { background: oklch(0.72 0.11 262 / 0.1); }
+	.process-step-launch-icon-text { color: oklch(0.72 0.11 262); }
+	.process-step-launch-card:hover { border-color: oklch(0.72 0.11 262 / 0.3); }
+	:global(.dark) .process-step-launch-icon { background: oklch(0.72 0.11 262 / 0.2); }
+	:global(.dark) .process-step-launch-icon-text { color: oklch(0.72 0.11 262); }
 
 	/* ===== Testimonial gradient heading ===== */
-	.testimonial-gradient-text {
-		background: linear-gradient(135deg, oklch(0.7 0.16 85), oklch(0.65 0.18 50));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .testimonial-gradient-text {
-		background: linear-gradient(135deg, oklch(0.8 0.14 85), oklch(0.78 0.15 50));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* ===== FAQ gradient heading ===== */
-	.faq-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .faq-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* ===== CTA gradient heading ===== */
-	.cta-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.50 0.20 160));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .cta-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.68 0.18 160));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* CTA animated rings */
 	.cta-ring-1 {
