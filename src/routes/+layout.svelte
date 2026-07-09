@@ -1,4 +1,6 @@
 <script lang="ts">
+	import '@fontsource-variable/fraunces';
+	import '@fontsource-variable/instrument-sans';
 	import '../app.css';
 	import { Header, Footer, WhatsAppButton } from '$lib/components/layout';
 	import { afterNavigate } from '$app/navigation';

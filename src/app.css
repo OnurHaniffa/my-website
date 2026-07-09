@@ -183,6 +183,10 @@
   /* Custom max-widths */
   --max-width-content: 42.5rem; /* 680px - optimal reading width */
   --max-width-container: 75rem; /* 1200px - page container */
+
+  /* Editorial type system */
+  --font-sans: 'Instrument Sans Variable', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
 }
 
 @layer base {
@@ -191,7 +195,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
