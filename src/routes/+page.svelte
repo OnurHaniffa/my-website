@@ -499,15 +499,15 @@
      HERO — Editorial split (type left, work right)
      ==================================================== -->
 <Section padding="none" class="relative flex flex-col justify-center border-b border-border">
-	<Container class="relative pt-16 pb-14 lg:pt-24 lg:pb-20">
-		<div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+	<Container class="relative pt-10 pb-12 lg:pt-14 lg:pb-16">
+		<div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 			<!-- Left: editorial type -->
 			<div class="lg:col-span-7">
 				<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
 					{isEn ? 'Web Designer — Istanbul' : 'Web Tasarımcı — İstanbul'}
 				</p>
 
-				<h1 class="hero-reveal font-display font-semibold text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight mt-7" style="--stagger: 1">
+				<h1 class="hero-reveal font-display font-semibold text-[clamp(2.4rem,5vw,4.1rem)] leading-[1.05] tracking-tight mt-5" style="--stagger: 1">
 					{#if isEn}
 						Professional Web Design in Istanbul
 					{:else}
@@ -515,7 +515,7 @@
 					{/if}
 				</h1>
 
-				<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[54ch] mt-7" style="--stagger: 2">
+				<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[54ch] mt-6" style="--stagger: 2">
 					{#if isEn}
 						I design and build fast, modern websites for businesses across Turkey and worldwide. Every site is custom-built, SEO-optimized, and designed to convert.
 					{:else}
@@ -524,14 +524,14 @@
 				</p>
 
 				<!-- Facts line -->
-				<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-9 pt-5 border-t border-border" style="--stagger: 3">
+				<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-8 pt-4 border-t border-border" style="--stagger: 3">
 					{isEn
 						? '50+ projects · 5.0 Google (9 reviews) · from 15,000 TL · 2–6 weeks'
 						: "50+ proje · 5.0 Google (9 değerlendirme) · 15.000 TL'den · 2–6 hafta"}
 				</p>
 
 				<!-- CTAs -->
-				<div class="hero-reveal flex flex-wrap items-center gap-7 mt-8" style="--stagger: 4">
+				<div class="hero-reveal flex flex-wrap items-center gap-7 mt-7" style="--stagger: 4">
 					<a
 						href={whatsappUrl}
 						target="_blank"
@@ -554,19 +554,19 @@
 			</div>
 
 			<!-- Right: real work, tall + flat, in the first viewport -->
-			<figure class="hero-reveal lg:col-span-5 max-w-[320px] lg:max-w-[360px] mx-auto lg:ml-auto lg:mr-0" style="--stagger: 5">
-				<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
+			<figure class="hero-reveal lg:col-span-5 flex flex-col items-center lg:items-end" style="--stagger: 5">
+				<a href={getLocalePath('/work')} class="block bg-secondary/50 border border-border p-3 hover:border-foreground/40 transition-colors duration-200">
 					<img
 						src="/images/projects/joe-fresh-mobile.png"
 						alt={isEn ? 'Designs by Joe — portfolio website by Onur Haniffa' : 'Designs by Joe — Onur Haniffa tarafından tasarlanan portfolyo sitesi'}
-						class="w-full h-auto"
+						class="w-auto h-auto max-h-[62vh] lg:max-h-[min(560px,calc(100vh-260px))]"
 						loading="eager"
 						fetchpriority="high"
 						width="390"
 						height="844"
 					/>
 				</a>
-				<figcaption class="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground text-center lg:text-right">
+				<figcaption class="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
 					Designs by Joe — designsbyjoe.net
 				</figcaption>
 			</figure>
