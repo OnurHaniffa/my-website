@@ -180,7 +180,7 @@
 
 				<div class="flex flex-wrap gap-8 sm:gap-10 py-2">
 					<div class="text-center">
-						<p class="text-3xl font-black text-primary tabular-nums"><Counter value={50} duration={2000} suffix="+" /></p>
+						<p class="text-3xl font-black tabular-nums"><Counter value={50} duration={2000} suffix="+" /></p>
 						<p class="text-xs text-muted-foreground mt-0.5">Tamamlanmış Proje</p>
 					</div>
 					<div class="hidden sm:block w-px bg-border self-stretch"></div>

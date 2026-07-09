@@ -107,7 +107,7 @@
 				'Müşteri portali / kurumsal giriş paneli',
 				'Yüksek seviye performance + güvenlik',
 				'KVKK + GDPR uyum altyapısı',
-				'Gelişmiş analytics + custom dashboard',
+				'Gelişmiş analiz + özel yönetim paneli',
 				'4-6+ hafta teslimat',
 				'6 ay ücretsiz destek + SLA opsiyonu'
 			],
@@ -272,6 +272,7 @@
 	padding="none"
 	class="relative overflow-hidden min-h-[calc(100vh-85px)] flex flex-col justify-center"
 >
+	<span aria-hidden="true" class="hero-glyph font-display italic select-none pointer-events-none absolute -right-[6%] -top-[12%] leading-none text-foreground/[0.045]">&amp;</span>
 	<div class="absolute inset-0 -z-10" aria-hidden="true">
 		<div class="absolute -top-[100px] -left-[150px] w-[800px] h-[700px] kurumsal-glow-topleft rounded-full"></div>
 		<div class="absolute -top-[200px] -right-[200px] w-[900px] h-[900px] kurumsal-glow-accent rounded-full"></div>
@@ -306,7 +307,7 @@
 
 				<div class="flex flex-wrap gap-8 sm:gap-10 py-2">
 					<div class="text-center">
-						<p class="text-3xl font-black text-primary tabular-nums">
+						<p class="text-3xl font-black tabular-nums">
 							<Counter value={50} duration={2000} suffix="+" />
 						</p>
 						<p class="text-xs text-muted-foreground mt-0.5">Tamamlanmış Proje</p>
