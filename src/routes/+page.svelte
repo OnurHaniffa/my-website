@@ -144,12 +144,12 @@
 			solutionEn: [
 				'Dynamic gallery with lazy-loaded images and filtering',
 				'Built-in cart system for print sales',
-				'3× faster load times, 40% more inquiries'
+				'Loads in under 2 seconds on mobile'
 			],
 			solutionTr: [
 				'Tembel yüklemeli dinamik galeri ve filtreleme',
 				'Baskı satışı için entegre sepet sistemi',
-				'3 kat daha hızlı, taleplerde %40 artış'
+				'Mobilde 2 saniyenin altında yükleme'
 			],
 			tech: ['SvelteKit', 'Tailwind', 'Stripe']
 		},
@@ -173,19 +173,19 @@
 			solutionEn: [
 				'Conversion-focused design with live demo embed',
 				'Interactive pricing calculator with CRM integration',
-				'2.8% conversion rate in the first month'
+				'Self-serve demo and trial flow — no sales call needed'
 			],
 			solutionTr: [
 				'Canlı demo ile dönüşüm odaklı tasarım',
 				'CRM entegrasyonlu interaktif fiyat hesaplayıcı',
-				'İlk ayda %2.8 dönüşüm oranı'
+				'Satış görüşmesi gerektirmeyen demo ve deneme akışı'
 			],
 			tech: ['SvelteKit', 'OpenAI', 'Vercel']
 		},
 		{
 			title: 'Pearl Dental',
-			descEn: 'Modern website for a dental clinic with online booking',
-			descTr: 'Online randevu sistemli modern diş kliniği sitesi',
+			descEn: 'Concept build — dental clinic site with online booking',
+			descTr: 'Konsept çalışma — online randevulu diş kliniği sitesi',
 			screenshot: '/images/projects/dentist-screenshot.jpg',
 			liveUrl: getLocalePath('/work'),
 			theme: 'teal' as const,
@@ -202,12 +202,12 @@
 			solutionEn: [
 				'Appointment booking system integrated with clinic calendar',
 				'Google reviews, before/after gallery, credentials section',
-				'65% of new appointments now come through the website'
+				'Designed to make online booking the primary channel'
 			],
 			solutionTr: [
 				'Klinik takvimi ile entegre randevu sistemi',
 				'Google yorumları, önce/sonra galerisi, hekim bilgileri',
-				'Yeni randevuların %65\'i artık web sitesinden geliyor'
+				'Online randevuyu ana kanal yapacak şekilde tasarlandı'
 			],
 			tech: ['SvelteKit', 'Directus', 'Tailwind']
 		}
@@ -496,78 +496,81 @@
 </svelte:head>
 
 <!-- ====================================================
-     HERO — Editorial
+     HERO — Editorial split (type left, work right)
      ==================================================== -->
 <Section padding="none" class="relative flex flex-col justify-center border-b border-border">
-	<Container class="relative pt-20 pb-14 lg:pt-32 lg:pb-20">
-		<div class="max-w-4xl">
-			<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
-				{isEn ? 'Web Designer — Istanbul' : 'Web Tasarımcı — İstanbul'}
-			</p>
+	<Container class="relative pt-16 pb-14 lg:pt-24 lg:pb-20">
+		<div class="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+			<!-- Left: editorial type -->
+			<div class="lg:col-span-7">
+				<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
+					{isEn ? 'Web Designer — Istanbul' : 'Web Tasarımcı — İstanbul'}
+				</p>
 
-			<h1 class="hero-reveal font-display font-semibold text-[clamp(2.75rem,7.5vw,5.5rem)] leading-[1.04] tracking-tight mt-8" style="--stagger: 1">
-				{#if isEn}
-					Professional Web Design in Istanbul
-				{:else}
-					İstanbul'da Web Tasarım & Geliştirme
-				{/if}
-			</h1>
+				<h1 class="hero-reveal font-display font-semibold text-[clamp(2.5rem,5.5vw,4.5rem)] leading-[1.05] tracking-tight mt-7" style="--stagger: 1">
+					{#if isEn}
+						Professional Web Design in Istanbul
+					{:else}
+						İstanbul'da Web Tasarım & Geliştirme
+					{/if}
+				</h1>
 
-			<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[58ch] mt-8" style="--stagger: 2">
-				{#if isEn}
-					I design and build fast, modern websites for businesses across Turkey and worldwide. Every site is custom-built, SEO-optimized, and designed to convert.
-				{:else}
-					Türkiye genelinde ve dünya çapında kurumsal web sitesi, e-ticaret sitesi ve portfolyo siteleri yapıyorum. SEO uyumlu, mobil uyumlu ve dönüşüm odaklı.
-				{/if}
-			</p>
+				<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[54ch] mt-7" style="--stagger: 2">
+					{#if isEn}
+						I design and build fast, modern websites for businesses across Turkey and worldwide. Every site is custom-built, SEO-optimized, and designed to convert.
+					{:else}
+						Türkiye genelinde ve dünya çapında kurumsal web sitesi, e-ticaret sitesi ve portfolyo siteleri yapıyorum. SEO uyumlu, mobil uyumlu ve dönüşüm odaklı.
+					{/if}
+				</p>
 
-			<!-- Facts line — replaces stat bar + price pill -->
-			<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-10 pt-5 border-t border-border" style="--stagger: 3">
-				{isEn
-					? '50+ projects · 5.0 Google (9 reviews) · from 15,000 TL · 2–6 weeks'
-					: "50+ proje · 5.0 Google (9 değerlendirme) · 15.000 TL'den · 2–6 hafta"}
-			</p>
+				<!-- Facts line -->
+				<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-9 pt-5 border-t border-border" style="--stagger: 3">
+					{isEn
+						? '50+ projects · 5.0 Google (9 reviews) · from 15,000 TL · 2–6 weeks'
+						: "50+ proje · 5.0 Google (9 değerlendirme) · 15.000 TL'den · 2–6 hafta"}
+				</p>
 
-			<!-- CTAs -->
-			<div class="hero-reveal flex flex-wrap items-center gap-7 mt-9" style="--stagger: 4">
-				<a
-					href={whatsappUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
-				>
-					<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-						<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-					</svg>
-					{isEn ? 'Write on WhatsApp' : 'WhatsApp ile Yazın'}
-				</a>
-				<a
-					href={getLocalePath('/work')}
-					class="group inline-flex items-center gap-1.5 text-base font-medium text-foreground underline underline-offset-8 decoration-border hover:decoration-foreground transition-colors duration-200"
-				>
-					{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
-					<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
-				</a>
+				<!-- CTAs -->
+				<div class="hero-reveal flex flex-wrap items-center gap-7 mt-8" style="--stagger: 4">
+					<a
+						href={whatsappUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+						</svg>
+						{isEn ? 'Write on WhatsApp' : 'WhatsApp ile Yazın'}
+					</a>
+					<a
+						href={getLocalePath('/work')}
+						class="group inline-flex items-center gap-1.5 text-base font-medium text-foreground underline underline-offset-8 decoration-border hover:decoration-foreground transition-colors duration-200"
+					>
+						{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
+						<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
+					</a>
+				</div>
 			</div>
-		</div>
 
-		<!-- Work — one flat, real screenshot on the grid -->
-		<figure class="hero-reveal mt-16 lg:mt-24" style="--stagger: 5">
-			<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
-				<img
-					src="/images/projects/joe-fresh-desktop.png"
-					alt={isEn ? 'Designs by Joe — portfolio website by Onur Haniffa' : 'Designs by Joe — Onur Haniffa tarafından tasarlanan portfolyo sitesi'}
-					class="w-full h-auto"
-					loading="eager"
-					fetchpriority="high"
-					width="1600"
-					height="1000"
-				/>
-			</a>
-			<figcaption class="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-				Designs by Joe — designsbyjoe.net
-			</figcaption>
-		</figure>
+			<!-- Right: real work, tall + flat, in the first viewport -->
+			<figure class="hero-reveal lg:col-span-5 max-w-[320px] lg:max-w-[360px] mx-auto lg:ml-auto lg:mr-0" style="--stagger: 5">
+				<a href={getLocalePath('/work')} class="block border border-border hover:border-foreground/40 transition-colors duration-200">
+					<img
+						src="/images/projects/joe-fresh-mobile.png"
+						alt={isEn ? 'Designs by Joe — portfolio website by Onur Haniffa' : 'Designs by Joe — Onur Haniffa tarafından tasarlanan portfolyo sitesi'}
+						class="w-full h-auto"
+						loading="eager"
+						fetchpriority="high"
+						width="390"
+						height="844"
+					/>
+				</a>
+				<figcaption class="mt-3 text-xs uppercase tracking-[0.18em] text-muted-foreground text-center lg:text-right">
+					Designs by Joe — designsbyjoe.net
+				</figcaption>
+			</figure>
+		</div>
 	</Container>
 </Section>
 
