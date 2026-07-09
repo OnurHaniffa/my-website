@@ -62,34 +62,17 @@
 
 	let mobileMenuOpen = $state(false);
 	let scrolled = $state(false);
-	let isDark = $state(false);
 
-	// Initialize theme from localStorage or system preference
+	// Dark mode removed — site is light-only. Clean up any stale dark state
+	// from previous visits so returning visitors get light mode.
 	$effect(() => {
 		if (browser) {
-			const stored = localStorage.getItem('theme');
-			if (stored) {
-				isDark = stored === 'dark';
-			} else {
-				isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-			}
-			updateTheme();
+			document.documentElement.classList.remove('dark');
+			localStorage.removeItem('theme');
 		}
 	});
 
-	function updateTheme() {
-		if (isDark) {
-			document.documentElement.classList.add('dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-		}
-	}
 
-	function toggleTheme() {
-		isDark = !isDark;
-		localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		updateTheme();
-	}
 
 	$effect(() => {
 		if (browser) {
@@ -166,47 +149,6 @@
 				<!-- Language Switcher -->
 				<LanguageSwitcher />
 
-				<!-- Theme Toggle - Pill shaped with sliding indicator -->
-				<button
-					onclick={toggleTheme}
-					class="theme-toggle group relative inline-flex items-center h-9 w-16 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2
-						{isDark
-							? 'bg-secondary'
-							: 'bg-secondary'}"
-					aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-				>
-					<!-- Sliding circle indicator -->
-					<span
-						class="absolute h-7 w-7 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
-							{isDark
-								? 'translate-x-7 bg-foreground text-background'
-								: 'translate-x-0 bg-foreground text-background'}"
-					>
-						<!-- Sun rays (visible in light mode) -->
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="14"
-							height="14"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="transition-all duration-300 {isDark ? 'opacity-0 scale-75' : 'opacity-100 scale-100 text-amber-700'}"
-						>
-							<circle cx="12" cy="12" r="5"/>
-						</svg>
-						<!-- Moon (visible in dark mode) -->
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="14"
-							height="14"
-							viewBox="0 0 24 24"
-							fill="currentColor"
-							class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-background' : 'opacity-0 scale-75'}"
-						>
-							<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-						</svg>
-					</span>
-					<!-- Background decorations -->
-				</button>
 
 				<!-- Call Button — sexy, attention-grabbing, fires gtag event -->
 				<a
@@ -348,50 +290,7 @@
 								<span class="text-[10px] text-muted-foreground/60 uppercase tracking-[0.2em]">{t('nav.appearance')}</span>
 								<div class="flex items-center gap-3">
 									<LanguageSwitcher />
-									<button
-										onclick={toggleTheme}
-										class="relative inline-flex items-center h-10 w-20 rounded-full p-1 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary
-											{isDark
-												? 'bg-secondary'
-												: 'bg-secondary'}"
-										aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-									>
-										<!-- Sliding indicator -->
-										<span
-											class="absolute h-8 w-8 rounded-full shadow-lg transition-all duration-500 ease-out flex items-center justify-center
-												{isDark
-													? 'translate-x-10 bg-foreground'
-													: 'translate-x-0 bg-foreground'}"
-										>
-											<!-- Sun -->
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="16"
-												height="16"
-												viewBox="0 0 24 24"
-												fill="currentColor"
-												class="transition-all duration-300 {isDark ? 'opacity-0 scale-75' : 'opacity-100 scale-100 text-amber-700'}"
-											>
-												<circle cx="12" cy="12" r="5"/>
-											</svg>
-											<!-- Moon -->
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="16"
-												height="16"
-												viewBox="0 0 24 24"
-												fill="currentColor"
-												class="absolute transition-all duration-300 {isDark ? 'opacity-100 scale-100 text-background' : 'opacity-0 scale-75'}"
-											>
-												<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-											</svg>
-										</span>
-										<!-- Stars for dark mode -->
-										<!-- Cloud for light mode -->
-										<span class="absolute right-3 bottom-2 transition-opacity duration-300 {isDark ? 'opacity-0' : 'opacity-100'}">
-											<span class="block w-2 h-2 rounded-full bg-sky-300/70"></span>
-										</span>
-									</button>
+									
 								</div>
 							</div>
 
