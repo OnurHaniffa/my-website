@@ -315,8 +315,8 @@
 	:global(.dark) .bento-card:hover {
 		box-shadow:
 			0 8px 30px -10px rgba(0, 0, 0, 0.4),
-			0 0 0 1px var(--service-color, oklch(0.68 0.18 260)),
-			0 0 25px -5px var(--service-color, oklch(0.68 0.18 260 / 0.3));
+			0 0 0 1px var(--service-color, oklch(0.72 0.11 262)),
+			0 0 25px -5px var(--service-color, oklch(0.72 0.11 262 / 0.3));
 	}
 	.bento-card:focus-visible {
 		outline: 2px solid hsl(var(--ring));
@@ -365,8 +365,8 @@
 			class:translate-y-8={!mounted}
 		>
 			<span class="text-[60px] sm:text-[100px] lg:text-[140px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none block -mb-4 sm:-mb-8">{t('services.watermark')}</span>
-			<h1 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl relative z-10 mb-4">
-				{ps?.hero_heading ?? t('services.hero_heading')} <span class="text-primary">{ps?.hero_highlight ?? t('services.hero_highlight')}</span>
+			<h1 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl relative z-10 mb-4">
+				{ps?.hero_heading ?? t('services.hero_heading')} {ps?.hero_highlight ?? t('services.hero_highlight')}
 			</h1>
 			<p class="text-lg sm:text-xl text-muted-foreground max-w-2xl relative z-10">
 				{ps?.hero_description ?? t('services.hero_description')}

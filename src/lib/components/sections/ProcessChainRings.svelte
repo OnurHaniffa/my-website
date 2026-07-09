@@ -113,7 +113,7 @@
 				The Process
 			</span>
 			<h2 id="process-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-5">
-				From first call to <span class="text-primary">final launch</span>
+				From first call to final launch
 			</h2>
 			<p class="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
 				A transparent, collaborative process designed to eliminate surprises and deliver results.

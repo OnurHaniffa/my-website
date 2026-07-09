@@ -243,9 +243,6 @@
 		<div class="absolute -top-[200px] -right-[200px] w-[900px] h-[900px] eticaret-glow-accent rounded-full"></div>
 		<div class="absolute -bottom-[300px] -left-[300px] w-[800px] h-[800px] eticaret-glow-primary rounded-full"></div>
 	</div>
-	<div aria-hidden="true" class="hidden lg:block absolute top-24 right-[8%] w-80 h-80 rounded-full border border-primary/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute top-44 right-[13%] w-52 h-52 rounded-full border border-accent/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute bottom-24 left-[4%] w-60 h-60 rounded-full border border-primary/5 pointer-events-none"></div>
 
 	<Container class="relative pt-12 pb-12 lg:pt-20 lg:pb-20">
 		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -255,8 +252,8 @@
 					E-Ticaret • Türkiye Pazarı
 				</Badge>
 
-				<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
-					E-Ticaret Sitesi <br class="hidden sm:block" /><span class="text-primary">Yaptırma</span>
+				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
+					E-Ticaret Sitesi <br class="hidden sm:block" />Yaptırma
 				</h1>
 
 				<p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -264,17 +261,14 @@
 				</p>
 
 				<div class="flex flex-wrap gap-2">
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Başlangıç 50.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Başlangıç 50.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Profesyonel 80.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Profesyonel 80.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Enterprise 150.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Enterprise 150.000 TL</span>
 					</a>
 				</div>
 
@@ -358,9 +352,9 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Özellikler</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					E-Ticaret İçin <span class="eticaret-gradient-text">Türkiye Pazarına Özel Altyapı</span>
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">Özellikler</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					E-Ticaret İçin Türkiye Pazarına Özel Altyapı
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					Türkiye'de e-ticaret farklı kurallarla işliyor — ödeme yöntemleri, kargo, KVKK, e-Fatura. Standart "global" çözümler boğuluyor. Lokal altyapı şart.
@@ -389,14 +383,13 @@
 <!-- PRICING -->
 <Section padding="lg" id="fiyatlar" class="relative overflow-hidden bg-muted/30 dark:bg-muted/10">
 	<div class="absolute inset-0 -z-[2] eticaret-grid-bg opacity-[0.04] dark:opacity-[0.05]" aria-hidden="true"></div>
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] eticaret-pricing-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Fiyat Paketleri</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Şeffaf <span class="eticaret-gradient-text">Sabit Fiyat</span>
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">Fiyat Paketleri</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Şeffaf Sabit Fiyat
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					Aylık ödeme yok. Sözleşmede ne yazıyorsa o teslim ediliyor.
@@ -450,9 +443,9 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">SSS</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-					E-Ticaret Hakkında <span class="eticaret-gradient-text">Sık Sorulan Sorular</span>
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">SSS</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
+					E-Ticaret Hakkında Sık Sorulan Sorular
 				</h2>
 			</div>
 		</InView>
@@ -496,9 +489,9 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Teklif Al</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-3">
-					E-Ticaret <span class="eticaret-gradient-text">Sitenizi Konuşalım</span>
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">Teklif Al</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-3">
+					E-Ticaret Sitenizi Konuşalım
 				</h2>
 				<p class="text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
 					WhatsApp'tan yazın, 24 saat içinde projenize özel sabit fiyat teklifi gönderiyorum. Görüşme ücretsiz.
@@ -532,19 +525,7 @@
 {/if}
 
 <style>
-	.eticaret-glow-topleft { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.22) 0%, oklch(0.55 0.24 260 / 0.12) 30%, transparent 75%); }
-	:global(.dark) .eticaret-glow-topleft { background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.30) 0%, oklch(0.68 0.18 260 / 0.16) 30%, transparent 75%); }
-	.eticaret-glow-accent { background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.45) 0%, oklch(0.58 0.22 25 / 0.28) 25%, transparent 72%); }
-	:global(.dark) .eticaret-glow-accent { background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.55) 0%, oklch(0.68 0.20 25 / 0.35) 25%, transparent 72%); }
-	.eticaret-glow-primary { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.38) 0%, oklch(0.55 0.24 260 / 0.22) 30%, transparent 75%); }
-	:global(.dark) .eticaret-glow-primary { background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.48) 0%, oklch(0.68 0.18 260 / 0.28) 30%, transparent 75%); }
-	.eticaret-grid-bg { background-image: linear-gradient(oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px), linear-gradient(90deg, oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px); background-size: 40px 40px; }
-	.eticaret-pricing-glow { background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.08) 0%, transparent 70%); }
-	:global(.dark) .eticaret-pricing-glow { background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.12) 0%, transparent 70%); }
-	.eticaret-cta-glow { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%); }
-	:global(.dark) .eticaret-cta-glow { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%); }
-	.eticaret-gradient-text { background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-	:global(.dark) .eticaret-gradient-text { background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+	.eticaret-grid-bg { background-image: linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px), linear-gradient(90deg, oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px); background-size: 40px 40px; }
 	.cta-ring-1 { animation: ring-pulse 4s ease-in-out infinite; }
 	.cta-ring-2 { animation: ring-pulse 4s ease-in-out infinite 1s; }
 	@keyframes ring-pulse {

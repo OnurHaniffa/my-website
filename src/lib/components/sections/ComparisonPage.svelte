@@ -93,11 +93,11 @@
 					Karşılaştırma · 2026
 				</Badge>
 
-				<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.05]">
+				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.05]">
 					{comparison.optionA.name}
 					<span class="text-muted-foreground font-light text-3xl sm:text-4xl lg:text-5xl">vs</span>
 					<br class="hidden sm:block" />
-					<span class="cmp-gradient-text">{comparison.optionB.name}</span>
+					{comparison.optionB.name}
 				</h1>
 
 				<p class="text-lg text-muted-foreground leading-relaxed">
@@ -146,11 +146,11 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Yan Yana Karşılaştırma
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					{comparison.optionA.name} ve {comparison.optionB.name} <span class="cmp-gradient-text">Hangi Kriterlerde Farklı?</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					{comparison.optionA.name} ve {comparison.optionB.name} Hangi Kriterlerde Farklı?
 				</h2>
 			</div>
 		</InView>
@@ -229,11 +229,11 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Karar Rehberi
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Hangi Senaryoda <span class="cmp-gradient-text">Hangisi Daha Mantıklı?</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Hangi Senaryoda Hangisi Daha Mantıklı?
 				</h2>
 			</div>
 		</InView>
@@ -293,11 +293,11 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-10">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Tasarımcı Notu
-				</Badge>
+				</p>
 				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl">
-					<span class="cmp-gradient-text">Dürüst Görüşüm</span>
+					Dürüst Görüşüm
 				</h2>
 			</div>
 		</InView>
@@ -320,11 +320,11 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					SSS
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-					Sık Sorulan <span class="cmp-gradient-text">Sorular</span>
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
+					Sık Sorulan Sorular
 				</h2>
 			</div>
 		</InView>
@@ -368,9 +368,9 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">Karar Aşamasında mısınız?</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-3">
-					Sizin Senaryonuzda <span class="cmp-gradient-text">Hangisi Daha Doğru?</span>
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">Karar Aşamasında mısınız?</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-3">
+					Sizin Senaryonuzda Hangisi Daha Doğru?
 				</h2>
 				<p class="text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
 					Projenizi 10 dakika konuşup hangi seçeneğin işinize uygun olduğunu söyleyebiliriz. Satış değil — danışma. Görüşme ücretsiz.
@@ -404,16 +404,6 @@
 {/if}
 
 <style>
-	.cmp-glow-topleft { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.22) 0%, oklch(0.55 0.24 260 / 0.12) 30%, transparent 75%); }
-	:global(.dark) .cmp-glow-topleft { background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.30) 0%, oklch(0.68 0.18 260 / 0.16) 30%, transparent 75%); }
-	.cmp-glow-accent { background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.30) 0%, oklch(0.58 0.22 25 / 0.18) 25%, transparent 72%); }
-	:global(.dark) .cmp-glow-accent { background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.40) 0%, oklch(0.68 0.20 25 / 0.22) 25%, transparent 72%); }
-	.cmp-glow-primary { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.32) 0%, oklch(0.55 0.24 260 / 0.18) 30%, transparent 75%); }
-	:global(.dark) .cmp-glow-primary { background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.42) 0%, oklch(0.68 0.18 260 / 0.24) 30%, transparent 75%); }
-	.cmp-cta-glow { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%); }
-	:global(.dark) .cmp-cta-glow { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%); }
-	.cmp-gradient-text { background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-	:global(.dark) .cmp-gradient-text { background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 	.cmp-ring-1 { animation: cmp-ring-pulse 4s ease-in-out infinite; }
 	.cmp-ring-2 { animation: cmp-ring-pulse 4s ease-in-out infinite 1s; }
 	@keyframes cmp-ring-pulse {

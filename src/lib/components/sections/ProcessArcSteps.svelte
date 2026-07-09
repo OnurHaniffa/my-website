@@ -207,7 +207,7 @@
 				How It Works
 			</span>
 			<h2 id="process-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
-				My <span class="text-primary">Process</span>
+				My Process
 			</h2>
 		</div>
 

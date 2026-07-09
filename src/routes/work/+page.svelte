@@ -170,18 +170,6 @@
 		transform: translateX(calc(100% + 6px));
 	}
 
-	.gradient-text-dental {
-		background: linear-gradient(135deg, #4a7c59 0%, #2d5a3d 50%, #c4a574 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.gradient-text-joe {
-		background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #c9a227 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	@media (prefers-reduced-motion: reduce) {
 		.animate-fade-in {
@@ -210,7 +198,7 @@
 				>
 					<span class="hidden sm:block text-[100px] sm:text-[140px] lg:text-[200px] font-black leading-[0.8] text-foreground/5 dark:text-foreground/[0.08] select-none -mb-8 sm:-mb-12 lg:-mb-16">{t('work.watermark')}</span>
 					<h1 class="text-3xl font-bold tracking-tight sm:text-5xl lg:text-6xl relative z-10">
-						<span class="sm:hidden">{t('work.watermark')}</span> {ps?.hero_heading ?? t('work.hero_heading')} <span class="text-primary">{ps?.hero_highlight ?? t('work.hero_highlight')}</span> {ps?.hero_heading ? '' : t('work.hero_suffix')}
+						<span class="sm:hidden">{t('work.watermark')}</span> {ps?.hero_heading ?? t('work.hero_heading')} {ps?.hero_highlight ?? t('work.hero_highlight')} {ps?.hero_heading ? '' : t('work.hero_suffix')}
 					</h1>
 				</div>
 			</div>
@@ -286,7 +274,7 @@
 			</div>
 			<div class="text-right pb-4">
 				<Badge class="mb-3 bg-[#4a7c59]/10 text-[#4a7c59] border-[#4a7c59]/20">{t('work.pearl_industry')}</Badge>
-				<h2 class="text-4xl lg:text-6xl font-bold tracking-tight gradient-text-dental">{t('work.pearl_title')}</h2>
+				<h2 class="font-display text-4xl lg:text-6xl font-semibold tracking-tight">{t('work.pearl_title')}</h2>
 				<p class="mt-2 text-lg text-[#4a7c59] font-medium">{t('work.pearl_subtitle')}</p>
 			</div>
 		</div>
@@ -539,7 +527,7 @@
 		<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16 gap-4">
 			<div class="text-left pb-6 flex-1">
 				<Badge class="mb-3 bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30">{t('work.joe_industry')}</Badge>
-				<h2 class="text-3xl sm:text-4xl lg:text-6xl font-bold tracking-tight gradient-text-joe pb-4">{t('work.joe_title')}</h2>
+				<h2 class="font-display text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight pb-4">{t('work.joe_title')}</h2>
 				<p class="mt-2 text-lg text-[#c9a227] font-medium">{t('work.joe_subtitle')}</p>
 			</div>
 			<div class="hidden lg:block flex-shrink-0">
@@ -746,7 +734,7 @@
 	<Container size="content">
 		<InView animation="fade-up" class="text-center">
 			<span class="text-[80px] lg:text-[120px] font-bold leading-none text-primary/10 dark:text-primary/20 select-none">{ps?.cta_number ?? t('work.cta_number')}</span>
-			<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl -mt-8">
+			<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl -mt-8">
 				{ps?.cta_heading ?? t('work.cta_heading')}
 			</h2>
 			<p class="mt-6 text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">

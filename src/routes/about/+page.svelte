@@ -229,7 +229,7 @@
 			<!-- Text content -->
 			<div class="lg:col-span-3 space-y-6">
 				<h1 class="hero-item text-5xl sm:text-6xl lg:text-7xl font-bold tracking-[-0.02em] leading-[1.1]">
-					{ps?.hero_heading ?? t('about.hero_heading')} <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">{ps?.hero_name ?? t('about.hero_name')}</span>
+					{ps?.hero_heading ?? t('about.hero_heading')} {ps?.hero_name ?? t('about.hero_name')}
 					<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="inline-block animate-wave origin-bottom-right text-amber-500">
 						<path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v0 M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v6 M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8 M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/>
 					</svg>

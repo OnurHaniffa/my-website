@@ -62,9 +62,9 @@
 <Section padding="none" class="relative pt-32 pb-12 lg:pt-40 lg:pb-16">
 	<Container>
 		<div class="max-w-3xl">
-			<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider">
+			<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 				Blog
-			</Badge>
+			</p>
 			<h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-4">
 				{isEn ? 'Insights & Articles' : 'Bilgiler & Makaleler'}
 			</h1>

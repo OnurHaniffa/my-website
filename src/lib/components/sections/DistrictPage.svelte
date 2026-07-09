@@ -195,9 +195,6 @@
 	</div>
 
 	<!-- Decorative rings -->
-	<div aria-hidden="true" class="hidden lg:block absolute top-24 right-[8%] w-80 h-80 rounded-full border border-primary/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute top-44 right-[13%] w-52 h-52 rounded-full border border-accent/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute bottom-24 left-[4%] w-60 h-60 rounded-full border border-primary/5 pointer-events-none"></div>
 
 	<Container class="relative pt-12 pb-12 lg:pt-20 lg:pb-20">
 		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -211,8 +208,8 @@
 					{district.name} • İstanbul Web Tasarım
 				</Badge>
 
-				<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
-					{district.name} <span class="text-primary">Web Tasarım</span>
+				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
+					{district.name} Web Tasarım
 				</h1>
 
 				<p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -220,9 +217,8 @@
 				</p>
 
 				<!-- Price anchor -->
-				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
-					<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-					<span class="text-sm font-semibold text-primary">15.000 TL'den başlıyor • 2-6 hafta teslimat</span>
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-md border border-border bg-transparent">
+					<span class="text-sm font-semibold text-foreground">15.000 TL'den başlıyor • 2-6 hafta teslimat</span>
 				</div>
 
 				<!-- Trust stats -->
@@ -393,17 +389,15 @@
      LOCAL CONTEXT
      ==================================================== -->
 <Section padding="lg" class="relative overflow-hidden">
-	<div class="absolute top-16 right-[8%] w-20 h-20 rounded-full border border-primary/10 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-24 left-[6%] w-14 h-14 rounded-full border border-primary/8 pointer-events-none" aria-hidden="true"></div>
 
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-10">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{district.name} Yerel İçgörü
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					{district.name}'de Web Sitesi <span class="district-gradient-text">Neden Önemli?</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					{district.name}'de Web Sitesi Neden Önemli?
 				</h2>
 				<div class="mx-auto mt-4 mb-5 flex items-center justify-center gap-2" aria-hidden="true">
 					<div class="w-8 h-0.5 rounded-full bg-primary/30"></div>
@@ -454,16 +448,15 @@
      ==================================================== -->
 <Section padding="lg" class="relative overflow-hidden bg-muted/30 dark:bg-muted/10">
 	<div class="absolute inset-0 -z-[2] district-grid-bg opacity-[0.04] dark:opacity-[0.05]" aria-hidden="true"></div>
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] district-pricing-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Şeffaf Fiyatlandırma
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					{district.name} İçin <span class="district-gradient-text">Sabit Fiyat</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					{district.name} İçin Sabit Fiyat
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">Gizli ücret yok. KDV dahil. Sözleşmede ne yazıyorsa o.</p>
 			</div>
@@ -529,17 +522,15 @@
      FAQ — single column, all closed by default
      ==================================================== -->
 <Section padding="lg" background="muted" class="relative overflow-hidden">
-	<div class="absolute top-12 right-[5%] w-40 h-40 rounded-full border border-primary/5 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-12 left-[3%] w-24 h-24 rounded-full border border-accent/5 pointer-events-none" aria-hidden="true"></div>
 
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					{district.name} SSS
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-					Sık Sorulan <span class="district-gradient-text">Sorular</span>
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
+					Sık Sorulan Sorular
 				</h2>
 				<div class="mx-auto mt-4 mb-4 flex items-center justify-center gap-1.5" aria-hidden="true">
 					<div class="w-12 h-0.5 rounded-full bg-primary/30"></div>
@@ -586,11 +577,11 @@
 		<Container size="content">
 			<InView animation="fade-up">
 				<div class="text-center mb-10">
-					<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+					<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 						Yakın İlçeler
-					</Badge>
+					</p>
 					<h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
-						{district.name} Yakınında <span class="district-gradient-text">Hizmet Verdiğim İlçeler</span>
+						{district.name} Yakınında Hizmet Verdiğim İlçeler
 					</h2>
 				</div>
 			</InView>
@@ -631,11 +622,11 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Teklif Al
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-3">
-					{district.name}'de <span class="district-gradient-text">Web Sitesi Yaptırın</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-3">
+					{district.name}'de Web Sitesi Yaptırın
 				</h2>
 				<div class="mx-auto mt-4 mb-6 flex items-center justify-center gap-2" aria-hidden="true">
 					<div class="w-6 h-0.5 rounded-full bg-[#25D366]/40"></div>
@@ -689,60 +680,18 @@
 
 <style>
 	/* ===== Hero glows (matched to homepage palette) ===== */
-	.district-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.22) 0%, oklch(0.55 0.24 260 / 0.12) 30%, oklch(0.55 0.24 260 / 0.04) 55%, transparent 75%);
-	}
-	:global(.dark) .district-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.30) 0%, oklch(0.68 0.18 260 / 0.16) 30%, oklch(0.68 0.18 260 / 0.06) 55%, transparent 75%);
-	}
-	.district-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.45) 0%, oklch(0.58 0.22 25 / 0.28) 25%, oklch(0.58 0.22 25 / 0.12) 50%, transparent 72%);
-	}
-	:global(.dark) .district-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.55) 0%, oklch(0.68 0.20 25 / 0.35) 25%, oklch(0.68 0.20 25 / 0.18) 50%, transparent 72%);
-	}
-	.district-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.38) 0%, oklch(0.55 0.24 260 / 0.22) 30%, oklch(0.55 0.24 260 / 0.08) 55%, transparent 75%);
-	}
-	:global(.dark) .district-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.48) 0%, oklch(0.68 0.18 260 / 0.28) 30%, oklch(0.68 0.18 260 / 0.12) 55%, transparent 75%);
-	}
 
 	/* Pricing section */
 	.district-grid-bg {
 		background-image:
-			linear-gradient(oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px),
-			linear-gradient(90deg, oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px);
+			linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px),
+			linear-gradient(90deg, oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px);
 		background-size: 40px 40px;
-	}
-	.district-pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.08) 0%, transparent 70%);
-	}
-	:global(.dark) .district-pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.12) 0%, transparent 70%);
 	}
 
 	/* CTA glows */
-	.district-cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%);
-	}
-	:global(.dark) .district-cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%);
-	}
 
 	/* Gradient text */
-	.district-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .district-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* Marquee */
 	.proof-marquee {

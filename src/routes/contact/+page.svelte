@@ -133,7 +133,7 @@
 					class:translate-y-0={mounted}
 					style="transition-delay: 100ms;"
 				>
-					{ps?.hero_heading ?? t('contact.hero_heading')} <span class="relative inline-block"><span class="text-primary">{ps?.hero_highlight ?? t('contact.hero_highlight')}</span>
+					{ps?.hero_heading ?? t('contact.hero_heading')} <span class="relative inline-block">{ps?.hero_highlight ?? t('contact.hero_highlight')}
 						<!-- Curly underline -->
 						<svg bind:this={curlyLine} class="absolute -bottom-2 sm:-bottom-3 left-0 w-full h-4" viewBox="0 0 200 24" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
 							<path

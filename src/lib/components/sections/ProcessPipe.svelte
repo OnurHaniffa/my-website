@@ -32,7 +32,7 @@
 		<div class="text-center mb-14">
 			<span class="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">The Process</span>
 			<h2 id="proc-h" class="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 mb-4">
-				How we <span class="text-primary">work</span> together
+				How we work together
 			</h2>
 			<p class="text-slate-500 text-lg max-w-xl mx-auto">A simple, collaborative approach that keeps you in the loop.</p>
 		</div>

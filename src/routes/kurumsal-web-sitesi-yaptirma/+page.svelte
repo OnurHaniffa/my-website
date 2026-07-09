@@ -339,9 +339,6 @@
 		<div class="absolute -bottom-[300px] -left-[300px] w-[800px] h-[800px] kurumsal-glow-primary rounded-full"></div>
 	</div>
 
-	<div aria-hidden="true" class="hidden lg:block absolute top-24 right-[8%] w-80 h-80 rounded-full border border-primary/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute top-44 right-[13%] w-52 h-52 rounded-full border border-accent/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute bottom-24 left-[4%] w-60 h-60 rounded-full border border-primary/5 pointer-events-none"></div>
 
 	<Container class="relative pt-12 pb-12 lg:pt-20 lg:pb-20">
 		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -354,8 +351,8 @@
 					Kurumsal Web Tasarım • İstanbul
 				</Badge>
 
-				<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
-					Kurumsal Web Sitesi <br class="hidden sm:block" /><span class="text-primary">Yaptırma</span>
+				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
+					Kurumsal Web Sitesi <br class="hidden sm:block" />Yaptırma
 				</h1>
 
 				<p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -363,17 +360,14 @@
 				</p>
 
 				<div class="flex flex-wrap gap-2">
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Başlangıç 15.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Başlangıç 15.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Profesyonel 30.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Profesyonel 30.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Enterprise 70.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Enterprise 70.000 TL</span>
 					</a>
 				</div>
 
@@ -499,11 +493,11 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Neden Önemli?
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Kurumsal Site Şirketinizin <span class="kurumsal-gradient-text">Dijital Vitrinidir</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Kurumsal Site Şirketinizin Dijital Vitrinidir
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					LinkedIn'den, Google'dan, kartvizitten gelen herkes önce sitenize bakıyor. İlk 3 saniyede karar veriyor.
@@ -536,11 +530,11 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Süreç
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Keşiften Yayına <span class="kurumsal-gradient-text">Şeffaf Süreç</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Keşiften Yayına Şeffaf Süreç
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					Sözleşmede ne yazıyorsa o teslim ediliyor. Saatlik sürpriz yok, kapsam değişikliği için yazılı onay.
@@ -577,16 +571,15 @@
      ==================================================== -->
 <Section padding="lg" id="fiyatlar" class="relative overflow-hidden bg-muted/30 dark:bg-muted/10">
 	<div class="absolute inset-0 -z-[2] kurumsal-grid-bg opacity-[0.04] dark:opacity-[0.05]" aria-hidden="true"></div>
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] kurumsal-pricing-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-16">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Fiyat Paketleri
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Şeffaf <span class="kurumsal-gradient-text">Sabit Fiyat</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Şeffaf Sabit Fiyat
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					Gizli ücret yok. KDV dahil. Domain ve hosting ayrı (~150 TL/yıl + ~200 TL/ay) — şeffaf paylaşılır.
@@ -647,11 +640,11 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Portfolyo
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Teslim Ettiğim <span class="kurumsal-gradient-text">Kurumsal Projeler</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Teslim Ettiğim Kurumsal Projeler
 				</h2>
 				<p class="text-lg text-muted-foreground mt-4">
 					Gerçek müşteriler, gerçek sonuçlar. Her proje için somut metric.
@@ -705,11 +698,11 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					SSS
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-					Kurumsal Site Hakkında <span class="kurumsal-gradient-text">Sık Sorulan Sorular</span>
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
+					Kurumsal Site Hakkında Sık Sorulan Sorular
 				</h2>
 			</div>
 		</InView>
@@ -759,11 +752,11 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Teklif Al
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-3">
-					Kurumsal Sitenizi <span class="kurumsal-gradient-text">Konuşalım</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-3">
+					Kurumsal Sitenizi Konuşalım
 				</h2>
 				<p class="text-lg text-muted-foreground max-w-xl mx-auto mb-8 leading-relaxed">
 					WhatsApp'tan yazın, 24 saat içinde projenize özel sabit fiyat teklifi gönderiyorum. Görüşme ücretsiz.
@@ -809,53 +802,11 @@
 {/if}
 
 <style>
-	.kurumsal-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.22) 0%, oklch(0.55 0.24 260 / 0.12) 30%, transparent 75%);
-	}
-	:global(.dark) .kurumsal-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.30) 0%, oklch(0.68 0.18 260 / 0.16) 30%, transparent 75%);
-	}
-	.kurumsal-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.45) 0%, oklch(0.58 0.22 25 / 0.28) 25%, transparent 72%);
-	}
-	:global(.dark) .kurumsal-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.55) 0%, oklch(0.68 0.20 25 / 0.35) 25%, transparent 72%);
-	}
-	.kurumsal-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.38) 0%, oklch(0.55 0.24 260 / 0.22) 30%, transparent 75%);
-	}
-	:global(.dark) .kurumsal-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.48) 0%, oklch(0.68 0.18 260 / 0.28) 30%, transparent 75%);
-	}
 	.kurumsal-grid-bg {
 		background-image:
-			linear-gradient(oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px),
-			linear-gradient(90deg, oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px);
+			linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px),
+			linear-gradient(90deg, oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px);
 		background-size: 40px 40px;
-	}
-	.kurumsal-pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.08) 0%, transparent 70%);
-	}
-	:global(.dark) .kurumsal-pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.12) 0%, transparent 70%);
-	}
-	.kurumsal-cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%);
-	}
-	:global(.dark) .kurumsal-cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%);
-	}
-	.kurumsal-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .kurumsal-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
 	}
 	.cta-ring-1 { animation: ring-pulse 4s ease-in-out infinite; }
 	.cta-ring-2 { animation: ring-pulse 4s ease-in-out infinite 1s; }

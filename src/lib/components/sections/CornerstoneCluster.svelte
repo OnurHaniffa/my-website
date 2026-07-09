@@ -28,14 +28,11 @@
 		<Container>
 			<InView animation="fade-up">
 				<div class="text-center mb-12">
-					<Badge
-						variant="outline"
-						class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider"
-					>
+					<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 						İlgili Yazılar
-					</Badge>
-					<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-						<span class="cluster-gradient-text">{heading}</span>
+					</p>
+					<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+						{heading}
 					</h2>
 					<p class="mt-4 text-base text-muted-foreground max-w-2xl mx-auto">
 						Bu sayfadaki konuları derinleştiren, gerçek projelerden örneklerle yazdığım blog yazıları.
@@ -112,17 +109,5 @@
 	</Section>
 
 	<style>
-		.cluster-gradient-text {
-			background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
-		:global(.dark) .cluster-gradient-text {
-			background: linear-gradient(135deg, oklch(0.72 0.2 260), oklch(0.72 0.18 25));
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-		}
 	</style>
 {/if}

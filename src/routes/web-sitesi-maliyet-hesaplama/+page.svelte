@@ -104,12 +104,12 @@
 
 	<Container>
 		<div bind:this={heroEl} class="max-w-2xl mx-auto text-center mb-10">
-			<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+			<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 				<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
 				Ücretsiz · Kayıt yok
-			</Badge>
-			<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.08]">
-				Web Sitesi Maliyetini <span class="calc-gradient-text">Anında Hesapla</span>
+			</p>
+			<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.08]">
+				Web Sitesi Maliyetini Anında Hesapla
 			</h1>
 			<p class="mt-5 text-lg text-muted-foreground leading-relaxed">
 				Site tipini ve istediğin özellikleri seç — 2026 güncel TL fiyat aralığını saniyesinde gör. Saatlik sürpriz yok, net rakam.
@@ -172,7 +172,7 @@
 					<div class="p-6 border-b border-border/60 bg-gradient-to-br from-primary/[0.07] to-transparent">
 						<p class="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Tahmini maliyet</p>
 						<p class="text-3xl sm:text-4xl font-black tracking-tight tabular-nums">
-							<span class="calc-gradient-text">{fmt(estMin)}–{fmt(estMax)}</span>
+							{fmt(estMin)}–{fmt(estMax)}
 						</p>
 						<p class="text-sm text-muted-foreground mt-1">TL <span class="text-xs">(geliştirme, KDV hariç)</span></p>
 					</div>
@@ -202,8 +202,8 @@
 	<Container size="content">
 		<InView animation="fade-up">
 			<div class="text-center mb-10">
-				<Badge variant="outline" class="mb-5 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">SSS</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">Sık Sorulan <span class="calc-gradient-text">Sorular</span></h2>
+				<p class="mb-5 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">SSS</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">Sık Sorulan Sorular</h2>
 			</div>
 		</InView>
 		<div class="space-y-3 max-w-3xl mx-auto">
@@ -239,10 +239,4 @@
 {/if}
 
 <style>
-	.calc-glow-accent { background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.28) 0%, oklch(0.58 0.22 25 / 0.16) 25%, transparent 72%); }
-	:global(.dark) .calc-glow-accent { background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.38) 0%, oklch(0.68 0.20 25 / 0.20) 25%, transparent 72%); }
-	.calc-glow-primary { background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.34) 0%, oklch(0.55 0.24 260 / 0.18) 30%, transparent 75%); }
-	:global(.dark) .calc-glow-primary { background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.44) 0%, oklch(0.68 0.18 260 / 0.24) 30%, transparent 75%); }
-	.calc-gradient-text { background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-	:global(.dark) .calc-gradient-text { background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 </style>

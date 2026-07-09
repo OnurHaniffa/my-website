@@ -225,9 +225,6 @@
 	</div>
 
 	<!-- Decorative rings -->
-	<div aria-hidden="true" class="hidden lg:block absolute top-24 right-[8%] w-80 h-80 rounded-full border border-primary/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute top-44 right-[13%] w-52 h-52 rounded-full border border-accent/10 pointer-events-none"></div>
-	<div aria-hidden="true" class="hidden lg:block absolute bottom-24 left-[4%] w-60 h-60 rounded-full border border-primary/5 pointer-events-none"></div>
 
 	<Container class="relative pt-16 pb-16 lg:pt-24 lg:pb-24">
 		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
@@ -241,10 +238,10 @@
 					Şeffaf Fiyat • İstanbul
 				</Badge>
 
-				<h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
+				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
 					Web Sitesi Fiyatları
 					<br class="hidden sm:block" />
-					<span class="text-primary">15.000 TL'den</span> başlıyor
+					15.000 TL'den başlıyor
 				</h1>
 
 				<p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
@@ -255,17 +252,14 @@
 
 				<!-- Three pricing anchors — clickable to scroll to pricing -->
 				<div class="flex flex-wrap gap-2 pt-1">
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Başlangıç 15.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Başlangıç 15.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">Profesyonel 30.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">Profesyonel 30.000 TL</span>
 					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/15 transition-colors">
-						<span class="w-1.5 h-1.5 rounded-full bg-primary" aria-hidden="true"></span>
-						<span class="text-sm font-semibold text-primary">E-Ticaret 50.000 TL</span>
+					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
+						<span class="text-sm font-semibold text-foreground">E-Ticaret 50.000 TL</span>
 					</a>
 				</div>
 
@@ -394,18 +388,15 @@
      ==================================================== -->
 <Section padding="lg" id="fiyatlar" class="relative overflow-hidden pricing-section bg-muted/30 dark:bg-muted/10">
 	<div class="absolute inset-0 -z-[2] pricing-grid-bg opacity-[0.04] dark:opacity-[0.05]" aria-hidden="true"></div>
-	<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] pricing-glow rounded-full -z-[1]" aria-hidden="true"></div>
-	<div class="absolute top-16 left-[8%] w-20 h-20 rounded-full border border-primary/10 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-24 right-[6%] w-14 h-14 rounded-full border border-primary/8 pointer-events-none" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-16">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Fiyat Paketleri
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Şeffaf <span class="pricing-gradient-text">Fiyatlandırma</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Şeffaf Fiyatlandırma
 				</h2>
 				<div class="mx-auto mt-4 mb-5 flex items-center justify-center gap-2" aria-hidden="true">
 					<div class="w-8 h-0.5 rounded-full bg-primary/30"></div>
@@ -539,11 +530,11 @@
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-14">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Portfolyo
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Son <span class="case-gradient-text">Çalışmalar</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Son Çalışmalar
 				</h2>
 				<p class="mt-4 text-base text-muted-foreground">
 					Bu paketlerle ne tür siteler teslim ettiğimi görün — gerçek müşteriler, gerçek sonuçlar.
@@ -641,16 +632,15 @@
      "WHAT YOU GET FOR THE PRICE" — pricing-tied process strip
      ==================================================== -->
 <Section padding="lg" background="muted" class="relative overflow-hidden">
-	<div class="absolute top-0 right-0 w-[400px] h-[400px] testimonial-glow rounded-full -z-[1]" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center max-w-2xl mx-auto mb-12">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Fiyatın İçinde Ne Var?
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Ödediğiniz <span class="pricing-gradient-text">Fiyatın</span> Karşılığı
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Ödediğiniz Fiyatın Karşılığı
 				</h2>
 				<p class="mt-4 text-base text-muted-foreground">
 					Her pakette dahil olan adımlar — keşiften yayına kadar.
@@ -716,11 +706,11 @@
 			<div class="text-center max-w-2xl mx-auto mb-14 relative">
 				<div class="absolute -top-4 left-1/2 -translate-x-1/2 text-[120px] leading-none font-serif text-primary/[0.06] pointer-events-none select-none" aria-hidden="true">&ldquo;</div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Müşteri Yorumları
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-					Müşterilerimiz Ne <span class="testimonial-gradient-text">Diyor?</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
+					Müşterilerimiz Ne Diyor?
 				</h2>
 				<p class="mt-4 text-base text-muted-foreground">
 					Google'daki gerçek müşteri yorumları.
@@ -780,17 +770,15 @@
      FAQ — Pricing-focused
      ==================================================== -->
 <Section padding="lg" background="muted" class="relative overflow-hidden">
-	<div class="absolute top-12 right-[5%] w-40 h-40 rounded-full border border-primary/5 pointer-events-none" aria-hidden="true"></div>
-	<div class="absolute bottom-12 left-[3%] w-24 h-24 rounded-full border border-accent/5 pointer-events-none" aria-hidden="true"></div>
 
 	<Container>
 		<InView animation="fade-up">
 			<div class="text-center mb-12">
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Fiyat SSS
-				</Badge>
-				<h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-					Fiyatlandırma Hakkında <span class="faq-gradient-text">Sorular</span>
+				</p>
+				<h2 class="font-display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight">
+					Fiyatlandırma Hakkında Sorular
 				</h2>
 				<p class="text-muted-foreground mt-4">
 					Teklif istemeden önce müşterilerin en çok sorduğu sorular.
@@ -847,11 +835,11 @@
 				<div class="absolute -top-2 -left-2 w-12 h-12 border-t-2 border-l-2 border-primary/20 rounded-tl-xl" aria-hidden="true"></div>
 				<div class="absolute -bottom-2 -right-2 w-12 h-12 border-b-2 border-r-2 border-primary/20 rounded-br-xl" aria-hidden="true"></div>
 
-				<Badge variant="outline" class="mb-6 border-primary/40 text-primary bg-primary/10 text-xs font-semibold uppercase tracking-wider">
+				<p class="mb-6 text-xs uppercase tracking-[0.25em] text-muted-foreground font-medium">
 					Teklif Al
-				</Badge>
-				<h2 class="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl mb-2">
-					Projenize <span class="cta-gradient-text">Sabit Fiyat</span>
+				</p>
+				<h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl mb-2">
+					Projenize Sabit Fiyat
 				</h2>
 				<div class="mx-auto mt-4 mb-6 flex items-center justify-center gap-2" aria-hidden="true">
 					<div class="w-6 h-0.5 rounded-full bg-[#25D366]/40"></div>
@@ -933,118 +921,16 @@
 
 <style>
 	/* ===== Hero Glows (mirrored from homepage) ===== */
-	.hero-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.58 0.22 25 / 0.45) 0%, oklch(0.58 0.22 25 / 0.28) 25%, oklch(0.58 0.22 25 / 0.12) 50%, transparent 72%);
-	}
-	:global(.dark) .hero-glow-accent {
-		background: radial-gradient(ellipse, oklch(0.68 0.20 25 / 0.55) 0%, oklch(0.68 0.20 25 / 0.35) 25%, oklch(0.68 0.20 25 / 0.18) 50%, transparent 72%);
-	}
-	.hero-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.38) 0%, oklch(0.55 0.24 260 / 0.22) 30%, oklch(0.55 0.24 260 / 0.08) 55%, transparent 75%);
-	}
-	:global(.dark) .hero-glow-primary {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.48) 0%, oklch(0.68 0.18 260 / 0.28) 30%, oklch(0.68 0.18 260 / 0.12) 55%, transparent 75%);
-	}
-	.hero-glow-center {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.08) 0%, oklch(0.55 0.24 260 / 0.03) 40%, transparent 70%);
-	}
-	:global(.dark) .hero-glow-center {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.14) 0%, oklch(0.68 0.18 260 / 0.05) 40%, transparent 70%);
-	}
-	.hero-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.22) 0%, oklch(0.55 0.24 260 / 0.12) 30%, oklch(0.55 0.24 260 / 0.04) 55%, transparent 75%);
-	}
-	:global(.dark) .hero-glow-topleft {
-		background: radial-gradient(ellipse, oklch(0.68 0.18 260 / 0.30) 0%, oklch(0.68 0.18 260 / 0.16) 30%, oklch(0.68 0.18 260 / 0.06) 55%, transparent 75%);
-	}
 
 	/* ===== Section glows ===== */
-	.pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.08) 0%, transparent 70%);
-	}
-	:global(.dark) .pricing-glow {
-		background: radial-gradient(ellipse, oklch(0.75 0.15 85 / 0.12) 0%, transparent 70%);
-	}
-	.testimonial-glow {
-		background: radial-gradient(ellipse, oklch(0.6 0.18 260 / 0.06) 0%, transparent 70%);
-	}
-	:global(.dark) .testimonial-glow {
-		background: radial-gradient(ellipse, oklch(0.6 0.18 260 / 0.10) 0%, transparent 70%);
-	}
-	.cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.06) 0%, transparent 60%);
-	}
-	:global(.dark) .cta-glow {
-		background: radial-gradient(ellipse, oklch(0.55 0.24 260 / 0.12) 0%, transparent 60%);
-	}
 
 	/* ===== Gradient text ===== */
-	.case-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .case-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.pricing-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.50 0.20 200));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .pricing-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.68 0.18 200));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.testimonial-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.6 0.18 260));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .testimonial-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.16 260));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.faq-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .faq-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	.cta-gradient-text {
-		background: linear-gradient(135deg, oklch(0.55 0.24 260), oklch(0.58 0.22 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-	:global(.dark) .cta-gradient-text {
-		background: linear-gradient(135deg, oklch(0.72 0.20 260), oklch(0.72 0.18 25));
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
 
 	/* ===== Pricing grid background ===== */
 	.pricing-grid-bg {
 		background-image:
-			linear-gradient(oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px),
-			linear-gradient(90deg, oklch(0.55 0.24 260 / 0.3) 1px, transparent 1px);
+			linear-gradient(oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px),
+			linear-gradient(90deg, oklch(0.42 0.15 262 / 0.3) 1px, transparent 1px);
 		background-size: 40px 40px;
 	}
 

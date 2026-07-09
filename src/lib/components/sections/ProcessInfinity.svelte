@@ -99,7 +99,7 @@
 				The Process
 			</span>
 			<h2 id="process-heading" class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-				How we <span class="text-primary">work</span> together
+				How we work together
 			</h2>
 			<p class="text-muted-foreground text-lg max-w-xl mx-auto">
 				A simple, collaborative approach that keeps you in the loop at every stage.
