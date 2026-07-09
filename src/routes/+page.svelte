@@ -504,7 +504,7 @@
 
 	<Container class="relative pt-16 pb-16 lg:pt-24 lg:pb-24">
 		<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
-			{isEn ? 'Web Designer — Istanbul' : 'Web Tasarımcı — İstanbul'}
+			{isEn ? 'Web Designer — Istanbul · Accepting new projects' : 'Web Tasarımcı — İstanbul · Yeni projelere açık'}
 		</p>
 
 		<h1 class="hero-reveal font-display font-semibold text-[clamp(3rem,7.5vw,6.5rem)] leading-[1.03] tracking-tight mt-7 max-w-[16ch]" style="--stagger: 1">
@@ -550,6 +550,12 @@
 				{isEn ? 'See My Work' : 'Çalışmalarımı Gör'}
 				<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
 			</a>
+		</div>
+
+		<!-- Scroll cue -->
+		<div class="hero-reveal mt-14 lg:mt-16 flex items-center gap-4" style="--stagger: 5" aria-hidden="true">
+			<span class="block w-10 h-px bg-foreground/30"></span>
+			<span class="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{isEn ? 'Selected work' : 'Seçilmiş işler'} &darr;</span>
 		</div>
 	</Container>
 </Section>
@@ -1402,6 +1408,14 @@
 		animation: draw-underline 0.9s cubic-bezier(0.65, 0, 0.35, 1) 1s forwards;
 	}
 	@keyframes draw-underline {
+		to { stroke-dashoffset: 0; }
+	}
+	/* Redraw on hover — micro-delight */
+	.hero-accent:hover .hero-underline path {
+		animation: redraw-underline 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+	}
+	@keyframes redraw-underline {
+		from { stroke-dashoffset: 100; }
 		to { stroke-dashoffset: 0; }
 	}
 	@media (prefers-reduced-motion: reduce) {

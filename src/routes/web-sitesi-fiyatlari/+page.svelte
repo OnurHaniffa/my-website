@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
 	import { Button } from '$lib/components/ui/button';
 	import { Badge } from '$lib/components/ui/badge';
 	import { Container, Section } from '$lib/components/layout';
@@ -13,43 +12,20 @@
 		'Merhaba! Web sitesi fiyat teklifi almak istiyorum.';
 	const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
-	// Hero rotating screenshots — same as homepage
-	const heroScreenshots = [
-		{ src: '/images/projects/joe-fresh-desktop.png', mobile: '/images/projects/joe-fresh-mobile.png', label: 'Designs by Joe', url: 'designsbyjoe.net' },
-		{ src: '/images/projects/dentist-screenshot.jpg', mobile: '/images/projects/dental-mobile-real.png', label: 'Pearl Dental', url: 'pearldental.com' },
-		{ src: '/images/projects/ivory-ai-screenshot.png', mobile: '/images/projects/ivory-ai-mobile.png', label: 'Ivory AI', url: 'ivoryai.net' }
-	];
-	let currentScreenshot = $state(0);
 
 	let showStickyCta = $state(false);
-	let heroContent: HTMLDivElement;
-	let heroMockup: HTMLDivElement;
 
 	onMount(() => {
-		const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 		const handleScroll = () => {
 			showStickyCta = window.scrollY > 600;
 		};
 		window.addEventListener('scroll', handleScroll, { passive: true });
 
-		const screenshotInterval = setInterval(() => {
-			currentScreenshot = (currentScreenshot + 1) % heroScreenshots.length;
-		}, 4000);
 
-		let heroTl: gsap.core.Timeline | null = null;
-		if (!prefersReducedMotion && heroContent && heroMockup) {
-			gsap.set([heroContent, heroMockup], { opacity: 0, y: 30 });
-			heroTl = gsap.timeline({ delay: 0.1 });
-			heroTl
-				.to(heroContent, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' })
-				.to(heroMockup, { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5');
-		}
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			clearInterval(screenshotInterval);
-			heroTl?.kill();
 		};
 	});
 
@@ -214,171 +190,57 @@
 <!-- ====================================================
      HERO — Pricing-first, search-intent matched
      ==================================================== -->
-<Section padding="none" class="relative overflow-hidden min-h-[calc(100vh-85px)] flex flex-col justify-center">
-	<!-- Glow background — same DNA as homepage -->
-	<div class="absolute inset-0 -z-10" aria-hidden="true">
-		<div class="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-background to-muted/80"></div>
-		<div class="absolute -top-[50px] -left-[100px] w-[500px] h-[500px] lg:-top-[100px] lg:-left-[150px] lg:w-[800px] lg:h-[700px] hero-glow-topleft rounded-full"></div>
-		<div class="absolute -top-[100px] -right-[100px] w-[500px] h-[500px] lg:-top-[200px] lg:-right-[200px] lg:w-[900px] lg:h-[900px] hero-glow-accent rounded-full"></div>
-		<div class="absolute -bottom-[150px] -left-[150px] w-[400px] h-[400px] lg:-bottom-[300px] lg:-left-[300px] lg:w-[800px] lg:h-[800px] hero-glow-primary rounded-full"></div>
-		<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[500px] lg:w-[1100px] lg:h-[700px] hero-glow-center"></div>
-	</div>
-
-	<!-- Decorative rings -->
+<Section padding="none" class="relative border-b border-border overflow-hidden">
+	<!-- Atmosphere: giant drifting Lira mark — pricing page's print-mark -->
+	<span aria-hidden="true" class="hero-glyph font-display italic select-none pointer-events-none absolute -right-[4%] -top-[10%] leading-none text-foreground/[0.045]">&#8378;</span>
 
 	<Container class="relative pt-16 pb-16 lg:pt-24 lg:pb-24">
-		<div class="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-			<!-- Left: Pricing-first content -->
-			<div bind:this={heroContent} class="space-y-5">
-				<Badge
-					variant="outline"
-					class="border-primary/40 text-primary bg-primary/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider"
-				>
-					<span class="w-2 h-2 bg-primary rounded-full mr-2 animate-pulse" aria-hidden="true"></span>
-					Şeffaf Fiyat • İstanbul
-				</Badge>
+		<p class="hero-reveal text-xs uppercase tracking-[0.3em] text-muted-foreground font-medium" style="--stagger: 0">
+			Şeffaf Fiyat — İstanbul · Yeni projelere açık
+		</p>
 
-				<h1 class="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl leading-[1.1]">
-					Web Sitesi Fiyatları
-					<br class="hidden sm:block" />
-					15.000 TL'den başlıyor
-				</h1>
+		<h1 class="hero-reveal font-display font-semibold text-[clamp(3rem,7vw,6rem)] leading-[1.03] tracking-tight mt-7 max-w-[16ch]" style="--stagger: 1">
+			Web Sitesi Fiyatları <em class="font-display italic font-medium">15.000 TL'den</em> başlıyor
+		</h1>
 
-				<p class="text-lg text-muted-foreground leading-relaxed max-w-lg">
-					Kurumsal site, e-ticaret ve özel projeler için sabit fiyat teklifi.
-					Saatlik sürpriz yok, gizli ücret yok. WhatsApp'tan yazın, 24 saat içinde
-					detaylı fiyat teklifi alın.
-				</p>
+		<p class="hero-reveal text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-[54ch] mt-9" style="--stagger: 2">
+			Kurumsal site, e-ticaret ve özel projeler için sabit fiyat teklifi.
+			Saatlik sürpriz yok, gizli ücret yok. WhatsApp'tan yazın, 24 saat içinde
+			detaylı fiyat teklifi alın.
+		</p>
 
-				<!-- Three pricing anchors — clickable to scroll to pricing -->
-				<div class="flex flex-wrap gap-2 pt-1">
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
-						<span class="text-sm font-semibold text-foreground">Başlangıç 15.000 TL</span>
-					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
-						<span class="text-sm font-semibold text-foreground">Profesyonel 30.000 TL</span>
-					</a>
-					<a href="#fiyatlar" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border bg-transparent hover:bg-primary/15 transition-colors">
-						<span class="text-sm font-semibold text-foreground">E-Ticaret 50.000 TL</span>
-					</a>
-				</div>
+		<!-- Pricing anchors -->
+		<div class="hero-reveal flex flex-wrap gap-2.5 mt-8" style="--stagger: 3">
+			<a href="#fiyatlar" class="inline-flex items-center px-3.5 py-1.5 rounded-md border border-border hover:border-foreground/40 transition-colors text-sm font-semibold text-foreground">Başlangıç 15.000 TL</a>
+			<a href="#fiyatlar" class="inline-flex items-center px-3.5 py-1.5 rounded-md border border-border hover:border-foreground/40 transition-colors text-sm font-semibold text-foreground">Profesyonel 30.000 TL</a>
+			<a href="#fiyatlar" class="inline-flex items-center px-3.5 py-1.5 rounded-md border border-border hover:border-foreground/40 transition-colors text-sm font-semibold text-foreground">E-Ticaret 50.000 TL</a>
+		</div>
 
-				<!-- Stats: trust signals -->
-				<div class="flex flex-wrap gap-8 sm:gap-10 py-2">
-					<div class="text-center">
-						<p class="text-3xl font-black text-primary tabular-nums">
-							<Counter value={50} duration={2000} suffix="+" />
-						</p>
-						<p class="text-xs text-muted-foreground mt-0.5">Teslim Edilmiş Proje</p>
-					</div>
-					<div class="hidden sm:block w-px bg-border self-stretch"></div>
-					<div class="text-center">
-						<p class="text-3xl font-black tabular-nums">
-							<Counter value={5} duration={1800} suffix=".0" />
-						</p>
-						<p class="text-xs text-muted-foreground mt-0.5 flex items-center justify-center gap-1">
-							<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="#f59e0b" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" /></svg>
-							Google Puanı
-						</p>
-					</div>
-					<div class="hidden sm:block w-px bg-border self-stretch"></div>
-					<div class="text-center">
-						<p class="text-3xl font-black tabular-nums">24<span class="text-xl">sa</span></p>
-						<p class="text-xs text-muted-foreground mt-0.5">İçinde Yanıt</p>
-					</div>
-				</div>
+		<!-- Facts line -->
+		<p class="hero-reveal text-xs uppercase tracking-[0.18em] text-muted-foreground mt-8 pt-4 border-t border-border max-w-2xl" style="--stagger: 4">
+			50+ teslim edilmiş proje · 5.0 Google puanı (9 değerlendirme) · 24 saat içinde yanıt
+		</p>
 
-				<!-- CTAs -->
-				<div class="flex flex-wrap gap-4 pt-2">
-					<a
-						href={whatsappUrl}
-						target="_blank"
-						rel="noopener noreferrer"
-						class="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base shadow-2xl shadow-[#25D366]/40 hover:shadow-[#25D366]/60 hover:scale-[1.02] transition-all duration-300 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
-					>
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-							<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-						</svg>
-						WhatsApp'tan Fiyat Al
-					</a>
-					<Button
-						size="lg"
-						variant="ghost"
-						href="#fiyatlar"
-						class="text-base px-8 py-4 rounded-full border border-border/60 hover:bg-foreground/5 hover:border-foreground/30 transition-colors duration-300 focus-visible:ring-4 focus-visible:ring-primary/30 focus-visible:outline-none"
-					>
-						Fiyatları İncele
-					</Button>
-				</div>
-			</div>
-
-			<!-- Right: Browser mockup -->
-			<div bind:this={heroMockup} class="relative">
-				<div class="relative bg-card rounded-2xl shadow-2xl border-2 border-border/50 overflow-hidden">
-					<div class="flex items-center gap-2 px-4 py-3 bg-muted/80 border-b">
-						<div class="flex gap-1.5" aria-hidden="true">
-							<div class="w-3 h-3 rounded-full bg-rose-400"></div>
-							<div class="w-3 h-3 rounded-full bg-amber-400"></div>
-							<div class="w-3 h-3 rounded-full bg-emerald-400"></div>
-						</div>
-						<div class="flex-1 mx-4">
-							<div class="bg-background/80 rounded-lg px-4 py-1.5 text-sm text-muted-foreground flex items-center gap-2 border">
-								<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-								<span class="truncate font-mono text-xs">{heroScreenshots[currentScreenshot].url}</span>
-							</div>
-						</div>
-					</div>
-					<div class="aspect-[16/10] relative overflow-hidden bg-muted">
-						{#each heroScreenshots as screenshot, i}
-							<img
-								src={screenshot.src}
-								alt={screenshot.label}
-								class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 {i === currentScreenshot ? 'opacity-100' : 'opacity-0'}"
-								loading={i === 0 ? 'eager' : 'lazy'}
-								width="640"
-								height="400"
-							/>
-						{/each}
-						<div class="absolute bottom-3 left-3 z-10">
-							<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/60 backdrop-blur-sm text-white text-xs font-medium">
-								<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-								{heroScreenshots[currentScreenshot].label}
-							</div>
-						</div>
-						<div class="absolute bottom-3 right-3 flex gap-1.5 z-10">
-							{#each heroScreenshots as _, i}
-								<button
-									onclick={() => { currentScreenshot = i; }}
-									class="w-2 h-2 rounded-full transition-all duration-300 {i === currentScreenshot ? 'bg-white scale-125' : 'bg-white/40 hover:bg-white/70'}"
-									aria-label="Show {heroScreenshots[i].label}"
-								></button>
-							{/each}
-						</div>
-					</div>
-				</div>
-
-				<!-- Floating phone mockup -->
-				<div class="hidden lg:block absolute -bottom-6 -right-6 w-36 rounded-2xl shadow-2xl border-2 border-border/50 bg-card overflow-hidden z-10">
-					<div class="flex items-center justify-center py-1 bg-muted/80 border-b">
-						<div class="w-12 h-1 rounded-full bg-border" aria-hidden="true"></div>
-					</div>
-					<div class="aspect-[9/16] relative overflow-hidden bg-muted">
-						{#each heroScreenshots as screenshot, i}
-							<img
-								src={screenshot.mobile}
-								alt="{screenshot.label} mobile"
-								class="absolute inset-0 w-full h-full object-cover object-top transition-opacity duration-700 {i === currentScreenshot ? 'opacity-100' : 'opacity-0'}"
-								loading="lazy"
-								width="144"
-								height="256"
-							/>
-						{/each}
-					</div>
-					<div class="absolute bottom-2 left-0 right-0 flex justify-center z-10">
-						<span class="px-2 py-0.5 rounded-full bg-black/50 backdrop-blur-sm text-white text-[8px] font-medium">{heroScreenshots[currentScreenshot].label}</span>
-					</div>
-				</div>
-			</div>
+		<!-- CTAs -->
+		<div class="hero-reveal flex flex-wrap items-center gap-7 mt-8" style="--stagger: 5">
+			<a
+				href={whatsappUrl}
+				target="_blank"
+				rel="noopener noreferrer"
+				class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-md bg-[#25D366] hover:bg-[#20BD5A] text-white font-semibold text-base transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#25D366]"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+					<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+				</svg>
+				WhatsApp'tan Fiyat Al
+			</a>
+			<a
+				href="#fiyatlar"
+				class="group inline-flex items-center gap-1.5 text-base font-medium text-foreground underline underline-offset-8 decoration-border hover:decoration-foreground transition-colors duration-200"
+			>
+				Fiyatları İncele
+				<span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-0.5">&rarr;</span>
+			</a>
 		</div>
 	</Container>
 </Section>
@@ -920,6 +782,29 @@
 {/if}
 
 <style>
+	/* Editorial hero (v4 language) */
+	.hero-reveal {
+		opacity: 0;
+		transform: translateY(14px);
+		animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+		animation-delay: calc(var(--stagger) * 90ms);
+	}
+	@keyframes hero-rise {
+		to { opacity: 1; transform: translateY(0); }
+	}
+	.hero-glyph {
+		font-size: clamp(24rem, 42vw, 46rem);
+		animation: glyph-drift 16s ease-in-out infinite alternate;
+	}
+	@keyframes glyph-drift {
+		from { transform: translateY(0) rotate(0deg); }
+		to { transform: translateY(22px) rotate(1.2deg); }
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.hero-reveal { animation: none; opacity: 1; transform: none; }
+		.hero-glyph { animation: none; }
+	}
+
 	/* ===== Hero Glows (mirrored from homepage) ===== */
 
 	/* ===== Section glows ===== */
