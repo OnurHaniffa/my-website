@@ -515,24 +515,18 @@
 <div class="animate-fade-in">
 <section class="relative py-20 lg:py-32 overflow-hidden">
 	<!-- Dark background with accent glows -->
-	<div class="absolute inset-0 bg-gradient-to-br from-[#0f172a] via-[#1e1b4b] to-[#172554]"></div>
-	<!-- Subtle gold glow top-left -->
-	<div class="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#c9a227]/10 rounded-full blur-3xl"></div>
-	<!-- Blue glow bottom-right -->
-	<div class="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-[#3b82f6]/15 rounded-full blur-3xl"></div>
-	<!-- Subtle grid pattern -->
-	<div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px); background-size: 50px 50px;"></div>
+	<div class="absolute inset-0 bg-secondary/50 border-y border-border"></div>
 
 	<Container class="relative">
 		<!-- Project Number & Title Header - FLIPPED from Pearl (title LEFT, number RIGHT) -->
 		<div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-12 lg:mb-16 gap-4">
 			<div class="text-left pb-6 flex-1">
-				<Badge class="mb-3 bg-[#3b82f6]/10 text-[#3b82f6] border-[#3b82f6]/30">{t('work.joe_industry')}</Badge>
+				<Badge class="mb-3 bg-muted text-foreground border-border">{t('work.joe_industry')}</Badge>
 				<h2 class="font-display text-3xl sm:text-4xl lg:text-6xl font-semibold tracking-tight pb-4">{t('work.joe_title')}</h2>
-				<p class="mt-2 text-lg text-[#c9a227] font-medium">{t('work.joe_subtitle')}</p>
+				<p class="mt-2 text-lg text-muted-foreground font-medium">{t('work.joe_subtitle')}</p>
 			</div>
 			<div class="hidden lg:block flex-shrink-0">
-				<span class="text-[120px] lg:text-[160px] font-bold leading-none text-[#3b82f6]/25 select-none">02</span>
+				<span class="text-[120px] lg:text-[160px] font-bold leading-none text-foreground/10 select-none">02</span>
 			</div>
 		</div>
 
@@ -541,21 +535,21 @@
 			<!-- Circular cards column - LEFT (desktop only) -->
 			<div class="hidden lg:flex lg:col-span-2 flex-col items-center gap-6">
 				<!-- Tech circle -->
-				<div class="w-28 h-28 rounded-full bg-[#3b82f6] shadow-xl flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition-transform">
-					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white/80 mb-1"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
-					<span class="text-[9px] text-white/70 uppercase tracking-wider">{t('work.joe_built_with')}</span>
-					<span class="text-xs text-white font-medium">SvelteKit</span>
+				<div class="w-28 h-28 rounded-full bg-card border border-border flex flex-col items-center justify-center text-center p-4 hover:scale-105 transition-transform">
+					<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted-foreground mb-1"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+					<span class="text-[9px] text-muted-foreground uppercase tracking-wider">{t('work.joe_built_with')}</span>
+					<span class="text-xs text-foreground font-medium">SvelteKit</span>
 				</div>
 
 				<!-- Artworks circle -->
-				<div class="w-24 h-24 rounded-full bg-[#c9a227] shadow-xl flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform -ml-6">
-					<span class="text-xl font-bold text-white">200+</span>
-					<span class="text-[9px] text-white/70 uppercase tracking-wider">{t('work.joe_artworks')}</span>
+				<div class="w-24 h-24 rounded-full bg-card border border-border flex flex-col items-center justify-center text-center p-3 hover:scale-105 transition-transform -ml-6">
+					<span class="text-xl font-bold text-foreground">200+</span>
+					<span class="text-[9px] text-muted-foreground uppercase tracking-wider">{t('work.joe_artworks')}</span>
 				</div>
 
 				<!-- Year circle -->
-				<div class="w-16 h-16 rounded-full bg-slate-700/80 shadow-lg border border-[#c9a227]/30 flex flex-col items-center justify-center hover:scale-105 transition-transform -ml-4">
-					<span class="text-sm font-bold text-[#c9a227]">2025</span>
+				<div class="w-16 h-16 rounded-full bg-card border border-border flex flex-col items-center justify-center hover:scale-105 transition-transform -ml-4">
+					<span class="text-sm font-bold text-foreground">2025</span>
 				</div>
 			</div>
 
@@ -568,24 +562,24 @@
 						loading="lazy"
 						class="w-full h-auto transition-transform duration-700 group-hover:scale-[1.03]"
 					/>
-					<div class="absolute inset-0 bg-gradient-to-t from-[#1e293b]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+					<div class="absolute inset-0 bg-gradient-to-t from-foreground/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 				</div>
 			</div>
 		</div>
 
 		<!-- Mobile: horizontal scrolling circles -->
 		<div class="flex lg:hidden gap-3 mt-6 overflow-x-auto pb-2 -mx-4 px-4 scrollbar-hide">
-			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#3b82f6] shadow-lg flex flex-col items-center justify-center text-center p-3">
-				<span class="text-[10px] text-white/70 uppercase tracking-wider">{t('work.joe_built_with')}</span>
-				<span class="text-sm text-white font-medium">SvelteKit</span>
+			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-card border border-border flex flex-col items-center justify-center text-center p-3">
+				<span class="text-[10px] text-muted-foreground uppercase tracking-wider">{t('work.joe_built_with')}</span>
+				<span class="text-sm text-foreground font-medium">SvelteKit</span>
 			</div>
-			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-[#c9a227] shadow-lg flex flex-col items-center justify-center text-center p-3">
-				<span class="text-xl font-bold text-white">200+</span>
-				<span class="text-[9px] text-white/70 uppercase">{t('work.joe_artworks')}</span>
+			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-card border border-border flex flex-col items-center justify-center text-center p-3">
+				<span class="text-xl font-bold text-foreground">200+</span>
+				<span class="text-[9px] text-muted-foreground uppercase">{t('work.joe_artworks')}</span>
 			</div>
-			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-slate-700/80 shadow-lg border border-[#c9a227]/30 flex flex-col items-center justify-center text-center p-3">
-				<span class="text-xl font-bold text-[#c9a227]">2025</span>
-				<span class="text-[8px] text-slate-300 uppercase">{t('work.pearl_year')}</span>
+			<div class="flex-shrink-0 w-24 h-24 rounded-full bg-card border border-border flex flex-col items-center justify-center text-center p-3">
+				<span class="text-xl font-bold text-foreground">2025</span>
+				<span class="text-[8px] text-muted-foreground uppercase">{t('work.pearl_year')}</span>
 			</div>
 		</div>
 
@@ -595,10 +589,10 @@
 				<!-- The Challenge -->
 				<div class="bg-white/5 backdrop-blur-sm p-8 lg:p-10 rounded-2xl border border-white/10">
 					<div class="flex items-center gap-3 mb-4">
-						<div class="w-10 h-10 rounded-full bg-[#3b82f6]/20 flex items-center justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#3b82f6]"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+						<div class="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">{ps?.challenge_heading ?? t('work.challenge_heading')}</h3>
+						<h3 class="text-lg font-bold text-foreground">{ps?.challenge_heading ?? t('work.challenge_heading')}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
 						{designsByJoe?.challenge ?? t('work.joe_challenge')}
@@ -608,10 +602,10 @@
 				<!-- The Solution -->
 				<div class="bg-white/5 backdrop-blur-sm p-8 lg:p-10 rounded-2xl border border-white/10">
 					<div class="flex items-center gap-3 mb-4">
-						<div class="w-10 h-10 rounded-full bg-[#c9a227]/20 flex items-center justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[#c9a227]"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+						<div class="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-foreground"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
 						</div>
-						<h3 class="text-lg font-bold text-white">{ps?.solution_heading ?? t('work.solution_heading')}</h3>
+						<h3 class="text-lg font-bold text-foreground">{ps?.solution_heading ?? t('work.solution_heading')}</h3>
 					</div>
 					<p class="text-slate-300 leading-relaxed">
 						{designsByJoe?.solution ?? t('work.joe_solution')}
@@ -623,22 +617,22 @@
 		<!-- Testimonial Quote -->
 		<div class="mt-16 lg:mt-20 relative">
 			<div class="max-w-3xl mx-auto text-center">
-				<p class="text-2xl lg:text-3xl font-light text-white leading-relaxed italic">
-					<span class="text-[#c9a227] font-serif text-4xl">"</span>{designsByJoe?.testimonial?.quote ?? t('work.joe_testimonial')}<span class="text-[#c9a227] font-serif text-4xl">"</span>
+				<p class="text-2xl lg:text-3xl font-light text-foreground leading-relaxed italic">
+					<span class="text-muted-foreground font-serif text-4xl">"</span>{designsByJoe?.testimonial?.quote ?? t('work.joe_testimonial')}<span class="text-muted-foreground font-serif text-4xl">"</span>
 				</p>
 				<!-- Author -->
 				<div class="mt-8 flex items-center justify-center gap-4">
-					<div class="w-12 h-12 rounded-full bg-gradient-to-br from-[#c9a227] to-[#a68a1f] flex items-center justify-center text-white font-bold text-lg">{(designsByJoe?.testimonial?.author ?? 'Joe').charAt(0)}</div>
+					<div class="w-12 h-12 rounded-full bg-foreground flex items-center justify-center text-background font-bold text-lg">{(designsByJoe?.testimonial?.author ?? 'Joe').charAt(0)}</div>
 					<div class="text-left">
-						<p class="text-[#c9a227] font-semibold">{designsByJoe?.testimonial?.author ?? 'Joe'}</p>
+						<p class="text-foreground font-semibold">{designsByJoe?.testimonial?.author ?? 'Joe'}</p>
 						<p class="text-sm text-slate-400">{designsByJoe?.testimonial?.role ?? 'Fan Artist & Illustrator'}</p>
 					</div>
 				</div>
 				<!-- Decorative line -->
 				<div class="mt-8 flex items-center justify-center gap-3">
-					<div class="w-12 h-[2px] bg-[#3b82f6]"></div>
-					<div class="w-2 h-2 bg-[#c9a227] rounded-full"></div>
-					<div class="w-12 h-[2px] bg-[#3b82f6]"></div>
+					<div class="w-12 h-[2px] bg-border"></div>
+					<div class="w-2 h-2 bg-foreground/40 rounded-full"></div>
+					<div class="w-12 h-[2px] bg-border"></div>
 				</div>
 			</div>
 		</div>
@@ -646,12 +640,12 @@
 		<!-- Interactive Preview Section -->
 		<InView animation="fade-up" class="mt-20 lg:mt-28 -mx-4 lg:-mx-16 xl:-mx-24">
 			<div class="text-center mb-10 px-4 lg:px-16 xl:px-24">
-				<p class="text-sm font-medium text-[#3b82f6] tracking-widest uppercase mb-2">{ps?.preview_label ?? t('work.preview_label')}</p>
-				<h3 class="text-2xl lg:text-3xl font-bold text-white">{ps?.preview_heading ?? t('work.preview_heading')}</h3>
+				<p class="text-xs font-medium text-muted-foreground tracking-[0.25em] uppercase mb-2">{ps?.preview_label ?? t('work.preview_label')}</p>
+				<h3 class="font-display text-2xl lg:text-3xl font-semibold text-foreground">{ps?.preview_heading ?? t('work.preview_heading')}</h3>
 			</div>
 
-			<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-800 border border-white/10 mx-4 lg:mx-8">
-				<div class="bg-slate-700 px-4 py-3 flex items-center gap-3 border-b border-white/10">
+			<div class="relative rounded-2xl overflow-hidden shadow-2xl bg-card border border-border mx-4 lg:mx-8">
+				<div class="bg-muted px-4 py-3 flex items-center gap-3 border-b border-border">
 					<div class="flex gap-1.5">
 						<div class="w-3 h-3 rounded-full bg-[#ff5f57]"></div>
 						<div class="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
@@ -662,7 +656,7 @@
 					</div>
 				</div>
 
-				<div class="relative bg-slate-800" style="height: 75vh; min-height: 600px; max-height: 900px;">
+				<div class="relative bg-card" style="height: 75vh; min-height: 600px; max-height: 900px;">
 					{#if !loadJoeIframe}
 						<div class="absolute inset-0 flex items-center justify-center">
 							<div class="text-center">
@@ -670,7 +664,7 @@
 								<div class="relative z-10">
 									<button
 										onclick={startJoeIframeLoad}
-										class="px-6 py-3 bg-[#3b82f6] text-white rounded-xl font-medium hover:bg-[#2563eb] transition-colors shadow-lg"
+										class="px-6 py-3 bg-primary text-primary-foreground rounded-md font-medium hover:bg-primary/90 transition-colors"
 									>
 										{ps?.load_demo_text ?? t('work.load_demo')}
 									</button>
@@ -679,17 +673,17 @@
 							</div>
 						</div>
 					{:else if joeIframeError}
-						<div class="absolute inset-0 flex items-center justify-center bg-slate-800 z-10">
+						<div class="absolute inset-0 flex items-center justify-center bg-muted z-10">
 							<div class="text-center p-6">
-								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-[#c9a227]">
+								<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4 text-foreground">
 									<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>
 								</svg>
-								<p class="text-white font-medium mb-2">{t('work.unable_to_load')}</p>
+								<p class="text-foreground font-medium mb-2">{t('work.unable_to_load')}</p>
 								<p class="text-sm text-slate-400 mb-4">{t('work.site_unavailable')}</p>
 								<div class="flex gap-3 justify-center">
 									<button
 										onclick={retryJoeIframe}
-										class="px-4 py-2 bg-[#3b82f6] text-white text-sm font-medium hover:bg-[#2563eb] transition-colors rounded"
+										class="px-4 py-2 bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors rounded-md"
 									>
 										{t('work.try_again')}
 									</button>
@@ -697,7 +691,7 @@
 										href={designsByJoe?.liveUrl ?? 'https://designsbyjoe.net'}
 										target="_blank"
 										rel="noopener noreferrer"
-										class="px-4 py-2 border border-[#3b82f6] text-[#3b82f6] text-sm font-medium hover:bg-[#3b82f6]/10 transition-colors rounded"
+										class="px-4 py-2 border border-border text-foreground text-sm font-medium hover:border-foreground/40 transition-colors rounded-md"
 									>
 										{t('work.open_new_tab')}
 									</a>
@@ -706,9 +700,9 @@
 						</div>
 					{:else}
 						{#if !joeIframeLoaded}
-							<div class="absolute inset-0 flex items-center justify-center bg-slate-800 z-10">
+							<div class="absolute inset-0 flex items-center justify-center bg-muted z-10">
 								<div class="text-center">
-									<div class="w-8 h-8 border-3 border-[#3b82f6]/20 border-t-[#3b82f6] rounded-full animate-spin mx-auto mb-3"></div>
+									<div class="w-8 h-8 border-3 border-border border-t-primary rounded-full animate-spin mx-auto mb-3"></div>
 									<p class="text-sm text-slate-300">{t('work.loading_preview')}</p>
 								</div>
 							</div>
