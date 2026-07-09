@@ -290,9 +290,9 @@ Eğer bir tasarımcıyla görüşüyorsanız ve bu sorularda takılırsa, ben ü
 	{
 		slug: 'web-sitesi-maliyeti-istanbul-2026',
 		title: 'How Much Does a Website Cost in Istanbul? (2026 Guide)',
-		titleTr: 'İstanbul\'da Web Sitesi Ne Kadar? 2026 Fiyat Tablosu',
+		titleTr: 'İstanbul\'da Web Sitesi Ne Kadar? 2026 Fiyatları',
 		description: 'A comprehensive guide to website costs in Istanbul. Learn what affects pricing, what to expect, and how to get the best value for your investment.',
-		descriptionTr: '2026\'da web sitesi ne kadar? Basit, kurumsal ve e-ticaret siteleri için gerçek TL fiyat aralıkları, gizli maliyetler ve neye ne ödediğinizin net dökümü.',
+		descriptionTr: 'İstanbul\'da web sitesi maliyeti 2026: 15.000 TL\'den başlayan gerçek fiyat aralıkları — basit, kurumsal ve e-ticaret siteleri, gizli maliyetler ve neye ne ödediğinizin net dökümü.',
 		date: '2026-02-15',
 		readTime: '14 min read',
 		readTimeTr: '14 dk okuma',
